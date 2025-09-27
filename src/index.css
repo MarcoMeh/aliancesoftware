@@ -9,14 +9,14 @@
 @layer base {
   :root {
     /* Core Brand Colors - Blue Gradient Theme */
-    --background: 220 18% 8%;        /* Deep dark background */
-    --foreground: 220 8% 95%;        /* Light text */
+    --background: 0 0% 100%;         /* White background */
+    --foreground: 220 18% 8%;        /* Dark text */
     
-    --card: 220 16% 12%;             /* Dark card background */
-    --card-foreground: 220 8% 95%;   /* Card text */
+    --card: 0 0% 98%;                /* Light card background */
+    --card-foreground: 220 18% 8%;   /* Dark card text */
     
-    --popover: 220 16% 12%;
-    --popover-foreground: 220 8% 95%;
+    --popover: 0 0% 98%;
+    --popover-foreground: 220 18% 8%;
     
     /* Primary Blue Gradient Brand */
     --primary: 220 85% 55%;          /* Main blue */
