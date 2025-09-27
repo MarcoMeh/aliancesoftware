@@ -30,7 +30,7 @@ const HeroSection = () => {
           </h1>
 
           {/* Subheading */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-foreground/90 mb-12 max-w-3xl mx-auto leading-relaxed">
             Transform your ideas into powerful software products. We develop cutting-edge applications, 
             create stunning websites, and provide comprehensive digital solutions that drive success.
           </p>
