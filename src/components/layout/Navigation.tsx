@@ -51,7 +51,7 @@ const Navigation = () => {
           <div className="hidden md:block">
             <Button variant="hero" size="default">
               <Zap className="w-4 h-4" />
-              Get Started
+              Contact Us Now
             </Button>
           </div>
 
@@ -84,7 +84,7 @@ const Navigation = () => {
               ))}
               <Button variant="hero" size="default" className="mt-4">
                 <Zap className="w-4 h-4" />
-                Get Started
+                Contact Us Now
               </Button>
             </div>
           </div>
