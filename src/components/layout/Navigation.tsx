@@ -49,10 +49,12 @@ const Navigation = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button variant="hero" size="default">
-              <Zap className="w-4 h-4" />
-              Contact Us Now
-            </Button>
+            <Link to="/contact">
+              <Button variant="hero" size="default">
+                <Zap className="w-4 h-4" />
+                Contact Us Now
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -82,10 +84,12 @@ const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
-              <Button variant="hero" size="default" className="mt-4">
-                <Zap className="w-4 h-4" />
-                Contact Us Now
-              </Button>
+              <Link to="/contact">
+                <Button variant="hero" size="default" className="mt-4">
+                  <Zap className="w-4 h-4" />
+                  Contact Us Now
+                </Button>
+              </Link>
             </div>
           </div>
         )}
