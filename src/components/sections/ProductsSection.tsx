@@ -142,12 +142,21 @@ const ProductsSection = () => {
 
                 {/* Actions */}
                 <div className="flex gap-3 pt-4">
-                  <Button variant="default" size="sm" className="flex-1 group" onClick={() => window.location.href = '/products'}>
+                  <Button 
+                    variant="default" 
+                    size="sm" 
+                    className="flex-1 group" 
+                    onClick={() => window.location.href = `/product/${product.id}`}
+                  >
                     <Download className="w-4 h-4" />
                     Learn More
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
-                  <Button variant="outline" size="sm" onClick={() => window.location.href = '/products'}>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={() => window.location.href = `/product/${product.id}`}
+                  >
                     <ExternalLink className="w-4 h-4" />
                     Demo
                   </Button>
