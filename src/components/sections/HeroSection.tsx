@@ -37,13 +37,13 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
-            <Button variant="hero" size="hero" className="group">
+            <Button variant="hero" size="hero" className="group" onClick={() => window.location.href = '/products'}>
               <Code className="w-5 h-5" />
               Explore Products
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             
-            <Button variant="outline" size="hero" className="group">
+            <Button variant="outline" size="hero" className="group" onClick={() => window.location.href = '/services'}>
               <Play className="w-5 h-5" />
               Request Service
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

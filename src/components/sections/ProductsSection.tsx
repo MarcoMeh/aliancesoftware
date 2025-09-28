@@ -142,12 +142,12 @@ const ProductsSection = () => {
 
                 {/* Actions */}
                 <div className="flex gap-3 pt-4">
-                  <Button variant="default" size="sm" className="flex-1 group">
+                  <Button variant="default" size="sm" className="flex-1 group" onClick={() => window.location.href = '/products'}>
                     <Download className="w-4 h-4" />
                     Learn More
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
-                  <Button variant="outline" size="sm">
+                  <Button variant="outline" size="sm" onClick={() => window.location.href = '/products'}>
                     <ExternalLink className="w-4 h-4" />
                     Demo
                   </Button>
@@ -159,7 +159,7 @@ const ProductsSection = () => {
 
         {/* View All Products CTA */}
         <div className="text-center">
-          <Button variant="outline" size="lg" className="group">
+          <Button variant="outline" size="lg" className="group" onClick={() => window.location.href = '/products'}>
             View All Products
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>

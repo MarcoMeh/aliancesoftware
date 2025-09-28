@@ -115,7 +115,7 @@ const ServicesSection = () => {
                 </div>
 
                 {/* CTA Button */}
-                <Button variant="outline" className="w-full group mt-6">
+                <Button variant="outline" className="w-full group mt-6" onClick={() => window.location.href = '/services'}>
                   Learn More
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -142,13 +142,13 @@ const ServicesSection = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="lg" className="group">
+              <Button variant="hero" size="lg" className="group" onClick={() => window.location.href = '/contact'}>
                 <Zap className="w-5 h-5" />
                 Request Quote
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               
-              <Button variant="outline" size="lg" className="group">
+              <Button variant="outline" size="lg" className="group" onClick={() => window.location.href = '/products'}>
                 <Shield className="w-5 h-5" />
                 View Portfolio
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
