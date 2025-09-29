@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
-  base: '/aliancesoftware.space/', // simple base for local dev
+  base: './', // simple base for local dev
   server: {
     host: '::',
     port: 8080,
