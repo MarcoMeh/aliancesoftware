@@ -3,7 +3,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: '/aliancesoftware.space/', // <--- ADD THIS BACK
+  base: '/aliancesoftware.space/', // <--- THIS IS CRITICAL
   plugins: [react()],
   resolve: {
     alias: {
