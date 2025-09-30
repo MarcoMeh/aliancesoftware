@@ -1,14 +1,14 @@
+// vite.config.ts
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
 
 export default defineConfig({
-  base: './',
+  base: '/aliancesoftware.space/', // <--- ADD THIS BACK
   plugins: [react()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
+      '@': '/src'
+    }
   },
   build: {
     minify: 'esbuild',
