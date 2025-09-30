@@ -5,7 +5,7 @@ import App from "./App.tsx";
 import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
-  <BrowserRouter basename="/aliancesoftware.space/"> {/* <--- THIS IS ALSO CRITICAL */}
+  <BrowserRouter basename="/"> {/* <--- CHANGE THIS TO '/' */}
     <App />
   </BrowserRouter>
 );
