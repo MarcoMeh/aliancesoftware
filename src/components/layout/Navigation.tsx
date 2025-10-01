@@ -1,8 +1,12 @@
+// src/components/layout/Navigation.tsx
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Code, Zap } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.png"; // Correct logo import
+
+// IMPORT THE LANGUAGE SWITCHER HERE
+import LanguageSwitcher from '../LanguageSwitcher'; // Assuming LanguageSwitcher.tsx is in src/components/LanguageSwitcher.tsx
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,10 +28,10 @@ const Navigation = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
           {/* Logo */}
-          <img 
-            src={logo} 
-            alt="Aliance Software Logo" 
-            className="w-10 h-10 object-contain rounded-lg shadow-glow" 
+          <img
+            src={logo} // Correctly using the imported logo
+            alt="Aliance Software Logo"
+            className="w-10 h-10 object-contain rounded-lg shadow-glow"
           />
 
           {/* Text */}
@@ -36,7 +40,6 @@ const Navigation = () => {
             <p className="text-xs text-muted-foreground">Innovation & Excellence</p>
           </div>
         </Link>
-
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
@@ -53,25 +56,29 @@ const Navigation = () => {
           ))}
         </div>
 
-        {/* Desktop CTA Button */}
-        <div className="hidden md:block">
+        {/* Desktop CTA Button AND Language Switcher */}
+        <div className="hidden md:flex items-center gap-4"> {/* Used gap-4 for spacing */}
           <Link to="/contact">
             <Button variant="hero" size="default" className="flex items-center gap-2">
               <Zap className="w-4 h-4" />
               Contact Us Now
             </Button>
           </Link>
+          {/* LANGUAGE SWITCHER FOR DESKTOP */}
+          <LanguageSwitcher />
         </div>
 
-        {/* Mobile Menu Button */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </Button>
+        {/* Mobile Menu Button (and Language Switcher for mobile) */}
+        <div className="md:hidden flex items-center gap-2"> {/* Added flex and gap for mobile layout */}
+          <LanguageSwitcher /> {/* LANGUAGE SWITCHER FOR MOBILE, visible next to menu button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </Button>
+        </div>
       </div>
 
       {/* Mobile Navigation */}
@@ -96,6 +103,10 @@ const Navigation = () => {
                 Contact Us Now
               </Button>
             </Link>
+            {/* You might also want the LanguageSwitcher here if you prefer it inside the dropdown */}
+            {/* <div className="mt-4 px-6">
+              <LanguageSwitcher />
+            </div> */}
           </div>
         </div>
       )}

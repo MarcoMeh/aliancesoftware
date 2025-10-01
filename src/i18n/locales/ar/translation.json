@@ -1,0 +1,20 @@
+{
+  "hero": {
+    "tagline": "نصنع برمجيات الغد اليوم",
+    "mainHeading": "برمجيات مبتكرة",
+    "mainHeadingSpan": "حلول وخدمات",
+    "subheading": "حوّل أفكارك إلى منتجات برمجية قوية. نحن نطور تطبيقات متطورة، وننشئ مواقع ويب مذهلة، ونقدم حلولاً رقمية شاملة تدفع النجاح.",
+    "exploreProducts": "استكشف المنتجات",
+    "requestService": "اطلب خدمة",
+    "stats": {
+      "productsLaunched": "منتجات أُطلقت",
+      "happyClients": "عملاء سعداء",
+      "yearsExperience": "سنوات خبرة",
+      "successRate": "نسبة نجاح"
+    }
+  },
+  "common": {
+    "darkMode": "الوضع الداكن",
+    "lightMode": "الوضع الفاتح"
+  }
+}

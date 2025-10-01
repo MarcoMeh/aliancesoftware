@@ -1,0 +1,20 @@
+{
+  "hero": {
+    "tagline": "Construire les logiciels de demain, aujourd'hui",
+    "mainHeading": "Logiciels Innovants",
+    "mainHeadingSpan": "Solutions & Services",
+    "subheading": "Transformez vos idées en puissants produits logiciels. Nous développons des applications de pointe, créons des sites web époustouflants et fournissons des solutions numériques complètes qui mènent au succès.",
+    "exploreProducts": "Explorer les produits",
+    "requestService": "Demander un service",
+    "stats": {
+      "productsLaunched": "Produits Lancés",
+      "happyClients": "Clients Satisfaits",
+      "yearsExperience": "Années d'Expérience",
+      "successRate": "Taux de Réussite"
+    }
+  },
+  "common": {
+    "darkMode": "Mode Sombre",
+    "lightMode": "Mode Clair"
+  }
+}

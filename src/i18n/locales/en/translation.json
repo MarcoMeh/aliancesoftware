@@ -1,0 +1,20 @@
+{
+  "hero": {
+    "tagline": "Building Tomorrow's Software Today",
+    "mainHeading": "Innovative Software",
+    "mainHeadingSpan": "Solutions & Services",
+    "subheading": "Transform your ideas into powerful software products. We develop cutting-edge applications, create stunning websites, and provide comprehensive digital solutions that drive success.",
+    "exploreProducts": "Explore Products",
+    "requestService": "Request Service",
+    "stats": {
+      "productsLaunched": "Products Launched",
+      "happyClients": "Happy Clients",
+      "yearsExperience": "Years Experience",
+      "successRate": "Success Rate"
+    }
+  },
+  "common": {
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode"
+  }
+}
