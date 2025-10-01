@@ -2,10 +2,10 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Play, Rocket, Code } from 'lucide-react';
 import heroBackground from '@/assets/hero-background.jpg';
-import { useTranslation } from 'react-i18next'; // <--- Import useTranslation hook
+import { useTranslation } from 'react-i18next'; // Translation hook
 
 const HeroSection = () => {
-  const { t } = useTranslation(); // <--- Initialize useTranslation hook
+  const { t } = useTranslation(); // Initialize translation
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -23,32 +23,42 @@ const HeroSection = () => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 mb-8 text-sm text-primary backdrop-blur-sm">
             <Rocket className="w-4 h-4" />
-            {t('hero.tagline')} {/* <--- Translated content */}
+            {t('hero.tagline')}
           </div>
 
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="gradient-text">{t('hero.mainHeading')}</span> {/* <--- Translated content */}
+            <span className="gradient-text">{t('hero.mainHeading')}</span>
             <br />
-            <span className="text-foreground">{t('hero.mainHeadingSpan')}</span> {/* <--- Separated for better translation */}
+            <span className="text-foreground">{t('hero.mainHeadingSpan')}</span>
           </h1>
 
           {/* Subheading */}
           <p className="text-xl md:text-2xl text-foreground/90 mb-12 max-w-3xl mx-auto leading-relaxed">
-            {t('hero.subheading')} {/* <--- Translated content */}
+            {t('hero.subheading')}
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
-            <Button variant="hero" size="hero" className="group" onClick={() => window.location.href = '/products'}>
+            <Button
+              variant="hero"
+              size="hero"
+              className="group"
+              onClick={() => (window.location.href = '/products')}
+            >
               <Code className="w-5 h-5" />
-              {t('hero.exploreProducts')} {/* <--- Translated content */}
+              {t('hero.exploreProducts')}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
 
-            <Button variant="outline" size="hero" className="group" onClick={() => window.location.href = '/services'}>
+            <Button
+              variant="outline"
+              size="hero"
+              className="group"
+              onClick={() => (window.location.href = '/services')}
+            >
               <Play className="w-5 h-5" />
-              {t('hero.requestService')} {/* <--- Translated content */}
+              {t('hero.requestService')}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
