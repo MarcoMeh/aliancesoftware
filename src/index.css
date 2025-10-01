@@ -9,7 +9,7 @@
 @layer base {
   :root {
     /* Core Brand Colors - Blue Gradient Theme */
-    --background: 220 25% 97%;       /* Light blue-gray background */
+    --background: 220 10% 90%;   /* darker gray-blue */
     --foreground: 220 18% 8%;        /* Dark text */
     
     --card: 220 20% 99%;             /* Light card background */
@@ -46,7 +46,7 @@
     /* Custom Brand Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
     --gradient-glow: linear-gradient(135deg, hsl(var(--primary) / 0.8), hsl(var(--primary-light) / 0.6));
-    --gradient-background: linear-gradient(180deg, hsl(var(--background)), hsl(220 25% 95%));
+    --gradient-background: linear-gradient(180deg, hsl(var(--background)), hsl(220 15% 85%));
     
     /* Shadows & Effects */
     --shadow-glow: 0 0 30px hsl(var(--primary-glow) / 0.3);

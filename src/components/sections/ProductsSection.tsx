@@ -1,56 +1,9 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, Download, ExternalLink, Star, Users } from 'lucide-react';
-import productsShowcase from '@/assets/products-showcase.jpg';
+import { allProducts } from '@/data/productsData';
 
 const ProductsSection = () => {
-  const featuredProducts = [
-    {
-      id: 1,
-      name: 'TaskFlow Pro',
-      description: 'Advanced project management platform with AI-powered insights',
-      category: 'Productivity',
-      rating: 4.9,
-      users: '10K+',
-      image: '/placeholder.svg',
-      features: ['AI Analytics', 'Team Collaboration', 'Time Tracking'],
-      status: 'Popular'
-    },
-    {
-      id: 2,
-      name: 'DataViz Studio',
-      description: 'Professional data visualization and reporting suite',
-      category: 'Analytics',
-      rating: 4.8,
-      users: '5K+',
-      image: '/placeholder.svg',
-      features: ['Real-time Charts', 'Custom Reports', 'API Integration'],
-      status: 'New'
-    },
-    {
-      id: 3,
-      name: 'SecureVault',
-      description: 'Enterprise-grade password and secrets management',
-      category: 'Security',
-      rating: 4.9,
-      users: '15K+',
-      image: '/placeholder.svg',
-      features: ['End-to-End Encryption', 'Team Sharing', 'Audit Logs'],
-      status: 'Featured'
-    },
-    {
-      id: 4,
-      name: 'CloudSync',
-      description: 'Seamless file synchronization across all platforms',
-      category: 'Storage',
-      rating: 4.7,
-      users: '8K+',
-      image: '/placeholder.svg',
-      features: ['Real-time Sync', 'Version Control', 'Offline Access'],
-      status: 'Updated'
-    }
-  ];
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'Popular': return 'bg-primary';
@@ -88,7 +41,7 @@ const ProductsSection = () => {
 
         {/* Products Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
-          {featuredProducts.map((product, index) => (
+          {allProducts.map((product, index) => (
             <Card 
               key={product.id} 
               className="group bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 card-hover"
@@ -103,7 +56,7 @@ const ProductsSection = () => {
                 {/* Product Image */}
                 <div 
                   className="w-full h-48 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-lg mb-4 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${productsShowcase})` }}
+                  style={{ backgroundImage: `url(${product.image})` }}
                 />
                 
                 <CardTitle className="text-xl font-semibold group-hover:text-primary transition-colors">
@@ -124,7 +77,7 @@ const ProductsSection = () => {
                   </div>
                   <div className="flex items-center gap-1 text-muted-foreground">
                     <Users className="w-4 h-4" />
-                    <span>{product.users} users</span>
+                    <span>{product.users}</span>
                   </div>
                 </div>
 

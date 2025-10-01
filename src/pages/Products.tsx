@@ -3,71 +3,9 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, Download, ExternalLink, Star, Users, Search, Filter } from 'lucide-react';
 import { Input } from '@/components/ui/input';
-import productsShowcase from '@/assets/products-showcase.jpg';
+import { allProducts } from '@/data/productsData'; // Use centralized data
 
 const Products = () => {
-  const allProducts = [
-    {
-      id: 1,
-      name: 'TaskFlow Pro',
-      description: 'Advanced project management platform with AI-powered insights',
-      category: 'Productivity',
-      rating: 4.9,
-      users: '10K+',
-      features: ['AI Analytics', 'Team Collaboration', 'Time Tracking'],
-      status: 'Popular'
-    },
-    {
-      id: 2,
-      name: 'DataViz Studio',
-      description: 'Professional data visualization and reporting suite',
-      category: 'Analytics',
-      rating: 4.8,
-      users: '5K+',
-      features: ['Real-time Charts', 'Custom Reports', 'API Integration'],
-      status: 'New'
-    },
-    {
-      id: 3,
-      name: 'SecureVault',
-      description: 'Enterprise-grade password and secrets management',
-      category: 'Security',
-      rating: 4.9,
-      users: '15K+',
-      features: ['End-to-End Encryption', 'Team Sharing', 'Audit Logs'],
-      status: 'Featured'
-    },
-    {
-      id: 4,
-      name: 'CloudSync',
-      description: 'Seamless file synchronization across all platforms',
-      category: 'Storage',
-      rating: 4.7,
-      users: '8K+',
-      features: ['Real-time Sync', 'Version Control', 'Offline Access'],
-      status: 'Updated'
-    },
-    {
-      id: 5,
-      name: 'CodeAssist AI',
-      description: 'Intelligent code completion and debugging assistant',
-      category: 'Development',
-      rating: 4.8,
-      users: '12K+',
-      features: ['Smart Completion', 'Bug Detection', 'Code Optimization'],
-      status: 'Popular'
-    },
-    {
-      id: 6,
-      name: 'DesignFlow',
-      description: 'Professional UI/UX design collaboration platform',
-      category: 'Design',
-      rating: 4.7,
-      users: '6K+',
-      features: ['Real-time Collaboration', 'Version History', 'Component Library'],
-      status: 'New'
-    }
-  ];
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -132,7 +70,7 @@ const Products = () => {
                     {/* Product Image */}
                     <div 
                       className="w-full h-48 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-lg mb-4 bg-cover bg-center"
-                      style={{ backgroundImage: `url(${productsShowcase})` }}
+                      style={{ backgroundImage: `url(${product.image})` }}
                     />
                     
                     <CardTitle className="text-xl font-semibold group-hover:text-primary transition-colors">
