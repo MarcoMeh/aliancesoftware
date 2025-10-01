@@ -53,17 +53,10 @@ const HeroSection = () => {
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto">
             {[
-<<<<<<< HEAD
               { label: 'Products Launched', value: '50+' },
               { label: 'Happy Clients', value: '200+' },
               { label: 'Years Experience', value: '8+' },
               { label: 'Success Rate', value: '99%' },
-=======
-              { label: 'Software Launched', value: '10+' },
-              { label: 'Happy Clients', value: '100+' },
-              { label: 'Years Experience', value: '4+' },
-              { label: 'Success Rate', value: '95%' },
->>>>>>> ffe158a4 (Update product data and favicon)
             ].map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="text-2xl md:text-3xl font-bold gradient-text mb-2">
