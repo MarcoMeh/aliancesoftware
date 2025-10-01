@@ -3,7 +3,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: '/', // <--- CHANGE THIS TO '/' for custom domains at the root
+  base: './', // <--- THIS IS THE CRUCIAL CHANGE
   plugins: [react()],
   resolve: {
     alias: {
