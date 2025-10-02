@@ -1,6 +1,8 @@
+// src/data/productsData.ts
+
 import alianceSchoolImg from '@/assets/aliance-school-manager.png';
 import alianceSheetImg from '@/assets/aliance-sheet.png';
-import alianceShopImg from '@/assets/aliance-shop.png'; // renamed image file
+import alianceShopImg from '@/assets/aliance-shop.png';
 
 export interface Product {
   id: number;
@@ -13,9 +15,10 @@ export interface Product {
   features: string[];
   benefits: string[];
   status: string;
-  image: string;
+  image: string; // This can remain as the main/thumbnail image
   videoId?: string;
   pricing?: string;
+  screenshots?: string[]; // Added for multiple screenshots
 }
 
 export const allProducts: Product[] = [
@@ -40,8 +43,19 @@ export const allProducts: Product[] = [
       'Data-driven decision making'
     ],
     status: 'Popular',
-    image: alianceSchoolImg,
-    videoId: 'dQw4w9WgXcQ',
+    image: alianceSchoolImg, // Main image
+    // --- CORRECTED SCREENSHOT PATHS HERE ---
+    screenshots: [
+      // If you want to use the main image as the first screenshot, keep alianceSchoolImg
+      // Otherwise, list your actual screenshot paths from public/images/
+      alianceSchoolImg,
+      '/images/school 1.jpg', // Assuming public/images/school1.jpg
+      '/images/school 2.jpg', // Assuming public/images/school2.jpg
+      '/images/school 3.jpg', // Assuming public/images/school3.jpg
+      '/images/school 4.jpg', // Assuming public/images/school4.jpg
+      // Add more if you have them!
+    ],
+    videoId: 'dQw4w9WgXcQ', // Placeholder YouTube ID
     pricing: '$25/month per school'
   },
   {
@@ -66,7 +80,7 @@ export const allProducts: Product[] = [
     ],
     status: 'New',
     image: alianceSheetImg,
-    videoId: 'jNQXAC9IVRw',
+    videoId: 'jNQXAC9IVRw', // Placeholder YouTube ID
     pricing: '$10/month per user'
   },
   {
@@ -91,7 +105,7 @@ export const allProducts: Product[] = [
     ],
     status: 'Featured',
     image: alianceShopImg,
-    videoId: 'ScMzIvxBSi4',
+    videoId: 'ScMzIvxBSi4', // Placeholder YouTube ID
     pricing: '$15/month per shop'
   }
 ];

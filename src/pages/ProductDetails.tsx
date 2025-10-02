@@ -10,7 +10,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useToast } from '@/hooks/use-toast';
-import { ArrowLeft, Play, Star, Users, CheckCircle, Download, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Play, Star, Users, CheckCircle, Download, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react'; // Added ChevronLeft, ChevronRight
 import { allProducts } from '@/data/productsData';
 
 // Import Dialog components
@@ -27,7 +27,8 @@ const formSchema = z.object({
   name: z.string().trim().min(2, "Name is required").max(100),
   email: z.string().trim().email("Please enter a valid email").max(255),
   company: z.string().trim().max(100).optional(),
-  phone: z.string().trim().max(20).optional(),
+  // Phone number is now required
+  phone: z.string().trim().min(10, "Phone number is required").max(20, "Phone number is too long"),
   message: z.string().trim().max(1000).optional()
 });
 
@@ -35,7 +36,8 @@ const ProductDetails = () => {
   const { id } = useParams();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false); // State for modal visibility
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+  const [currentScreenshotIndex, setCurrentScreenshotIndex] = useState(0); // State for current screenshot
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -43,7 +45,7 @@ const ProductDetails = () => {
       name: "",
       email: "",
       company: "",
-      phone: "",
+      phone: "", // Ensure this is initialized, even if empty, to avoid controlled vs uncontrolled warning
       message: ""
     }
   });
@@ -77,12 +79,10 @@ const ProductDetails = () => {
     }
   };
 
-  // Define a separate onSubmit function for the download form
-  // This helps distinguish actions and potentially different backend processing
   const onDownloadFormSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsSubmitting(true);
     try {
-      const FORMSPREE_ENDPOINT = "https://formspree.io/f/xkgqbzgy"; // Your actual Formspree ID
+      const FORMSPREE_ENDPOINT = "https://formspree.io/f/xkgqbzgy";
 
       const response = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
@@ -90,7 +90,7 @@ const ProductDetails = () => {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify(values) // Send your form data as JSON
+        body: JSON.stringify(values)
       });
 
       if (!response.ok) {
@@ -102,16 +102,15 @@ const ProductDetails = () => {
         description: "Your download will begin shortly.",
       });
 
-      // Trigger the download
       const link = document.createElement('a');
-      link.href = '/downloads/Aliance School Manager.rar'; // Corrected installer path
-      link.download = 'Aliance School Manager.rar'; // Suggested filename
+      link.href = '/downloads/Aliance School Manager.rar';
+      link.download = 'Aliance School Manager.rar';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
 
-      form.reset(); // Reset the form after successful submission
-      setIsDownloadModalOpen(false); // Close the modal
+      form.reset();
+      setIsDownloadModalOpen(false);
     } catch (error) {
       console.error("Download form submission error:", error);
       toast({
@@ -124,11 +123,10 @@ const ProductDetails = () => {
     }
   };
 
-  // Define a separate onSubmit function for the main contact form
   const onContactFormSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsSubmitting(true);
     try {
-      const FORMSPREE_CONTACT_ENDPOINT = "https://formspree.io/f/xkgqbzgy"; // You might want a *different* Formspree ID for general contact if you want to separate submissions
+      const FORMSPREE_CONTACT_ENDPOINT = "https://formspree.io/f/xkgqbzgy";
 
       const response = await fetch(FORMSPREE_CONTACT_ENDPOINT, {
         method: 'POST',
@@ -147,7 +145,7 @@ const ProductDetails = () => {
         title: "Contact Request Sent!",
         description: `We'll contact you within 24 hours about ${product.name}.`,
       });
-      form.reset(); // Reset the form
+      form.reset();
     } catch (error) {
       console.error("Contact form submission error:", error);
       toast({
@@ -158,6 +156,19 @@ const ProductDetails = () => {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  // Carousel navigation handlers
+  const goToPreviousScreenshot = () => {
+    setCurrentScreenshotIndex((prevIndex) =>
+      prevIndex === 0 ? (product.screenshots?.length || 1) - 1 : prevIndex - 1
+    );
+  };
+
+  const goToNextScreenshot = () => {
+    setCurrentScreenshotIndex((prevIndex) =>
+      prevIndex === (product.screenshots?.length || 1) - 1 ? 0 : prevIndex + 1
+    );
   };
 
   return (
@@ -217,7 +228,7 @@ const ProductDetails = () => {
                         </DialogDescription>
                       </DialogHeader>
                       <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onDownloadFormSubmit)} className="space-y-6"> {/* Use onDownloadFormSubmit */}
+                        <form onSubmit={form.handleSubmit(onDownloadFormSubmit)} className="space-y-6">
                           <FormField
                             control={form.control}
                             name="name"
@@ -262,7 +273,7 @@ const ProductDetails = () => {
                             name="phone"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>Phone Number (Optional)</FormLabel>
+                                <FormLabel>Phone Number</FormLabel> {/* Label updated */}
                                 <FormControl>
                                   <Input type="tel" placeholder="(123) 456-7890" {...field} />
                                 </FormControl>
@@ -280,26 +291,82 @@ const ProductDetails = () => {
                 </div>
               </div>
 
-              {/* Product Image */}
+              {/* Product Image Gallery / Carousel */}
               <div className="relative">
+              {product.screenshots && product.screenshots.length > 0 ? ( // <-- CONFIRM START OF THIS CONDITIONAL BLOCK
+                <>
+                  <div
+                    className="w-full h-80 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-xl bg-cover bg-center transition-all duration-300 ease-in-out"
+                    style={{ backgroundImage: `url(${product.screenshots[currentScreenshotIndex]})` }}
+                  />
+                  {product.screenshots.length > 1 && (
+                    <>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white z-10"
+                        onClick={goToPreviousScreenshot}
+                      >
+                        <ChevronLeft className="w-5 h-5" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white z-10"
+                        onClick={goToNextScreenshot}
+                      >
+                        <ChevronRight className="w-5 h-5" />
+                      </Button>
+                      <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
+                        {product.screenshots.map((_, index) => (
+                          <button
+                            key={index}
+                            className={`w-2 h-2 rounded-full ${
+                              index === currentScreenshotIndex ? 'bg-primary' : 'bg-gray-300'
+                            }`}
+                            onClick={() => setCurrentScreenshotIndex(index)}
+                            aria-label={`View screenshot ${index + 1}`}
+                          />
+                        ))}
+                      </div>
+                    </>
+                  )}
+                  {product.videoId && (
+                    <div className="absolute inset-0 bg-black/20 rounded-xl flex items-center justify-center">
+                      <Button
+                        variant="secondary"
+                        size="lg"
+                        className="gap-2 bg-white/90 hover:bg-white"
+                        onClick={() => window.open(`https://www.youtube.com/watch?v=${product.videoId}`, '_blank')}
+                      >
+                        <Play className="w-5 h-5" />
+                        Watch Demo Video
+                      </Button>
+                    </div>
+                  )}
+                </>
+              ) : ( // <-- CONFIRM THIS 'ELSE' BLOCK for fallback
+                // Fallback if no screenshots array or empty
                 <div
                   className="w-full h-80 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-xl bg-cover bg-center"
                   style={{ backgroundImage: `url(${product.image})` }}
-                />
-                {product.videoId && (
-                  <div className="absolute inset-0 bg-black/20 rounded-xl flex items-center justify-center">
-                    <Button
-                      variant="secondary"
-                      size="lg"
-                      className="gap-2 bg-white/90 hover:bg-white"
-                      onClick={() => window.open(`https://www.youtube.com/watch?v=${product.videoId}`, '_blank')}
-                    >
-                      <Play className="w-5 h-5" />
-                      Watch Demo Video
-                    </Button>
-                  </div>
-                )}
-              </div>
+                >
+                  {product.videoId && (
+                    <div className="absolute inset-0 bg-black/20 rounded-xl flex items-center justify-center">
+                      <Button
+                        variant="secondary"
+                        size="lg"
+                        className="gap-2 bg-white/90 hover:bg-white"
+                        onClick={() => window.open(`https://www.youtube.com/watch?v=${product.videoId}`, '_blank')}
+                      >
+                        <Play className="w-5 h-5" />
+                        Watch Demo Video
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
             </div>
           </div>
         </section>
@@ -362,7 +429,7 @@ const ProductDetails = () => {
                 </CardHeader>
                 <CardContent>
                   <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onContactFormSubmit)} className="space-y-6"> {/* Use onContactFormSubmit */}
+                    <form onSubmit={form.handleSubmit(onContactFormSubmit)} className="space-y-6">
                       <FormField
                         control={form.control}
                         name="name"
@@ -407,7 +474,7 @@ const ProductDetails = () => {
                         name="phone"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Phone Number (Optional)</FormLabel>
+                            <FormLabel>Phone Number</FormLabel> {/* Label updated */}
                             <FormControl>
                               <Input type="tel" placeholder="(123) 456-7890" {...field} />
                             </FormControl>
