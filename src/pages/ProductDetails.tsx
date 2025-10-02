@@ -13,9 +13,19 @@ import { useToast } from '@/hooks/use-toast';
 import { ArrowLeft, Play, Star, Users, CheckCircle, Download, ExternalLink } from 'lucide-react';
 import { allProducts } from '@/data/productsData';
 
+// Import Dialog components
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
 const formSchema = z.object({
-  name: z.string().trim().min(2).max(100),
-  email: z.string().trim().email().max(255),
+  name: z.string().trim().min(2, "Name is required").max(100),
+  email: z.string().trim().email("Please enter a valid email").max(255),
   company: z.string().trim().max(100).optional(),
   phone: z.string().trim().max(20).optional(),
   message: z.string().trim().max(1000).optional()
@@ -25,6 +35,7 @@ const ProductDetails = () => {
   const { id } = useParams();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false); // State for modal visibility
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -66,19 +77,82 @@ const ProductDetails = () => {
     }
   };
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  // Define a separate onSubmit function for the download form
+  // This helps distinguish actions and potentially different backend processing
+  const onDownloadFormSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsSubmitting(true);
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      toast({
-        title: "Request Submitted Successfully!",
-        description: `We'll contact you within 24 hours about ${product.name}`,
+      const FORMSPREE_ENDPOINT = "https://formspree.io/f/xkgqbzgy"; // Your actual Formspree ID
+
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(values) // Send your form data as JSON
       });
-      form.reset();
+
+      if (!response.ok) {
+        throw new Error(`Form submission failed: ${response.statusText}`);
+      }
+
+      toast({
+        title: "Request Submitted!",
+        description: "Your download will begin shortly.",
+      });
+
+      // Trigger the download
+      const link = document.createElement('a');
+      link.href = '/downloads/Aliance School Manager.rar'; // Corrected installer path
+      link.download = 'Aliance School Manager.rar'; // Suggested filename
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      form.reset(); // Reset the form after successful submission
+      setIsDownloadModalOpen(false); // Close the modal
     } catch (error) {
+      console.error("Download form submission error:", error);
       toast({
         title: "Error",
-        description: "Something went wrong. Please try again.",
+        description: "Something went wrong. Please try again. " + (error as Error).message,
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Define a separate onSubmit function for the main contact form
+  const onContactFormSubmit = async (values: z.infer<typeof formSchema>) => {
+    setIsSubmitting(true);
+    try {
+      const FORMSPREE_CONTACT_ENDPOINT = "https://formspree.io/f/xkgqbzgy"; // You might want a *different* Formspree ID for general contact if you want to separate submissions
+
+      const response = await fetch(FORMSPREE_CONTACT_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(values)
+      });
+
+      if (!response.ok) {
+        throw new Error(`Contact form submission failed: ${response.statusText}`);
+      }
+
+      toast({
+        title: "Contact Request Sent!",
+        description: `We'll contact you within 24 hours about ${product.name}.`,
+      });
+      form.reset(); // Reset the form
+    } catch (error) {
+      console.error("Contact form submission error:", error);
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again. " + (error as Error).message,
         variant: "destructive",
       });
     } finally {
@@ -127,28 +201,96 @@ const ProductDetails = () => {
                 </p>
 
                 <div className="flex gap-4">
-                  <Button size="lg" className="gap-2">
-                    <Download className="w-5 h-5" />
-                    Start Free Trial
-                  </Button>
-                  <Button variant="outline" size="lg" className="gap-2">
-                    <ExternalLink className="w-5 h-5" />
-                    Live Demo
-                  </Button>
+                  {/* "Start Free Trial" button now opens a dialog */}
+                  <Dialog open={isDownloadModalOpen} onOpenChange={setIsDownloadModalOpen}>
+                    <DialogTrigger asChild>
+                      <Button size="lg" className="gap-2">
+                        <Download className="w-5 h-5" />
+                        Start Free Trial
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px]">
+                      <DialogHeader>
+                        <DialogTitle>Get Your Free Trial of {product.name}</DialogTitle>
+                        <DialogDescription>
+                          Please provide your contact information to start your free trial download.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <Form {...form}>
+                        <form onSubmit={form.handleSubmit(onDownloadFormSubmit)} className="space-y-6"> {/* Use onDownloadFormSubmit */}
+                          <FormField
+                            control={form.control}
+                            name="name"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Your Name</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="John Doe" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name="email"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Your Email</FormLabel>
+                                <FormControl>
+                                  <Input type="email" placeholder="john.doe@example.com" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name="company"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Company (Optional)</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="Acme Corp" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name="phone"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Phone Number (Optional)</FormLabel>
+                                <FormControl>
+                                  <Input type="tel" placeholder="(123) 456-7890" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <Button type="submit" className="w-full" disabled={isSubmitting}>
+                            {isSubmitting ? "Submitting..." : "Download Free Trial"}
+                          </Button>
+                        </form>
+                      </Form>
+                    </DialogContent>
+                  </Dialog>
                 </div>
               </div>
 
               {/* Product Image */}
               <div className="relative">
-                <div 
+                <div
                   className="w-full h-80 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-xl bg-cover bg-center"
                   style={{ backgroundImage: `url(${product.image})` }}
                 />
                 {product.videoId && (
                   <div className="absolute inset-0 bg-black/20 rounded-xl flex items-center justify-center">
-                    <Button 
-                      variant="secondary" 
-                      size="lg" 
+                    <Button
+                      variant="secondary"
+                      size="lg"
                       className="gap-2 bg-white/90 hover:bg-white"
                       onClick={() => window.open(`https://www.youtube.com/watch?v=${product.videoId}`, '_blank')}
                     >
@@ -162,7 +304,7 @@ const ProductDetails = () => {
           </div>
         </section>
 
-        {/* Features & Benefits */}
+        {/* Features & Benefits (Remains unchanged) */}
         <section className="py-16">
           <div className="container mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-12">
@@ -207,21 +349,88 @@ const ProductDetails = () => {
           </div>
         </section>
 
-        {/* Lead Capture Form */}
+        {/* Original Lead Capture Form - NOW USING onContactFormSubmit */}
         <section className="py-16 bg-muted/20">
           <div className="container mx-auto px-6">
             <div className="max-w-2xl mx-auto">
               <Card className="bg-card/50 backdrop-blur-sm border-border/50">
                 <CardHeader className="text-center">
-                  <CardTitle className="text-3xl gradient-text">Get Started Today</CardTitle>
+                  <CardTitle className="text-3xl gradient-text">Contact Our Sales Team</CardTitle>
                   <CardDescription className="text-lg">
-                    Ready to transform your workflow with {product.name}? Fill out the form below and our team will contact you within 24 hours.
+                    Have more questions or need a personalized demo? Fill out the form below.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                      {/* form fields */}
+                    <form onSubmit={form.handleSubmit(onContactFormSubmit)} className="space-y-6"> {/* Use onContactFormSubmit */}
+                      <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Your Name</FormLabel>
+                            <FormControl>
+                              <Input placeholder="John Doe" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Your Email</FormLabel>
+                            <FormControl>
+                              <Input type="email" placeholder="john.doe@example.com" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="company"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Company (Optional)</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Acme Corp" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="phone"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Phone Number (Optional)</FormLabel>
+                            <FormControl>
+                              <Input type="tel" placeholder="(123) 456-7890" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="message"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Message (Optional)</FormLabel>
+                            <FormControl>
+                              <Textarea placeholder="How can we help you?" className="min-h-[100px]" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <Button type="submit" className="w-full" disabled={isSubmitting}>
+                        {isSubmitting ? "Submitting..." : "Submit Request"}
+                      </Button>
                     </form>
                   </Form>
                 </CardContent>
@@ -230,7 +439,7 @@ const ProductDetails = () => {
           </div>
         </section>
 
-        {/* YouTube Video Section */}
+        {/* YouTube Video Section (Remains unchanged) */}
         {product.videoId && (
           <section className="py-16">
             <div className="container mx-auto px-6">
@@ -240,7 +449,7 @@ const ProductDetails = () => {
                   Watch our detailed walkthrough to see how {product.name} can transform your workflow
                 </p>
               </div>
-              
+
               <div className="max-w-4xl mx-auto">
                 <Card className="bg-card/50 backdrop-blur-sm border-border/50">
                   <CardContent className="p-0">
