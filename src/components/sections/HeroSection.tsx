@@ -64,23 +64,7 @@ const HeroSection = () => {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto">
-            {[
-              { label: t('hero.stats.productsLaunched'), value: '50+' },
-              { label: t('hero.stats.happyClients'), value: '200+' },
-              { label: t('hero.stats.yearsExperience'), value: '8+' },
-              { label: t('hero.stats.successRate'), value: '99%' },
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-2xl md:text-3xl font-bold gradient-text mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
+          
         </div>
       </div>
 
