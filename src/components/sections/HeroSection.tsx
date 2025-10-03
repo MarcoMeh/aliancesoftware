@@ -1,77 +1,81 @@
 // src/components/sections/HeroSection.tsx
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Play, Rocket, Code } from 'lucide-react';
-import heroBackground from '@/assets/hero-background.jpg';
-import { useTranslation } from 'react-i18next'; // Translation hook
+import { useTranslation } from 'react-i18next';
+
+// Assuming you have a Navbar component or similar that provides the logo and language switcher
+// import Navbar from '@/components/layout/Navbar'; 
 
 const HeroSection = () => {
-  const { t } = useTranslation(); // Initialize translation
+  const { t, i18n } = useTranslation();
+  const isRtl = i18n.language === 'ar'; 
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBackground})` }}
-      >
-        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 md:py-24"> {/* Added padding for spacing */}
+      {/* Dynamic Animated Background Blobs - These will now be visible against the lighter body background */}
+      <div className="hero-background-blobs">
+        <div className="blob" />
+        <div className="blob" />
+        <div className="blob" />
+        <div className="blob" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 text-center text-black">
-        <div className="max-w-4xl mx-auto animate-fade-in">
+      {/* Content Wrapper - NEW: This acts as the "card" in the visualization */}
+      <div 
+        className={`relative z-10 w-full max-w-5xl mx-auto p-8 md:p-12 
+                    bg-card rounded-2xl shadow-card 
+                    flex flex-col items-center justify-center text-center 
+                    ${isRtl ? 'rtl' : 'ltr'}`}
+        dir={isRtl ? 'rtl' : 'ltr'}
+      >
+        <div className="max-w-4xl mx-auto animate-fade-in text-card-foreground"> {/* Text color set from card-foreground */}
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 mb-8 text-sm text-primary backdrop-blur-sm">
+          <div 
+            className={`inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 mb-8 text-sm text-primary backdrop-blur-sm 
+                        ${isRtl ? 'flex-row-reverse' : ''}`}
+          >
             <Rocket className="w-4 h-4" />
-            {t('hero.tagline')}
+            {t('hero.tagline', 'Building Tomorrow\'s Software Today')} {/* Added default text for easy testing */}
           </div>
 
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="gradient-text">{t('hero.mainHeading')}</span>
+            <span className="gradient-text">{t('hero.mainHeading', 'Innovative Software')}</span> {/* First part gradient */}
             <br />
-            <span className="text-foreground">{t('hero.mainHeadingSpan')}</span>
+            <span className="text-foreground">{t('hero.mainHeadingSpan', 'Solutions & Services')}</span> {/* Second part foreground color */}
           </h1>
 
           {/* Subheading */}
-          <p className="text-xl md:text-2xl text-foreground/90 mb-12 max-w-3xl mx-auto leading-relaxed">
-            {t('hero.subheading')}
+          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed"> {/* Changed to muted-foreground for softer text */}
+            {t('hero.subheading', 'Transform your ideas into powerful software products. We develop cutting-edge applications, create stunning websites, and provide comprehensive digital solutions that drive success.')}
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <Button
-              variant="hero"
-              size="hero"
+              variant="default" // Use 'default' or your specific 'hero' variant
+              size="lg" // Use 'lg' or your specific 'hero' size
               className="group"
               onClick={() => (window.location.href = '/products')}
             >
-              <Code className="w-5 h-5" />
-              {t('hero.exploreProducts')}
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <Code className={`w-5 h-5 ${isRtl ? 'ml-2' : 'mr-2'}`} />
+              {t('hero.exploreProducts', 'Explore Products')}
+              <ArrowRight className={`w-5 h-5 group-hover:translate-x-1 transition-transform ${isRtl ? 'mr-2 rotate-180' : 'ml-2'}`} />
             </Button>
 
             <Button
               variant="outline"
-              size="hero"
+              size="lg" // Use 'lg' or your specific 'hero' size
               className="group"
               onClick={() => (window.location.href = '/services')}
             >
-              <Play className="w-5 h-5" />
-              {t('hero.requestService')}
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <Play className={`w-5 h-5 ${isRtl ? 'ml-2' : 'mr-2'}`} />
+              {t('hero.requestService', 'Request Service')}
+              <ArrowRight className={`w-5 h-5 group-hover:translate-x-1 transition-transform ${isRtl ? 'mr-2 rotate-180' : 'ml-2'}`} />
             </Button>
           </div>
-
-          {/* Stats */}
-          
         </div>
       </div>
-
-      {/* Floating Elements */}
-      <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-primary rounded-full opacity-20 animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-32 h-32 bg-gradient-glow rounded-full opacity-10 animate-glow" />
-      <div className="absolute top-1/2 left-20 w-16 h-16 bg-primary/30 rounded-lg rotate-45 animate-bounce" />
     </section>
   );
 };

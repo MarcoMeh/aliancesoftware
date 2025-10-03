@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,13 +10,13 @@
 @layer base {
   :root {
     /* Core Brand Colors - Blue Gradient Theme */
-    --background: 220 10% 90%;   /* darker gray-blue */
+    --background: 220 10% 98%;   /* Lighter, subtle background - **Changed from dark** */
     --foreground: 220 18% 8%;        /* Dark text */
     
-    --card: 220 20% 99%;             /* Light card background */
+    --card: 0 0% 100%;             /* White card background */
     --card-foreground: 220 18% 8%;   /* Dark card text */
     
-    --popover: 220 20% 99%;
+    --popover: 0 0% 100%;
     --popover-foreground: 220 18% 8%;
     
     /* Primary Blue Gradient Brand */
@@ -37,8 +38,8 @@
     --destructive: 0 75% 60%;
     --destructive-foreground: 220 8% 95%;
     
-    --border: 220 14% 22%;           /* Subtle borders */
-    --input: 220 14% 18%;            /* Input backgrounds */
+    --border: 220 14% 90%;           /* Lighter, subtle borders */
+    --input: 220 14% 95%;            /* Input backgrounds */
     --ring: 220 85% 55%;             /* Focus rings */
     
     --radius: 0.75rem;               /* Rounded corners */
@@ -46,11 +47,11 @@
     /* Custom Brand Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
     --gradient-glow: linear-gradient(135deg, hsl(var(--primary) / 0.8), hsl(var(--primary-light) / 0.6));
-    --gradient-background: linear-gradient(180deg, hsl(var(--background)), hsl(220 15% 85%));
+    --gradient-background: linear-gradient(180deg, hsl(220 10% 98%), hsl(220 15% 95%)); /* Adjusted for lighter background */
     
     /* Shadows & Effects */
     --shadow-glow: 0 0 30px hsl(var(--primary-glow) / 0.3);
-    --shadow-card: 0 8px 32px hsl(220 18% 4% / 0.5);
+    --shadow-card: 0 8px 32px hsl(220 18% 4% / 0.15);
     --shadow-button: 0 4px 16px hsl(var(--primary) / 0.3);
     
     /* Animation Timings */
@@ -59,25 +60,38 @@
   }
 }
 
+html[dir="rtl"] {
+  direction: rtl;
+}
+
+html[dir="rtl"] body {
+  font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+html:not([dir="rtl"]) body {
+  font-family: 'Poppins', sans-serif;
+}
+
+
 @layer base {
   * {
     @apply border-border;
   }
   
   body {
-    @apply bg-background text-foreground font-poppins;
-    background: var(--gradient-background);
     min-height: 100vh;
+    font-family: 'Poppins', 'Noto Sans Arabic', sans-serif;
+    color: hsl(var(--foreground));
+    background-color: hsl(var(--background)); /* Base background color */
+    background: var(--gradient-background); /* Apply the lighter gradient background */
   }
   
-  /* Smooth scrolling */
   html {
     scroll-behavior: smooth;
   }
 }
 
 @layer components {
-  /* Hero Gradient Text */
   .gradient-text {
     background: var(--gradient-primary);
     -webkit-background-clip: text;
@@ -85,12 +99,10 @@
     background-clip: text;
   }
   
-  /* Glow Effects */
   .glow-primary {
     box-shadow: var(--shadow-glow);
   }
   
-  /* Card Hover Effect */
   .card-hover {
     transition: var(--transition-smooth);
   }
@@ -100,7 +112,6 @@
     box-shadow: var(--shadow-card), var(--shadow-glow);
   }
   
-  /* Button Glow Animation */
   .btn-glow {
     position: relative;
     overflow: hidden;
@@ -122,7 +133,6 @@
     left: 100%;
   }
   
-  /* Scroll animations */
   .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -135,5 +145,60 @@
       transform: translateY(0);
     }
   }
-}
 
+  .hero-background-blobs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .hero-background-blobs .blob {
+    position: absolute;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    opacity: 0.15; /* Make them subtle */
+    filter: blur(80px); /* Soften the edges */
+    animation: blob-move 10s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+
+  .hero-background-blobs .blob:nth-child(1) {
+    width: 250px;
+    height: 250px;
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+  }
+  .hero-background-blobs .blob:nth-child(2) {
+    width: 300px;
+    height: 300px;
+    bottom: 15%;
+    right: 10%;
+    animation-delay: 2s;
+    background: var(--gradient-glow);
+  }
+  .hero-background-blobs .blob:nth-child(3) {
+    width: 180px;
+    height: 180px;
+    top: 30%;
+    right: 20%;
+    animation-delay: 4s;
+  }
+  .hero-background-blobs .blob:nth-child(4) {
+    width: 220px;
+    height: 220px;
+    bottom: 5%;
+    left: 20%;
+    animation-delay: 6s;
+    background: hsl(var(--primary-light));
+    opacity: 0.1;
+  }
+
+  html[dir="rtl"] .hero-button-icon-right {
+    transform: scaleX(-1);
+  }
+}

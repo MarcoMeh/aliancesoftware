@@ -15,6 +15,7 @@ export default {
     extend: {
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif'],
+        'noto-arabic': ['Noto Sans Arabic', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -60,7 +61,7 @@ export default {
       },
       boxShadow: {
         'glow': 'var(--shadow-glow)',
-        'card': 'var(--shadow-card)',
+        'card': '0 8px 32px hsl(220 18% 4% / 0.15)', // Adjusted for lighter shadow
         'button': 'var(--shadow-button)',
       },
       borderRadius: {
@@ -92,6 +93,12 @@ export default {
         "glow": {
           "0%, 100%": { boxShadow: "0 0 20px hsl(var(--primary) / 0.3)" },
           "50%": { boxShadow: "0 0 40px hsl(var(--primary) / 0.6)" }
+        },
+        "blob-move": {
+          "0%": { transform: "translate(0px, 0px) scale(1)" },
+          "33%": { transform: "translate(20px, -40px) scale(1.1)" },
+          "66%": { transform: "translate(-30px, 30px) scale(0.9)" },
+          "100%": { transform: "translate(0px, 0px) scale(1)" }
         }
       },
       animation: {
@@ -101,6 +108,7 @@ export default {
         "scale-in": "scale-in 0.4s ease-out",
         "slide-up": "slide-up 0.5s ease-out",
         "glow": "glow 2s ease-in-out infinite",
+        "blob-move": "blob-move 8s ease-in-out infinite alternate",
       },
       transitionProperty: {
         'smooth': 'var(--transition-smooth)',
