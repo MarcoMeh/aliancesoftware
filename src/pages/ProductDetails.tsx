@@ -29,6 +29,7 @@ const formSchema = z.object({
   company: z.string().trim().max(100).optional(),
   // Phone number is now required
   phone: z.string().trim().min(10, "Phone number is required").max(20, "Phone number is too long"),
+  links: z.string().trim().max(100).optional(),
   message: z.string().trim().max(1000).optional()
 });
 
@@ -46,6 +47,7 @@ const ProductDetails = () => {
       email: "",
       company: "",
       phone: "", // Ensure this is initialized, even if empty, to avoid controlled vs uncontrolled warning
+      links: "",
       message: ""
     }
   });
@@ -257,6 +259,19 @@ const ProductDetails = () => {
                           />
                           <FormField
                             control={form.control}
+                            name="phone"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Phone Number</FormLabel> {/* Label updated */}
+                                <FormControl>
+                                  <Input type="tel" placeholder="(123) 456-7890" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
                             name="company"
                             render={({ field }) => (
                               <FormItem>
@@ -270,12 +285,12 @@ const ProductDetails = () => {
                           />
                           <FormField
                             control={form.control}
-                            name="phone"
+                            name="links"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>Phone Number</FormLabel> {/* Label updated */}
+                                <FormLabel>Social Media Link (Optional)</FormLabel> {/* Label updated */}
                                 <FormControl>
-                                  <Input type="tel" placeholder="(123) 456-7890" {...field} />
+                                  <Input placeholder="Instagram or Facebook link" {...field} />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -437,7 +452,7 @@ const ProductDetails = () => {
                           <FormItem>
                             <FormLabel>Your Name</FormLabel>
                             <FormControl>
-                              <Input placeholder="John Doe" {...field} />
+                              <Input placeholder="Full Name" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -450,7 +465,20 @@ const ProductDetails = () => {
                           <FormItem>
                             <FormLabel>Your Email</FormLabel>
                             <FormControl>
-                              <Input type="email" placeholder="john.doe@example.com" {...field} />
+                              <Input type="email" placeholder="yourEmail@example.com" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="phone"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Phone Number</FormLabel> {/* Label updated */}
+                            <FormControl>
+                              <Input type="tel" placeholder="(123) 456-7890" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -471,12 +499,12 @@ const ProductDetails = () => {
                       />
                       <FormField
                         control={form.control}
-                        name="phone"
+                        name="links"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Phone Number</FormLabel> {/* Label updated */}
+                            <FormLabel>social media link (Optional)</FormLabel>
                             <FormControl>
-                              <Input type="tel" placeholder="(123) 456-7890" {...field} />
+                              <Input placeholder="Instagram or Facebook Link" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
