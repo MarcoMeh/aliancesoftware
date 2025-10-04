@@ -57,55 +57,5 @@ export const allProducts: Product[] = [
     ],
     videoId: 'dQw4w9WgXcQ', // Placeholder YouTube ID
     pricing: '$25/month per school'
-  },
-  {
-    id: 2,
-    name: 'Aliance Sheet',
-    description: 'Advanced Excel/Spreadsheet management software with automation and data visualization capabilities.',
-    fullDescription: 'Aliance Sheet allows users to automate spreadsheet tasks, visualize data dynamically, and create custom templates for improved productivity and reporting.',
-    category: 'Productivity',
-    rating: 4.8,
-    users: '2K+ users',
-    features: [
-      'Automated reports',
-      'Custom templates',
-      'Data analysis tools',
-      'Import/export Excel files'
-    ],
-    benefits: [
-      'Save hours of manual spreadsheet work',
-      'Easily create visual reports',
-      'Increase productivity and accuracy',
-      'Integrate with other tools seamlessly'
-    ],
-    status: 'New',
-    image: alianceSheetImg,
-    videoId: 'jNQXAC9IVRw', // Placeholder YouTube ID
-    pricing: '$10/month per user'
-  },
-  {
-    id: 3,
-    name: 'Aliance Shop',
-    description: 'User-friendly shop management software for small retail stores to manage sales, inventory, and daily operations.',
-    fullDescription: 'Aliance Shop is designed for small retail shops to easily manage sales, inventory, payments, and reporting. It streamlines daily operations and improves efficiency for shop owners.',
-    category: 'Business',
-    rating: 4.7,
-    users: '1K+ shops',
-    features: [
-      'Inventory management',
-      'Sales tracking',
-      'Payment integration',
-      'Reports & analytics'
-    ],
-    benefits: [
-      'Simplify shop operations',
-      'Track sales and stock in real-time',
-      'Manage payments efficiently',
-      'Generate useful business insights'
-    ],
-    status: 'Featured',
-    image: alianceShopImg,
-    videoId: 'ScMzIvxBSi4', // Placeholder YouTube ID
-    pricing: '$15/month per shop'
   }
 ];
