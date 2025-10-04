@@ -11,7 +11,10 @@ import {
   Globe,
   Twitter,
   Linkedin,
-  Github
+  Github,
+  Facebook,
+  Instagram,
+  Youtube
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next'; // Import useTranslation
 
@@ -23,27 +26,27 @@ const ContactSection = () => {
     {
       icon: Mail,
       titleKey: 'contactSection.contactInfo.emailUs.title',
-      detail: 'hello@aliance-software.com', // This typically remains untranslated
+      detail: 'aliancetech05@gmail.com', // This typically remains untranslated
       descriptionKey: 'contactSection.contactInfo.emailUs.description'
     },
     {
       icon: Phone,
       titleKey: 'contactSection.contactInfo.callUs.title',
-      detail: '+1 (555) 123-4567', // This typically remains untranslated
+      detail: '07 91 00 41 44', // This typically remains untranslated
       descriptionKey: 'contactSection.contactInfo.callUs.description'
     },
     {
       icon: MapPin,
       titleKey: 'contactSection.contactInfo.visitUs.title',
-      detail: 'San Francisco, CA', // This typically remains untranslated
+      detail: 'Batna- Algeria', // This typically remains untranslated
       descriptionKey: 'contactSection.contactInfo.visitUs.description'
     }
   ];
 
   const socialLinks = [
-    { icon: Twitter, label: 'Twitter', href: '#' },
-    { icon: Linkedin, label: 'LinkedIn', href: '#' },
-    { icon: Github, label: 'GitHub', href: '#' },
+    { icon: Facebook, label: 'Twitter', href: 'https://www.facebook.com/profile.php?id=61579161136036' },
+    { icon: Instagram, label: 'LinkedIn', href: 'https://www.instagram.com/aliance_software/' },
+    { icon: Youtube, label: 'GitHub', href: 'https://www.youtube.com/@AlianceSoftware' },
     { icon: Globe, label: 'Website', href: '#' }
   ];
 

@@ -92,9 +92,7 @@ const Contact = () => {
                       <div>
                         <h4 className="font-semibold mb-1">Office Address</h4>
                         <p className="text-black">
-                          123 Innovation Street<br />
-                          Tech District, TD 12345<br />
-                          United States
+                          Batna - Algeria
                         </p>
                       </div>
                     </div>
@@ -105,7 +103,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <h4 className="font-semibold mb-1">Phone</h4>
-                        <p className="text-black">+1 (555) 123-4567</p>
+                        <p className="text-black">07 91 00 41 44</p>
                       </div>
                     </div>
 
@@ -115,7 +113,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <h4 className="font-semibold mb-1">Email</h4>
-                        <p className="text-black">hello@aliancesoftware.com</p>
+                        <p className="text-black">aliancetech05@gmail.com</p>
                       </div>
                     </div>
 
@@ -126,9 +124,7 @@ const Contact = () => {
                       <div>
                         <h4 className="font-semibold mb-1">Business Hours</h4>
                         <p className="text-black">
-                          Monday - Friday: 9:00 AM - 6:00 PM<br />
-                          Saturday: 10:00 AM - 4:00 PM<br />
-                          Sunday: Closed
+                          Online
                         </p>
                       </div>
                     </div>
