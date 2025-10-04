@@ -47,7 +47,7 @@ const ProductsSection = () => {
             <span className="text-foreground">{t('productsSection.headingPart2')}</span> {/* Translated */}
           </h2>
           
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             {t('productsSection.subheading')} {/* Translated */}
           </p>
         </div>
@@ -76,7 +76,7 @@ const ProductsSection = () => {
                   {product.name} {/* Product names likely remain untranslated, or you could add keys for them */}
                 </CardTitle>
                 
-                <CardDescription className="text-muted-foreground">
+                <CardDescription className="text-black">
                   {product.description} {/* Product descriptions likely remain untranslated, or you could add keys for them */}
                 </CardDescription>
               </CardHeader>
@@ -88,7 +88,7 @@ const ProductsSection = () => {
                     <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     <span className="font-medium">{product.rating}</span>
                   </div>
-                  <div className="flex items-center gap-1 text-muted-foreground">
+                  <div className="flex items-center gap-1 text-black">
                     <Users className="w-4 h-4" />
                     <span>{product.users} {t('productsSection.users')}</span> {/* Translated "Users" */}
                   </div>

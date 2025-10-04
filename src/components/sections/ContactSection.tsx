@@ -75,7 +75,7 @@ const ContactSection = () => {
             <span className="gradient-text">{t('contactSection.headingPart2')}</span> {/* Translated */}
           </h2>
           
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             {t('contactSection.subheading')} {/* Translated */}
           </p>
         </div>
@@ -148,7 +148,7 @@ const ContactSection = () => {
                     <div>
                       <h3 className="font-semibold text-foreground">{t(item.titleKey)}</h3> {/* Translated */}
                       <p className="text-primary font-medium">{item.detail}</p>
-                      <p className="text-sm text-muted-foreground">{t(item.descriptionKey)}</p> {/* Translated */}
+                      <p className="text-sm text-black">{t(item.descriptionKey)}</p> {/* Translated */}
                     </div>
                   </CardContent>
                 </Card>
@@ -197,7 +197,7 @@ const ContactSection = () => {
                     {t('contactSection.newsletter.subscribeButton')} {/* Translated */}
                   </Button>
                 </div>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-xs text-black">
                   {t('contactSection.newsletter.privacyPolicy')} {/* Translated */}
                 </p>
               </CardContent>

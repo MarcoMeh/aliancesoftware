@@ -196,7 +196,7 @@ const ProductDetails = () => {
                   <div className={`${getStatusColor(product.status)} text-white text-sm px-3 py-1 rounded-full font-medium`}>
                     {product.status}
                   </div>
-                  <div className="flex items-center gap-2 text-muted-foreground">
+                  <div className="flex items-center gap-2 text-black">
                     <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     <span className="font-medium">{product.rating}</span>
                     <span>•</span>
@@ -209,7 +209,7 @@ const ProductDetails = () => {
                   <span className="gradient-text">{product.name}</span>
                 </h1>
 
-                <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+                <p className="text-xl text-black mb-8 leading-relaxed">
                   {product.fullDescription}
                 </p>
 
@@ -540,7 +540,7 @@ const ProductDetails = () => {
             <div className="container mx-auto px-6">
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">See {product.name} in Action</h2>
-                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                <p className="text-xl text-black max-w-2xl mx-auto">
                   Watch our detailed walkthrough to see how {product.name} can transform your workflow
                 </p>
               </div>

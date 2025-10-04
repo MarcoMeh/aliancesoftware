@@ -100,7 +100,7 @@ const ServicesSection = () => {
             <span className="gradient-text">{t('servicesSection.headingPart2')}</span> {/* Translated */}
           </h2>
           
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             {t('servicesSection.subheading')} {/* Translated */}
           </p>
         </div>
@@ -126,7 +126,7 @@ const ServicesSection = () => {
                   {t(service.titleKey)} {/* Translated */}
                 </CardTitle>
                 
-                <CardDescription className="text-muted-foreground leading-relaxed">
+                <CardDescription className="text-black-300 leading-relaxed">
                   {t(service.descriptionKey)} {/* Translated */}
                 </CardDescription>
               </CardHeader>
@@ -137,7 +137,7 @@ const ServicesSection = () => {
                   {service.featuresKeys.map((featureKey, i) => (
                     <div key={i} className="flex items-center gap-2 text-sm">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-                      <span className="text-muted-foreground">{t(featureKey)}</span> {/* Translated */}
+                      <span className="text-black-300 leading-relaxed">{t(featureKey)}</span> {/* Translated */}
                     </div>
                   ))}
                 </div>
@@ -165,7 +165,7 @@ const ServicesSection = () => {
               <span className="gradient-text">{t('servicesSection.bottomCta.headingPart2')}</span> {/* Translated */}
             </h3>
             
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-lg text-black mb-8">
               {t('servicesSection.bottomCta.description')} {/* Translated */}
             </p>
             

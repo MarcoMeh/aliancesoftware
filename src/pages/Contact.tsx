@@ -19,7 +19,7 @@ const Contact = () => {
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
                 <span className="gradient-text">Contact Us</span>
               </h1>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              <p className="text-xl text-black max-w-3xl mx-auto">
                 Ready to start your next project? Get in touch with our team and let's bring your ideas to life.
               </p>
             </div>
@@ -91,7 +91,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <h4 className="font-semibold mb-1">Office Address</h4>
-                        <p className="text-muted-foreground">
+                        <p className="text-black">
                           123 Innovation Street<br />
                           Tech District, TD 12345<br />
                           United States
@@ -105,7 +105,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <h4 className="font-semibold mb-1">Phone</h4>
-                        <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                        <p className="text-black">+1 (555) 123-4567</p>
                       </div>
                     </div>
 
@@ -115,7 +115,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <h4 className="font-semibold mb-1">Email</h4>
-                        <p className="text-muted-foreground">hello@aliancesoftware.com</p>
+                        <p className="text-black">hello@aliancesoftware.com</p>
                       </div>
                     </div>
 
@@ -125,7 +125,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <h4 className="font-semibold mb-1">Business Hours</h4>
-                        <p className="text-muted-foreground">
+                        <p className="text-black">
                           Monday - Friday: 9:00 AM - 6:00 PM<br />
                           Saturday: 10:00 AM - 4:00 PM<br />
                           Sunday: Closed
@@ -141,7 +141,7 @@ const Contact = () => {
                     <CardTitle>Stay Updated</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <p className="text-muted-foreground">
+                    <p className="text-black">
                       Subscribe to our newsletter for the latest updates on our products and services.
                     </p>
                     <div className="flex gap-2">

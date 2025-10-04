@@ -31,7 +31,7 @@ const About = () => {
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
                 <span className="gradient-text">About Aliance Software</span>
               </h1>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              <p className="text-xl text-black max-w-3xl mx-auto">
                 We're a passionate team of innovators dedicated to creating software solutions that empower businesses and transform digital experiences.
               </p>
             </div>
@@ -50,7 +50,7 @@ const About = () => {
                   <CardTitle>Our Mission</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">
+                  <p className="text-black">
                     To deliver innovative software solutions that drive digital transformation and empower businesses to achieve their goals.
                   </p>
                 </CardContent>
@@ -64,7 +64,7 @@ const About = () => {
                   <CardTitle>Our Vision</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">
+                  <p className="text-black">
                     To be the leading provider of cutting-edge software solutions that shape the future of digital innovation.
                   </p>
                 </CardContent>
@@ -78,7 +78,7 @@ const About = () => {
                   <CardTitle>Our Values</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">
+                  <p className="text-black">
                     Innovation, excellence, integrity, and customer success are at the core of everything we do.
                   </p>
                 </CardContent>
@@ -92,7 +92,7 @@ const About = () => {
           <div className="container mx-auto px-6">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">Our Journey</h2>
-              <p className="text-muted-foreground">Key milestones in our company's growth</p>
+              <p className="text-black">Key milestones in our company's growth</p>
             </div>
 
             <div className="max-w-4xl mx-auto">
@@ -111,7 +111,7 @@ const About = () => {
                       <span className="text-2xl font-bold text-primary">{milestone.year}</span>
                       <h3 className="text-xl font-semibold">{milestone.title}</h3>
                     </div>
-                    <p className="text-muted-foreground">{milestone.description}</p>
+                    <p className="text-black">{milestone.description}</p>
                   </div>
                 </div>
               ))}
@@ -124,7 +124,7 @@ const About = () => {
           <div className="container mx-auto px-6">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">Meet Our Team</h2>
-              <p className="text-muted-foreground">The talented individuals behind our success</p>
+              <p className="text-black">The talented individuals behind our success</p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
@@ -140,7 +140,7 @@ const About = () => {
                     <p className="text-primary font-medium">{member.role}</p>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-muted-foreground">{member.expertise}</p>
+                    <p className="text-sm text-black">{member.expertise}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -149,7 +149,7 @@ const About = () => {
             {/* CTA */}
             <div className="text-center">
               <h3 className="text-2xl font-bold mb-4">Want to Join Our Team?</h3>
-              <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+              <p className="text-black mb-8 max-w-2xl mx-auto">
                 We're always looking for talented individuals to join our growing team. Check out our current openings.
               </p>
               <Button variant="outline" size="lg" className="group">
