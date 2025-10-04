@@ -12,42 +12,71 @@ import {
   Zap,
   Shield
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next'; // Import useTranslation
 
 const ServicesSection = () => {
+  const { t } = useTranslation(); // Initialize the translation hook
+
+  // Define services using translation keys
   const services = [
     {
       icon: Code,
-      title: 'Software Development',
-      description: 'Custom applications, web platforms, and mobile solutions built with cutting-edge technologies.',
-      features: ['Web Applications', 'Mobile Apps', 'API Development', 'Cloud Solutions'],
+      titleKey: 'servicesSection.serviceItems.softwareDev.title',
+      descriptionKey: 'servicesSection.serviceItems.softwareDev.description',
+      featuresKeys: [
+        'servicesSection.serviceItems.softwareDev.features.webApps',
+        'servicesSection.serviceItems.softwareDev.features.mobileApps',
+        'servicesSection.serviceItems.softwareDev.features.apiDev',
+        'servicesSection.serviceItems.softwareDev.features.cloudSolutions'
+      ],
       color: 'from-blue-500 to-cyan-500'
     },
     {
       icon: Globe,
-      title: 'Website Creation',
-      description: 'Professional websites that drive engagement and deliver exceptional user experiences.',
-      features: ['Responsive Design', 'E-commerce', 'CMS Integration', 'SEO Optimization'],
+      titleKey: 'servicesSection.serviceItems.websiteCreation.title',
+      descriptionKey: 'servicesSection.serviceItems.websiteCreation.description',
+      featuresKeys: [
+        'servicesSection.serviceItems.websiteCreation.features.responsiveDesign',
+        'servicesSection.serviceItems.websiteCreation.features.eCommerce',
+        'servicesSection.serviceItems.websiteCreation.features.cmsIntegration',
+        'servicesSection.serviceItems.websiteCreation.features.seoOptimization'
+      ],
       color: 'from-green-500 to-emerald-500'
     },
     {
       icon: Palette,
-      title: 'Full Branding Packages',
-      description: 'Complete brand identity solutions including logo design and social media assets.',
-      features: ['Logo Design', 'Brand Guidelines', 'Social Media Posts', 'Marketing Materials'],
+      titleKey: 'servicesSection.serviceItems.brandingPackages.title',
+      descriptionKey: 'servicesSection.serviceItems.brandingPackages.description',
+      featuresKeys: [
+        'servicesSection.serviceItems.brandingPackages.features.logoDesign',
+        'servicesSection.serviceItems.brandingPackages.features.brandGuidelines',
+        'servicesSection.serviceItems.brandingPackages.features.socialMediaPosts',
+        'servicesSection.serviceItems.brandingPackages.features.marketingMaterials'
+      ],
       color: 'from-purple-500 to-pink-500'
     },
     {
       icon: Video,
-      title: 'Video Production',
-      description: 'Professional video editing and AI-powered video creation for all your content needs.',
-      features: ['Video Editing', 'AI Video Generation', 'Motion Graphics', 'Post-Production'],
+      titleKey: 'servicesSection.serviceItems.videoProduction.title',
+      descriptionKey: 'servicesSection.serviceItems.videoProduction.description',
+      featuresKeys: [
+        'servicesSection.serviceItems.videoProduction.features.videoEditing',
+        'servicesSection.serviceItems.videoProduction.features.aiVideoGeneration',
+        'servicesSection.serviceItems.videoProduction.features.motionGraphics',
+        'servicesSection.serviceItems.videoProduction.features.postProduction'
+      ],
       color: 'from-orange-500 to-red-500'
     },
     {
       icon: Megaphone,
-      title: 'Digital Marketing',
-      description: 'Comprehensive digital marketing strategies to grow your online presence and reach.',
-      features: ['Social Media Ads', 'Content Creation', 'Influencer Campaigns', 'Analytics & Reporting'],
+      titleKey: 'servicesSection.serviceItems.digitalMarketing.title',
+      descriptionKey: 'servicesSection.serviceItems.digitalMarketing.description',
+      featuresKeys: [
+        'servicesSection.serviceItems.digitalMarketing.features.socialMediaAds',
+        'servicesSection.serviceItems.digitalMarketing.features.contentCreation',
+        'servicesSection.serviceItems.digitalMarketing.features.influencerCampaigns',
+        'servicesSection.serviceItems.digitalMarketing.features.analyticsReporting'
+      ],
       color: 'from-indigo-500 to-purple-500'
     }
   ];
@@ -62,18 +91,17 @@ const ServicesSection = () => {
         <div className="text-center mb-16 animate-fade-in">
           <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 mb-6 text-sm text-primary">
             <Sparkles className="w-4 h-4" />
-            Our Services
+            {t('servicesSection.ourServices')} {/* Translated */}
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-foreground">Complete Digital</span>
+            <span className="text-foreground">{t('servicesSection.headingPart1')}</span> {/* Translated */}
             <br />
-            <span className="gradient-text">Solutions Suite</span>
+            <span className="gradient-text">{t('servicesSection.headingPart2')}</span> {/* Translated */}
           </h2>
           
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            From concept to deployment, we provide end-to-end digital services that transform 
-            your business ideas into successful digital products and marketing campaigns.
+            {t('servicesSection.subheading')} {/* Translated */}
           </p>
         </div>
 
@@ -95,28 +123,28 @@ const ServicesSection = () => {
                 </div>
                 
                 <CardTitle className="text-xl font-semibold group-hover:text-primary transition-colors">
-                  {service.title}
+                  {t(service.titleKey)} {/* Translated */}
                 </CardTitle>
                 
                 <CardDescription className="text-muted-foreground leading-relaxed">
-                  {service.description}
+                  {t(service.descriptionKey)} {/* Translated */}
                 </CardDescription>
               </CardHeader>
               
               <CardContent className="relative space-y-4">
                 {/* Features List */}
                 <div className="space-y-2">
-                  {service.features.map((feature, i) => (
+                  {service.featuresKeys.map((featureKey, i) => (
                     <div key={i} className="flex items-center gap-2 text-sm">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-                      <span className="text-muted-foreground">{feature}</span>
+                      <span className="text-muted-foreground">{t(featureKey)}</span> {/* Translated */}
                     </div>
                   ))}
                 </div>
 
                 {/* CTA Button */}
                 <Button variant="outline" className="w-full group mt-6" onClick={() => window.location.href = '/services'}>
-                  Learn More
+                  {t('servicesSection.learnMore')} {/* Translated */}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </CardContent>
@@ -129,28 +157,28 @@ const ServicesSection = () => {
           <div className="max-w-3xl mx-auto">
             <div className="flex items-center justify-center gap-2 mb-6">
               <Target className="w-6 h-6 text-primary" />
-              <span className="text-primary font-medium">Ready to Start Your Project?</span>
+              <span className="text-primary font-medium">{t('servicesSection.bottomCta.tagline')}</span> {/* Translated */}
             </div>
             
             <h3 className="text-3xl md:text-4xl font-bold mb-4">
-              Let's Build Something <span className="gradient-text">Amazing Together</span>
+              {t('servicesSection.bottomCta.headingPart1')}{" "} {/* Translated */}
+              <span className="gradient-text">{t('servicesSection.bottomCta.headingPart2')}</span> {/* Translated */}
             </h3>
             
             <p className="text-lg text-muted-foreground mb-8">
-              Get in touch with our expert team to discuss your project requirements 
-              and receive a customized solution proposal.
+              {t('servicesSection.bottomCta.description')} {/* Translated */}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="lg" className="group" onClick={() => window.location.href = '/contact'}>
                 <Zap className="w-5 h-5" />
-                Request Quote
+                {t('servicesSection.bottomCta.requestQuote')} {/* Translated */}
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               
               <Button variant="outline" size="lg" className="group" onClick={() => window.location.href = '/products'}>
                 <Shield className="w-5 h-5" />
-                View Portfolio
+                {t('servicesSection.bottomCta.viewPortfolio')} {/* Translated */}
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>

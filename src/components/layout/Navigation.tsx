@@ -1,23 +1,25 @@
 // src/components/layout/Navigation.tsx
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Code, Zap } from 'lucide-react';
+import { Menu, X, Zap } from 'lucide-react'; // Removed Code icon as it wasn't used
 import { Link, useLocation } from 'react-router-dom';
-import logo from "@/assets/logo.png"; // Correct logo import
+import logo from "@/assets/logo.png";
+import LanguageSwitcher from '../LanguageSwitcher';
 
-// IMPORT THE LANGUAGE SWITCHER HERE
-import LanguageSwitcher from '../LanguageSwitcher'; // Assuming LanguageSwitcher.tsx is in src/components/LanguageSwitcher.tsx
+// Import useTranslation hook
+import { useTranslation } from 'react-i18next';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { t } = useTranslation(); // Initialize the translation hook
 
   const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'Products', href: '/products' },
-    { name: 'Services', href: '/services' },
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
+    { name: t('navigation.home'), href: '/' },
+    { name: t('navigation.products'), href: '/products' },
+    { name: t('navigation.services'), href: '/services' },
+    { name: t('navigation.about'), href: '/about' },
+    { name: t('navigation.contact'), href: '/contact' },
   ];
 
   const isActive = (href: string) => location.pathname === href;
@@ -29,7 +31,7 @@ const Navigation = () => {
         <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
           {/* Logo */}
           <img
-            src={logo} // Correctly using the imported logo
+            src={logo}
             alt="Aliance Software Logo"
             className="w-10 h-10 object-contain rounded-lg shadow-glow"
           />
@@ -37,7 +39,7 @@ const Navigation = () => {
           {/* Text */}
           <div>
             <h1 className="text-xl font-bold gradient-text">Aliance Software</h1>
-            <p className="text-xs text-muted-foreground">Innovation & Excellence</p>
+            <p className="text-xs text-muted-foreground">{t('navigation.innovationExcellence')}</p>
           </div>
         </Link>
 
@@ -45,7 +47,7 @@ const Navigation = () => {
         <div className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
             <Link
-              key={item.name}
+              key={item.name} // Use name for key, but now it's translated, so ensure uniqueness or use href
               to={item.href}
               className={`text-sm font-medium transition-colors hover:text-primary ${
                 isActive(item.href) ? 'text-primary font-semibold' : 'text-foreground/80'
@@ -57,11 +59,11 @@ const Navigation = () => {
         </div>
 
         {/* Desktop CTA Button AND Language Switcher */}
-        <div className="hidden md:flex items-center gap-4"> {/* Used gap-4 for spacing */}
+        <div className="hidden md:flex items-center gap-4">
           <Link to="/contact">
             <Button variant="hero" size="default" className="flex items-center gap-2">
               <Zap className="w-4 h-4" />
-              Contact Us Now
+              {t('navigation.contactUsNow')}
             </Button>
           </Link>
           {/* LANGUAGE SWITCHER FOR DESKTOP */}
@@ -69,8 +71,8 @@ const Navigation = () => {
         </div>
 
         {/* Mobile Menu Button (and Language Switcher for mobile) */}
-        <div className="md:hidden flex items-center gap-2"> {/* Added flex and gap for mobile layout */}
-          <LanguageSwitcher /> {/* LANGUAGE SWITCHER FOR MOBILE, visible next to menu button */}
+        <div className="md:hidden flex items-center gap-2">
+          <LanguageSwitcher />
           <Button
             variant="ghost"
             size="icon"
@@ -100,13 +102,9 @@ const Navigation = () => {
             <Link to="/contact">
               <Button variant="hero" size="default" className="mt-4 w-full flex justify-center gap-2">
                 <Zap className="w-4 h-4" />
-                Contact Us Now
+                {t('navigation.contactUsNow')}
               </Button>
             </Link>
-            {/* You might also want the LanguageSwitcher here if you prefer it inside the dropdown */}
-            {/* <div className="mt-4 px-6">
-              <LanguageSwitcher />
-            </div> */}
           </div>
         </div>
       )}

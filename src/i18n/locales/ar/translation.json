@@ -1,20 +1,169 @@
 {
   "hero": {
     "tagline": "نصنع برمجيات الغد اليوم",
-    "mainHeading": "برمجيات مبتكرة",
-    "mainHeadingSpan": "حلول وخدمات",
-    "subheading": "حوّل أفكارك إلى منتجات برمجية قوية. نحن نطور تطبيقات متطورة، وننشئ مواقع ويب مذهلة، ونقدم حلولاً رقمية شاملة تدفع النجاح.",
-    "exploreProducts": "استكشف المنتجات",
-    "requestService": "اطلب خدمة",
+    "mainHeading": "حلول برمجية",
+    "mainHeadingSpan": "مبتكرة وخدمات",
+    "subheading": "حول أفكارك إلى منتجات برمجية قوية. نحن نطور تطبيقات متطورة، وننشئ مواقع ويب مذهلة، ونقدم حلولًا رقمية شاملة تدفع النجاح.",
+    "exploreProducts": "استكشاف المنتجات",
+    "requestService": "طلب خدمة",
     "stats": {
-      "productsLaunched": "منتجات أُطلقت",
+      "productsLaunched": "منتجات تم إطلاقها",
       "happyClients": "عملاء سعداء",
-      "yearsExperience": "سنوات خبرة",
-      "successRate": "نسبة نجاح"
+      "yearsExperience": "سنوات الخبرة",
+      "successRate": "نسبة النجاح"
     }
   },
   "common": {
     "darkMode": "الوضع الداكن",
     "lightMode": "الوضع الفاتح"
+  },
+  "navigation": {
+    "home": "الرئيسية",
+    "products": "المنتجات",
+    "services": "الخدمات",
+    "about": "معلومات عنا",
+    "contact": "اتصل بنا",
+    "contactUsNow": "اتصل بنا الآن",
+    "innovationExcellence": "ابتكار وتميز"
+  },
+  "productsSection": {
+    "featuredProducts": "منتجات مميزة",
+    "headingPart1": "برمجيات قوية",
+    "headingPart2": "مصممة للنجاح",
+    "subheading": "اكتشف مجموعتنا من حلول البرمجيات المصممة باحتراف لزيادة الإنتاجية، وتعزيز الأمان، وتبسيط سير عملك.",
+    "status": {
+      "popular": "شائع",
+      "new": "جديد",
+      "featured": "مميز",
+      "updated": "محدث"
+    },
+    "learnMore": "معرفة المزيد",
+    "demo": "عرض تجريبي",
+    "viewAllProducts": "عرض جميع المنتجات",
+    "users": "المستخدمون"
+  },
+  "servicesSection": {
+    "ourServices": "خدماتنا",
+    "headingPart1": "مجموعة حلول",
+    "headingPart2": "رقمية متكاملة",
+    "subheading": "من الفكرة إلى التنفيذ، نقدم خدمات رقمية شاملة تحول أفكارك التجارية إلى منتجات رقمية وحملات تسويقية ناجحة.",
+    "serviceItems": {
+      "softwareDev": {
+        "title": "تطوير البرمجيات",
+        "description": "تطبيقات مخصصة، منصات ويب، وحلول جوال مبنية بأحدث التقنيات.",
+        "features": {
+          "webApps": "تطبيقات الويب",
+          "mobileApps": "تطبيقات الجوال",
+          "apiDev": "تطوير واجهات برمجة التطبيقات (API)",
+          "cloudSolutions": "حلول سحابية"
+        }
+      },
+      "websiteCreation": {
+        "title": "إنشاء المواقع الإلكترونية",
+        "description": "مواقع احترافية تعزز التفاعل وتقدم تجارب مستخدم استثنائية.",
+        "features": {
+          "responsiveDesign": "تصميم متجاوب",
+          "eCommerce": "التجارة الإلكترونية",
+          "cmsIntegration": "تكامل أنظمة إدارة المحتوى",
+          "seoOptimization": "تحسين محركات البحث"
+        }
+      },
+      "brandingPackages": {
+        "title": "حزم العلامة التجارية الكاملة",
+        "description": "حلول هوية تجارية متكاملة تشمل تصميم الشعار وأصول وسائل التواصل الاجتماعي.",
+        "features": {
+          "logoDesign": "تصميم الشعار",
+          "brandGuidelines": "إرشادات العلامة التجارية",
+          "socialMediaPosts": "منشورات وسائل التواصل الاجتماعي",
+          "marketingMaterials": "مواد تسويقية"
+        }
+      },
+      "videoProduction": {
+        "title": "إنتاج الفيديو",
+        "description": "تحرير فيديو احترافي وإنشاء فيديو مدعوم بالذكاء الاصطناعي لجميع احتياجات المحتوى الخاص بك.",
+        "features": {
+          "videoEditing": "تحرير الفيديو",
+          "aiVideoGeneration": "توليد الفيديو بالذكاء الاصطناعي",
+          "motionGraphics": "رسومات متحركة",
+          "postProduction": "ما بعد الإنتاج"
+        }
+      },
+      "digitalMarketing": {
+        "title": "التسويق الرقمي",
+        "description": "استراتيجيات تسويق رقمي شاملة لتنمية تواجدك على الإنترنت والوصول.",
+        "features": {
+          "socialMediaAds": "إعلانات وسائل التواصل الاجتماعي",
+          "contentCreation": "إنشاء المحتوى",
+          "influencerCampaigns": "حملات المؤثرين",
+          "analyticsReporting": "التحليلات والتقارير"
+        }
+      }
+    },
+    "learnMore": "معرفة المزيد",
+    "bottomCta": {
+      "tagline": "هل أنت مستعد لبدء مشروعك؟",
+      "headingPart1": "دعنا نبني شيئًا",
+      "headingPart2": "رائعًا معًا",
+      "description": "تواصل مع فريق الخبراء لدينا لمناقشة متطلبات مشروعك واستلام اقتراح حل مخصص.",
+      "requestQuote": "طلب عرض أسعار",
+      "viewPortfolio": "عرض الأعمال"
+    }
+  },
+  "contactSection": {
+    "getInTouch": "تواصل معنا",
+    "headingPart1": "هل أنت مستعد لبدء",
+    "headingPart2": "مشروعك؟",
+    "subheading": "نحن نحب أن نسمع عن مشروعك ونناقش كيف يمكننا المساعدة في تحقيق رؤيتك. تواصل معنا باستخدام أي من الطرق أدناه.",
+    "sendMessage": {
+      "title": "أرسل لنا رسالة",
+      "description": "املأ النموذج أدناه وسنعاود الاتصال بك في غضون 24 ساعة.",
+      "firstName": "الاسم الأول",
+      "lastName": "الاسم الأخير",
+      "email": "البريد الإلكتروني",
+      "companyOptional": "الشركة (اختياري)",
+      "projectType": "نوع المشروع",
+      "message": "الرسالة",
+      "sendButton": "إرسال الرسالة",
+      "projectTypeOptions": {
+        "softwareDevelopment": "تطوير البرمجيات",
+        "websiteCreation": "إنشاء المواقع الإلكترونية",
+        "brandingPackage": "حزمة العلامة التجارية",
+        "videoProduction": "إنتاج الفيديو",
+        "digitalMarketing": "التسويق الرقمي",
+        "other": "أخرى"
+      },
+      "placeholders": {
+        "firstName": "جون",
+        "lastName": "دو",
+        "email": "john@example.com",
+        "company": "شركتك",
+        "message": "أخبرنا عن متطلبات مشروعك..."
+      }
+    },
+    "contactInfo": {
+      "emailUs": {
+        "title": "أرسل لنا بريدًا إلكترونيًا",
+        "description": "أرسل لنا بريدًا إلكترونيًا في أي وقت"
+      },
+      "callUs": {
+        "title": "اتصل بنا",
+        "description": "من الاثنين إلى الجمعة من 8 صباحًا حتى 6 مساءً"
+      },
+      "visitUs": {
+        "title": "زرنا",
+        "description": "تفضل بزيارة مكتبنا"
+      }
+    },
+    "followUs": {
+      "title": "تابعنا",
+      "description": "ابق على اطلاع بأحدث مشاريعنا ورؤيتنا"
+    },
+    "newsletter": {
+      "title": "النشرة الإخبارية",
+      "description": "اشترك لتلقي تحديثات حول المنتجات والخدمات الجديدة",
+      "placeholder": "أدخل بريدك الإلكتروني",
+      "subscribeButton": "اشترك",
+      "privacyPolicy": "نحن نحترم خصوصيتك. إلغاء الاشتراك في أي وقت."
+    }
   }
 }

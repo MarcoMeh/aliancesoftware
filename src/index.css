@@ -12,48 +12,48 @@
     /* Core Brand Colors - Blue Gradient Theme */
     --background: 220 10% 98%;   /* Lighter, subtle background */
     --foreground: 220 18% 8%;        /* Dark text */
-    
+
     --card: 0 0% 100%;             /* White card background */
     --card-foreground: 220 18% 8%;   /* Dark card text */
-    
+
     --popover: 0 0% 100%;
     --popover-foreground: 220 18% 8%;
-    
+
     /* Primary Blue Gradient Brand */
     --primary: 220 85% 55%;          /* Main blue */
     --primary-foreground: 220 8% 95%;
     --primary-light: 200 85% 70%;    /* Light blue for gradients */
     --primary-glow: 220 85% 55%;     /* Glow effect base */
-    
+
     /* Secondary & Supporting Colors */
     --secondary: 220 14% 18%;        /* Subtle dark surface */
     --secondary-foreground: 220 8% 85%;
-    
+
     --muted: 220 14% 16%;            /* Muted backgrounds */
     --muted-foreground: 220 6% 65%;  /* Muted text */
-    
+
     --accent: 220 14% 20%;           /* Accent surfaces */
     --accent-foreground: 220 8% 90%;
-    
+
     --destructive: 0 75% 60%;
     --destructive-foreground: 220 8% 95%;
-    
+
     --border: 220 14% 90%;           /* Lighter, subtle borders */
     --input: 220 14% 95%;            /* Input backgrounds */
     --ring: 220 85% 55%;             /* Focus rings */
-    
+
     --radius: 0.75rem;               /* Rounded corners */
-    
+
     /* Custom Brand Gradients - These are used by Tailwind now via backgroundImage */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
     --gradient-glow: linear-gradient(135deg, hsl(var(--primary) / 0.8), hsl(var(--primary-light) / 0.6));
-    --gradient-background: linear-gradient(180deg, hsl(220 10% 98%), hsl(220 15% 95%)); 
-    
+    --gradient-background: linear-gradient(180deg, hsl(220 10% 98%), hsl(220 15% 95%));
+
     /* Shadows & Effects */
     --shadow-glow: 0 0 30px hsl(var(--primary-glow) / 0.3);
     --shadow-card: 0 8px 32px hsl(220 18% 4% / 0.15);
     --shadow-button: 0 4px 16px hsl(var(--primary) / 0.3);
-    
+
     /* Animation Timings - Direct values for Tailwind's transitionProperty config */
     /* --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); */
     /* --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); */
@@ -76,16 +76,14 @@ html:not([dir="rtl"]) body {
   * {
     @apply border-border;
   }
-  
+
   body {
     min-height: 100vh;
     font-family: 'Poppins', 'Noto Sans Arabic', sans-serif;
     color: hsl(var(--foreground));
-    /* Removed direct background properties here as HeroSection will manage its own background */
-    /* background-color: hsl(var(--background)); */
-    /* background: var(--gradient-background); */ 
+    /* The hero section will manage its own background */
   }
-  
+
   html {
     scroll-behavior: smooth;
   }
@@ -98,26 +96,26 @@ html:not([dir="rtl"]) body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
+
   .glow-primary {
     box-shadow: var(--shadow-glow);
   }
-  
+
   .card-hover {
     transition: var(--transition-smooth); /* This will now use the direct value from tailwind.config.js */
   }
-  
+
   .card-hover:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-card), var(--shadow-glow);
   }
-  
+
   .btn-glow {
     position: relative;
     overflow: hidden;
     transition: var(--transition-smooth); /* This will now use the direct value from tailwind.config.js */
   }
-  
+
   .btn-glow::before {
     content: '';
     position: absolute;
@@ -128,15 +126,15 @@ html:not([dir="rtl"]) body {
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
     transition: left 0.5s ease;
   }
-  
+
   .btn-glow:hover::before {
     left: 100%;
   }
-  
+
   .fade-in {
     /* Tailwind will manage this via animation utility */
   }
-  
+
   /* @keyframes fadeInUp { Removed, Tailwind's fade-in keyframe will be used } */
 
   .hero-background-blobs {

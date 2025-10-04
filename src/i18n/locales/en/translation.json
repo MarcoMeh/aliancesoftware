@@ -16,5 +16,154 @@
   "common": {
     "darkMode": "Dark Mode",
     "lightMode": "Light Mode"
+  },
+  "navigation": {
+    "home": "Home",
+    "products": "Products",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "contactUsNow": "Contact Us Now",
+    "innovationExcellence": "Innovation & Excellence"
+  },
+  "productsSection": {
+    "featuredProducts": "Featured Products",
+    "headingPart1": "Powerful Software",
+    "headingPart2": "Built for Success",
+    "subheading": "Discover our collection of professionally crafted software solutions designed to boost productivity, enhance security, and streamline your workflow.",
+    "status": {
+      "popular": "Popular",
+      "new": "New",
+      "featured": "Featured",
+      "updated": "Updated"
+    },
+    "learnMore": "Learn More",
+    "demo": "Demo",
+    "viewAllProducts": "View All Products",
+    "users": "Users"
+  },
+  "servicesSection": {
+    "ourServices": "Our Services",
+    "headingPart1": "Complete Digital",
+    "headingPart2": "Solutions Suite",
+    "subheading": "From concept to deployment, we provide end-to-end digital services that transform your business ideas into successful digital products and marketing campaigns.",
+    "serviceItems": {
+      "softwareDev": {
+        "title": "Software Development",
+        "description": "Custom applications, web platforms, and mobile solutions built with cutting-edge technologies.",
+        "features": {
+          "webApps": "Web Applications",
+          "mobileApps": "Mobile Apps",
+          "apiDev": "API Development",
+          "cloudSolutions": "Cloud Solutions"
+        }
+      },
+      "websiteCreation": {
+        "title": "Website Creation",
+        "description": "Professional websites that drive engagement and deliver exceptional user experiences.",
+        "features": {
+          "responsiveDesign": "Responsive Design",
+          "eCommerce": "E-commerce",
+          "cmsIntegration": "CMS Integration",
+          "seoOptimization": "SEO Optimization"
+        }
+      },
+      "brandingPackages": {
+        "title": "Full Branding Packages",
+        "description": "Complete brand identity solutions including logo design and social media assets.",
+        "features": {
+          "logoDesign": "Logo Design",
+          "brandGuidelines": "Brand Guidelines",
+          "socialMediaPosts": "Social Media Posts",
+          "marketingMaterials": "Marketing Materials"
+        }
+      },
+      "videoProduction": {
+        "title": "Video Production",
+        "description": "Professional video editing and AI-powered video creation for all your content needs.",
+        "features": {
+          "videoEditing": "Video Editing",
+          "aiVideoGeneration": "AI Video Generation",
+          "motionGraphics": "Motion Graphics",
+          "postProduction": "Post-Production"
+        }
+      },
+      "digitalMarketing": {
+        "title": "Digital Marketing",
+        "description": "Comprehensive digital marketing strategies to grow your online presence and reach.",
+        "features": {
+          "socialMediaAds": "Social Media Ads",
+          "contentCreation": "Content Creation",
+          "influencerCampaigns": "Influencer Campaigns",
+          "analyticsReporting": "Analytics & Reporting"
+        }
+      }
+    },
+    "learnMore": "Learn More",
+    "bottomCta": {
+      "tagline": "Ready to Start Your Project?",
+      "headingPart1": "Let's Build Something",
+      "headingPart2": "Amazing Together",
+      "description": "Get in touch with our expert team to discuss your project requirements and receive a customized solution proposal.",
+      "requestQuote": "Request Quote",
+      "viewPortfolio": "View Portfolio"
+    }
+  },
+  "contactSection": {
+    "getInTouch": "Get In Touch",
+    "headingPart1": "Ready to Start",
+    "headingPart2": "Your Project?",
+    "subheading": "We'd love to hear about your project and discuss how we can help bring your vision to life. Reach out to us using any of the methods below.",
+    "sendMessage": {
+      "title": "Send us a message",
+      "description": "Fill out the form below and we'll get back to you within 24 hours.",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "companyOptional": "Company (Optional)",
+      "projectType": "Project Type",
+      "message": "Message",
+      "sendButton": "Send Message",
+      "projectTypeOptions": {
+        "softwareDevelopment": "Software Development",
+        "websiteCreation": "Website Creation",
+        "brandingPackage": "Branding Package",
+        "videoProduction": "Video Production",
+        "digitalMarketing": "Digital Marketing",
+        "other": "Other"
+      },
+      "placeholders": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john@example.com",
+        "company": "Your Company",
+        "message": "Tell us about your project requirements..."
+      }
+    },
+    "contactInfo": {
+      "emailUs": {
+        "title": "Email Us",
+        "description": "Send us an email anytime"
+      },
+      "callUs": {
+        "title": "Call Us",
+        "description": "Mon-Fri from 8am to 6pm"
+      },
+      "visitUs": {
+        "title": "Visit Us",
+        "description": "Come visit our office"
+      }
+    },
+    "followUs": {
+      "title": "Follow Us",
+      "description": "Stay updated with our latest projects and insights"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Subscribe to get updates on new products and services",
+      "placeholder": "Enter your email",
+      "subscribeButton": "Subscribe",
+      "privacyPolicy": "We respect your privacy. Unsubscribe at any time."
+    }
   }
 }

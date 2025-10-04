@@ -1,9 +1,9 @@
 {
   "hero": {
-    "tagline": "Construire les logiciels de demain, aujourd'hui",
+    "tagline": "Construire le logiciel de demain dès aujourd'hui",
     "mainHeading": "Logiciels Innovants",
     "mainHeadingSpan": "Solutions & Services",
-    "subheading": "Transformez vos idées en puissants produits logiciels. Nous développons des applications de pointe, créons des sites web époustouflants et fournissons des solutions numériques complètes qui mènent au succès.",
+    "subheading": "Transformez vos idées en produits logiciels puissants. Nous développons des applications de pointe, créons des sites web époustouflants et fournissons des solutions numériques complètes qui mènent au succès.",
     "exploreProducts": "Explorer les produits",
     "requestService": "Demander un service",
     "stats": {
@@ -16,5 +16,154 @@
   "common": {
     "darkMode": "Mode Sombre",
     "lightMode": "Mode Clair"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "products": "Produits",
+    "services": "Services",
+    "about": "À Propos",
+    "contact": "Contact",
+    "contactUsNow": "Contactez-nous maintenant",
+    "innovationExcellence": "Innovation & Excellence"
+  },
+  "productsSection": {
+    "featuredProducts": "Produits Phares",
+    "headingPart1": "Logiciels Puissants",
+    "headingPart2": "Conçus pour le Succès",
+    "subheading": "Découvrez notre collection de solutions logicielles conçues professionnellement pour stimuler la productivité, renforcer la sécurité et rationaliser votre flux de travail.",
+    "status": {
+      "popular": "Populaire",
+      "new": "Nouveau",
+      "featured": "En Vedette",
+      "updated": "Mis à Jour"
+    },
+    "learnMore": "En savoir plus",
+    "demo": "Démo",
+    "viewAllProducts": "Voir tous les produits",
+    "users": "Utilisateurs"
+  },
+  "servicesSection": {
+    "ourServices": "Nos Services",
+    "headingPart1": "Suite Complète de Solutions",
+    "headingPart2": "Numériques",
+    "subheading": "Du concept au déploiement, nous fournissons des services numériques de bout en bout qui transforment vos idées commerciales en produits numériques et campagnes marketing réussies.",
+    "serviceItems": {
+      "softwareDev": {
+        "title": "Développement Logiciel",
+        "description": "Applications personnalisées, plateformes web et solutions mobiles construites avec des technologies de pointe.",
+        "features": {
+          "webApps": "Applications Web",
+          "mobileApps": "Applications Mobiles",
+          "apiDev": "Développement d'API",
+          "cloudSolutions": "Solutions Cloud"
+        }
+      },
+      "websiteCreation": {
+        "title": "Création de Sites Web",
+        "description": "Sites web professionnels qui favorisent l'engagement et offrent des expériences utilisateur exceptionnelles.",
+        "features": {
+          "responsiveDesign": "Design Responsif",
+          "eCommerce": "E-commerce",
+          "cmsIntegration": "Intégration CMS",
+          "seoOptimization": "Optimisation SEO"
+        }
+      },
+      "brandingPackages": {
+        "title": "Forfaits Branding Complets",
+        "description": "Solutions complètes d'identité de marque, y compris la conception de logos et les ressources pour les médias sociaux.",
+        "features": {
+          "logoDesign": "Conception de Logo",
+          "brandGuidelines": "Directives de Marque",
+          "socialMediaPosts": "Publications sur les Médias Sociaux",
+          "marketingMaterials": "Matériel Marketing"
+        }
+      },
+      "videoProduction": {
+        "title": "Production Vidéo",
+        "description": "Montage vidéo professionnel et création vidéo assistée par IA pour tous vos besoins en contenu.",
+        "features": {
+          "videoEditing": "Montage Vidéo",
+          "aiVideoGeneration": "Génération Vidéo par IA",
+          "motionGraphics": "Animations Graphiques",
+          "postProduction": "Post-Production"
+        }
+      },
+      "digitalMarketing": {
+        "title": "Marketing Digital",
+        "description": "Stratégies de marketing digital complètes pour développer votre présence en ligne et votre portée.",
+        "features": {
+          "socialMediaAds": "Publicités sur les Médias Sociaux",
+          "contentCreation": "Création de Contenu",
+          "influencerCampaigns": "Campagnes d'Influenceurs",
+          "analyticsReporting": "Analyses et Rapports"
+        }
+      }
+    },
+    "learnMore": "En savoir plus",
+    "bottomCta": {
+      "tagline": "Prêt à démarrer votre projet ?",
+      "headingPart1": "Construisons quelque chose de",
+      "headingPart2": "Incroyable Ensemble",
+      "description": "Contactez notre équipe d'experts pour discuter de vos exigences de projet et recevoir une proposition de solution personnalisée.",
+      "requestQuote": "Demander un devis",
+      "viewPortfolio": "Voir le portfolio"
+    }
+  },
+  "contactSection": {
+    "getInTouch": "Contactez-nous",
+    "headingPart1": "Prêt à démarrer",
+    "headingPart2": "Votre projet ?",
+    "subheading": "Nous serions ravis d'entendre parler de votre projet et de discuter de la manière dont nous pouvons vous aider à concrétiser votre vision. Contactez-nous par l'une des méthodes ci-dessous.",
+    "sendMessage": {
+      "title": "Envoyez-nous un message",
+      "description": "Remplissez le formulaire ci-dessous et nous vous répondrons dans les 24 heures.",
+      "firstName": "Prénom",
+      "lastName": "Nom de famille",
+      "email": "E-mail",
+      "companyOptional": "Entreprise (Facultatif)",
+      "projectType": "Type de projet",
+      "message": "Message",
+      "sendButton": "Envoyer le message",
+      "projectTypeOptions": {
+        "softwareDevelopment": "Développement Logiciel",
+        "websiteCreation": "Création de Site Web",
+        "brandingPackage": "Forfait Branding",
+        "videoProduction": "Production Vidéo",
+        "digitalMarketing": "Marketing Digital",
+        "other": "Autre"
+      },
+      "placeholders": {
+        "firstName": "Jean",
+        "lastName": "Dupont",
+        "email": "jean@example.com",
+        "company": "Votre entreprise",
+        "message": "Parlez-nous de vos besoins de projet..."
+      }
+    },
+    "contactInfo": {
+      "emailUs": {
+        "title": "Envoyez-nous un e-mail",
+        "description": "Envoyez-nous un e-mail à tout moment"
+      },
+      "callUs": {
+        "title": "Appelez-nous",
+        "description": "Lun-Ven de 8h à 18h"
+      },
+      "visitUs": {
+        "title": "Venez nous rendre visite",
+        "description": "Venez visiter notre bureau"
+      }
+    },
+    "followUs": {
+      "title": "Suivez-nous",
+      "description": "Restez informé de nos derniers projets et insights"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Abonnez-vous pour recevoir les mises à jour sur les nouveaux produits et services",
+      "placeholder": "Entrez votre e-mail",
+      "subscribeButton": "S'abonner",
+      "privacyPolicy": "Nous respectons votre vie privée. Désabonnez-vous à tout moment."
+    }
   }
 }

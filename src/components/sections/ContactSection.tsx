@@ -13,26 +13,30 @@ import {
   Linkedin,
   Github
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next'; // Import useTranslation
 
 const ContactSection = () => {
+  const { t } = useTranslation(); // Initialize the translation hook
+
+  // Define contactInfo using translation keys
   const contactInfo = [
     {
       icon: Mail,
-      title: 'Email Us',
-      detail: 'hello@aliance-software.com',
-      description: 'Send us an email anytime'
+      titleKey: 'contactSection.contactInfo.emailUs.title',
+      detail: 'hello@aliance-software.com', // This typically remains untranslated
+      descriptionKey: 'contactSection.contactInfo.emailUs.description'
     },
     {
       icon: Phone,
-      title: 'Call Us',
-      detail: '+1 (555) 123-4567',
-      description: 'Mon-Fri from 8am to 6pm'
+      titleKey: 'contactSection.contactInfo.callUs.title',
+      detail: '+1 (555) 123-4567', // This typically remains untranslated
+      descriptionKey: 'contactSection.contactInfo.callUs.description'
     },
     {
       icon: MapPin,
-      title: 'Visit Us',
-      detail: 'San Francisco, CA',
-      description: 'Come visit our office'
+      titleKey: 'contactSection.contactInfo.visitUs.title',
+      detail: 'San Francisco, CA', // This typically remains untranslated
+      descriptionKey: 'contactSection.contactInfo.visitUs.description'
     }
   ];
 
@@ -41,6 +45,15 @@ const ContactSection = () => {
     { icon: Linkedin, label: 'LinkedIn', href: '#' },
     { icon: Github, label: 'GitHub', href: '#' },
     { icon: Globe, label: 'Website', href: '#' }
+  ];
+
+  const projectTypeOptions = [
+    t('contactSection.sendMessage.projectTypeOptions.softwareDevelopment'),
+    t('contactSection.sendMessage.projectTypeOptions.websiteCreation'),
+    t('contactSection.sendMessage.projectTypeOptions.brandingPackage'),
+    t('contactSection.sendMessage.projectTypeOptions.videoProduction'),
+    t('contactSection.sendMessage.projectTypeOptions.digitalMarketing'),
+    t('contactSection.sendMessage.projectTypeOptions.other'),
   ];
 
   return (
@@ -53,18 +66,17 @@ const ContactSection = () => {
         <div className="text-center mb-16 animate-fade-in">
           <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 mb-6 text-sm text-primary">
             <MessageCircle className="w-4 h-4" />
-            Get In Touch
+            {t('contactSection.getInTouch')} {/* Translated */}
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-foreground">Ready to Start</span>
+            <span className="text-foreground">{t('contactSection.headingPart1')}</span> {/* Translated */}
             <br />
-            <span className="gradient-text">Your Project?</span>
+            <span className="gradient-text">{t('contactSection.headingPart2')}</span> {/* Translated */}
           </h2>
           
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            We'd love to hear about your project and discuss how we can help bring your vision to life. 
-            Reach out to us using any of the methods below.
+            {t('contactSection.subheading')} {/* Translated */}
           </p>
         </div>
 
@@ -72,56 +84,53 @@ const ContactSection = () => {
           {/* Contact Form */}
           <Card className="bg-card/50 backdrop-blur-sm border-border/50">
             <CardHeader>
-              <CardTitle className="text-2xl font-semibold">Send us a message</CardTitle>
+              <CardTitle className="text-2xl font-semibold">{t('contactSection.sendMessage.title')}</CardTitle> {/* Translated */}
               <CardDescription>
-                Fill out the form below and we'll get back to you within 24 hours.
+                {t('contactSection.sendMessage.description')} {/* Translated */}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground">First Name</label>
-                  <Input placeholder="John" className="bg-background/50" />
+                  <label className="text-sm font-medium text-foreground">{t('contactSection.sendMessage.firstName')}</label> {/* Translated */}
+                  <Input placeholder={t('contactSection.sendMessage.placeholders.firstName')} className="bg-background/50" /> {/* Translated placeholder */}
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground">Last Name</label>
-                  <Input placeholder="Doe" className="bg-background/50" />
+                  <label className="text-sm font-medium text-foreground">{t('contactSection.sendMessage.lastName')}</label> {/* Translated */}
+                  <Input placeholder={t('contactSection.sendMessage.placeholders.lastName')} className="bg-background/50" /> {/* Translated placeholder */}
                 </div>
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">Email</label>
-                <Input placeholder="john@example.com" type="email" className="bg-background/50" />
+                <label className="text-sm font-medium text-foreground">{t('contactSection.sendMessage.email')}</label> {/* Translated */}
+                <Input placeholder={t('contactSection.sendMessage.placeholders.email')} type="email" className="bg-background/50" /> {/* Translated placeholder */}
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">Company (Optional)</label>
-                <Input placeholder="Your Company" className="bg-background/50" />
+                <label className="text-sm font-medium text-foreground">{t('contactSection.sendMessage.companyOptional')}</label> {/* Translated */}
+                <Input placeholder={t('contactSection.sendMessage.placeholders.company')} className="bg-background/50" /> {/* Translated placeholder */}
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">Project Type</label>
+                <label className="text-sm font-medium text-foreground">{t('contactSection.sendMessage.projectType')}</label> {/* Translated */}
                 <select className="w-full px-3 py-2 bg-background/50 border border-input rounded-lg text-foreground">
-                  <option>Software Development</option>
-                  <option>Website Creation</option>
-                  <option>Branding Package</option>
-                  <option>Video Production</option>
-                  <option>Digital Marketing</option>
-                  <option>Other</option>
+                  {projectTypeOptions.map((option, index) => (
+                    <option key={index}>{option}</option>
+                  ))}
                 </select>
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">Message</label>
+                <label className="text-sm font-medium text-foreground">{t('contactSection.sendMessage.message')}</label> {/* Translated */}
                 <Textarea 
-                  placeholder="Tell us about your project requirements..."
+                  placeholder={t('contactSection.sendMessage.placeholders.message')}
                   className="bg-background/50 min-h-[120px]"
                 />
               </div>
               
               <Button variant="hero" size="lg" className="w-full group">
                 <Send className="w-5 h-5" />
-                Send Message
+                {t('contactSection.sendMessage.sendButton')} {/* Translated */}
               </Button>
             </CardContent>
           </Card>
@@ -137,9 +146,9 @@ const ContactSection = () => {
                       <item.icon className="w-6 h-6 text-primary-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-foreground">{item.title}</h3>
+                      <h3 className="font-semibold text-foreground">{t(item.titleKey)}</h3> {/* Translated */}
                       <p className="text-primary font-medium">{item.detail}</p>
-                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                      <p className="text-sm text-muted-foreground">{t(item.descriptionKey)}</p> {/* Translated */}
                     </div>
                   </CardContent>
                 </Card>
@@ -149,9 +158,9 @@ const ContactSection = () => {
             {/* Social Links */}
             <Card className="bg-card/30 backdrop-blur-sm border-border/50">
               <CardHeader>
-                <CardTitle className="text-lg font-semibold">Follow Us</CardTitle>
+                <CardTitle className="text-lg font-semibold">{t('contactSection.followUs.title')}</CardTitle> {/* Translated */}
                 <CardDescription>
-                  Stay updated with our latest projects and insights
+                  {t('contactSection.followUs.description')} {/* Translated */}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -173,23 +182,23 @@ const ContactSection = () => {
             {/* Newsletter Signup */}
             <Card className="bg-gradient-to-br from-primary/10 to-primary-light/10 border-primary/20 backdrop-blur-sm">
               <CardHeader>
-                <CardTitle className="text-lg font-semibold">Newsletter</CardTitle>
+                <CardTitle className="text-lg font-semibold">{t('contactSection.newsletter.title')}</CardTitle> {/* Translated */}
                 <CardDescription>
-                  Subscribe to get updates on new products and services
+                  {t('contactSection.newsletter.description')} {/* Translated */}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex gap-2">
                   <Input 
-                    placeholder="Enter your email"
+                    placeholder={t('contactSection.newsletter.placeholder')}
                     className="bg-background/50"
                   />
                   <Button variant="default">
-                    Subscribe
+                    {t('contactSection.newsletter.subscribeButton')} {/* Translated */}
                   </Button>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  We respect your privacy. Unsubscribe at any time.
+                  {t('contactSection.newsletter.privacyPolicy')} {/* Translated */}
                 </p>
               </CardContent>
             </Card>
