@@ -1,5 +1,5 @@
-// src/components/sections/HeroSection.tsx
-import { Button } from '@/components/ui/button';
+// src/sections/HeroSection.tsx
+import { Button } from '@/components/ui/button'; // Assuming this path is correct
 import { ArrowRight, Play, Rocket, Code } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -8,16 +8,14 @@ const HeroSection = () => {
   const isRtl = i18n.language === 'ar'; 
 
   return (
-    // CHANGE HERE: Remove `bg-transparent` and ensure the section itself has the desired background.
-    // If you want the `--gradient-background` defined in `index.css` to cover this section,
-    // you might need to apply a class that uses it directly, or ensure its container
-    // is correctly styled. For now, let's remove bg-transparent.
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 md:py-24"> 
+    // APPLY bg-gradient-background from tailwind.config.js
+    <section 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 md:py-24 
+                 bg-gradient-background" // <--- CRITICAL CHANGE HERE
+    > 
       
       {/* Dynamic Animated Background Blobs */}
-      {/* The `z-index: 0` in CSS ensures these are behind the main content. */}
-      {/* Ensure these blobs are also inside a container that can receive the gradient background,
-          or that they are absolutely positioned relative to this section. */}
+      {/* These will use the CSS defined in index.css and animation from tailwind.config.js */}
       <div className="hero-background-blobs">
         <div className="blob" />
         <div className="blob" />
@@ -27,12 +25,14 @@ const HeroSection = () => {
 
       {/* Content Wrapper */}
       <div 
+        // Removed `text-black` to rely on `text-card-foreground`
         className={`relative z-10 w-full max-w-5xl mx-auto p-8 md:p-12 
                     bg-card rounded-2xl shadow-card 
                     flex flex-col items-center justify-center text-center 
                     ${isRtl ? 'rtl' : 'ltr'}`}
         dir={isRtl ? 'rtl' : 'ltr'}
       >
+        {/* text-card-foreground ensures text color comes from your theme */}
         <div className="max-w-4xl mx-auto animate-fade-in text-card-foreground"> 
           {/* Badge */}
           <div 
