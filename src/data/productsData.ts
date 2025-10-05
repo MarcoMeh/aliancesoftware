@@ -55,7 +55,7 @@ export const allProducts: Product[] = [
       '/images/school 4.jpg', // Assuming public/images/school4.jpg
       // Add more if you have them!
     ],
-    videoId: 'dQw4w9WgXcQ', // Placeholder YouTube ID
-    pricing: '$25/month per school'
+    videoId: 'playlist?list=PLWrTRSMeQtR3PuADMYKt1GT-GXjBbJYaS', // Placeholder YouTube ID
+    pricing: '15000.00 DA'
   }
 ];

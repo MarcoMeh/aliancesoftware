@@ -296,6 +296,15 @@ const ProductDetails = () => {
                               </FormItem>
                             )}
                           />
+                          <FormField
+                            name="note"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>After 3 days contact the agency to get Your Key</FormLabel> {/* Label updated */}
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
                           <Button type="submit" className="w-full" disabled={isSubmitting}>
                             {isSubmitting ? "Submitting..." : "Download Free Trial"}
                           </Button>
@@ -352,7 +361,7 @@ const ProductDetails = () => {
                         variant="secondary"
                         size="lg"
                         className="gap-2 bg-white/90 hover:bg-white"
-                        onClick={() => window.open(`https://www.youtube.com/watch?v=${product.videoId}`, '_blank')}
+                        onClick={() => window.open(`https://www.youtube.com/${product.videoId}`, '_blank')}
                       >
                         <Play className="w-5 h-5" />
                         Watch Demo Video
