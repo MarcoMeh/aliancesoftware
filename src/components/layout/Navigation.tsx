@@ -1,7 +1,7 @@
 // src/components/layout/Navigation.tsx
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Zap } from 'lucide-react'; // Removed Code icon as it wasn't used
+import { Menu, X, Zap } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from "@/assets/logo.png";
 import LanguageSwitcher from '../LanguageSwitcher';
@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const { t } = useTranslation(); // Initialize the translation hook
+  const { t, i18n } = useTranslation(); // Initialize the translation hook and get i18n instance
 
   const navItems = [
     { name: t('navigation.home'), href: '/' },
@@ -23,6 +23,9 @@ const Navigation = () => {
   ];
 
   const isActive = (href: string) => location.pathname === href;
+
+  // Determine text direction for dynamic styling
+  const isRTL = i18n.language === 'ar';
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border shadow-sm">
@@ -44,13 +47,13 @@ const Navigation = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center" style={{ gap: isRTL ? '1.5rem' : '2rem' }}> {/* Increased gap for RTL if needed, or consistent large gap */}
           {navItems.map((item) => (
             <Link
-              key={item.name} // Use name for key, but now it's translated, so ensure uniqueness or use href
+              key={item.href} // Use href for key as it's stable and unique
               to={item.href}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                isActive(item.href) ? 'text-primary font-semibold' : 'text-foreground/80'
+              className={`text-sm font-medium transition-colors hover:text-primary whitespace-nowrap px-2 py-1 rounded-md ${ // Added padding and rounded for better click area
+                isActive(item.href) ? 'text-primary font-semibold bg-primary/10' : 'text-foreground/80' // Added subtle background for active link
               }`}
             >
               {item.name}
@@ -89,9 +92,9 @@ const Navigation = () => {
           <div className="flex flex-col space-y-4 px-6">
             {navItems.map((item) => (
               <Link
-                key={item.name}
+                key={item.href} // Use href for key
                 to={item.href}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
+                className={`text-base font-medium transition-colors hover:text-primary block py-2 ${ // Ensured block and added padding
                   isActive(item.href) ? 'text-primary font-semibold' : 'text-foreground/80'
                 }`}
                 onClick={() => setIsMenuOpen(false)}
