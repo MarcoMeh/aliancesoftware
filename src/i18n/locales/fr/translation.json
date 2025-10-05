@@ -109,6 +109,13 @@
       "viewPortfolio": "Voir le portfolio"
     }
   },
+  "productsPage": {
+    "headingPart1": "Nos",
+    "headingPart2": "Produits",
+    "subheading": "Découvrez notre collection complète de solutions logicielles professionnelles conçues pour améliorer la productivité et optimiser les flux de travail.",
+    "searchPlaceholder": "Rechercher des produits...",
+    "filterButton": "Filtrer"
+  },
   "contactSection": {
     "getInTouch": "Contactez-nous",
     "headingPart1": "Prêt à démarrer",
@@ -164,6 +171,73 @@
       "placeholder": "Entrez votre e-mail",
       "subscribeButton": "S'abonner",
       "privacyPolicy": "Nous respectons votre vie privée. Désabonnez-vous à tout moment."
+    }
+  },
+  "aboutPage": {
+    "header": {
+      "title": "À Propos d'Aliance Software",
+      "description": "Nous sommes une équipe passionnée d'innovateurs dédiée à la création de solutions logicielles qui autonomisent les entreprises et transforment les expériences numériques."
+    },
+    "mission": {
+      "title": "Notre Mission",
+      "description": "Fournir des solutions logicielles innovantes qui favorisent la transformation numérique et permettent aux entreprises d'atteindre leurs objectifs."
+    },
+    "vision": {
+      "title": "Notre Vision",
+      "description": "Être le principal fournisseur de solutions logicielles de pointe qui façonnent l'avenir de l'innovation numérique."
+    },
+    "values": {
+      "title": "Nos Valeurs",
+      "description": "L'innovation, l'excellence, l'intégrité et la réussite de nos clients sont au cœur de tout ce que nous faisons."
+    },
+    "journey": {
+      "title": "Notre Parcours",
+      "description": "Étapes clés de la croissance de notre entreprise"
+    },
+    "milestones": {
+      "2024": {
+        "title": "Fondation de l'entreprise",
+        "description": "Démarrage avec une vision de créer des solutions logicielles innovantes"
+      },
+      "2025_product": {
+        "title": "Lancement du premier produit majeur",
+        "description": "Lancement du système Aliance School Manager"
+      },
+      "2025_team": {
+        "title": "Expansion de l'équipe",
+        "description": "Développement de l'équipe à plus de 6 professionnels talentueux"
+      }
+    },
+    "team": {
+      "title": "Rencontrez Notre Équipe",
+      "description": "Les individus talentueux derrière notre succès"
+    },
+    "teamMembers": {
+      "ali_ceo": {
+        "name": "Ali Mehemmai",
+        "role": "PDG et Fondateur",
+        "expertise": "Leadership Stratégique"
+      },
+      "fatima_cto": {
+        "name": "Fatima",
+        "role": "CTO",
+        "expertise": "Innovation Technique"
+      },
+      "fatima_design": {
+        "name": "Fatima",
+        "role": "Responsable du Design",
+        "expertise": "Expérience Utilisateur"
+      },
+      "ali_developer": {
+        "name": "Ali Mehemmai",
+        "role": "Développeur Principal",
+        "expertise": "Développement Full-Stack"
+      }
+    },
+    "cta": {
+      "title": "Envie de Rejoindre Notre Équipe ?",
+      "description": "Nous sommes toujours à la recherche de personnes talentueuses pour rejoindre notre équipe en pleine croissance. Consultez nos offres d'emploi actuelles.",
+      "button": "Voir les Carrières"
     }
   }
 }

@@ -1,75 +1,22 @@
-import { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import Navigation from '@/components/layout/Navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { useToast } from '@/hooks/use-toast';
-import { ArrowLeft, Play, Star, Users, CheckCircle, Download, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react'; // Added ChevronLeft, ChevronRight
+import { ArrowRight, Download, ExternalLink, Star, Users } from 'lucide-react';
 import { allProducts } from '@/data/productsData';
+import { useTranslation } from 'react-i18next'; // Import useTranslation
 
-// Import Dialog components
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+const ProductsSection = () => {
+  const { t } = useTranslation(); // Initialize the translation hook
 
-const formSchema = z.object({
-  name: z.string().trim().min(2, "Name is required").max(100),
-  email: z.string().trim().email("Please enter a valid email").max(255),
-  company: z.string().trim().max(100).optional(),
-  // Phone number is now required
-  phone: z.string().trim().min(10, "Phone number is required").max(20, "Phone number is too long"),
-  links: z.string().trim().max(100).optional(),
-  message: z.string().trim().max(1000).optional()
-});
-
-const ProductDetails = () => {
-  const { id } = useParams();
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
-  const [currentScreenshotIndex, setCurrentScreenshotIndex] = useState(0); // State for current screenshot
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      company: "",
-      phone: "", // Ensure this is initialized, even if empty, to avoid controlled vs uncontrolled warning
-      links: "",
-      message: ""
+  // Helper to translate status dynamically (already present)
+  const getTranslatedStatus = (status: string) => {
+    switch (status) {
+      case 'Popular': return t('productsSection.status.popular');
+      case 'New': return t('productsSection.status.new');
+      case 'Featured': return t('productsSection.status.featured');
+      case 'Updated': return t('productsSection.status.updated');
+      default: return status; // Fallback if status isn't translated
     }
-  });
-
-  // Get product by ID
-  const product = allProducts.find(p => p.id === Number(id));
-
-  if (!product) {
-    return (
-      <div className="min-h-screen bg-background">
-        <Navigation />
-        <main className="pt-24 container mx-auto px-6">
-          <div className="text-center py-16">
-            <h1 className="text-2xl font-bold mb-4">Product Not Found</h1>
-            <Link to="/products">
-              <Button variant="outline">Back to Products</Button>
-            </Link>
-          </div>
-        </main>
-      </div>
-    );
-  }
+  };
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -81,503 +28,125 @@ const ProductDetails = () => {
     }
   };
 
-  const onDownloadFormSubmit = async (values: z.infer<typeof formSchema>) => {
-    setIsSubmitting(true);
-    try {
-      const FORMSPREE_ENDPOINT = "https://formspree.io/f/xkgqbzgy";
-
-      const response = await fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(values)
-      });
-
-      if (!response.ok) {
-        throw new Error(`Form submission failed: ${response.statusText}`);
-      }
-
-      toast({
-        title: "Request Submitted!",
-        description: "Your download will begin shortly.",
-      });
-
-      const link = document.createElement('a');
-      link.href = '/downloads/Aliance School Manager.rar';
-      link.download = 'Aliance School Manager.rar';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      form.reset();
-      setIsDownloadModalOpen(false);
-    } catch (error) {
-      console.error("Download form submission error:", error);
-      toast({
-        title: "Error",
-        description: "Something went wrong. Please try again. " + (error as Error).message,
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const onContactFormSubmit = async (values: z.infer<typeof formSchema>) => {
-    setIsSubmitting(true);
-    try {
-      const FORMSPREE_CONTACT_ENDPOINT = "https://formspree.io/f/xkgqbzgy";
-
-      const response = await fetch(FORMSPREE_CONTACT_ENDPOINT, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(values)
-      });
-
-      if (!response.ok) {
-        throw new Error(`Contact form submission failed: ${response.statusText}`);
-      }
-
-      toast({
-        title: "Contact Request Sent!",
-        description: `We'll contact you within 24 hours about ${product.name}.`,
-      });
-      form.reset();
-    } catch (error) {
-      console.error("Contact form submission error:", error);
-      toast({
-        title: "Error",
-        description: "Something went wrong. Please try again. " + (error as Error).message,
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  // Carousel navigation handlers
-  const goToPreviousScreenshot = () => {
-    setCurrentScreenshotIndex((prevIndex) =>
-      prevIndex === 0 ? (product.screenshots?.length || 1) - 1 : prevIndex - 1
-    );
-  };
-
-  const goToNextScreenshot = () => {
-    setCurrentScreenshotIndex((prevIndex) =>
-      prevIndex === (product.screenshots?.length || 1) - 1 ? 0 : prevIndex + 1
-    );
+  // Helper to translate product specific text from data
+  const translateProductField = (productId: number, key: string, defaultValue: string) => {
+    return t(`productDetails.products.${productId}.${key}`, defaultValue);
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-      <main className="pt-24">
-        {/* Back Button */}
-        <div className="container mx-auto px-6 py-6">
-          <Link to="/products">
-            <Button variant="ghost" className="gap-2">
-              <ArrowLeft className="w-4 h-4" />
-              Back to Products
-            </Button>
-          </Link>
+    <section className="py-24 relative">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background to-muted/20" />
+
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-16 animate-fade-in">
+          <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 mb-6 text-sm text-primary">
+            <Star className="w-4 h-4" />
+            {t('productsSection.featuredProducts')} {/* Translated */}
+          </div>
+
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <span className="gradient-text">{t('productsSection.headingPart1')}</span> {/* Translated */}
+            <br />
+            <span className="text-foreground">{t('productsSection.headingPart2')}</span> {/* Translated */}
+          </h2>
+
+          <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
+            {t('productsSection.subheading')} {/* Translated */}
+          </p>
         </div>
 
-        {/* Product Header */}
-        <section className="py-16 bg-gradient-to-b from-background to-muted/20">
-          <div className="container mx-auto px-6">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="flex items-center gap-4 mb-6">
-                  <div className={`${getStatusColor(product.status)} text-white text-sm px-3 py-1 rounded-full font-medium`}>
-                    {product.status}
-                  </div>
-                  <div className="flex items-center gap-2 text-black">
+        {/* Products Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
+          {allProducts.map((product, index) => (
+            <Card
+              key={product.id}
+              className="group bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 card-hover"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <CardHeader className="relative">
+                {/* Status Badge */}
+                <div className={`absolute top-4 right-4 ${getStatusColor(product.status)} text-white text-xs px-2 py-1 rounded-full font-medium`}>
+                  {getTranslatedStatus(product.status)} {/* Translated dynamically */}
+                </div>
+
+                {/* Product Image */}
+                <div
+                  className="w-full h-48 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-lg mb-4 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${product.image})` }}
+                />
+
+                <CardTitle className="text-xl font-semibold group-hover:text-primary transition-colors">
+                  {translateProductField(product.id, 'name', product.name)} {/* Translated */}
+                </CardTitle>
+
+                <CardDescription className="text-black">
+                  {translateProductField(product.id, 'description', product.description)} {/* Translated */}
+                </CardDescription>
+              </CardHeader>
+
+              <CardContent className="space-y-4">
+                {/* Rating & Users */}
+                <div className="flex items-center justify-between text-sm">
+                  <div className="flex items-center gap-1">
                     <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     <span className="font-medium">{product.rating}</span>
-                    <span>•</span>
+                  </div>
+                  <div className="flex items-center gap-1 text-black">
                     <Users className="w-4 h-4" />
-                    <span>{product.users}</span>
+                    <span>{product.users} {t('productsSection.users')}</span> {/* Translated "Users" */}
                   </div>
                 </div>
 
-                <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                  <span className="gradient-text">{product.name}</span>
-                </h1>
-
-                <p className="text-xl text-black mb-8 leading-relaxed">
-                  {product.fullDescription}
-                </p>
-
-                <div className="flex gap-4">
-                  {/* "Start Free Trial" button now opens a dialog */}
-                  <Dialog open={isDownloadModalOpen} onOpenChange={setIsDownloadModalOpen}>
-                    <DialogTrigger asChild>
-                      <Button size="lg" className="gap-2">
-                        <Download className="w-5 h-5" />
-                        Start Free Trial
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="sm:max-w-[425px]">
-                      <DialogHeader>
-                        <DialogTitle>Get Your Free Trial of {product.name}</DialogTitle>
-                        <DialogDescription>
-                          Please provide your contact information to start your free trial download.
-                        </DialogDescription>
-                      </DialogHeader>
-                      <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onDownloadFormSubmit)} className="space-y-6">
-                          <FormField
-                            control={form.control}
-                            name="name"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Your Name</FormLabel>
-                                <FormControl>
-                                  <Input placeholder="John Doe" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                          <FormField
-                            control={form.control}
-                            name="email"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Your Email</FormLabel>
-                                <FormControl>
-                                  <Input type="email" placeholder="john.doe@example.com" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                          <FormField
-                            control={form.control}
-                            name="phone"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Phone Number</FormLabel> {/* Label updated */}
-                                <FormControl>
-                                  <Input type="tel" placeholder="(123) 456-7890" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                          <FormField
-                            control={form.control}
-                            name="company"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Company (Optional)</FormLabel>
-                                <FormControl>
-                                  <Input placeholder="Acme Corp" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                          <FormField
-                            control={form.control}
-                            name="links"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Social Media Link (Optional)</FormLabel> {/* Label updated */}
-                                <FormControl>
-                                  <Input placeholder="Instagram or Facebook link" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                          <FormField
-                            name="note"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>After 3 days contact the agency to get Your Key</FormLabel> {/* Label updated */}
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                          <Button type="submit" className="w-full" disabled={isSubmitting}>
-                            {isSubmitting ? "Submitting..." : "Download Free Trial"}
-                          </Button>
-                        </form>
-                      </Form>
-                    </DialogContent>
-                  </Dialog>
+                {/* Features */}
+                <div className="flex flex-wrap gap-2">
+                  {product.features.map((feature, i) => (
+                    <span
+                      key={i}
+                      className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full"
+                    >
+                      {translateProductField(product.id, `features.${i}`, feature)} {/* Translated */}
+                    </span>
+                  ))}
                 </div>
-              </div>
 
-              {/* Product Image Gallery / Carousel */}
-              <div className="relative">
-              {product.screenshots && product.screenshots.length > 0 ? ( // <-- CONFIRM START OF THIS CONDITIONAL BLOCK
-                <>
-                  <div
-                    className="w-full h-80 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-xl bg-cover bg-center transition-all duration-300 ease-in-out"
-                    style={{ backgroundImage: `url(${product.screenshots[currentScreenshotIndex]})` }}
-                  />
-                  {product.screenshots.length > 1 && (
-                    <>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white z-10"
-                        onClick={goToPreviousScreenshot}
-                      >
-                        <ChevronLeft className="w-5 h-5" />
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white z-10"
-                        onClick={goToNextScreenshot}
-                      >
-                        <ChevronRight className="w-5 h-5" />
-                      </Button>
-                      <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
-                        {product.screenshots.map((_, index) => (
-                          <button
-                            key={index}
-                            className={`w-2 h-2 rounded-full ${
-                              index === currentScreenshotIndex ? 'bg-primary' : 'bg-gray-300'
-                            }`}
-                            onClick={() => setCurrentScreenshotIndex(index)}
-                            aria-label={`View screenshot ${index + 1}`}
-                          />
-                        ))}
-                      </div>
-                    </>
-                  )}
-                  {product.videoId && (
-                    <div className="absolute inset-0 bg-black/20 rounded-xl flex items-center justify-center">
-                      <Button
-                        variant="secondary"
-                        size="lg"
-                        className="gap-2 bg-white/90 hover:bg-white"
-                        onClick={() => window.open(`https://www.youtube.com/${product.videoId}`, '_blank')}
-                      >
-                        <Play className="w-5 h-5" />
-                        Watch Demo Video
-                      </Button>
-                    </div>
-                  )}
-                </>
-              ) : ( // <-- CONFIRM THIS 'ELSE' BLOCK for fallback
-                // Fallback if no screenshots array or empty
-                <div
-                  className="w-full h-80 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-xl bg-cover bg-center"
-                  style={{ backgroundImage: `url(${product.image})` }}
-                >
-                  {product.videoId && (
-                    <div className="absolute inset-0 bg-black/20 rounded-xl flex items-center justify-center">
-                      <Button
-                        variant="secondary"
-                        size="lg"
-                        className="gap-2 bg-white/90 hover:bg-white"
-                        onClick={() => window.open(`https://www.youtube.com/watch?v=${product.videoId}`, '_blank')}
-                      >
-                        <Play className="w-5 h-5" />
-                        Watch Demo Video
-                      </Button>
-                    </div>
-                  )}
+                {/* Actions */}
+                <div className="flex gap-3 pt-4">
+                  <Button
+                    variant="default"
+                    size="sm"
+                    className="flex-1 group"
+                    onClick={() => window.location.href = `/product/${product.id}`}
+                  >
+                    <Download className="w-4 h-4" />
+                    {t('productsSection.learnMore')} {/* Translated */}
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => window.location.href = `/product/${product.id}`}
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    {t('productsSection.demo')} {/* Translated */}
+                  </Button>
                 </div>
-              )}
-            </div>
-            </div>
-          </div>
-        </section>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
 
-        {/* Features & Benefits (Remains unchanged) */}
-        <section className="py-16">
-          <div className="container mx-auto px-6">
-            <div className="grid lg:grid-cols-2 gap-12">
-              <Card className="bg-card/50 backdrop-blur-sm border-border/50">
-                <CardHeader>
-                  <CardTitle className="text-2xl">Key Features</CardTitle>
-                  <CardDescription>
-                    Everything you need to succeed with {product.name}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-4">
-                    {product.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-card/50 backdrop-blur-sm border-border/50">
-                <CardHeader>
-                  <CardTitle className="text-2xl">Key Benefits</CardTitle>
-                  <CardDescription>
-                    How {product.name} transforms your business
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-4">
-                    {product.benefits.map((benefit, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* Original Lead Capture Form - NOW USING onContactFormSubmit */}
-        <section className="py-16 bg-muted/20">
-          <div className="container mx-auto px-6">
-            <div className="max-w-2xl mx-auto">
-              <Card className="bg-card/50 backdrop-blur-sm border-border/50">
-                <CardHeader className="text-center">
-                  <CardTitle className="text-3xl gradient-text">Contact Our Sales Team</CardTitle>
-                  <CardDescription className="text-lg">
-                    Have more questions or need a personalized demo? Fill out the form below.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onContactFormSubmit)} className="space-y-6">
-                      <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Your Name</FormLabel>
-                            <FormControl>
-                              <Input placeholder="Full Name" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Your Email</FormLabel>
-                            <FormControl>
-                              <Input type="email" placeholder="yourEmail@example.com" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="phone"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Phone Number</FormLabel> {/* Label updated */}
-                            <FormControl>
-                              <Input type="tel" placeholder="(123) 456-7890" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="company"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Company (Optional)</FormLabel>
-                            <FormControl>
-                              <Input placeholder="Acme Corp" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="links"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>social media link (Optional)</FormLabel>
-                            <FormControl>
-                              <Input placeholder="Instagram or Facebook Link" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="message"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Message (Optional)</FormLabel>
-                            <FormControl>
-                              <Textarea placeholder="How can we help you?" className="min-h-[100px]" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <Button type="submit" className="w-full" disabled={isSubmitting}>
-                        {isSubmitting ? "Submitting..." : "Submit Request"}
-                      </Button>
-                    </form>
-                  </Form>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* YouTube Video Section (Remains unchanged) */}
-        {product.videoId && (
-          <section className="py-16">
-            <div className="container mx-auto px-6">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold mb-4">See {product.name} in Action</h2>
-                <p className="text-xl text-black max-w-2xl mx-auto">
-                  Watch our detailed walkthrough to see how {product.name} can transform your workflow
-                </p>
-              </div>
-
-              <div className="max-w-4xl mx-auto">
-                <Card className="bg-card/50 backdrop-blur-sm border-border/50">
-                  <CardContent className="p-0">
-                    <div className="aspect-video rounded-lg overflow-hidden">
-                      <iframe
-                        width="100%"
-                        height="100%"
-                        src={`https://www.youtube.com/embed/${product.videoId}`}
-                        title={`${product.name} Demo Video`}
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        className="w-full h-full"
-                      ></iframe>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </section>
-        )}
-      </main>
-    </div>
+        {/* View All Products CTA */}
+        <div className="text-center">
+          <Button variant="outline" size="lg" className="group" onClick={() => window.location.href = '/products'}>
+            {t('productsSection.viewAllProducts')} {/* Translated */}
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </Button>
+        </div>
+      </div>
+    </section>
   );
 };
 
-export default ProductDetails;
+export default ProductsSection;

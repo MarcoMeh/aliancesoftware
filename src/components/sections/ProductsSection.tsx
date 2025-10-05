@@ -28,11 +28,16 @@ const ProductsSection = () => {
     }
   };
 
+  // Helper to translate product specific text from data
+  const translateProductField = (productId: number, key: string, defaultValue: string) => {
+    return t(`productDetails.products.${productId}.${key}`, defaultValue);
+  };
+
   return (
     <section className="py-24 relative">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background to-muted/20" />
-      
+
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
@@ -40,13 +45,13 @@ const ProductsSection = () => {
             <Star className="w-4 h-4" />
             {t('productsSection.featuredProducts')} {/* Translated */}
           </div>
-          
+
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="gradient-text">{t('productsSection.headingPart1')}</span> {/* Translated */}
             <br />
             <span className="text-foreground">{t('productsSection.headingPart2')}</span> {/* Translated */}
           </h2>
-          
+
           <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             {t('productsSection.subheading')} {/* Translated */}
           </p>
@@ -55,8 +60,8 @@ const ProductsSection = () => {
         {/* Products Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
           {allProducts.map((product, index) => (
-            <Card 
-              key={product.id} 
+            <Card
+              key={product.id}
               className="group bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 card-hover"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
@@ -65,22 +70,22 @@ const ProductsSection = () => {
                 <div className={`absolute top-4 right-4 ${getStatusColor(product.status)} text-white text-xs px-2 py-1 rounded-full font-medium`}>
                   {getTranslatedStatus(product.status)} {/* Translated dynamically */}
                 </div>
-                
+
                 {/* Product Image */}
-                <div 
+                <div
                   className="w-full h-48 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-lg mb-4 bg-cover bg-center"
                   style={{ backgroundImage: `url(${product.image})` }}
                 />
-                
+
                 <CardTitle className="text-xl font-semibold group-hover:text-primary transition-colors">
-                  {product.name} {/* Product names likely remain untranslated, or you could add keys for them */}
+                  {translateProductField(product.id, 'name', product.name)} {/* Translated */}
                 </CardTitle>
-                
+
                 <CardDescription className="text-black">
-                  {product.description} {/* Product descriptions likely remain untranslated, or you could add keys for them */}
+                  {translateProductField(product.id, 'description', product.description)} {/* Translated */}
                 </CardDescription>
               </CardHeader>
-              
+
               <CardContent className="space-y-4">
                 {/* Rating & Users */}
                 <div className="flex items-center justify-between text-sm">
@@ -97,30 +102,30 @@ const ProductsSection = () => {
                 {/* Features */}
                 <div className="flex flex-wrap gap-2">
                   {product.features.map((feature, i) => (
-                    <span 
+                    <span
                       key={i}
                       className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full"
                     >
-                      {feature} {/* Features likely remain untranslated, or you could add keys for them */}
+                      {translateProductField(product.id, `features.${i}`, feature)} {/* Translated */}
                     </span>
                   ))}
                 </div>
 
                 {/* Actions */}
                 <div className="flex gap-3 pt-4">
-                  <Button 
-                    variant="default" 
-                    size="sm" 
-                    className="flex-1 group" 
+                  <Button
+                    variant="default"
+                    size="sm"
+                    className="flex-1 group"
                     onClick={() => window.location.href = `/product/${product.id}`}
                   >
                     <Download className="w-4 h-4" />
                     {t('productsSection.learnMore')} {/* Translated */}
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
+                  <Button
+                    variant="outline"
+                    size="sm"
                     onClick={() => window.location.href = `/product/${product.id}`}
                   >
                     <ExternalLink className="w-4 h-4" />

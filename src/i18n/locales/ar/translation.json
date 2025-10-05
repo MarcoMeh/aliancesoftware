@@ -42,6 +42,86 @@
     "viewAllProducts": "عرض جميع المنتجات",
     "users": "المستخدمون"
   },
+  "productDetails": {
+    "notFound": {
+      "title": "المنتج غير موجود",
+      "backButton": "العودة للمنتجات"
+    },
+    "backToProducts": "العودة للمنتجات",
+    "startFreeTrialButton": "ابدأ التجربة المجانية",
+    "watchDemoVideo": "شاهد الفيديو التجريبي",
+    "downloadForm": {
+      "title": "احصل على نسختك التجريبية المجانية من {productName}",
+      "description": "يرجى تقديم معلومات الاتصال الخاصة بك لبدء تنزيل النسخة التجريبية المجانية.",
+      "note": "بعد 3 أيام تواصل مع الوكالة للحصول على مفتاحك",
+      "submitButton": "تنزيل النسخة التجريبية المجانية",
+      "successTitle": "تم إرسال الطلب!",
+      "successDescription": "سيبدأ التنزيل الخاص بك قريبًا.",
+      "submitError": "فشل إرسال النموذج: {statusText}"
+    },
+    "contactForm": {
+      "title": "تواصل مع فريق المبيعات لدينا",
+      "description": "هل لديك المزيد من الأسئلة أو تحتاج إلى عرض توضيحي مخصص؟ املأ النموذج أدناه.",
+      "submitButton": "إرسال الطلب",
+      "successTitle": "تم إرسال طلب الاتصال!",
+      "successDescription": "سنتواصل معك في غضون 24 ساعة بخصوص {productName}.",
+      "submitError": "فشل إرسال نموذج الاتصال: {statusText}"
+    },
+    "formLabels": {
+      "yourName": "اسمك",
+      "yourEmail": "بريدك الإلكتروني",
+      "phoneNumber": "رقم الهاتف",
+      "companyOptional": "الشركة (اختياري)",
+      "socialMediaLinkOptional": "رابط وسائل التواصل الاجتماعي (اختياري)",
+      "messageOptional": "الرسالة (اختياري)"
+    },
+    "formPlaceholders": {
+      "fullName": "جون دو",
+      "yourEmail": "john@example.com",
+      "phoneNumber": "(123) 456-7890",
+      "company": "شركتك",
+      "socialMediaLink": "رابط انستغرام أو فيسبوك",
+      "message": "كيف يمكننا مساعدتك؟"
+    },
+    "carousel": {
+      "previousScreenshot": "لقطة الشاشة السابقة",
+      "nextScreenshot": "لقطة الشاشة التالية",
+      "viewScreenshot": "عرض لقطة الشاشة {index}"
+    },
+    "features": {
+      "title": "الميزات الرئيسية",
+      "description": "كل ما تحتاجه للنجاح مع {productName}"
+    },
+    "benefits": {
+      "title": "الفوائد الرئيسية",
+      "description": "كيف يحول {productName} عملك"
+    },
+    "videoSection": {
+      "title": "شاهد {productName} وهو يعمل",
+      "description": "شاهد شرحنا المفصل لترى كيف يمكن لـ {productName} أن يحول سير عملك",
+      "iframeTitle": "فيديو عرض {productName}"
+    },
+    "products": {
+      "1": {
+        "name": "Aliance School Manager",
+        "description": "نظام شامل لإدارة المدارس لتتبع الطلاب والموظفين والمالية والدورات بكفاءة.",
+        "fullDescription": "Aliance School Manager هو نظام شامل يساعد المدارس على إدارة الطلاب والموظفين والفصول والمالية والجداول الزمنية بكفاءة بواجهة سهلة الاستخدام وتحليلات مفصلة.",
+        "category": "التعليم",
+        "features": [
+          "دعم متعدد اللغات",
+          "إدارة المهام القائمة على الأدوار",
+          "تتبع المالية والمدفوعات",
+          "جدولة الدورات والفصول"
+        ],
+        "benefits": [
+          "تبسيط إدارة المدارس",
+          "تحسين التواصل بين المعلم والطالب",
+          "إدارة دقيقة للمالية والمدفوعات",
+          "اتخاذ قرارات تستند إلى البيانات"
+        ]
+      }
+    }
+  },
   "servicesSection": {
     "ourServices": "خدماتنا",
     "headingPart1": "مجموعة حلول",
@@ -109,6 +189,13 @@
       "viewPortfolio": "عرض الأعمال"
     }
   },
+   "productsPage": {
+    "headingPart1": "منتجاتنا",
+    "headingPart2": "",
+    "subheading": "اكتشف مجموعتنا الكاملة من حلول البرامج الاحترافية المصممة لتعزيز الإنتاجية وتبسيط سير العمل.",
+    "searchPlaceholder": "البحث عن المنتجات...",
+    "filterButton": "تصفية"
+  },
   "contactSection": {
     "getInTouch": "تواصل معنا",
     "headingPart1": "هل أنت مستعد لبدء",
@@ -164,6 +251,73 @@
       "placeholder": "أدخل بريدك الإلكتروني",
       "subscribeButton": "اشترك",
       "privacyPolicy": "نحن نحترم خصوصيتك. إلغاء الاشتراك في أي وقت."
+    }
+  },
+  "aboutPage": {
+    "header": {
+      "title": "حول Aliance Software",
+      "description": "نحن فريق شغوف من المبتكرين ملتزمون بإنشاء حلول برمجية تمكن الشركات وتحول التجارب الرقمية."
+    },
+    "mission": {
+      "title": "مهمتنا",
+      "description": "تقديم حلول برمجية مبتكرة تدفع التحول الرقمي وتمكن الشركات من تحقيق أهدافها."
+    },
+    "vision": {
+      "title": "رؤيتنا",
+      "description": "أن نكون المزود الرائد لحلول البرمجيات المتطورة التي تشكل مستقبل الابتكار الرقمي."
+    },
+    "values": {
+      "title": "قيمنا",
+      "description": "الابتكار والتميز والنزاهة ونجاح العملاء هي جوهر كل ما نقوم به."
+    },
+    "journey": {
+      "title": "رحلتنا",
+      "description": "المحطات الرئيسية في نمو شركتنا"
+    },
+    "milestones": {
+      "2024": {
+        "title": "تأسيس الشركة",
+        "description": "بدأنا برؤية لإنشاء حلول برمجية مبتكرة"
+      },
+      "2025_product": {
+        "title": "إطلاق أول منتج رئيسي",
+        "description": "إصدار نظام Aliance School Manager"
+      },
+      "2025_team": {
+        "title": "توسيع الفريق",
+        "description": "نمت الشركة لتضم أكثر من 6 محترفين موهوبين"
+      }
+    },
+    "team": {
+      "title": "قابل فريقنا",
+      "description": "الأفراد الموهوبون وراء نجاحنا"
+    },
+    "teamMembers": {
+      "ali_ceo": {
+        "name": "علي",
+        "role": "الرئيس التنفيذي والمؤسس",
+        "expertise": "القيادة الاستراتيجية"
+      },
+      "fatima_cto": {
+        "name": "فاطمة",
+        "role": "المدير التقني",
+        "expertise": "الابتكار التقني"
+      },
+      "fatima_design": {
+        "name": "فاطمة",
+        "role": "رئيسة التصميم",
+        "expertise": "تجربة المستخدم"
+      },
+      "ali_developer": {
+        "name": "علي",
+        "role": "المطور الرئيسي",
+        "expertise": "تطوير كامل المكدس"
+      }
+    },
+    "cta": {
+      "title": "هل تريد الانضمام إلى فريقنا؟",
+      "description": "نحن نبحث دائمًا عن الأفراد الموهوبين للانضمام إلى فريقنا المتنامي. تحقق من الوظائف الشاغرة الحالية لدينا.",
+      "button": "عرض الوظائف"
     }
   }
 }
