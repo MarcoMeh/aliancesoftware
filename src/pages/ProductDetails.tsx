@@ -105,8 +105,8 @@ const ProductDetails = () => {
       });
 
       const link = document.createElement('a');
-      link.href = '/downloads/Aliance School Manager.rar';
-      link.download = 'Aliance School Manager.rar';
+      link.href = product.downloadPath; // Use the product's download path
+      link.download = product.downloadPath.split('/').pop() || 'download.file'; // Extract filename for download attribute
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);

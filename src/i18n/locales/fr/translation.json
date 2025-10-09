@@ -191,6 +191,24 @@
           "Gestion précise des finances et des paiements",
           "Prise de décision basée sur les données"
         ]
+      },
+      "2": {
+        "name": "Aliance Library Manager",
+        "description": "Un système intuitif pour gérer efficacement les ressources de la bibliothèque, les usagers et la circulation des livres.",
+        "fullDescription": "Aliance Library Manager offre une solution robuste aux bibliothèques pour automatiser le catalogage, suivre les prêts et retours, gérer les comptes des usagers et générer des rapports complets, améliorant ainsi l'ensemble des opérations de la bibliothèque.",
+        "category": "Gestion de Bibliothèque",
+        "features": [
+          "Catalogage et indexation automatisés",
+          "Gestion des usagers avec suivi des adhésions",
+          "Système de prêt et de retour de livres",
+          "Notifications de retard et gestion des amendes"
+        ],
+        "benefits": [
+          "Simplifier les tâches d'administration de la bibliothèque",
+          "Améliorer l'accès aux ressources de la bibliothèque",
+          "Réduire les erreurs manuelles et gagner du temps",
+          "Meilleur contrôle des stocks et utilisation des ressources"
+        ]
       }
     }
   },
@@ -216,13 +234,6 @@
         "videoProduction": "Production Vidéo",
         "digitalMarketing": "Marketing Digital",
         "other": "Autre"
-      },
-      "placeholders": {
-        "firstName": "Pierre",
-        "lastName": "Martin",
-        "email": "pierre@example.com",
-        "company": "Votre entreprise",
-        "message": "Parlez-nous de vos exigences de projet..."
       }
     },
     "contactInfo": {

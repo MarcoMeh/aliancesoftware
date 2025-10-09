@@ -48,9 +48,11 @@ const Products = () => {
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
                 {/*  CHANGED THESE LINES  */}
                 <span className="gradient-text">{t('productsSection.headingPart1')}</span>
+              </h1>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                {/*  CHANGED THESE LINES  */}
                 <span className="text-foreground">{t('productsSection.headingPart2')}</span>
               </h1>
-              
               <p className="text-xl text-black max-w-3xl mx-auto">
                 {/*  CHANGED THIS LINE  */}
                 {t('productsSection.subheading')}
