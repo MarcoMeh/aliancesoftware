@@ -44,7 +44,7 @@ export const allProducts: Product[] = [
     fullDescription: 'Aliance School Manager is a comprehensive system that helps schools efficiently manage students, employees, classes, finances, and schedules with a user-friendly interface and detailed analytics.',
     category: 'Education',
     rating: 4.9,
-    users: '500+',
+    users: '10+',
     features: [
       'Multilingual support',
       'Role-based task management',
@@ -61,10 +61,7 @@ export const allProducts: Product[] = [
     image: alianceSchoolImg,
     screenshots: [
       alianceSchoolImg,
-      schoolScreenshot1, // Use the imported variable
-      schoolScreenshot2,
-      schoolScreenshot3,
-      schoolScreenshot4,
+  
     ],
     videoId: 'playlist?list=PLWrTRSMeQtR3PuADMYKt1GT-GXjBbJYaS',
     pricing: '15000.00 DA'

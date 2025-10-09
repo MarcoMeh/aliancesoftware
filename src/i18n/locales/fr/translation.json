@@ -1,6 +1,6 @@
 {
   "hero": {
-    "tagline": "Construire le logiciel de demain dès aujourd'hui",
+    "tagline": "Construire le logiciel de demain, aujourd'hui",
     "mainHeading": "Logiciels Innovants",
     "mainHeadingSpan": "Solutions & Services",
     "subheading": "Transformez vos idées en produits logiciels puissants. Nous développons des applications de pointe, créons des sites web époustouflants et fournissons des solutions numériques complètes qui mènent au succès.",
@@ -9,13 +9,16 @@
     "stats": {
       "productsLaunched": "Produits Lancés",
       "happyClients": "Clients Satisfaits",
-      "yearsExperience": "Années d'Expérience",
-      "successRate": "Taux de Réussite"
+      "yearsExperience": "Années d'expérience",
+      "successRate": "Taux de succès"
     }
   },
   "common": {
     "darkMode": "Mode Sombre",
-    "lightMode": "Mode Clair"
+    "lightMode": "Mode Clair",
+    "error": "Erreur",
+    "errorMessage": "Une erreur est survenue : ",
+    "submitting": "Envoi en cours..."
   },
   "navigation": {
     "home": "Accueil",
@@ -30,12 +33,14 @@
     "featuredProducts": "Produits Phares",
     "headingPart1": "Logiciels Puissants",
     "headingPart2": "Conçus pour le Succès",
-    "subheading": "Découvrez notre collection de solutions logicielles conçues professionnellement pour stimuler la productivité, renforcer la sécurité et rationaliser votre flux de travail.",
+    "subheading": "Découvrez notre collection de solutions logicielles professionnelles conçues pour augmenter la productivité, améliorer la sécurité et rationaliser votre flux de travail.",
+    "searchPlaceholder": "Rechercher des produits...",
+    "filterButton": "Filtrer",
     "status": {
       "popular": "Populaire",
       "new": "Nouveau",
       "featured": "En Vedette",
-      "updated": "Mis à Jour"
+      "updated": "Mis à jour"
     },
     "learnMore": "En savoir plus",
     "demo": "Démo",
@@ -44,9 +49,9 @@
   },
   "servicesSection": {
     "ourServices": "Nos Services",
-    "headingPart1": "Suite Complète de Solutions",
-    "headingPart2": "Numériques",
-    "subheading": "Du concept au déploiement, nous fournissons des services numériques de bout en bout qui transforment vos idées commerciales en produits numériques et campagnes marketing réussies.",
+    "headingPart1": "Suite de Solutions",
+    "headingPart2": "Numériques Complètes",
+    "subheading": "Du concept au déploiement, nous fournissons des services numériques de bout en bout qui transforment vos idées commerciales en produits numériques et campagnes marketing réussis.",
     "serviceItems": {
       "softwareDev": {
         "title": "Développement Logiciel",
@@ -62,73 +67,146 @@
         "title": "Création de Sites Web",
         "description": "Sites web professionnels qui favorisent l'engagement et offrent des expériences utilisateur exceptionnelles.",
         "features": {
-          "responsiveDesign": "Design Responsif",
+          "responsiveDesign": "Design Responsive",
           "eCommerce": "E-commerce",
           "cmsIntegration": "Intégration CMS",
           "seoOptimization": "Optimisation SEO"
         }
       },
       "brandingPackages": {
-        "title": "Forfaits Branding Complets",
-        "description": "Solutions complètes d'identité de marque, y compris la conception de logos et les ressources pour les médias sociaux.",
+        "title": "Forfaits de Branding Complet",
+        "description": "Solutions complètes d'identité de marque incluant la conception de logo et les actifs pour les médias sociaux.",
         "features": {
           "logoDesign": "Conception de Logo",
           "brandGuidelines": "Directives de Marque",
           "socialMediaPosts": "Publications sur les Médias Sociaux",
-          "marketingMaterials": "Matériel Marketing"
+          "marketingMaterials": "Matériels Marketing"
         }
       },
       "videoProduction": {
         "title": "Production Vidéo",
-        "description": "Montage vidéo professionnel et création vidéo assistée par IA pour tous vos besoins en contenu.",
+        "description": "Montage vidéo professionnel et création vidéo assistée par IA pour tous vos besoins de contenu.",
         "features": {
           "videoEditing": "Montage Vidéo",
-          "aiVideoGeneration": "Génération Vidéo par IA",
-          "motionGraphics": "Animations Graphiques",
+          "aiVideoGeneration": "Génération Vidéo IA",
+          "motionGraphics": "Graphiques Animés",
           "postProduction": "Post-Production"
         }
       },
       "digitalMarketing": {
         "title": "Marketing Digital",
-        "description": "Stratégies de marketing digital complètes pour développer votre présence en ligne et votre portée.",
+        "description": "Stratégies de marketing numérique complètes pour développer votre présence en ligne et votre portée.",
         "features": {
           "socialMediaAds": "Publicités sur les Médias Sociaux",
           "contentCreation": "Création de Contenu",
           "influencerCampaigns": "Campagnes d'Influenceurs",
-          "analyticsReporting": "Analyses et Rapports"
+          "analyticsReporting": "Analyse & Rapports"
         }
       }
     },
     "learnMore": "En savoir plus",
     "bottomCta": {
       "tagline": "Prêt à démarrer votre projet ?",
-      "headingPart1": "Construisons quelque chose de",
-      "headingPart2": "Incroyable Ensemble",
-      "description": "Contactez notre équipe d'experts pour discuter de vos exigences de projet et recevoir une proposition de solution personnalisée.",
+      "headingPart1": "Construisons quelque chose",
+      "headingPart2": "d'incroyable ensemble",
+      "description": "Contactez notre équipe d'experts pour discuter de vos besoins de projet et recevoir une proposition de solution personnalisée.",
       "requestQuote": "Demander un devis",
-      "viewPortfolio": "Voir le portfolio"
+      "viewPortfolio": "Voir le Portfolio"
     }
   },
-  "productsPage": {
-    "headingPart1": "Nos",
-    "headingPart2": "Produits",
-    "subheading": "Découvrez notre collection complète de solutions logicielles professionnelles conçues pour améliorer la productivité et optimiser les flux de travail.",
-    "searchPlaceholder": "Rechercher des produits...",
-    "filterButton": "Filtrer"
+  "productDetails": {
+    "notFound": {
+      "title": "Produit Introuvable",
+      "backButton": "Retour aux produits"
+    },
+    "backToProducts": "Retour aux produits",
+    "startFreeTrialButton": "Démarrer l'essai gratuit",
+    "watchDemoVideo": "Voir la vidéo de démonstration",
+    "downloadForm": {
+      "title": "Obtenez votre essai gratuit d'Aliance School Manager",
+      "description": "Veuillez fournir vos coordonnées pour démarrer le téléchargement de votre essai gratuit.",
+      "note": "Après 3 jours, contactez l'agence pour obtenir votre clé",
+      "submitButton": "Télécharger l'essai gratuit",
+      "successTitle": "Demande Soumise !",
+      "successDescription": "Votre téléchargement va commencer sous peu.",
+      "submitError": "Échec de l'envoi du formulaire : {statusText}"
+    },
+    "contactForm": {
+      "title": "Contacter notre équipe commerciale",
+      "description": "Vous avez d'autres questions ou besoin d'une démonstration personnalisée ? Remplissez le formulaire ci-dessous.",
+      "submitButton": "Envoyer la demande",
+      "successTitle": "Demande de Contact Envoyée !",
+      "successDescription": "Nous vous contacterons dans les 24 heures concernant {productName}.",
+      "submitError": "Échec de l'envoi du formulaire de contact : {statusText}"
+    },
+    "formLabels": {
+      "yourName": "Votre Nom",
+      "yourEmail": "Votre Email",
+      "phoneNumber": "Numéro de Téléphone",
+      "companyOptional": "Entreprise (Optionnel)",
+      "socialMediaLinkOptional": "Lien Réseaux Sociaux (Optionnel)",
+      "messageOptional": "Message (Optionnel)"
+    },
+    "formPlaceholders": {
+      "fullName": "Jean Dupont",
+      "yourEmail": "jean.dupont@example.com",
+      "phoneNumber": "(01) 23 45 67 89",
+      "company": "Votre Entreprise",
+      "socialMediaLink": "Lien Instagram ou Facebook",
+      "message": "Comment pouvons-nous vous aider ?"
+    },
+    "carousel": {
+      "previousScreenshot": "Capture d'écran précédente",
+      "nextScreenshot": "Capture d'écran suivante",
+      "viewScreenshot": "Voir la capture d'écran {index}"
+    },
+    "features": {
+      "title": "Fonctionnalités Clés",
+      "description": "Tout ce dont vous avez besoin pour réussir avec {productName}"
+    },
+    "benefits": {
+      "title": "Avantages Clés",
+      "description": "Comment {productName} transforme votre entreprise"
+    },
+    "videoSection": {
+      "title": "Découvrez {productName} en Action",
+      "description": "Regardez notre présentation détaillée pour voir comment {productName} peut transformer votre flux de travail",
+      "iframeTitle": "Vidéo de démonstration de {productName}"
+    },
+    "products": {
+      "1": {
+        "name": "Aliance School Manager",
+        "description": "Système complet de gestion scolaire pour suivre efficacement les étudiants, les employés, les finances et les cours.",
+        "fullDescription": "Aliance School Manager est un système complet qui aide les écoles à gérer efficacement les étudiants, les employés, les classes, les finances et les horaires grâce à une interface conviviale et des analyses détaillées.",
+        "category": "Éducation",
+        "features": [
+          "Support multilingue",
+          "Gestion des tâches basée sur les rôles",
+          "Suivi des finances et des paiements",
+          "Planification des cours et des classes"
+        ],
+        "benefits": [
+          "Rationaliser l'administration scolaire",
+          "Améliorer la communication enseignant-élève",
+          "Gestion précise des finances et des paiements",
+          "Prise de décision basée sur les données"
+        ]
+      }
+    }
   },
   "contactSection": {
     "getInTouch": "Contactez-nous",
     "headingPart1": "Prêt à démarrer",
-    "headingPart2": "Votre projet ?",
-    "subheading": "Nous serions ravis d'entendre parler de votre projet et de discuter de la manière dont nous pouvons vous aider à concrétiser votre vision. Contactez-nous par l'une des méthodes ci-dessous.",
+    "headingPart2": "Votre Projet ?",
+    "subheading": "Nous serions ravis d'en savoir plus sur votre projet et de discuter de la manière dont nous pouvons vous aider à concrétiser votre vision. Contactez-nous par l'une des méthodes ci-dessous.",
     "sendMessage": {
       "title": "Envoyez-nous un message",
       "description": "Remplissez le formulaire ci-dessous et nous vous répondrons dans les 24 heures.",
       "firstName": "Prénom",
-      "lastName": "Nom de famille",
-      "email": "E-mail",
-      "companyOptional": "Entreprise (Facultatif)",
-      "projectType": "Type de projet",
+      "lastName": "Nom",
+      "email": "Email",
+      "companyOptional": "Entreprise (Optionnel)",
+      "projectType": "Type de Projet",
       "message": "Message",
       "sendButton": "Envoyer le message",
       "projectTypeOptions": {
@@ -140,35 +218,35 @@
         "other": "Autre"
       },
       "placeholders": {
-        "firstName": "Jean",
-        "lastName": "Dupont",
-        "email": "jean@example.com",
+        "firstName": "Pierre",
+        "lastName": "Martin",
+        "email": "pierre@example.com",
         "company": "Votre entreprise",
-        "message": "Parlez-nous de vos besoins de projet..."
+        "message": "Parlez-nous de vos exigences de projet..."
       }
     },
     "contactInfo": {
       "emailUs": {
-        "title": "Envoyez-nous un e-mail",
-        "description": "Envoyez-nous un e-mail à tout moment"
+        "title": "Envoyez-nous un Email",
+        "description": "Envoyez-nous un email à tout moment"
       },
       "callUs": {
         "title": "Appelez-nous",
-        "description": "Tout jours de 8h à 18h"
+        "description": "tous les jours de 8h à 18h"
       },
       "visitUs": {
-        "title": "Venez nous rendre visite",
-        "description": "Venez visiter notre bureau"
+        "title": "Rendez-nous visite",
+        "description": "Venez visiter nos bureaux"
       }
     },
     "followUs": {
       "title": "Suivez-nous",
-      "description": "Restez informé de nos derniers projets et insights"
+      "description": "Restez informé de nos derniers projets et aperçus"
     },
     "newsletter": {
       "title": "Newsletter",
       "description": "Abonnez-vous pour recevoir les mises à jour sur les nouveaux produits et services",
-      "placeholder": "Entrez votre e-mail",
+      "placeholder": "Entrez votre email",
       "subscribeButton": "S'abonner",
       "privacyPolicy": "Nous respectons votre vie privée. Désabonnez-vous à tout moment."
     }
@@ -176,11 +254,11 @@
   "aboutPage": {
     "header": {
       "title": "À Propos d'Aliance Software",
-      "description": "Nous sommes une équipe passionnée d'innovateurs dédiée à la création de solutions logicielles qui autonomisent les entreprises et transforment les expériences numériques."
+      "description": "Nous sommes une équipe de passionnés innovateurs dédiés à la création de solutions logicielles qui autonomisent les entreprises et transforment les expériences numériques."
     },
     "mission": {
       "title": "Notre Mission",
-      "description": "Fournir des solutions logicielles innovantes qui favorisent la transformation numérique et permettent aux entreprises d'atteindre leurs objectifs."
+      "description": "Fournir des solutions logicielles innovantes qui stimulent la transformation numérique et permettent aux entreprises d'atteindre leurs objectifs."
     },
     "vision": {
       "title": "Notre Vision",
@@ -188,16 +266,16 @@
     },
     "values": {
       "title": "Nos Valeurs",
-      "description": "L'innovation, l'excellence, l'intégrité et la réussite de nos clients sont au cœur de tout ce que nous faisons."
+      "description": "L'innovation, l'excellence, l'intégrité et le succès client sont au cœur de tout ce que nous faisons."
     },
     "journey": {
       "title": "Notre Parcours",
-      "description": "Étapes clés de la croissance de notre entreprise"
+      "description": "Les étapes clés de la croissance de notre entreprise"
     },
     "milestones": {
       "2024": {
         "title": "Fondation de l'entreprise",
-        "description": "Démarrage avec une vision de créer des solutions logicielles innovantes"
+        "description": "Commencé avec une vision de créer des solutions logicielles innovantes"
       },
       "2025_product": {
         "title": "Lancement du premier produit majeur",
@@ -205,17 +283,17 @@
       },
       "2025_team": {
         "title": "Expansion de l'équipe",
-        "description": "Développement de l'équipe à plus de 6 professionnels talentueux"
+        "description": "Croissance de l'équipe à plus de 6 professionnels talentueux"
       }
     },
     "team": {
-      "title": "Rencontrez Notre Équipe",
+      "title": "Rencontrez notre Équipe",
       "description": "Les individus talentueux derrière notre succès"
     },
     "teamMembers": {
       "ali_ceo": {
         "name": "Ali Mehemmai",
-        "role": "PDG et Fondateur",
+        "role": "PDG & Fondateur",
         "expertise": "Leadership Stratégique"
       },
       "fatima_cto": {
@@ -225,7 +303,7 @@
       },
       "fatima_design": {
         "name": "Fatima",
-        "role": "Responsable du Design",
+        "role": "Chef de Design",
         "expertise": "Expérience Utilisateur"
       },
       "ali_developer": {
@@ -235,8 +313,8 @@
       }
     },
     "cta": {
-      "title": "Envie de Rejoindre Notre Équipe ?",
-      "description": "Nous sommes toujours à la recherche de personnes talentueuses pour rejoindre notre équipe en pleine croissance. Consultez nos offres d'emploi actuelles.",
+      "title": "Vous voulez rejoindre notre équipe ?",
+      "description": "Nous recherchons toujours des personnes talentueuses pour rejoindre notre équipe grandissante. Consultez nos offres d'emploi actuelles.",
       "button": "Voir les Carrières"
     }
   }

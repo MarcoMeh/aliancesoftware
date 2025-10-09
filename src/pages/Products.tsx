@@ -4,10 +4,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { ArrowRight, Download, ExternalLink, Star, Users, Search, Filter } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { allProducts } from '@/data/productsData';
-import { useTranslation } from 'react-i18next'; // Import useTranslation
+import { useTranslation } from 'react-i18next';
 
 const Products = () => {
-  const { t } = useTranslation(); // Initialize the translation hook
+  const { t } = useTranslation();
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -19,7 +19,6 @@ const Products = () => {
     }
   };
 
-  // Helper to translate product status
   const getTranslatedStatus = (status: string) => {
     switch (status) {
       case 'Popular': return t('productsSection.status.popular');
@@ -30,8 +29,10 @@ const Products = () => {
     }
   };
 
-  // Helper to translate product specific text from data (similar to ProductDetails)
   const translateProductField = (productId: number, key: string, defaultValue: string) => {
+    // Note: It's usually better to have these in the main translation file,
+    // but this approach also works if your product data is dynamic.
+    // Ensure the keys like 'productDetails.products.1.name' exist.
     return t(`productDetails.products.${productId}.${key}`, defaultValue);
   };
 
@@ -45,11 +46,14 @@ const Products = () => {
           <div className="container mx-auto px-6">
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                <span className="gradient-text">{t('productsPage.headingPart1')}</span> {/* Translated */}
-                <span className="text-foreground">{t('productsPage.headingPart2')}</span> {/* Translated (if you want two parts) */}
+                {/*  CHANGED THESE LINES  */}
+                <span className="gradient-text">{t('productsSection.headingPart1')}</span>
+                <span className="text-foreground">{t('productsSection.headingPart2')}</span>
               </h1>
+              
               <p className="text-xl text-black max-w-3xl mx-auto">
-                {t('productsPage.subheading')} {/* Translated */}
+                {/*  CHANGED THIS LINE  */}
+                {t('productsSection.subheading')}
               </p>
             </div>
 
@@ -58,13 +62,15 @@ const Products = () => {
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black w-5 h-5" />
                 <Input
-                  placeholder={t('productsPage.searchPlaceholder')}
+                  // You'll need to add a 'productsSection.searchPlaceholder' key to your JSON
+                  placeholder={t('productsSection.searchPlaceholder')}
                   className="pl-10 bg-card/50 border-border/50"
                 />
               </div>
               <Button variant="outline" className="gap-2">
                 <Filter className="w-4 h-4" />
-                {t('productsPage.filterButton')}
+                {/* You'll need to add a 'productsSection.filterButton' key to your JSON */}
+                {t('productsSection.filterButton')}
               </Button>
             </div>
           </div>

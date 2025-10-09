@@ -31,6 +31,8 @@
     "headingPart1": "Powerful Software",
     "headingPart2": "Built for Success",
     "subheading": "Discover our collection of professionally crafted software solutions designed to boost productivity, enhance security, and streamline your workflow.",
+    "searchPlaceholder": "Search products...",
+    "filterButton": "Filter",
     "status": {
       "popular": "Popular",
       "new": "New",
