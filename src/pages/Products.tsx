@@ -5,6 +5,7 @@ import { ArrowRight, Download, ExternalLink, Star, Users, Search, Filter } from 
 import { Input } from '@/components/ui/input';
 import { allProducts } from '@/data/productsData';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom'; // <--- IMPORTANT: Add this import
 
 const Products = () => {
   const { t } = useTranslation();
@@ -30,9 +31,6 @@ const Products = () => {
   };
 
   const translateProductField = (productId: number, key: string, defaultValue: string) => {
-    // Note: It's usually better to have these in the main translation file,
-    // but this approach also works if your product data is dynamic.
-    // Ensure the keys like 'productDetails.products.1.name' exist.
     return t(`productDetails.products.${productId}.${key}`, defaultValue);
   };
 
@@ -46,15 +44,12 @@ const Products = () => {
           <div className="container mx-auto px-6">
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                {/*  CHANGED THESE LINES  */}
                 <span className="gradient-text">{t('productsSection.headingPart1')}</span>
               </h1>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                {/*  CHANGED THESE LINES  */}
                 <span className="text-foreground">{t('productsSection.headingPart2')}</span>
               </h1>
               <p className="text-xl text-black max-w-3xl mx-auto">
-                {/*  CHANGED THIS LINE  */}
                 {t('productsSection.subheading')}
               </p>
             </div>
@@ -64,14 +59,12 @@ const Products = () => {
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black w-5 h-5" />
                 <Input
-                  // You'll need to add a 'productsSection.searchPlaceholder' key to your JSON
                   placeholder={t('productsSection.searchPlaceholder')}
                   className="pl-10 bg-card/50 border-border/50"
                 />
               </div>
               <Button variant="outline" className="gap-2">
                 <Filter className="w-4 h-4" />
-                {/* You'll need to add a 'productsSection.filterButton' key to your JSON */}
                 {t('productsSection.filterButton')}
               </Button>
             </div>
@@ -83,80 +76,74 @@ const Products = () => {
           <div className="container mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {allProducts.map((product, index) => (
-                <Card
-                  key={product.id}
-                  className="group bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 card-hover"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <CardHeader className="relative">
-                    {/* Status Badge */}
-                    <div className={`absolute top-4 right-4 ${getStatusColor(product.status)} text-white text-xs px-2 py-1 rounded-full font-medium`}>
-                      {getTranslatedStatus(product.status)}
-                    </div>
-
-                    {/* Product Image */}
-                    <div
-                      className="w-full h-48 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-lg mb-4 bg-cover bg-center"
-                      style={{ backgroundImage: `url(${product.image})` }}
-                    />
-
-                    <CardTitle className="text-xl font-semibold group-hover:text-primary transition-colors">
-                      {translateProductField(product.id, 'name', product.name)}
-                    </CardTitle>
-
-                    <CardDescription className="text-black">
-                      {translateProductField(product.id, 'description', product.description)}
-                    </CardDescription>
-                  </CardHeader>
-
-                  <CardContent className="space-y-4">
-                    {/* Rating & Users */}
-                    <div className="flex items-center justify-between text-sm">
-                      <div className="flex items-center gap-1">
-                        <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                        <span className="font-medium">{product.rating}</span>
+                // <--- IMPORTANT: Wrap the Card with Link
+                <Link key={product.id} to={`/product/${product.id}`} className="block">
+                  <Card
+                    className="group bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 card-hover h-full" // Added h-full for consistent height
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <CardHeader className="relative">
+                      {/* Status Badge */}
+                      <div className={`absolute top-4 right-4 ${getStatusColor(product.status)} text-white text-xs px-2 py-1 rounded-full font-medium`}>
+                        {getTranslatedStatus(product.status)}
                       </div>
-                      <div className="flex items-center gap-1 text-black">
-                        <Users className="w-4 h-4" />
-                        <span>{product.users} {t('productsSection.users')}</span>
-                      </div>
-                    </div>
 
-                    {/* Features */}
-                    <div className="flex flex-wrap gap-2">
-                      {product.features.map((feature, i) => (
-                        <span
-                          key={i}
-                          className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full"
+                      {/* Product Image */}
+                      <div
+                        className="w-full h-48 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-lg mb-4 bg-cover bg-center"
+                        style={{ backgroundImage: `url(${product.image})` }}
+                      />
+
+                      <CardTitle className="text-xl font-semibold group-hover:text-primary transition-colors">
+                        {translateProductField(product.id, 'name', product.name)}
+                      </CardTitle>
+
+                      <CardDescription className="text-black">
+                        {translateProductField(product.id, 'description', product.description)}
+                      </CardDescription>
+                    </CardHeader>
+
+                    <CardContent className="space-y-4">
+                      {/* Rating & Users */}
+                      <div className="flex items-center justify-between text-sm">
+                        <div className="flex items-center gap-1">
+                          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                          <span className="font-medium">{product.rating}</span>
+                        </div>
+                        <div className="flex items-center gap-1 text-black">
+                          <Users className="w-4 h-4" />
+                          <span>{product.users} {t('productsSection.users')}</span>
+                        </div>
+                      </div>
+
+                      {/* Features */}
+                      <div className="flex flex-wrap gap-2">
+                        {product.features.map((feature, i) => (
+                          <span
+                            key={i}
+                            className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full"
+                          >
+                            {translateProductField(product.id, `features.${i}`, feature)}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Actions - Removed onClick handlers as the entire card navigates */}
+                      <div className="flex gap-3 pt-4">
+                        <Button
+                          variant="default"
+                          size="sm"
+                          className="flex-1 group"
+                          // onClick={(e) => { e.stopPropagation(); window.location.href = `/product/${product.id}`}}
                         >
-                          {translateProductField(product.id, `features.${i}`, feature)}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Actions */}
-                    <div className="flex gap-3 pt-4">
-                      <Button
-                        variant="default"
-                        size="sm"
-                        className="flex-1 group"
-                        onClick={() => window.location.href = `/product/${product.id}`}
-                      >
-                        <Download className="w-4 h-4" />
-                        {t('productsSection.learnMore')}
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => window.location.href = `/product/${product.id}`}
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                        {t('productsSection.demo')}
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+                          <Download className="w-4 h-4" />
+                          {t('productsSection.learnMore')}
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link> // <--- End of Link wrapper
               ))}
             </div>
           </div>

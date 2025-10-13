@@ -67,7 +67,7 @@ export const allProducts: Product[] = [
     ],
     videoId: 'playlist?list=PLWrTRSMeQtR3PuADMYKt1GT-GXjBbJYaS',
     pricing: '15000.00 DA',
-    downloadPath: '/downloads/Aliance School Manager.rar',
+    downloadPath: '/downloads/Aliance Demo Setup.exe',
   },
   {
     id: 2, // New Product ID
@@ -99,6 +99,6 @@ export const allProducts: Product[] = [
     ],
     videoId: undefined, // Or a YouTube ID if you have a demo video
     pricing: '12000.00 DA', // Example pricing
-    downloadPath: '/downloads/Aliance Library Manager.rar',
+    downloadPath: '/downloads/Library Demo Setup',
   }
 ];

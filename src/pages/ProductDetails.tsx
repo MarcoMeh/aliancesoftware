@@ -211,6 +211,7 @@ const ProductDetails = () => {
                 </p>
 
                 <div className="flex gap-4">
+                  {/* Only the "Start Free Trial" Button remains */}
                   <Dialog open={isDownloadModalOpen} onOpenChange={setIsDownloadModalOpen}>
                     <DialogTrigger asChild>
                       <Button size="lg" className="gap-2">
@@ -302,6 +303,7 @@ const ProductDetails = () => {
                       </Form>
                     </DialogContent>
                   </Dialog>
+                  {/* The Demo Button and its DialogTrigger have been removed from here */}
                 </div>
               </div>
 
