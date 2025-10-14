@@ -211,7 +211,6 @@ const ProductDetails = () => {
                 </p>
 
                 <div className="flex gap-4">
-                  {/* Only the "Start Free Trial" Button remains */}
                   <Dialog open={isDownloadModalOpen} onOpenChange={setIsDownloadModalOpen}>
                     <DialogTrigger asChild>
                       <Button size="lg" className="gap-2">
@@ -303,7 +302,6 @@ const ProductDetails = () => {
                       </Form>
                     </DialogContent>
                   </Dialog>
-                  {/* The Demo Button and its DialogTrigger have been removed from here */}
                 </div>
               </div>
 
@@ -435,10 +433,10 @@ const ProductDetails = () => {
           <section className="py-16">
             <div className="container mx-auto px-6">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold mb-4">{t('productDetails.videoSection.title', { productName: product.name })}</h2>
+                <h2 className="text-3xl font-bold mb-4">
+                                      {t('productDetails.videoSection.title', { productName: product.name })}</h2>
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                  {t('productDetails.videoSection.description', { productName: product.name })}
-                </p>
+                                      {t('productDetails.videoSection.description', { productName: product.name })}</p>
               </div>
 
               <div className="max-w-4xl mx-auto">

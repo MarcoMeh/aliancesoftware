@@ -136,7 +136,7 @@
       "description": "هل لديك المزيد من الأسئلة أو تحتاج إلى عرض توضيحي مخصص؟ املأ النموذج أدناه.",
       "submitButton": "إرسال الطلب",
       "successTitle": "تم إرسال طلب الاتصال!",
-      "successDescription": "سنتصل بك في غضون 24 ساعة بخصوص {productName}.",
+      "successDescription": "سنتصل بك في غضون 24 ساعة بخصوص Aliance software.",
       "submitError": "فشل إرسال نموذج الاتصال: {statusText}"
     },
     "formLabels": {
@@ -162,17 +162,16 @@
     },
     "features": {
       "title": "الميزات الرئيسية",
-      "description": "كل ما تحتاجه للنجاح مع {productName}"
+      "description": "كل ما تحتاجه للنجاح مع Aliance software"
     },
     "benefits": {
       "title": "الفوائد الرئيسية",
-      "description": "كيف يغير {productName} عملك"
+      "description": "كيف يغير Aliance software عملك"
     },
     "videoSection": {
-      "title": "شاهد {productName} قيد العمل",
-      "description": "شاهد دليلنا التفصيلي لترى كيف يمكن لـ {productName} أن يحول سير عملك",
-      "iframeTitle": "فيديو توضيحي لـ {productName}"
-    },
+  "title": "شاهد Aliance software قيد العمل",
+  "description": "شاهد دليلنا التفصيلي لترى كيف يمكن لـ Aliance software أن يحول سير عملك",
+  "iframeTitle": "فيديو توضيحي لـ Aliance software"},
     "products": {
       "1": {
         "name": "Aliance School Manager",
@@ -303,7 +302,7 @@
     },
     "teamMembers": {
       "ali_ceo": {
-        "name": "علي محماي",
+        "name": "علي مهمائي",
         "role": "الرئيس التنفيذي والمؤسس",
         "expertise": "القيادة الاستراتيجية"
       },
