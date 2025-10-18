@@ -1,0 +1,318 @@
+{
+  "hero": {
+    "tagline": "Building Tomorrow's Software Today",
+    "mainHeading": "Innovative Software",
+    "mainHeadingSpan": "Solutions & Services",
+    "subheading": "Transform your ideas into powerful software products. We develop cutting-edge applications, create stunning websites, and provide comprehensive digital solutions that drive success.",
+    "exploreProducts": "Explore Products",
+    "requestService": "Request Service",
+    "stats": {
+      "productsLaunched": "Products Launched",
+      "happyClients": "Happy Clients",
+      "yearsExperience": "Years Experience",
+      "successRate": "Success Rate"
+    }
+  },
+  "common": {
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode"
+  },
+  "navigation": {
+    "home": "Home",
+    "products": "Products",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "contactUsNow": "Contact Us Now",
+    "innovationExcellence": "Innovation & Excellence"
+  },
+  "productsSection": {
+    "featuredProducts": "Featured Products",
+    "headingPart1": "Powerful Software",
+    "headingPart2": "Built for Success",
+    "subheading": "Discover our collection of professionally crafted software solutions designed to boost productivity, enhance security, and streamline your workflow.",
+    "searchPlaceholder": "Search products...",
+    "filterButton": "Filter",
+    "status": {
+      "popular": "Popular",
+      "new": "New",
+      "featured": "Featured",
+      "updated": "Updated"
+    },
+    "learnMore": "Learn More",
+    "demo": "Demo",
+    "viewAllProducts": "View All Products",
+    "users": "Users"
+  },
+  "servicesSection": {
+    "ourServices": "Our Services",
+    "headingPart1": "Complete Digital",
+    "headingPart2": "Solutions Suite",
+    "subheading": "From concept to deployment, we provide end-to-end digital services that transform your business ideas into successful digital products and marketing campaigns.",
+    "serviceItems": {
+      "softwareDev": {
+        "title": "Software Development",
+        "description": "Custom applications, web platforms, and mobile solutions built with cutting-edge technologies.",
+        "features": {
+          "webApps": "Web Applications",
+          "mobileApps": "Mobile Apps",
+          "apiDev": "API Development",
+          "cloudSolutions": "Cloud Solutions"
+        }
+      },
+      "websiteCreation": {
+        "title": "Website Creation",
+        "description": "Professional websites that drive engagement and deliver exceptional user experiences.",
+        "features": {
+          "responsiveDesign": "Responsive Design",
+          "eCommerce": "E-commerce",
+          "cmsIntegration": "CMS Integration",
+          "seoOptimization": "SEO Optimization"
+        }
+      },
+      "brandingPackages": {
+        "title": "Full Branding Packages",
+        "description": "Complete brand identity solutions including logo design and social media assets.",
+        "features": {
+          "logoDesign": "Logo Design",
+          "brandGuidelines": "Brand Guidelines",
+          "socialMediaPosts": "Social Media Posts",
+          "marketingMaterials": "Marketing Materials"
+        }
+      },
+      "videoProduction": {
+        "title": "Video Production",
+        "description": "Professional video editing and AI-powered video creation for all your content needs.",
+        "features": {
+          "videoEditing": "Video Editing",
+          "aiVideoGeneration": "AI Video Generation",
+          "motionGraphics": "Motion Graphics",
+          "postProduction": "Post-Production"
+        }
+      },
+      "digitalMarketing": {
+        "title": "Digital Marketing",
+        "description": "Comprehensive digital marketing strategies to grow your online presence and reach.",
+        "features": {
+          "socialMediaAds": "Social Media Ads",
+          "contentCreation": "Content Creation",
+          "influencerCampaigns": "Influencer Campaigns",
+          "analyticsReporting": "Analytics & Reporting"
+        }
+      }
+    },
+    "learnMore": "Learn More",
+    "bottomCta": {
+      "tagline": "Ready to Start Your Project?",
+      "headingPart1": "Let's Build Something",
+      "headingPart2": "Amazing Together",
+      "description": "Get in touch with our expert team to discuss your project requirements and receive a customized solution proposal.",
+      "requestQuote": "Request Quote",
+      "viewPortfolio": "View Portfolio"
+    }
+  },
+  "productDetails": {
+    "notFound": {
+      "title": "Product Not Found",
+      "backButton": "Back to Products"
+    },
+    "backToProducts": "Back to Products",
+    "startFreeTrialButton": "Start Free Trial",
+    "watchDemoVideo": "Watch Demo Video",
+    "downloadForm": {
+      "title": "Get Your Free Trial of Aliance School Manager",
+      "description": "Please provide your contact information to start your free trial download.",
+      "note": "After 3 days contact the agency to get Your Key",
+      "submitButton": "Download Free Trial",
+      "successTitle": "Request Submitted!",
+      "successDescription": "Your download will begin shortly.",
+      "submitError": "Form submission failed: {statusText}"
+    },
+    "contactForm": {
+      "title": "Contact Our Sales Team",
+      "description": "Have more questions or need a personalized demo? Fill out the form below.",
+      "submitButton": "Submit Request",
+      "successTitle": "Contact Request Sent!",
+      "successDescription": "We'll contact you within 24 hours about {productName}.",
+      "submitError": "Contact form submission failed: {statusText}"
+    },
+    "formLabels": {
+      "yourName": "Your Name",
+      "yourEmail": "Your Email",
+      "phoneNumber": "Phone Number",
+      "companyOptional": "Company (Optional)",
+      "socialMediaLinkOptional": "Social Media Link (Optional)",
+      "messageOptional": "Message (Optional)"
+    },
+    "formPlaceholders": {
+      "fullName": "John Doe",
+      "yourEmail": "john.doe@example.com",
+      "phoneNumber": "(123) 456-7890",
+      "company": "Acme Corp",
+      "socialMediaLink": "Instagram or Facebook link",
+      "message": "How can we help you?"
+    },
+    "carousel": {
+      "previousScreenshot": "Previous Screenshot",
+      "nextScreenshot": "Next Screenshot",
+      "viewScreenshot": "View screenshot {index}"
+    },
+    "features": {
+      "title": "Key Features",
+      "description": "Everything you need to succeed with {productName}"
+    },
+    "benefits": {
+      "title": "Key Benefits",
+      "description": "How {productName} transforms your business"
+    },
+    "videoSection": {
+      "title": "See {productName} in Action",
+      "description": "Watch our detailed walkthrough to see how {productName} can transform your workflow",
+      "iframeTitle": "{productName} Demo Video"
+    },
+    "products": {
+      "1": {
+        "name": "Aliance School Manager",
+        "description": "Comprehensive school management system for tracking students, employees, finance, and courses efficiently.",
+        "fullDescription": "Aliance School Manager is a comprehensive system that helps schools efficiently manage students, employees, classes, finances, and schedules with a user-friendly interface and detailed analytics.",
+        "category": "Education",
+        "features": [
+          "Multilingual support",
+          "Role-based task management",
+          "Finance & payment tracking",
+          "Course & class scheduling"
+        ],
+        "benefits": [
+          "Streamline school administration",
+          "Improve teacher-student communication",
+          "Accurate finance and payment management",
+          "Data-driven decision making"
+        ]
+      }
+    }
+  },
+  "contactSection": {
+    "getInTouch": "Get In Touch",
+    "headingPart1": "Ready to Start",
+    "headingPart2": "Your Project?",
+    "subheading": "We'd love to hear about your project and discuss how we can help bring your vision to life. Reach out to us using any of the methods below.",
+    "sendMessage": {
+      "title": "Send us a message",
+      "description": "Fill out the form below and we'll get back to you within 24 hours.",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "companyOptional": "Company (Optional)",
+      "projectType": "Project Type",
+      "message": "Message",
+      "sendButton": "Send Message",
+      "projectTypeOptions": {
+        "softwareDevelopment": "Software Development",
+        "websiteCreation": "Website Creation",
+        "brandingPackage": "Branding Package",
+        "videoProduction": "Video Production",
+        "digitalMarketing": "Digital Marketing",
+        "other": "Other"
+      },
+      "placeholders": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john@example.com",
+        "company": "Your Company",
+        "message": "Tell us about your project requirements..."
+      }
+    },
+    "contactInfo": {
+      "emailUs": {
+        "title": "Email Us",
+        "description": "Send us an email anytime"
+      },
+      "callUs": {
+        "title": "Call Us",
+        "description": "all days from 8am to 6pm"
+      },
+      "visitUs": {
+        "title": "Visit Us",
+        "description": "Come visit our office"
+      }
+    },
+    "followUs": {
+      "title": "Follow Us",
+      "description": "Stay updated with our latest projects and insights"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Subscribe to get updates on new products and services",
+      "placeholder": "Enter your email",
+      "subscribeButton": "Subscribe",
+      "privacyPolicy": "We respect your privacy. Unsubscribe at any time."
+    }
+  },
+  "aboutPage": {
+    "header": {
+      "title": "About Aliance Software",
+      "description": "We're a passionate team of innovators dedicated to creating software solutions that empower businesses and transform digital experiences."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "To deliver innovative software solutions that drive digital transformation and empower businesses to achieve their goals."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be the leading provider of cutting-edge software solutions that shape the future of digital innovation."
+    },
+    "values": {
+      "title": "Our Values",
+      "description": "Innovation, excellence, integrity, and customer success are at the core of everything we do."
+    },
+    "journey": {
+      "title": "Our Journey",
+      "description": "Key milestones in our company's growth"
+    },
+    "milestones": {
+      "2024": {
+        "title": "Company Founded",
+        "description": "Started with a vision to create innovative software solutions"
+      },
+      "2025_product": {
+        "title": "First Major Product Launch",
+        "description": "Released Aliance School Manager System"
+      },
+      "2025_team": {
+        "title": "Team Expansion",
+        "description": "Grew to 6+ talented professionals"
+      }
+    },
+    "team": {
+      "title": "Meet Our Team",
+      "description": "The talented individuals behind our success"
+    },
+    "teamMembers": {
+      "ali_ceo": {
+        "name": "Ali Mehemmai",
+        "role": "CEO & Founder",
+        "expertise": "Strategic Leadership"
+      },
+      "fatima_cto": {
+        "name": "Fatima",
+        "role": "CTO",
+        "expertise": "Technical Innovation"
+      },
+      "fatima_design": {
+        "name": "Fatima",
+        "role": "Head of Design",
+        "expertise": "User Experience"
+      },
+      "ali_developer": {
+        "name": "Ali Mehemmai",
+        "role": "Lead Developer",
+        "expertise": "Full-Stack Development"
+      }
+    },
+    "cta": {
+      "title": "Want to Join Our Team?",
+      "description": "We're always looking for talented individuals to join our growing team. Check out our current openings.",
+      "button": "View Careers"
+    }
+  }
+}

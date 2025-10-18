@@ -1,0 +1,331 @@
+{
+  "hero": {
+    "tagline": "نصنع برمجيات الغد اليوم",
+    "mainHeading": "برمجيات مبتكرة",
+    "mainHeadingSpan": "حلول وخدمات",
+    "subheading": "حوّل أفكارك إلى منتجات برمجية قوية. نحن نطور تطبيقات متطورة، نصمم مواقع ويب مذهلة، ونقدم حلولًا رقمية شاملة تدفع بالنجاح.",
+    "exploreProducts": "استكشف المنتجات",
+    "requestService": "اطلب خدمة",
+    "stats": {
+      "productsLaunched": "منتجات أُطلقت",
+      "happyClients": "عملاء سعداء",
+      "yearsExperience": "سنوات خبرة",
+      "successRate": "نسبة نجاح"
+    }
+  },
+  "common": {
+    "darkMode": "الوضع الداكن",
+    "lightMode": "الوضع الفاتح",
+    "error": "خطأ",
+    "errorMessage": "حدث خطأ: ",
+    "submitting": "جاري الإرسال..."
+  },
+  "navigation": {
+    "home": "الرئيسية",
+    "products": "المنتجات",
+    "services": "الخدمات",
+    "about": "حولنا",
+    "contact": "اتصل بنا",
+    "contactUsNow": "اتصل بنا الآن",
+    "innovationExcellence": "الابتكار والتميز"
+  },
+  "productsSection": {
+    "featuredProducts": "منتجات مميزة",
+    "headingPart1": "برمجيات قوية",
+    "headingPart2": "مصممة للنجاح",
+    "subheading": "اكتشف مجموعتنا من الحلول البرمجية المصممة باحترافية لتعزيز الإنتاجية، وتحسين الأمان، وتبسيط سير عملك.",
+    "searchPlaceholder": "ابحث عن المنتجات...",
+    "filterButton": "تصفية",
+    "status": {
+      "popular": "شائع",
+      "new": "جديد",
+      "featured": "مميز",
+      "updated": "محدّث"
+    },
+    "learnMore": "اعرف المزيد",
+    "demo": "تجريبي",
+    "viewAllProducts": "عرض جميع المنتجات",
+    "users": "مستخدمين"
+  },
+  "servicesSection": {
+    "ourServices": "خدماتنا",
+    "headingPart1": "مجموعة حلول رقمية",
+    "headingPart2": "متكاملة",
+    "subheading": "من المفهوم إلى النشر، نقدم خدمات رقمية شاملة تحوّل أفكار عملك إلى منتجات رقمية ناجحة وحملات تسويقية.",
+    "serviceItems": {
+      "softwareDev": {
+        "title": "تطوير البرمجيات",
+        "description": "تطبيقات مخصصة، منصات ويب، وحلول جوال مبنية بأحدث التقنيات.",
+        "features": {
+          "webApps": "تطبيقات الويب",
+          "mobileApps": "تطبيقات الجوال",
+          "apiDev": "تطوير واجهات برمجة التطبيقات (API)",
+          "cloudSolutions": "حلول سحابية"
+        }
+      },
+      "websiteCreation": {
+        "title": "إنشاء المواقع الإلكترونية",
+        "description": "مواقع ويب احترافية تدفع المشاركة وتقدم تجارب مستخدم استثنائية.",
+        "features": {
+          "responsiveDesign": "تصميم متجاوب",
+          "eCommerce": "التجارة الإلكترونية",
+          "cmsIntegration": "تكامل أنظمة إدارة المحتوى (CMS)",
+          "seoOptimization": "تحسين محركات البحث (SEO)"
+        }
+      },
+      "brandingPackages": {
+        "title": "حزم العلامات التجارية الكاملة",
+        "description": "حلول هوية العلامة التجارية الكاملة بما في ذلك تصميم الشعار وأصول وسائل التواصل الاجتماعي.",
+        "features": {
+          "logoDesign": "تصميم الشعار",
+          "brandGuidelines": "إرشادات العلامة التجارية",
+          "socialMediaPosts": "منشورات وسائل التواصل الاجتماعي",
+          "marketingMaterials": "مواد تسويقية"
+        }
+      },
+      "videoProduction": {
+        "title": "إنتاج الفيديو",
+        "description": "تحرير فيديو احترافي وإنشاء فيديو مدعوم بالذكاء الاصطناعي لجميع احتياجات المحتوى الخاصة بك.",
+        "features": {
+          "videoEditing": "تحرير الفيديو",
+          "aiVideoGeneration": "إنشاء الفيديو بالذكاء الاصطناعي",
+          "motionGraphics": "رسوم متحركة (Motion Graphics)",
+          "postProduction": "ما بعد الإنتاج"
+        }
+      },
+      "digitalMarketing": {
+        "title": "التسويق الرقمي",
+        "description": "استراتيجيات تسويق رقمي شاملة لتنمية تواجدك على الإنترنت والوصول.",
+        "features": {
+          "socialMediaAds": "إعلانات وسائل التواصل الاجتماعي",
+          "contentCreation": "إنشاء المحتوى",
+          "influencerCampaigns": "حملات المؤثرين",
+          "analyticsReporting": "التحليلات والتقارير"
+        }
+      }
+    },
+    "learnMore": "اعرف المزيد",
+    "bottomCta": {
+      "tagline": "جاهز لبدء مشروعك؟",
+      "headingPart1": "دعنا نبني شيئًا",
+      "headingPart2": "مدهشًا معًا",
+      "description": "تواصل مع فريق الخبراء لدينا لمناقشة متطلبات مشروعك وتلقي اقتراح حل مخصص.",
+      "requestQuote": "اطلب عرض سعر",
+      "viewPortfolio": "عرض المحفظة"
+    }
+  },
+  "productDetails": {
+    "notFound": {
+      "title": "المنتج غير موجود",
+      "backButton": "العودة إلى المنتجات"
+    },
+    "backToProducts": "العودة إلى المنتجات",
+    "startFreeTrialButton": "ابدأ التجربة المجانية",
+    "watchDemoVideo": "شاهد الفيديو التوضيحي",
+    "downloadForm": {
+      "title": "احصل على نسختك التجريبية المجانية من Aliance School Manager",
+      "description": "يرجى تقديم معلومات الاتصال الخاصة بك لبدء تنزيل النسخة التجريبية المجانية.",
+      "note": "بعد 3 أيام، اتصل بالوكالة للحصول على مفتاحك",
+      "submitButton": "تنزيل التجربة المجانية",
+      "successTitle": "تم إرسال الطلب!",
+      "successDescription": "سيبدأ التنزيل قريبًا.",
+      "submitError": "فشل إرسال النموذج: {statusText}"
+    },
+    "contactForm": {
+      "title": "تواصل مع فريق المبيعات لدينا",
+      "description": "هل لديك المزيد من الأسئلة أو تحتاج إلى عرض توضيحي مخصص؟ املأ النموذج أدناه.",
+      "submitButton": "إرسال الطلب",
+      "successTitle": "تم إرسال طلب الاتصال!",
+      "successDescription": "سنتصل بك في غضون 24 ساعة بخصوص Aliance software.",
+      "submitError": "فشل إرسال نموذج الاتصال: {statusText}"
+    },
+    "formLabels": {
+      "yourName": "اسمك",
+      "yourEmail": "بريدك الإلكتروني",
+      "phoneNumber": "رقم الهاتف",
+      "companyOptional": "الشركة (اختياري)",
+      "socialMediaLinkOptional": "رابط وسائل التواصل الاجتماعي (اختياري)",
+      "messageOptional": "الرسالة (اختياري)"
+    },
+    "formPlaceholders": {
+      "fullName": "محمد علي",
+      "yourEmail": "mohamed.ali@example.com",
+      "phoneNumber": "(123) 456-7890",
+      "company": "شركة ساسمب",
+      "socialMediaLink": "رابط إنستغرام أو فيسبوك",
+      "message": "كيف يمكننا مساعدتك؟"
+    },
+    "carousel": {
+      "previousScreenshot": "لقطة شاشة سابقة",
+      "nextScreenshot": "لقطة شاشة التالية",
+      "viewScreenshot": "عرض لقطة الشاشة {index}"
+    },
+    "features": {
+      "title": "الميزات الرئيسية",
+      "description": "كل ما تحتاجه للنجاح مع Aliance software"
+    },
+    "benefits": {
+      "title": "الفوائد الرئيسية",
+      "description": "كيف يغير Aliance software عملك"
+    },
+    "videoSection": {
+  "title": "شاهد Aliance software قيد العمل",
+  "description": "شاهد دليلنا التفصيلي لترى كيف يمكن لـ Aliance software أن يحول سير عملك",
+  "iframeTitle": "فيديو توضيحي لـ Aliance software"},
+    "products": {
+      "1": {
+        "name": "Aliance School Manager",
+        "description": "نظام شامل لإدارة المدارس لتتبع الطلاب والموظفين والمالية والدورات التدريبية بكفاءة.",
+        "fullDescription": "Aliance School Manager هو نظام شامل يساعد المدارس على إدارة الطلاب والموظفين والفصول والمالية والجداول بكفاءة من خلال واجهة سهلة الاستخدام وتحليلات مفصلة.",
+        "category": "التعليم",
+        "features": [
+          "دعم متعدد اللغات",
+          "إدارة المهام بناءً على الأدوار",
+          "تتبع المالية والمدفوعات",
+          "جدولة الدورات والفصول"
+        ],
+        "benefits": [
+          "تبسيط إدارة المدرسة",
+          "تحسين التواصل بين المعلمين والطلاب",
+          "إدارة دقيقة للمالية والمدفوعات",
+          "اتخاذ القرارات بناءً على البيانات"
+        ]
+      },
+      "2": {
+        "name": "Aliance Library Manager",
+        "description": "نظام بديهي لإدارة موارد المكتبة والرواد وتداول الكتب بكفاءة.",
+        "fullDescription": "يوفر Aliance Library Manager حلاً قويًا للمكتبات لأتمتة الفهرسة، وتتبع الإعارات والإرجاعات، وإدارة حسابات الرواد، وإنشاء تقارير شاملة، مما يعزز العمليات الشاملة للمكتبة.",
+        "category": "إدارة المكتبات",
+        "features": [
+          "الفهرسة والفهرسة الآلية",
+          "إدارة الرواد مع تتبع العضوية",
+          "نظام إعارة الكتب وإرجاعها",
+          "إشعارات التأخير وإدارة الغرامات"
+        ],
+        "benefits": [
+          "تبسيط مهام إدارة المكتبة",
+          "تحسين الوصول إلى موارد المكتبة",
+          "تقليل الأخطاء اليدوية وتوفير الوقت",
+          "تحسين التحكم في المخزون واستخدام الموارد"
+        ]
+      }
+    }
+  },
+  "contactSection": {
+    "getInTouch": "تواصل معنا",
+    "headingPart1": "جاهز لبدء",
+    "headingPart2": "مشروعك؟",
+    "subheading": "نحن نحب أن نسمع عن مشروعك ونناقش كيف يمكننا المساعدة في تحقيق رؤيتك. تواصل معنا باستخدام أي من الطرق أدناه.",
+    "sendMessage": {
+      "title": "أرسل لنا رسالة",
+      "description": "املأ النموذج أدناه وسنتواصل معك في غضون 24 ساعة.",
+      "firstName": "الاسم الأول",
+      "lastName": "اسم العائلة",
+      "email": "البريد الإلكتروني",
+      "companyOptional": "الشركة (اختياري)",
+      "projectType": "نوع المشروع",
+      "message": "الرسالة",
+      "sendButton": "إرسال الرسالة",
+      "projectTypeOptions": {
+        "softwareDevelopment": "تطوير البرمجيات",
+        "websiteCreation": "إنشاء المواقع الإلكترونية",
+        "brandingPackage": "حزمة العلامات التجارية",
+        "videoProduction": "إنتاج الفيديو",
+        "digitalMarketing": "التسويق الرقمي",
+        "other": "أخرى"
+      }
+    },
+    "contactInfo": {
+      "emailUs": {
+        "title": "راسلنا عبر البريد الإلكتروني",
+        "description": "أرسل لنا رسالة بريد إلكتروني في أي وقت"
+      },
+      "callUs": {
+        "title": "اتصل بنا",
+        "description": "جميع الأيام من 8 صباحًا حتى 6 مساءً"
+      },
+      "visitUs": {
+        "title": "زرنا",
+        "description": "تعال لزيارة مكتبنا"
+      }
+    },
+    "followUs": {
+      "title": "تابعنا",
+      "description": "ابقَ على اطلاع بأحدث مشاريعنا ورؤىنا"
+    },
+    "newsletter": {
+      "title": "النشرة الإخبارية",
+      "description": "اشترك للحصول على تحديثات حول المنتجات والخدمات الجديدة",
+      "placeholder": "أدخل بريدك الإلكتروني",
+      "subscribeButton": "اشترك",
+      "privacyPolicy": "نحن نحترم خصوصيتك. يمكنك إلغاء الاشتراك في أي وقت."
+    }
+  },
+  "aboutPage": {
+    "header": {
+      "title": "حول Aliance Software",
+      "description": "نحن فريق شغوف من المبتكرين ملتزمون بإنشاء حلول برمجية تمكن الشركات وتحول التجارب الرقمية."
+    },
+    "mission": {
+      "title": "مهمتنا",
+      "description": "تقديم حلول برمجية مبتكرة تدفع التحول الرقمي وتمكن الشركات من تحقيق أهدافها."
+    },
+    "vision": {
+      "title": "رؤيتنا",
+      "description": "أن نكون المزود الرائد لحلول البرمجيات المتطورة التي تشكل مستقبل الابتكار الرقمي."
+    },
+    "values": {
+      "title": "قيمنا",
+      "description": "الابتكار، التميز، النزاهة، ونجاح العملاء هي جوهر كل ما نقوم به."
+    },
+    "journey": {
+      "title": "رحلتنا",
+      "description": "المحطات الرئيسية في نمو شركتنا"
+    },
+    "milestones": {
+      "2024": {
+        "title": "تأسيس الشركة",
+        "description": "بدأت برؤية لإنشاء حلول برمجية مبتكرة"
+      },
+      "2025_product": {
+        "title": "إطلاق أول منتج رئيسي",
+        "description": "إطلاق نظام Aliance School Manager"
+      },
+      "2025_team": {
+        "title": "توسيع الفريق",
+        "description": "نما الفريق إلى أكثر من 6 مهنيين موهوبين"
+      }
+    },
+    "team": {
+      "title": "قابل فريقنا",
+      "description": "الأفراد الموهوبون وراء نجاحنا"
+    },
+    "teamMembers": {
+      "ali_ceo": {
+        "name": "علي مهمائي",
+        "role": "الرئيس التنفيذي والمؤسس",
+        "expertise": "القيادة الاستراتيجية"
+      },
+      "fatima_cto": {
+        "name": "فاطمة",
+        "role": "المديرة التقنية",
+        "expertise": "الابتكار التقني"
+      },
+      "fatima_design": {
+        "name": "فاطمة",
+        "role": "رئيسة التصميم",
+        "expertise": "تجربة المستخدم"
+      },
+      "ali_developer": {
+        "name": "علي محماي",
+        "role": "مطور رئيسي",
+        "expertise": "تطوير كامل المكدس (Full-Stack)"
+      }
+    },
+    "cta": {
+      "title": "هل تريد الانضمام إلى فريقنا؟",
+      "description": "نحن نبحث دائمًا عن أفراد موهوبين للانضمام إلى فريقنا المتنامي. تحقق من الشواغر الحالية.",
+      "button": "عرض الوظائف"
+    }
+  }
+}

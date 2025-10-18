@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Aliance Software Design System - Modern, sleek, trustworthy */
+
+@layer base {
+  :root {
+    /* Core Brand Colors - Blue Gradient Theme */
+    --background: 220 10% 98%;   /* Lighter, subtle background */
+    --foreground: 220 18% 8%;        /* Dark text */
+
+    --card: 0 0% 100%;             /* White card background */
+    --card-foreground: 220 18% 8%;   /* Dark card text */
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 18% 8%;
+
+    /* Primary Blue Gradient Brand */
+    --primary: 220 85% 55%;          /* Main blue */
+    --primary-foreground: 220 8% 95%;
+    --primary-light: 200 85% 70%;    /* Light blue for gradients */
+    --primary-glow: 220 85% 55%;     /* Glow effect base */
+
+    /* Secondary & Supporting Colors */
+    --secondary: 220 14% 18%;        /* Subtle dark surface */
+    --secondary-foreground: 220 8% 85%;
+
+    --muted: 220 14% 16%;            /* Muted backgrounds */
+    --muted-foreground: 220 6% 65%;  /* Muted text */
+
+    --accent: 220 14% 20%;           /* Accent surfaces */
+    --accent-foreground: 220 8% 90%;
+
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 220 8% 95%;
+
+    --border: 220 14% 90%;           /* Lighter, subtle borders */
+    --input: 220 14% 95%;            /* Input backgrounds */
+    --ring: 220 85% 55%;             /* Focus rings */
+
+    --radius: 0.75rem;               /* Rounded corners */
+
+    /* Custom Brand Gradients - These are used by Tailwind now via backgroundImage */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-glow: linear-gradient(135deg, hsl(var(--primary) / 0.8), hsl(var(--primary-light) / 0.6));
+    --gradient-background: linear-gradient(180deg, hsl(220 10% 98%), hsl(220 15% 95%));
+
+    /* Shadows & Effects */
+    --shadow-glow: 0 0 30px hsl(var(--primary-glow) / 0.3);
+    --shadow-card: 0 8px 32px hsl(220 18% 4% / 0.15);
+    --shadow-button: 0 4px 16px hsl(var(--primary) / 0.3);
+
+    /* Animation Timings - Direct values for Tailwind's transitionProperty config */
+    /* --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); */
+    /* --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); */
+  }
+}
+
+html[dir="rtl"] {
+  direction: rtl;
+}
+
+html[dir="rtl"] body {
+  font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+html:not([dir="rtl"]) body {
+  font-family: 'Poppins', sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    min-height: 100vh;
+    font-family: 'Poppins', 'Noto Sans Arabic', sans-serif;
+    color: hsl(var(--foreground));
+    /* The hero section will manage its own background */
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .card-hover {
+    transition: var(--transition-smooth); /* This will now use the direct value from tailwind.config.js */
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card), var(--shadow-glow);
+  }
+
+  .btn-glow {
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth); /* This will now use the direct value from tailwind.config.js */
+  }
+
+  .btn-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .btn-glow:hover::before {
+    left: 100%;
+  }
+
+  .fade-in {
+    /* Tailwind will manage this via animation utility */
+  }
+
+  /* @keyframes fadeInUp { Removed, Tailwind's fade-in keyframe will be used } */
+
+  .hero-background-blobs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  /* Blob styling updated to match your dynamic background image */
+  .hero-background-blobs .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px); /* Soften the edges */
+    animation: blob-move 10s ease-in-out infinite alternate; /* Use blob-move defined in tailwind.config.js */
+    pointer-events: none;
+  }
+
+  .hero-background-blobs .blob:nth-child(1) {
+    width: 280px;
+    height: 280px;
+    top: 8%;
+    left: 8%;
+    animation-delay: 0s;
+    background: linear-gradient(135deg, #A020F0, #1E90FF); /* Purple to Blue */
+    opacity: 0.2;
+  }
+  .hero-background-blobs .blob:nth-child(2) {
+    width: 350px;
+    height: 350px;
+    bottom: 12%;
+    right: 8%;
+    animation-delay: 3s;
+    background: linear-gradient(135deg, #00CED1, #4682B4); /* Cyan to SteelBlue */
+    opacity: 0.25;
+  }
+  .hero-background-blobs .blob:nth-child(3) {
+    width: 200px;
+    height: 200px;
+    top: 25%;
+    right: 15%;
+    animation-delay: 6s;
+    background: linear-gradient(135deg, #DA70D6, #FF69B4); /* Orchid to HotPink */
+    opacity: 0.18;
+  }
+  .hero-background-blobs .blob:nth-child(4) {
+    width: 260px;
+    height: 260px;
+    bottom: 10%;
+    left: 15%;
+    animation-delay: 9s;
+    background: linear-gradient(135deg, #483D8B, #8A2BE2); /* DarkSlateBlue to BlueViolet */
+    opacity: 0.22;
+  }
+
+  html[dir="rtl"] .hero-button-icon-right {
+    transform: scaleX(-1);
+  }
+}

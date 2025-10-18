@@ -1,0 +1,38 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # build & deploy whenever you push to main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Needed for actions/checkout and for gh-pages to commit/push
+      pages: write    # Needed for deploying to GitHub Pages
+      id-token: write # Needed for authentication to GitHub Pages
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18 # Ensure this matches your project's Node.js version if different
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          # If your gh-pages branch doesn't exist yet, this action will create it.
+          # If you want to force push (overwrite history), you can add:
+          # force_orphan: true

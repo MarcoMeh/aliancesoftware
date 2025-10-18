@@ -1,0 +1,332 @@
+{
+  "hero": {
+    "tagline": "Construire le logiciel de demain, aujourd'hui",
+    "mainHeading": "Logiciels Innovants",
+    "mainHeadingSpan": "Solutions & Services",
+    "subheading": "Transformez vos idées en produits logiciels puissants. Nous développons des applications de pointe, créons des sites web époustouflants et fournissons des solutions numériques complètes qui mènent au succès.",
+    "exploreProducts": "Explorer les produits",
+    "requestService": "Demander un service",
+    "stats": {
+      "productsLaunched": "Produits Lancés",
+      "happyClients": "Clients Satisfaits",
+      "yearsExperience": "Années d'expérience",
+      "successRate": "Taux de succès"
+    }
+  },
+  "common": {
+    "darkMode": "Mode Sombre",
+    "lightMode": "Mode Clair",
+    "error": "Erreur",
+    "errorMessage": "Une erreur est survenue : ",
+    "submitting": "Envoi en cours..."
+  },
+  "navigation": {
+    "home": "Accueil",
+    "products": "Produits",
+    "services": "Services",
+    "about": "À Propos",
+    "contact": "Contact",
+    "contactUsNow": "Contactez-nous maintenant",
+    "innovationExcellence": "Innovation & Excellence"
+  },
+  "productsSection": {
+    "featuredProducts": "Produits Phares",
+    "headingPart1": "Logiciels Puissants",
+    "headingPart2": "Conçus pour le Succès",
+    "subheading": "Découvrez notre collection de solutions logicielles professionnelles conçues pour augmenter la productivité, améliorer la sécurité et rationaliser votre flux de travail.",
+    "searchPlaceholder": "Rechercher des produits...",
+    "filterButton": "Filtrer",
+    "status": {
+      "popular": "Populaire",
+      "new": "Nouveau",
+      "featured": "En Vedette",
+      "updated": "Mis à jour"
+    },
+    "learnMore": "En savoir plus",
+    "demo": "Démo",
+    "viewAllProducts": "Voir tous les produits",
+    "users": "Utilisateurs"
+  },
+  "servicesSection": {
+    "ourServices": "Nos Services",
+    "headingPart1": "Suite de Solutions",
+    "headingPart2": "Numériques Complètes",
+    "subheading": "Du concept au déploiement, nous fournissons des services numériques de bout en bout qui transforment vos idées commerciales en produits numériques et campagnes marketing réussis.",
+    "serviceItems": {
+      "softwareDev": {
+        "title": "Développement Logiciel",
+        "description": "Applications personnalisées, plateformes web et solutions mobiles construites avec des technologies de pointe.",
+        "features": {
+          "webApps": "Applications Web",
+          "mobileApps": "Applications Mobiles",
+          "apiDev": "Développement d'API",
+          "cloudSolutions": "Solutions Cloud"
+        }
+      },
+      "websiteCreation": {
+        "title": "Création de Sites Web",
+        "description": "Sites web professionnels qui favorisent l'engagement et offrent des expériences utilisateur exceptionnelles.",
+        "features": {
+          "responsiveDesign": "Design Responsive",
+          "eCommerce": "E-commerce",
+          "cmsIntegration": "Intégration CMS",
+          "seoOptimization": "Optimisation SEO"
+        }
+      },
+      "brandingPackages": {
+        "title": "Forfaits de Branding Complet",
+        "description": "Solutions complètes d'identité de marque incluant la conception de logo et les actifs pour les médias sociaux.",
+        "features": {
+          "logoDesign": "Conception de Logo",
+          "brandGuidelines": "Directives de Marque",
+          "socialMediaPosts": "Publications sur les Médias Sociaux",
+          "marketingMaterials": "Matériels Marketing"
+        }
+      },
+      "videoProduction": {
+        "title": "Production Vidéo",
+        "description": "Montage vidéo professionnel et création vidéo assistée par IA pour tous vos besoins de contenu.",
+        "features": {
+          "videoEditing": "Montage Vidéo",
+          "aiVideoGeneration": "Génération Vidéo IA",
+          "motionGraphics": "Graphiques Animés",
+          "postProduction": "Post-Production"
+        }
+      },
+      "digitalMarketing": {
+        "title": "Marketing Digital",
+        "description": "Stratégies de marketing numérique complètes pour développer votre présence en ligne et votre portée.",
+        "features": {
+          "socialMediaAds": "Publicités sur les Médias Sociaux",
+          "contentCreation": "Création de Contenu",
+          "influencerCampaigns": "Campagnes d'Influenceurs",
+          "analyticsReporting": "Analyse & Rapports"
+        }
+      }
+    },
+    "learnMore": "En savoir plus",
+    "bottomCta": {
+      "tagline": "Prêt à démarrer votre projet ?",
+      "headingPart1": "Construisons quelque chose",
+      "headingPart2": "d'incroyable ensemble",
+      "description": "Contactez notre équipe d'experts pour discuter de vos besoins de projet et recevoir une proposition de solution personnalisée.",
+      "requestQuote": "Demander un devis",
+      "viewPortfolio": "Voir le Portfolio"
+    }
+  },
+  "productDetails": {
+    "notFound": {
+      "title": "Produit Introuvable",
+      "backButton": "Retour aux produits"
+    },
+    "backToProducts": "Retour aux produits",
+    "startFreeTrialButton": "Démarrer l'essai gratuit",
+    "watchDemoVideo": "Voir la vidéo de démonstration",
+    "downloadForm": {
+      "title": "Obtenez votre essai gratuit d'Aliance School Manager",
+      "description": "Veuillez fournir vos coordonnées pour démarrer le téléchargement de votre essai gratuit.",
+      "note": "Après 3 jours, contactez l'agence pour obtenir votre clé",
+      "submitButton": "Télécharger l'essai gratuit",
+      "successTitle": "Demande Soumise !",
+      "successDescription": "Votre téléchargement va commencer sous peu.",
+      "submitError": "Échec de l'envoi du formulaire : {statusText}"
+    },
+    "contactForm": {
+      "title": "Contacter notre équipe commerciale",
+      "description": "Vous avez d'autres questions ou besoin d'une démonstration personnalisée ? Remplissez le formulaire ci-dessous.",
+      "submitButton": "Envoyer la demande",
+      "successTitle": "Demande de Contact Envoyée !",
+      "successDescription": "Nous vous contacterons dans les 24 heures concernant {productName}.",
+      "submitError": "Échec de l'envoi du formulaire de contact : {statusText}"
+    },
+    "formLabels": {
+      "yourName": "Votre Nom",
+      "yourEmail": "Votre Email",
+      "phoneNumber": "Numéro de Téléphone",
+      "companyOptional": "Entreprise (Optionnel)",
+      "socialMediaLinkOptional": "Lien Réseaux Sociaux (Optionnel)",
+      "messageOptional": "Message (Optionnel)"
+    },
+    "formPlaceholders": {
+      "fullName": "Jean Dupont",
+      "yourEmail": "jean.dupont@example.com",
+      "phoneNumber": "(01) 23 45 67 89",
+      "company": "Votre Entreprise",
+      "socialMediaLink": "Lien Instagram ou Facebook",
+      "message": "Comment pouvons-nous vous aider ?"
+    },
+    "carousel": {
+      "previousScreenshot": "Capture d'écran précédente",
+      "nextScreenshot": "Capture d'écran suivante",
+      "viewScreenshot": "Voir la capture d'écran {index}"
+    },
+    "features": {
+      "title": "Fonctionnalités Clés",
+      "description": "Tout ce dont vous avez besoin pour réussir avec {productName}"
+    },
+    "benefits": {
+      "title": "Avantages Clés",
+      "description": "Comment {productName} transforme votre entreprise"
+    },
+    "videoSection": {
+      "title": "Découvrez {productName} en Action",
+      "description": "Regardez notre présentation détaillée pour voir comment {productName} peut transformer votre flux de travail",
+      "iframeTitle": "Vidéo de démonstration de {productName}"
+    },
+    "products": {
+      "1": {
+        "name": "Aliance School Manager",
+        "description": "Système complet de gestion scolaire pour suivre efficacement les étudiants, les employés, les finances et les cours.",
+        "fullDescription": "Aliance School Manager est un système complet qui aide les écoles à gérer efficacement les étudiants, les employés, les classes, les finances et les horaires grâce à une interface conviviale et des analyses détaillées.",
+        "category": "Éducation",
+        "features": [
+          "Support multilingue",
+          "Gestion des tâches basée sur les rôles",
+          "Suivi des finances et des paiements",
+          "Planification des cours et des classes"
+        ],
+        "benefits": [
+          "Rationaliser l'administration scolaire",
+          "Améliorer la communication enseignant-élève",
+          "Gestion précise des finances et des paiements",
+          "Prise de décision basée sur les données"
+        ]
+      },
+      "2": {
+        "name": "Aliance Library Manager",
+        "description": "Un système intuitif pour gérer efficacement les ressources de la bibliothèque, les usagers et la circulation des livres.",
+        "fullDescription": "Aliance Library Manager offre une solution robuste aux bibliothèques pour automatiser le catalogage, suivre les prêts et retours, gérer les comptes des usagers et générer des rapports complets, améliorant ainsi l'ensemble des opérations de la bibliothèque.",
+        "category": "Gestion de Bibliothèque",
+        "features": [
+          "Catalogage et indexation automatisés",
+          "Gestion des usagers avec suivi des adhésions",
+          "Système de prêt et de retour de livres",
+          "Notifications de retard et gestion des amendes"
+        ],
+        "benefits": [
+          "Simplifier les tâches d'administration de la bibliothèque",
+          "Améliorer l'accès aux ressources de la bibliothèque",
+          "Réduire les erreurs manuelles et gagner du temps",
+          "Meilleur contrôle des stocks et utilisation des ressources"
+        ]
+      }
+    }
+  },
+  "contactSection": {
+    "getInTouch": "Contactez-nous",
+    "headingPart1": "Prêt à démarrer",
+    "headingPart2": "Votre Projet ?",
+    "subheading": "Nous serions ravis d'en savoir plus sur votre projet et de discuter de la manière dont nous pouvons vous aider à concrétiser votre vision. Contactez-nous par l'une des méthodes ci-dessous.",
+    "sendMessage": {
+      "title": "Envoyez-nous un message",
+      "description": "Remplissez le formulaire ci-dessous et nous vous répondrons dans les 24 heures.",
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "email": "Email",
+      "companyOptional": "Entreprise (Optionnel)",
+      "projectType": "Type de Projet",
+      "message": "Message",
+      "sendButton": "Envoyer le message",
+      "projectTypeOptions": {
+        "softwareDevelopment": "Développement Logiciel",
+        "websiteCreation": "Création de Site Web",
+        "brandingPackage": "Forfait Branding",
+        "videoProduction": "Production Vidéo",
+        "digitalMarketing": "Marketing Digital",
+        "other": "Autre"
+      }
+    },
+    "contactInfo": {
+      "emailUs": {
+        "title": "Envoyez-nous un Email",
+        "description": "Envoyez-nous un email à tout moment"
+      },
+      "callUs": {
+        "title": "Appelez-nous",
+        "description": "tous les jours de 8h à 18h"
+      },
+      "visitUs": {
+        "title": "Rendez-nous visite",
+        "description": "Venez visiter nos bureaux"
+      }
+    },
+    "followUs": {
+      "title": "Suivez-nous",
+      "description": "Restez informé de nos derniers projets et aperçus"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Abonnez-vous pour recevoir les mises à jour sur les nouveaux produits et services",
+      "placeholder": "Entrez votre email",
+      "subscribeButton": "S'abonner",
+      "privacyPolicy": "Nous respectons votre vie privée. Désabonnez-vous à tout moment."
+    }
+  },
+  "aboutPage": {
+    "header": {
+      "title": "À Propos d'Aliance Software",
+      "description": "Nous sommes une équipe de passionnés innovateurs dédiés à la création de solutions logicielles qui autonomisent les entreprises et transforment les expériences numériques."
+    },
+    "mission": {
+      "title": "Notre Mission",
+      "description": "Fournir des solutions logicielles innovantes qui stimulent la transformation numérique et permettent aux entreprises d'atteindre leurs objectifs."
+    },
+    "vision": {
+      "title": "Notre Vision",
+      "description": "Être le principal fournisseur de solutions logicielles de pointe qui façonnent l'avenir de l'innovation numérique."
+    },
+    "values": {
+      "title": "Nos Valeurs",
+      "description": "L'innovation, l'excellence, l'intégrité et le succès client sont au cœur de tout ce que nous faisons."
+    },
+    "journey": {
+      "title": "Notre Parcours",
+      "description": "Les étapes clés de la croissance de notre entreprise"
+    },
+    "milestones": {
+      "2024": {
+        "title": "Fondation de l'entreprise",
+        "description": "Commencé avec une vision de créer des solutions logicielles innovantes"
+      },
+      "2025_product": {
+        "title": "Lancement du premier produit majeur",
+        "description": "Lancement du système Aliance School Manager"
+      },
+      "2025_team": {
+        "title": "Expansion de l'équipe",
+        "description": "Croissance de l'équipe à plus de 6 professionnels talentueux"
+      }
+    },
+    "team": {
+      "title": "Rencontrez notre Équipe",
+      "description": "Les individus talentueux derrière notre succès"
+    },
+    "teamMembers": {
+      "ali_ceo": {
+        "name": "Ali Mehemmai",
+        "role": "PDG & Fondateur",
+        "expertise": "Leadership Stratégique"
+      },
+      "fatima_cto": {
+        "name": "Fatima",
+        "role": "CTO",
+        "expertise": "Innovation Technique"
+      },
+      "fatima_design": {
+        "name": "Fatima",
+        "role": "Chef de Design",
+        "expertise": "Expérience Utilisateur"
+      },
+      "ali_developer": {
+        "name": "Ali Mehemmai",
+        "role": "Développeur Principal",
+        "expertise": "Développement Full-Stack"
+      }
+    },
+    "cta": {
+      "title": "Vous voulez rejoindre notre équipe ?",
+      "description": "Nous recherchons toujours des personnes talentueuses pour rejoindre notre équipe grandissante. Consultez nos offres d'emploi actuelles.",
+      "button": "Voir les Carrières"
+    }
+  }
+}
