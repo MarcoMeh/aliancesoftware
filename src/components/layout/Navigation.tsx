@@ -24,12 +24,9 @@ const Navigation = () => {
 
   const isActive = (href: string) => location.pathname === href;
 
-  // Determine text direction for dynamic styling - mostly handled by CSS if 'dir' attribute is set on html/body
-  // const isRTL = i18n.language === 'ar'; // Not explicitly needed for general flex layouts
-
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-border/70 shadow-lg md:shadow-xl transition-all duration-300"> {/* Stronger blur and shadow */}
-      <div className="container mx-auto px-6 py-4 md:py-2 flex items-center justify-between"> {/* Increased padding */}
+      <div className="container mx-auto px-6 py-4 md:py-5 flex items-center justify-between"> {/* Increased padding */}
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse hover:opacity-90 transition-opacity"> {/* Added rtl:space-x-reverse */}
           <img

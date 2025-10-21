@@ -16,12 +16,25 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@lovable_dev" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-    <script type="module" crossorigin src="/assets/index-CPP7RORn.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BePG_MmC.css">
+    <!-- 
+      During development ('npm run dev'), Vite manages script loading
+      and typically doesn't use hardcoded /assets paths here.
+      
+      For production builds ('npm run build'), Vite will automatically
+      inject the optimized <script> and <link> tags (with hashes) into this <head> section.
+      Therefore, no manual script/link tags are needed here in the source index.html for either dev or build.
+    -->
   </head>
 
   <body>
     <div id="root"></div>
-    <!-- This area should remain empty, as the JS is loaded from /assets in the head -->
+    <!-- 
+      This script is crucial for Vite in development mode ('npm run dev')
+      to load your main application entry point (main.tsx).
+      
+      For production builds, Vite will generate a new index.html where this 
+      line is replaced by the optimized, hashed script in the <head> section.
+    -->
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
