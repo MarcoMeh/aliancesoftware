@@ -81,20 +81,16 @@ const HeroSection = () => {
           {/* Optional: Add Stats below CTA for more immediate impact */}
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-foreground/90 font-medium max-w-4xl mx-auto">
             <div className="flex flex-col items-center">
-              <span className="text-3xl md:text-4xl font-bold gradient-text">100+</span>
               <span className="text-sm md:text-base text-muted-foreground mt-1">{t('hero.stats.productsLaunched', 'Products Launched')}</span>
             </div>
             <div className="flex flex-col items-center">
-              <span className="text-3xl md:text-4xl font-bold gradient-text">500+</span>
               <span className="text-sm md:text-base text-muted-foreground mt-1">{t('hero.stats.happyClients', 'Happy Clients')}</span>
             </div>
-            <div className="flex flex-col items-center">
-              <span className="text-3xl md:text-4xl font-bold gradient-text">5+</span>
+            <div className="flex flex-col items-center">              
               <span className="text-sm md:text-base text-muted-foreground mt-1">{t('hero.stats.yearsExperience', 'Years Experience')}</span>
             </div>
             <div className="flex flex-col items-center">
-              <span className="text-3xl md:text-4xl font-bold gradient-text">98%</span>
-              <span className="text-sm md:text-base text-muted-foreground mt-1">{t('hero.stats.successRate', 'Success Rate')}</span>
+              <span className="text-sm md:text-base text-blue mt-1">{t('hero.stats.successRate', 'Success Rate')}</span>
             </div>
           </div>
 

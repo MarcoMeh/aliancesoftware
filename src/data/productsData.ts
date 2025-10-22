@@ -67,7 +67,7 @@ export const allProducts: Product[] = [
     ],
     videoId: 'playlist?list=PLWrTRSMeQtR3PuADMYKt1GT-GXjBbJYaS',
     pricing: '15000.00 DA',
-    downloadPath: '/downloads/Aliance Demo Setup.exe',
+    downloadPath: '/downloads/School Demo Setup.exe',
   },
   {
     id: 2, // New Product ID
