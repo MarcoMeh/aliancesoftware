@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Zap } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import logo from "@/assets/logo.png";
 import LanguageSwitcher from '../LanguageSwitcher';
 
 // Import useTranslation hook
@@ -13,6 +12,7 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const { t, i18n } = useTranslation();
+  const isRtl = i18n.language === 'ar'; // Check for RTL language
 
   const navItems = [
     { name: t('navigation.home'), href: '/' },
@@ -25,47 +25,71 @@ const Navigation = () => {
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-border/70 shadow-lg md:shadow-xl transition-all duration-300"> {/* Stronger blur and shadow */}
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A1128]/90 backdrop-blur-xl border-b border-[#1e3a8a]/50 shadow-lg md:shadow-xl transition-all duration-300"> {/* Stronger blur and shadow, dark background */}
       <div className="container mx-auto px-6 py-4 md:py-5 flex items-center justify-between"> {/* Increased padding */}
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse hover:opacity-90 transition-opacity"> {/* Added rtl:space-x-reverse */}
-          <img
-            src={logo}
-            alt="Aliance Software Logo"
-            className="w-10 h-10 object-contain rounded-lg shadow-md transition-transform duration-200 hover:scale-105" // Added shadow-md and hover scale
-          />
+        <Link to="/" className={`flex items-center space-x-3 rtl:space-x-reverse hover:opacity-90 transition-opacity ${isRtl ? 'flex-row-reverse space-x-reverse' : ''}`}> {/* Added rtl:space-x-reverse */}
+          {/* Logo as a stylistic element inspired by the provided logo */}
+          <div className="w-10 h-10 bg-gradient-to-br from-[#3b82f6] to-[#60a5fa] flex items-center justify-center rounded-lg shadow-md transition-transform duration-200 hover:scale-105">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 2L2 12L12 22L22 12L12 2Z"
+                fill="url(#gradient-logo)"
+              />
+              <path
+                d="M12 6L6 12L12 18L18 12L12 6Z"
+                fill="white"
+                fillOpacity="0.8"
+              />
+              <path d="M12 9L9 12L12 15L15 12L12 9Z" fill="white" fillOpacity="0.6" />
+              <defs>
+                <linearGradient id="gradient-logo" x1="12" y1="2" x2="12" y2="22" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#60a5fa"/>
+                  <stop offset="1" stopColor="#3b82f6"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
           <div>
-            <h1 className="text-xl md:text-2xl font-bold gradient-text leading-tight">Aliance Software</h1> {/* Larger, tighter leading */}
-            <p className="text-xs text-muted-foreground/80 hidden sm:block">{t('navigation.innovationExcellence')}</p> {/* Hidden on smallest screens */}
+            <h1 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd] leading-tight drop-shadow-sm">Aliance Software</h1> {/* Larger, tighter leading */}
+            <p className="text-xs text-blue-200/80 hidden sm:block">{t('navigation.innovationExcellence')}</p> {/* Hidden on smallest screens */}
           </div>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-x-8"> {/* Consistent larger gap */}
+        <div className={`hidden md:flex items-center ${isRtl ? 'space-x-reverse' : ''} gap-x-8`}> {/* Consistent larger gap */}
           {navItems.map((item) => (
             <Link
               key={item.href}
               to={item.href}
-              className={`relative text-sm font-medium transition-all duration-300 ease-in-out py-2 px-3 rounded-lg
-                ${isActive(item.href) ? 'text-primary bg-primary/15 font-semibold' : 'text-foreground/70 hover:text-primary hover:bg-muted/30'}
+              className={`relative text-base font-medium transition-all duration-300 ease-in-out py-2 px-3 rounded-lg
+                ${isActive(item.href) ? 'text-[#60a5fa] bg-[#3b82f6]/20 font-semibold' : 'text-blue-200/70 hover:text-[#60a5fa] hover:bg-[#1e3a8a]/30'}
               `}
             >
               {item.name}
               {/* Active link underline effect */}
               {isActive(item.href) && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4/5 h-[2px] bg-primary rounded-full animate-fade-in" />
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4/5 h-[2px] bg-[#60a5fa] rounded-full animate-fade-in" />
               )}
             </Link>
           ))}
         </div>
 
         {/* Desktop CTA Button AND Language Switcher */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className={`hidden md:flex items-center ${isRtl ? 'space-x-reverse' : ''} gap-4`}>
           <Link to="/contact">
             <Button
-              variant="hero" // Assuming 'hero' variant provides a strong visual
+              variant="default" // Using default button with custom styling
               size="lg" // Slightly larger button
-              className="flex items-center gap-2 px-6 py-3 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+              className="flex items-center gap-2 px-6 py-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5
+                         bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] text-white hover:from-[#60a5fa] hover:to-[#3b82f6]
+                         font-semibold rounded-full"
             >
               <Zap className="w-4 h-4" />
               {t('navigation.contactUsNow')}
@@ -75,13 +99,13 @@ const Navigation = () => {
         </div>
 
         {/* Mobile Menu Button (and Language Switcher for mobile) */}
-        <div className="md:hidden flex items-center gap-3"> {/* Increased gap for mobile */}
+        <div className={`md:hidden flex items-center ${isRtl ? 'flex-row-reverse' : ''} gap-3`}> {/* Increased gap for mobile */}
           <LanguageSwitcher />
           <Button
             variant="ghost"
             size="icon"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-foreground/80 hover:bg-muted/30"
+            className="text-blue-200/80 hover:bg-[#1e3a8a]/30"
           >
             {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </Button>
@@ -90,14 +114,14 @@ const Navigation = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden mt-2 pb-6 border-t border-border/70 bg-background animate-fade-down-in"> {/* Added animate-fade-down-in (you might need to define this in your CSS) */}
+        <div className="md:hidden mt-2 pb-6 border-t border-[#1e3a8a]/50 bg-[#0A1128] animate-fade-down-in"> {/* Added animate-fade-down-in (you might need to define this in your CSS) */}
           <div className="flex flex-col space-y-2 px-6 pt-4"> {/* Adjusted spacing and padding */}
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 to={item.href}
-                className={`text-lg font-medium transition-colors hover:text-primary block py-3 px-4 rounded-lg
-                  ${isActive(item.href) ? 'text-primary bg-primary/10 font-semibold' : 'text-foreground/80 hover:bg-muted/20'}
+                className={`text-lg font-medium transition-colors block py-3 px-4 rounded-lg
+                  ${isActive(item.href) ? 'text-[#60a5fa] bg-[#3b82f6]/15 font-semibold' : 'text-blue-200/80 hover:bg-[#1e3a8a]/20 hover:text-[#60a5fa]'}
                 `}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -105,7 +129,13 @@ const Navigation = () => {
               </Link>
             ))}
             <Link to="/contact" className="mt-6 block"> {/* Added block and margin-top */}
-              <Button variant="hero" size="lg" className="w-full flex justify-center gap-2 shadow-md hover:shadow-lg transition-all duration-300">
+              <Button 
+                variant="default" 
+                size="lg" 
+                className="w-full flex justify-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300
+                           bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] text-white hover:from-[#60a5fa] hover:to-[#3b82f6]
+                           font-semibold rounded-full"
+              >
                 <Zap className="w-4 h-4" />
                 {t('navigation.contactUsNow')}
               </Button>

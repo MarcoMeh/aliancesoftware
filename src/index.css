@@ -1,3 +1,4 @@
+/* index.css */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
 
@@ -19,13 +20,13 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 18% 8%;
 
-    /* Primary Blue Gradient Brand */
-    --primary: 220 85% 55%;          /* Main blue */
-    --primary-foreground: 220 8% 95%;
-    --primary-light: 200 85% 70%;    /* Light blue for gradients */
-    --primary-glow: 220 85% 55%;     /* Glow effect base */
+    /* Primary Blue Gradient Brand - Adjusted to align with logo colors */
+    --primary: 210 85% 50%;          /* Main blue, from logo */
+    --primary-light: 200 90% 65%;    /* Lighter blue for gradients, from logo */
+    --primary-foreground: 220 8% 95%; /* Text on primary */
+    --primary-glow: 210 85% 50%;     /* Glow effect base */
 
-    /* Secondary & Supporting Colors */
+    /* Secondary & Supporting Colors - Adjusted for dark theme */
     --secondary: 220 14% 18%;        /* Subtle dark surface */
     --secondary-foreground: 220 8% 85%;
 
@@ -40,13 +41,13 @@
 
     --border: 220 14% 90%;           /* Lighter, subtle borders */
     --input: 220 14% 95%;            /* Input backgrounds */
-    --ring: 220 85% 55%;             /* Focus rings */
+    --ring: 210 85% 50%;             /* Focus rings */
 
     --radius: 0.75rem;               /* Rounded corners */
 
     /* Custom Brand Gradients - These are used by Tailwind now via backgroundImage */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
-    --gradient-glow: linear-gradient(135deg, hsl(var(--primary) / 0.8), hsl(var(--primary-light) / 0.6));
+    --gradient-primary: linear-gradient(135deg, hsl(220 85% 55%), hsl(200 85% 70%));
+    --gradient-glow: linear-gradient(135deg, hsl(220 85% 55% / 0.8), hsl(200 85% 70% / 0.6));
     --gradient-background: linear-gradient(180deg, hsl(220 10% 98%), hsl(220 15% 95%));
 
     /* Shadows & Effects */
@@ -54,9 +55,45 @@
     --shadow-card: 0 8px 32px hsl(220 18% 4% / 0.15);
     --shadow-button: 0 4px 16px hsl(var(--primary) / 0.3);
 
-    /* Animation Timings - Direct values for Tailwind's transitionProperty config */
-    /* --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); */
-    /* --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); */
+    /* Animation Timings */
+    /* Handled by Tailwind's default transition utilities or custom keyframes */
+  }
+
+  .dark {
+    /* Dark mode adjustments - using the exact blue from your logo image for consistency */
+    --background: 223 39% 10%; /* Very dark blue for background */
+    --foreground: 210 20% 98%; /* Light text for dark mode */
+
+    --card: 223 39% 12%;       /* Slightly lighter dark card */
+    --card-foreground: 210 20% 98%;
+
+    --popover: 223 39% 12%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 210 85% 50%;          /* Main blue, from logo */
+    --primary-light: 200 90% 65%;    /* Lighter blue for gradients, from logo */
+    --primary-foreground: 222.2 47.4% 11.2%; /* Dark text on primary */
+
+    --secondary: 223 30% 18%;       /* Darker secondary */
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 223 30% 15%;           /* Darker muted */
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 223 30% 20%;          /* Darker accent */
+    --accent-foreground: 210 20% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 223 30% 25%;         /* Darker border */
+    --input: 223 30% 20%;          /* Darker input */
+    --ring: 210 85% 50%;           /* Focus ring */
+
+    /* Custom Brand Gradients for dark mode */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-glow: linear-gradient(135deg, hsl(var(--primary) / 0.8), hsl(var(--primary-light) / 0.6));
+    --gradient-background: linear-gradient(180deg, hsl(223 39% 10%), hsl(223 39% 15%)); /* Dark background gradient */
   }
 }
 
@@ -102,7 +139,7 @@ html:not([dir="rtl"]) body {
   }
 
   .card-hover {
-    transition: var(--transition-smooth); /* This will now use the direct value from tailwind.config.js */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .card-hover:hover {
@@ -113,7 +150,7 @@ html:not([dir="rtl"]) body {
   .btn-glow {
     position: relative;
     overflow: hidden;
-    transition: var(--transition-smooth); /* This will now use the direct value from tailwind.config.js */
+    transition: all 0.3s ease;
   }
 
   .btn-glow::before {
@@ -130,16 +167,6 @@ html:not([dir="rtl"]) body {
   .btn-glow:hover::before {
     left: 100%;
   }
-
-  /*
-  .fade-in {
-    // Tailwind will manage this via animation utility
-  }
-  */
-
-  /*
-  // @keyframes fadeInUp { Removed, Tailwind's fade-in keyframe will be used }
-  */
 
   .hero-background-blobs {
     position: absolute;
@@ -166,8 +193,8 @@ html:not([dir="rtl"]) body {
     top: 8%;
     left: 8%;
     animation-delay: 0s;
-    background: linear-gradient(135deg, #A020F0, #1E90FF); /* Purple to Blue */
-    opacity: 0.2;
+    background: linear-gradient(135deg, hsl(200 90% 65%), hsl(210 85% 50%)); /* Light blue to main blue */
+    opacity: 0.3; /* Increased opacity for more presence */
   }
   .hero-background-blobs .blob:nth-child(2) {
     width: 350px;
@@ -175,8 +202,8 @@ html:not([dir="rtl"]) body {
     bottom: 12%;
     right: 8%;
     animation-delay: 3s;
-    background: linear-gradient(135deg, #00CED1, #4682B4); /* Cyan to SteelBlue */
-    opacity: 0.25;
+    background: linear-gradient(135deg, hsl(210 85% 50%), hsl(200 90% 65%)); /* Main blue to light blue */
+    opacity: 0.35;
   }
   .hero-background-blobs .blob:nth-child(3) {
     width: 200px;
@@ -184,8 +211,8 @@ html:not([dir="rtl"]) body {
     top: 25%;
     right: 15%;
     animation-delay: 6s;
-    background: linear-gradient(135deg, #DA70D6, #FF69B4); /* Orchid to HotPink */
-    opacity: 0.18;
+    background: linear-gradient(135deg, hsl(200 90% 65%), hsl(210 85% 50%));
+    opacity: 0.28;
   }
   .hero-background-blobs .blob:nth-child(4) {
     width: 260px;
@@ -193,11 +220,57 @@ html:not([dir="rtl"]) body {
     bottom: 10%;
     left: 15%;
     animation-delay: 9s;
-    background: linear-gradient(135deg, #483D8B, #8A2BE2); /* DarkSlateBlue to BlueViolet */
-    opacity: 0.22;
+    background: linear-gradient(135deg, hsl(210 85% 50%), hsl(200 90% 65%));
+    opacity: 0.32;
+  }
+  /* Add to your global.css or equivalent */
+
+  @keyframes glow {
+    0% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0.5; transform: scale(1); }
   }
 
-  /* Define the blob-move keyframes */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+  }
+
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  /* For gradient text on headings */
+  .gradient-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #60a5fa, #93c5fd);
+  }
+    /* Define the blob-move keyframes */
   @keyframes blob-move {
     0% {
       transform: translate(0, 0) scale(1);
@@ -219,4 +292,16 @@ html:not([dir="rtl"]) body {
   html[dir="rtl"] .hero-button-icon-right {
     transform: scaleX(-1);
   }
+  .animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+  }
+  @keyframes fade-down-in {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-down-in {
+  animation: fade-down-in 0.4s ease-out forwards;
+}
+
 }
