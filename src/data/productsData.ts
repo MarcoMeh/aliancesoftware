@@ -99,6 +99,6 @@ export const allProducts: Product[] = [
     ],
     videoId: undefined, // Or a YouTube ID if you have a demo video
     pricing: '12000.00 DA', // Example pricing
-    downloadPath: '/downloads/Library Demo Setup',
+    downloadPath: '/downloads/Library Demo Setup.exe',
   }
 ];

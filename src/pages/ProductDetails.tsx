@@ -10,7 +10,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useToast } from '@/hooks/use-toast';
-import { ArrowLeft, Play, Star, Users, CheckCircle, Download, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { ArrowLeft, Play, Star, Users, CheckCircle, Download, ChevronLeft, ChevronRight } from 'lucide-react';
 import { allProducts } from '@/data/productsData';
 import { useTranslation } from 'react-i18next';
 
@@ -57,19 +57,19 @@ const ProductDetails = () => {
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-background text-white">
+      <div
+        className="min-h-screen relative
+                   bg-gradient-to-br from-[#0A1128] via-[#0C1530] to-[#121A3D] text-white"
+      >
         <Navigation />
-        <main className="pt-24 container mx-auto px-6">
+        <main className="relative z-10 pt-24 container mx-auto px-6">
           <div className="text-center py-16">
             <h1 className="text-2xl font-bold mb-4 text-white">{t('productDetails.notFound.title')}</h1>
             <Link to="/products">
               <Button
                 variant="outline"
-                className={`group px-8 py-3 text-lg font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300
-                            border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white
-                            ${isRtl ? 'flex-row-reverse' : ''}`}
+                className="border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white"
               >
-                <ArrowLeft className={`w-5 h-5 group-hover:-translate-x-1 transition-transform ${isRtl ? 'ml-3' : 'mr-3'}`} />
                 {t('productDetails.notFound.backButton')}
               </Button>
             </Link>
@@ -81,11 +81,11 @@ const ProductDetails = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'Popular': return 'bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]';
-      case 'New': return 'bg-green-600';
-      case 'Featured': return 'bg-purple-600';
-      case 'Updated': return 'bg-orange-600';
-      default: return 'bg-gray-500';
+      case 'Popular': return 'bg-[#3b82f6]'; // A shade of blue
+      case 'New': return 'bg-green-500';
+      case 'Featured': return 'bg-gradient-to-r from-[#3b82f6] to-[#60a5fa]'; // Primary gradient
+      case 'Updated': return 'bg-orange-500';
+      default: return 'bg-blue-400/30'; // Muted blue for other statuses
     }
   };
 
@@ -184,6 +184,7 @@ const ProductDetails = () => {
     <div
       className="min-h-screen relative
                  bg-gradient-to-br from-[#0A1128] via-[#0C1530] to-[#121A3D] text-white"
+      dir={isRtl ? 'rtl' : 'ltr'}
     >
       {/* Abstract Background Elements - Lighter opacity */}
       <div className="absolute inset-0 z-0 opacity-8">
@@ -216,10 +217,9 @@ const ProductDetails = () => {
           <Link to="/products">
             <Button
               variant="ghost"
-              className={`gap-2 text-blue-300 hover:text-white transition-colors
-                          ${isRtl ? 'flex-row-reverse' : ''}`}
+              className={`gap-2 text-blue-300 hover:text-blue-500 ${isRtl ? 'flex-row-reverse' : ''}`}
             >
-              <ArrowLeft className={`w-4 h-4 ${isRtl ? 'ml-2' : 'mr-2'}`} />
+              <ArrowLeft className={`w-4 h-4 ${isRtl ? 'rotate-180' : ''}`} />
               {t('productDetails.backToProducts')}
             </Button>
           </Link>
@@ -228,8 +228,8 @@ const ProductDetails = () => {
         <section className="py-16">
           <div className="container mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className={isRtl ? 'text-right' : 'text-left'}>
-                <div className={`flex items-center gap-4 mb-6 ${isRtl ? 'justify-end' : 'justify-start'}`}>
+              <div>
+                <div className={`flex items-center gap-4 mb-6 ${isRtl ? 'justify-end' : ''}`}>
                   <div className={`${getStatusColor(product.status)} text-white text-sm px-3 py-1 rounded-full font-medium shadow-md`}>
                     {t(`productsSection.status.${product.status.toLowerCase()}`)}
                   </div>
@@ -237,22 +237,22 @@ const ProductDetails = () => {
                     <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     <span className="font-medium">{product.rating}</span>
                     <span>•</span>
-                    <Users className="w-4 h-4" />
+                    <Users className="w-4 h-4 text-blue-300" />
                     <span>{product.users} {t('productsSection.users')}</span>
                   </div>
                 </div>
 
-                <h1 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tighter">
+                <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight tracking-tighter">
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd] drop-shadow-lg">
-                    {t(`productDetails.products.${product.id}.name`, product.name)}
+                    {product.name}
                   </span>
                 </h1>
 
-                <p className="text-lg md:text-xl text-blue-200 mb-8 max-w-3xl leading-relaxed drop-shadow-sm">
-                  {t(`productDetails.products.${product.id}.fullDescription`, product.fullDescription)}
+                <p className="text-lg md:text-xl text-blue-200 mb-8 leading-relaxed drop-shadow-sm">
+                  {product.fullDescription}
                 </p>
 
-                <div className={`flex gap-4 ${isRtl ? 'flex-row-reverse' : ''}`}>
+                <div className={`flex gap-4 ${isRtl ? 'justify-end' : ''}`}>
                   <Dialog open={isDownloadModalOpen} onOpenChange={setIsDownloadModalOpen}>
                     <DialogTrigger asChild>
                       <Button
@@ -261,20 +261,20 @@ const ProductDetails = () => {
                                     bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] text-white hover:from-[#60a5fa] hover:to-[#3b82f6]
                                     ${isRtl ? 'flex-row-reverse' : ''}`}
                       >
-                        <Download className={`w-5 h-5 group-hover:scale-110 transition-transform ${isRtl ? 'ml-3' : 'mr-3'}`} />
+                        <Download className={`w-5 h-5 group-hover:translate-y-0.5 transition-transform ${isRtl ? 'ml-3' : 'mr-3'}`} />
                         {t('productDetails.startFreeTrialButton')}
                       </Button>
                     </DialogTrigger>
-                    <DialogContent className="sm:max-w-[425px] bg-gradient-to-br from-[#0A1128] via-[#0C1530] to-[#121A3D] text-white border-blue-400/20">
+                    <DialogContent className="sm:max-w-[425px] bg-[#0A1128] text-white border-blue-400/30">
                       <DialogHeader>
-                        <DialogTitle className="text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]">
+                        <DialogTitle className="text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]">
                           {t('productDetails.downloadForm.title', { productName: product.name })}
                         </DialogTitle>
                         <DialogDescription className="text-blue-200">
                           {t('productDetails.downloadForm.description')}
                         </DialogDescription>
                       </DialogHeader>
-                      <p className="text-red-400 text-sm font-medium mt-2">
+                      <p className="text-orange-400 text-sm font-medium mt-2">
                         {t('productDetails.downloadForm.note')}
                       </p>
                       <Form {...form}>
@@ -286,8 +286,11 @@ const ProductDetails = () => {
                               <FormItem>
                                 <FormLabel className="text-blue-300">{t('productDetails.formLabels.yourName')}</FormLabel>
                                 <FormControl>
-                                  <Input placeholder={t('productDetails.formPlaceholders.fullName')} {...field}
-                                    className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors" />
+                                  <Input
+                                    placeholder={t('productDetails.formPlaceholders.fullName')}
+                                    {...field}
+                                    className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors"
+                                  />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -300,8 +303,12 @@ const ProductDetails = () => {
                               <FormItem>
                                 <FormLabel className="text-blue-300">{t('productDetails.formLabels.yourEmail')}</FormLabel>
                                 <FormControl>
-                                  <Input type="email" placeholder={t('productDetails.formPlaceholders.yourEmail')} {...field}
-                                    className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors" />
+                                  <Input
+                                    type="email"
+                                    placeholder={t('productDetails.formPlaceholders.yourEmail')}
+                                    {...field}
+                                    className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors"
+                                  />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -314,8 +321,12 @@ const ProductDetails = () => {
                               <FormItem>
                                 <FormLabel className="text-blue-300">{t('productDetails.formLabels.phoneNumber')}</FormLabel>
                                 <FormControl>
-                                  <Input type="tel" placeholder={t('productDetails.formPlaceholders.phoneNumber')} {...field}
-                                    className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors" />
+                                  <Input
+                                    type="tel"
+                                    placeholder={t('productDetails.formPlaceholders.phoneNumber')}
+                                    {...field}
+                                    className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors"
+                                  />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -328,8 +339,11 @@ const ProductDetails = () => {
                               <FormItem>
                                 <FormLabel className="text-blue-300">{t('productDetails.formLabels.companyOptional')}</FormLabel>
                                 <FormControl>
-                                  <Input placeholder={t('productDetails.formPlaceholders.company')} {...field}
-                                    className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors" />
+                                  <Input
+                                    placeholder={t('productDetails.formPlaceholders.company')}
+                                    {...field}
+                                    className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors"
+                                  />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -342,14 +356,23 @@ const ProductDetails = () => {
                               <FormItem>
                                 <FormLabel className="text-blue-300">{t('productDetails.formLabels.socialMediaLinkOptional')}</FormLabel>
                                 <FormControl>
-                                  <Input placeholder={t('productDetails.formPlaceholders.socialMediaLink')} {...field}
-                                    className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors" />
+                                  <Input
+                                    placeholder={t('productDetails.formPlaceholders.socialMediaLink')}
+                                    {...field}
+                                    className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors"
+                                  />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
                             )}
                           />
-                          <Button type="submit" className="w-full" disabled={isSubmitting}>
+                          <Button
+                            type="submit"
+                            className={`w-full group px-8 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300
+                                        bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] text-white hover:from-[#60a5fa] hover:to-[#3b82f6]
+                                        ${isRtl ? 'flex-row-reverse' : ''}`}
+                            disabled={isSubmitting}
+                          >
                             {isSubmitting ? t('common.submitting') : t('productDetails.downloadForm.submitButton')}
                           </Button>
                         </form>
@@ -363,41 +386,36 @@ const ProductDetails = () => {
                 {product.screenshots && product.screenshots.length > 0 ? (
                   <>
                     <div
-                      className="w-full h-80 bg-gradient-to-br from-[#1e3a8a]/30 to-[#3b82f6]/30 rounded-xl bg-cover bg-center transition-all duration-300 ease-in-out overflow-hidden shadow-lg"
-                    >
-                      <img
-                        src={product.screenshots[currentScreenshotIndex]}
-                        alt={`${product.name} screenshot ${currentScreenshotIndex + 1}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
+                      className="w-full h-80 bg-white/5 backdrop-blur-sm border-blue-400/20 rounded-xl bg-cover bg-center transition-all duration-300 ease-in-out shadow-lg"
+                      style={{ backgroundImage: `url(${product.screenshots[currentScreenshotIndex]})` }}
+                    />
                     {product.screenshots.length > 1 && (
                       <>
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-blue-300 hover:text-white rounded-full transition-colors z-10"
+                          className={`absolute ${isRtl ? 'right-4' : 'left-4'} top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white z-10 shadow-md`}
                           onClick={goToPreviousScreenshot}
                           aria-label={t('productDetails.carousel.previousScreenshot')}
                         >
-                          <ChevronLeft className="w-5 h-5" />
+                          <ChevronLeft className={`w-5 h-5 ${isRtl ? 'rotate-180' : ''}`} />
                         </Button>
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-blue-300 hover:text-white rounded-full transition-colors z-10"
+                          className={`absolute ${isRtl ? 'left-4' : 'right-4'} top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white z-10 shadow-md`}
                           onClick={goToNextScreenshot}
                           aria-label={t('productDetails.carousel.nextScreenshot')}
                         >
-                          <ChevronRight className="w-5 h-5" />
+                          <ChevronRight className={`w-5 h-5 ${isRtl ? 'rotate-180' : ''}`} />
                         </Button>
                         <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
                           {product.screenshots.map((_, index) => (
                             <button
                               key={index}
-                              className={`w-2 h-2 rounded-full transition-colors ${
-                                index === currentScreenshotIndex ? 'bg-[#60a5fa] scale-125' : 'bg-blue-300/50'
-                              }`}
+                              className={`w-2 h-2 rounded-full ${
+                                index === currentScreenshotIndex ? 'bg-blue-400' : 'bg-gray-500'
+                              } transition-colors duration-200`}
                               onClick={() => setCurrentScreenshotIndex(index)}
                               aria-label={t('productDetails.carousel.viewScreenshot', { index: index + 1 })}
                             />
@@ -406,14 +424,15 @@ const ProductDetails = () => {
                       </>
                     )}
                     {product.videoId && (
-                      <div className="absolute inset-0 bg-black/20 rounded-xl flex items-center justify-center">
+                      <div className="absolute inset-0 bg-black/40 rounded-xl flex items-center justify-center">
                         <Button
-                          variant="secondary"
+                          variant="default"
                           size="lg"
-                          className="gap-2 bg-white/10 hover:bg-white/20 text-white border-blue-400/30 hover:border-blue-400 transition-colors backdrop-blur-sm"
+                          className={`group gap-2 bg-white/10 hover:bg-white/20 text-white border border-blue-400/30 backdrop-blur-sm shadow-lg
+                                      ${isRtl ? 'flex-row-reverse' : ''}`}
                           onClick={() => window.open(`https://www.youtube.com/watch?v=${product.videoId}`, '_blank')}
                         >
-                          <Play className={`w-5 h-5 ${isRtl ? 'ml-3' : 'mr-3'}`} />
+                          <Play className={`w-5 h-5 group-hover:scale-110 transition-transform ${isRtl ? 'ml-2' : 'mr-2'}`} />
                           {t('productDetails.watchDemoVideo')}
                         </Button>
                       </div>
@@ -421,22 +440,19 @@ const ProductDetails = () => {
                   </>
                 ) : (
                   <div
-                    className="w-full h-80 bg-gradient-to-br from-[#1e3a8a]/30 to-[#3b82f6]/30 rounded-xl bg-cover bg-center overflow-hidden shadow-lg"
+                    className="w-full h-80 bg-white/5 backdrop-blur-sm border-blue-400/20 rounded-xl bg-cover bg-center shadow-lg"
+                    style={{ backgroundImage: `url(${product.image})` }}
                   >
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover"
-                    />
                     {product.videoId && (
-                      <div className="absolute inset-0 bg-black/20 rounded-xl flex items-center justify-center">
+                      <div className="absolute inset-0 bg-black/40 rounded-xl flex items-center justify-center">
                         <Button
-                          variant="secondary"
+                          variant="default"
                           size="lg"
-                          className="gap-2 bg-white/10 hover:bg-white/20 text-white border-blue-400/30 hover:border-blue-400 transition-colors backdrop-blur-sm"
+                          className={`group gap-2 bg-white/10 hover:bg-white/20 text-white border border-blue-400/30 backdrop-blur-sm shadow-lg
+                                      ${isRtl ? 'flex-row-reverse' : ''}`}
                           onClick={() => window.open(`https://www.youtube.com/watch?v=${product.videoId}`, '_blank')}
                         >
-                          <Play className={`w-5 h-5 ${isRtl ? 'ml-3' : 'mr-3'}`} />
+                          <Play className={`w-5 h-5 group-hover:scale-110 transition-transform ${isRtl ? 'ml-2' : 'mr-2'}`} />
                           {t('productDetails.watchDemoVideo')}
                         </Button>
                       </div>
@@ -454,7 +470,7 @@ const ProductDetails = () => {
               <Card className="bg-white/5 backdrop-blur-sm border-blue-400/20">
                 <CardHeader>
                   <CardTitle className="text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]">
-                    {t('productDetails.features.title', 'Key Features')}
+                    {t('productDetails.features.title')}
                   </CardTitle>
                   <CardDescription className="text-blue-200">
                     {t('productDetails.features.description', { productName: product.name })}
@@ -463,9 +479,9 @@ const ProductDetails = () => {
                 <CardContent>
                   <ul className="space-y-4">
                     {product.features.map((feature, index) => (
-                      <li key={index} className={`flex items-start gap-3 text-blue-300 ${isRtl ? 'flex-row-reverse text-right' : ''}`}>
-                        <CheckCircle className={`w-5 h-5 text-[#60a5fa] mt-0.5 flex-shrink-0 ${isRtl ? 'ml-3' : 'mr-3'}`} />
-                        <span>{t(`productDetails.products.${product.id}.features.${index}`, feature)}</span>
+                      <li key={index} className="flex items-start gap-3 text-blue-200">
+                        <CheckCircle className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
+                        <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -475,7 +491,7 @@ const ProductDetails = () => {
               <Card className="bg-white/5 backdrop-blur-sm border-blue-400/20">
                 <CardHeader>
                   <CardTitle className="text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]">
-                    {t('productDetails.benefits.title', 'Benefits You\'ll Love')}
+                    {t('productDetails.benefits.title')}
                   </CardTitle>
                   <CardDescription className="text-blue-200">
                     {t('productDetails.benefits.description', { productName: product.name })}
@@ -484,9 +500,9 @@ const ProductDetails = () => {
                 <CardContent>
                   <ul className="space-y-4">
                     {product.benefits.map((benefit, index) => (
-                      <li key={index} className={`flex items-start gap-3 text-blue-300 ${isRtl ? 'flex-row-reverse text-right' : ''}`}>
-                        <CheckCircle className={`w-5 h-5 text-green-500 mt-0.5 flex-shrink-0 ${isRtl ? 'ml-3' : 'mr-3'}`} />
-                        <span>{t(`productDetails.products.${product.id}.benefits.${index}`, benefit)}</span>
+                      <li key={index} className="flex items-start gap-3 text-blue-200">
+                        <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                        <span>{benefit}</span>
                       </li>
                     ))}
                   </ul>
@@ -509,7 +525,7 @@ const ProductDetails = () => {
               </div>
 
               <div className="max-w-4xl mx-auto">
-                <Card className="bg-white/5 backdrop-blur-sm border-blue-400/20 shadow-lg">
+                <Card className="bg-white/5 backdrop-blur-sm border-blue-400/20 shadow-xl">
                   <CardContent className="p-0">
                     <div className="aspect-video rounded-lg overflow-hidden">
                       <iframe
@@ -529,30 +545,6 @@ const ProductDetails = () => {
             </div>
           </section>
         )}
-
-        {/* Contact form - If needed, adjust its styling to match the new theme */}
-        {/*
-        <section className="py-16">
-          <div className="container mx-auto px-6">
-            <Card className="bg-white/5 backdrop-blur-sm border-blue-400/20">
-              <CardHeader>
-                <CardTitle className="text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]">
-                  {t('productDetails.contactForm.title', 'Inquire About This Product')}
-                </CardTitle>
-                <CardDescription className="text-blue-200">
-                  {t('productDetails.contactForm.description', 'Fill out the form below to get more information or request a personalized demo.')}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                 ... Contact form fields ...
-                <Button type="submit" className="w-full" disabled={isSubmitting}>
-                  {isSubmitting ? t('common.submitting') : t('productDetails.contactForm.submitButton')}
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-        */}
       </main>
     </div>
   );
