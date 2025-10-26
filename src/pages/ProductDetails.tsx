@@ -6,11 +6,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form'; // Correct
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useToast } from '@/hooks/use-toast';
-import { ArrowLeft, Play, Star, Users, CheckCircle, Download, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Play, Star, Users, CheckCircle, Download, ChevronLeft, ChevronRight, FileText } from 'lucide-react'; // Added FileText icon
 import { allProducts } from '@/data/productsData';
 import { useTranslation } from 'react-i18next';
 
@@ -112,12 +112,23 @@ const ProductDetails = () => {
         description: t('productDetails.downloadForm.successDescription'),
       });
 
-      const link = document.createElement('a');
-      link.href = product.downloadPath;
-      link.download = product.downloadPath.split('/').pop() || 'download.file';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      // Only attempt to download if product.downloadPath exists
+      if (product.downloadPath) {
+        const link = document.createElement('a');
+        link.href = product.downloadPath;
+        link.download = product.downloadPath.split('/').pop() || 'download.file';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } else {
+        console.warn("No downloadPath specified for this product.");
+        toast({
+          title: t('common.warning'),
+          description: t('productDetails.downloadForm.noDownloadAvailable'),
+          variant: "default", // or "warning" if you have one
+        });
+      }
+
 
       form.reset();
       setIsDownloadModalOpen(false);
@@ -125,7 +136,7 @@ const ProductDetails = () => {
       console.error("Download form submission error:", error);
       toast({
         title: t('common.error'),
-        description: t('common.errorMessage') + (error as Error).message,
+        description: t('common.errorMessage') + (error instanceof Error ? error.message : String(error)),
         variant: "destructive",
       });
     } finally {
@@ -160,7 +171,7 @@ const ProductDetails = () => {
       console.error("Contact form submission error:", error);
       toast({
         title: t('common.error'),
-        description: t('common.errorMessage') + (error as Error).message,
+        description: t('common.errorMessage') + (error instanceof Error ? error.message : String(error)),
         variant: "destructive",
       });
     } finally {
@@ -225,145 +236,149 @@ const ProductDetails = () => {
           </Link>
         </div>
 
-        <section className="py-16">
-          <div className="container mx-auto px-6">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className={`flex items-center gap-4 mb-6 ${isRtl ? 'justify-end' : ''}`}>
-                  <div className={`${getStatusColor(product.status)} text-white text-sm px-3 py-1 rounded-full font-medium shadow-md`}>
-                    {t(`productsSection.status.${product.status.toLowerCase()}`)}
+        {/* Main content grid for details and sidebar */}
+        <div className="container mx-auto px-6 grid lg:grid-cols-4 gap-12 pb-16">
+          {/* Main Product Details (3/4 width on large screens) */}
+          <div className="lg:col-span-3 space-y-12">
+            <section>
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                  <div className={`flex items-center gap-4 mb-6 ${isRtl ? 'justify-end' : ''}`}>
+                    <div className={`${getStatusColor(product.status)} text-white text-sm px-3 py-1 rounded-full font-medium shadow-md`}>
+                      {t(`productsSection.status.${product.status.toLowerCase()}`)}
+                    </div>
+                    <div className="flex items-center gap-2 text-blue-300">
+                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      <span className="font-medium">{product.rating}</span>
+                      <span>•</span>
+                      <Users className="w-4 h-4 text-blue-300" />
+                      <span>{product.users} {t('productsSection.users')}</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 text-blue-300">
-                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    <span className="font-medium">{product.rating}</span>
-                    <span>•</span>
-                    <Users className="w-4 h-4 text-blue-300" />
-                    <span>{product.users} {t('productsSection.users')}</span>
-                  </div>
-                </div>
 
-                <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight tracking-tighter">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd] drop-shadow-lg">
-                    {product.name}
-                  </span>
-                </h1>
+                  <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight tracking-tighter">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd] drop-shadow-lg">
+                      {product.name}
+                    </span>
+                  </h1>
 
-                <p className="text-lg md:text-xl text-blue-200 mb-8 leading-relaxed drop-shadow-sm">
-                  {product.fullDescription}
-                </p>
+                  <p className="text-lg md:text-xl text-blue-200 mb-8 leading-relaxed drop-shadow-sm">
+                    {product.fullDescription}
+                  </p>
 
-                <div className={`flex gap-4 ${isRtl ? 'justify-end' : ''}`}>
-                  <Dialog open={isDownloadModalOpen} onOpenChange={setIsDownloadModalOpen}>
-                    <DialogTrigger asChild>
-                      <Button
-                        size="lg"
-                        className={`group px-8 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300
-                                    bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] text-white hover:from-[#60a5fa] hover:to-[#3b82f6]
-                                    ${isRtl ? 'flex-row-reverse' : ''}`}
-                      >
-                        <Download className={`w-5 h-5 group-hover:translate-y-0.5 transition-transform ${isRtl ? 'ml-3' : 'mr-3'}`} />
-                        {t('productDetails.startFreeTrialButton')}
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="sm:max-w-[425px] bg-[#0A1128] text-white border-blue-400/30">
-                      <DialogHeader>
-                        <DialogTitle className="text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]">
-                          {t('productDetails.downloadForm.title', { productName: product.name })}
-                        </DialogTitle>
-                        <DialogDescription className="text-blue-200">
-                          {t('productDetails.downloadForm.description')}
-                        </DialogDescription>
-                      </DialogHeader>
-                      <p className="text-orange-400 text-sm font-medium mt-2">
-                        {t('productDetails.downloadForm.note')}
-                      </p>
-                      <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onDownloadFormSubmit)} className="space-y-6">
-                          <FormField
-                            control={form.control}
-                            name="name"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-blue-300">{t('productDetails.formLabels.yourName')}</FormLabel>
-                                <FormControl>
-                                  <Input
-                                    placeholder={t('productDetails.formPlaceholders.fullName')}
-                                    {...field}
-                                    className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors"
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                          <FormField
-                            control={form.control}
-                            name="email"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-blue-300">{t('productDetails.formLabels.yourEmail')}</FormLabel>
-                                <FormControl>
-                                  <Input
-                                    type="email"
-                                    placeholder={t('productDetails.formPlaceholders.yourEmail')}
-                                    {...field}
-                                    className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors"
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                          <FormField
-                            control={form.control}
-                            name="phone"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-blue-300">{t('productDetails.formLabels.phoneNumber')}</FormLabel>
-                                <FormControl>
-                                  <Input
-                                    type="tel"
-                                    placeholder={t('productDetails.formPlaceholders.phoneNumber')}
-                                    {...field}
-                                    className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors"
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                          <FormField
-                            control={form.control}
-                            name="company"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-blue-300">{t('productDetails.formLabels.companyOptional')}</FormLabel>
-                                <FormControl>
-                                  <Input
-                                    placeholder={t('productDetails.formPlaceholders.company')}
-                                    {...field}
-                                    className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors"
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                          <FormField
-                            control={form.control}
-                            name="links"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-blue-300">{t('productDetails.formLabels.socialMediaLinkOptional')}</FormLabel>
-                                <FormControl>
-                                  <Input
-                                    placeholder={t('productDetails.formPlaceholders.socialMediaLink')}
-                                    {...field}
-                                    className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors"
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
+                  <div className={`flex gap-4 ${isRtl ? 'justify-end' : ''}`}>
+                    <Dialog open={isDownloadModalOpen} onOpenChange={setIsDownloadModalOpen}>
+                      <DialogTrigger asChild>
+                        <Button
+                          size="lg"
+                          className={`group px-8 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300
+                                      bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] text-white hover:from-[#60a5fa] hover:to-[#3b82f6]
+                                      ${isRtl ? 'flex-row-reverse' : ''}`}
+                          disabled={!product.downloadPath} // Disable if no download path
+                        >
+                          <Download className={`w-5 h-5 group-hover:translate-y-0.5 transition-transform ${isRtl ? 'ml-3' : 'mr-3'}`} />
+                          {t('productDetails.startFreeTrialButton')}
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="sm:max-w-[425px] bg-[#0A1128] text-white border-blue-400/30">
+                        <DialogHeader>
+                          <DialogTitle className="text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]">
+                            {t('productDetails.downloadForm.title', { productName: product.name })}
+                          </DialogTitle>
+                          <DialogDescription className="text-blue-200">
+                            {t('productDetails.downloadForm.description')}
+                          </DialogDescription>
+                        </DialogHeader>
+                        <p className="text-orange-400 text-sm font-medium mt-2">
+                          {t('productDetails.downloadForm.note')}
+                        </p>
+                        <Form {...form}>
+                          <form onSubmit={form.handleSubmit(onDownloadFormSubmit)} className="space-y-6">
+                            <FormField
+                              control={form.control}
+                              name="name"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="text-blue-300">{t('productDetails.formLabels.yourName')}</FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      placeholder={t('productDetails.formPlaceholders.fullName')}
+                                      {...field}
+                                      className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors"
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <FormField
+                              control={form.control}
+                              name="email"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="text-blue-300">{t('productDetails.formLabels.yourEmail')}</FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      type="email"
+                                      placeholder={t('productDetails.formPlaceholders.yourEmail')}
+                                      {...field}
+                                      className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors"
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <FormField
+                              control={form.control}
+                              name="phone"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="text-blue-300">{t('productDetails.formLabels.phoneNumber')}</FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      type="tel"
+                                      placeholder={t('productDetails.formPlaceholders.phoneNumber')}
+                                      {...field}
+                                      className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors"
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <FormField
+                              control={form.control}
+                              name="company"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="text-blue-300">{t('productDetails.formLabels.companyOptional')}</FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      placeholder={t('productDetails.formPlaceholders.company')}
+                                      {...field}
+                                      className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors"
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <FormField
+                              control={form.control}
+                              name="links"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="text-blue-300">{t('productDetails.formLabels.socialMediaLinkOptional')}</FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      placeholder={t('productDetails.formPlaceholders.socialMediaLink')}
+                                      {...field}
+                                      className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors"
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
                             )}
                           />
                           <Button
@@ -461,90 +476,143 @@ const ProductDetails = () => {
                 )}
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section className="py-16">
-          <div className="container mx-auto px-6">
-            <div className="grid lg:grid-cols-2 gap-12">
-              <Card className="bg-white/5 backdrop-blur-sm border-blue-400/20">
-                <CardHeader>
-                  <CardTitle className="text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]">
-                    {t('productDetails.features.title')}
-                  </CardTitle>
-                  <CardDescription className="text-blue-200">
-                    {t('productDetails.features.description', { productName: product.name })}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-4">
-                    {product.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-3 text-blue-200">
-                        <CheckCircle className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
+            <section>
+              <div className="grid lg:grid-cols-2 gap-12">
+                <Card className="bg-white/5 backdrop-blur-sm border-blue-400/20">
+                  <CardHeader>
+                    <CardTitle className="text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]">
+                      {t('productDetails.features.title')}
+                    </CardTitle>
+                    <CardDescription className="text-blue-200">
+                      {t('productDetails.features.description', { productName: product.name })}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-4">
+                      {product.features.map((feature, index) => (
+                        <li key={index} className="flex items-start gap-3 text-blue-200">
+                          <CheckCircle className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
 
-              <Card className="bg-white/5 backdrop-blur-sm border-blue-400/20">
-                <CardHeader>
-                  <CardTitle className="text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]">
-                    {t('productDetails.benefits.title')}
-                  </CardTitle>
-                  <CardDescription className="text-blue-200">
-                    {t('productDetails.benefits.description', { productName: product.name })}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-4">
-                    {product.benefits.map((benefit, index) => (
-                      <li key={index} className="flex items-start gap-3 text-blue-200">
-                        <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {product.videoId && (
-          <section className="py-16">
-            <div className="container mx-auto px-6">
-              <div className="text-center mb-12 animate-fade-in-up">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]">
-                  {t('productDetails.videoSection.title', { productName: product.name })}
-                </h2>
-                <p className="text-lg text-blue-200 max-w-2xl mx-auto leading-relaxed">
-                  {t('productDetails.videoSection.description', { productName: product.name })}
-                </p>
-              </div>
-
-              <div className="max-w-4xl mx-auto">
-                <Card className="bg-white/5 backdrop-blur-sm border-blue-400/20 shadow-xl">
-                  <CardContent className="p-0">
-                    <div className="aspect-video rounded-lg overflow-hidden">
-                      <iframe
-                        width="100%"
-                        height="100%"
-                        src={`https://www.youtube.com/embed/${product.videoId}`}
-                        title={t('productDetails.videoSection.iframeTitle', { productName: product.name })}
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        className="w-full h-full"
-                      ></iframe>
-                    </div>
+                <Card className="bg-white/5 backdrop-blur-sm border-blue-400/20">
+                  <CardHeader>
+                    <CardTitle className="text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]">
+                      {t('productDetails.benefits.title')}
+                    </CardTitle>
+                    <CardDescription className="text-blue-200">
+                      {t('productDetails.benefits.description', { productName: product.name })}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-4">
+                      {product.benefits.map((benefit, index) => (
+                        <li key={index} className="flex items-start gap-3 text-blue-200">
+                          <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                          <span>{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </CardContent>
                 </Card>
               </div>
-            </div>
-          </section>
-        )}
+            </section>
+
+            {product.videoId && (
+              <section>
+                <div className="text-center mb-12 animate-fade-in-up">
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]">
+                    {t('productDetails.videoSection.title', { productName: product.name })}
+                  </h2>
+                  <p className="text-lg text-blue-200 max-w-2xl mx-auto leading-relaxed">
+                    {t('productDetails.videoSection.description', { productName: product.name })}
+                  </p>
+                </div>
+
+                <div className="max-w-4xl mx-auto">
+                  <Card className="bg-white/5 backdrop-blur-sm border-blue-400/20 shadow-xl">
+                    <CardContent className="p-0">
+                      <div className="aspect-video rounded-lg overflow-hidden">
+                        <iframe
+                          width="100%"
+                          height="100%"
+                          src={`https://www.youtube.com/embed/${product.videoId}`}
+                          title={t('productDetails.videoSection.iframeTitle', { productName: product.name })}
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          className="w-full h-full"
+                        ></iframe>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </section>
+            )}
+          </div>
+
+          {/* Sidebar (1/4 width on large screens) */}
+          <aside className="lg:col-span-1 space-y-8 pt-8 lg:pt-0">
+            {product.pdfDownloads && product.pdfDownloads.length > 0 && (
+              <Card className="bg-white/5 backdrop-blur-sm border-blue-400/20 p-6">
+                <CardHeader className="p-0 mb-4">
+                  <CardTitle className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd] flex items-center gap-2">
+                    <FileText className="w-6 h-6 text-blue-400" />
+                    {t('productDetails.sidebar.downloadsTitle')}
+                  </CardTitle>
+                  <CardDescription className="text-blue-200">
+                    {t('productDetails.sidebar.downloadsDescription')}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <ul className="space-y-3">
+                    {product.pdfDownloads.map((pdf, index) => (
+                      <li key={index}>
+                        <a
+                          href={pdf.path}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 text-blue-300 hover:text-blue-100 transition-colors duration-200 group"
+                        >
+                          <Download className={`w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform ${isRtl ? 'rotate-180' : ''}`} />
+                          <span>{pdf.title}</span>
+                          <span className="text-xs text-blue-400 opacity-70 ml-auto">PDF</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            )}
+
+            {/* You can add more sidebar cards here if needed, e.g., related products, contact info */}
+            {/* Example of another card if you want to reuse the contact form or show other links */}
+            {/*
+            <Card className="bg-white/5 backdrop-blur-sm border-blue-400/20 p-6">
+              <CardHeader className="p-0 mb-4">
+                <CardTitle className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd] flex items-center gap-2">
+                  <MessageSquare className="w-6 h-6 text-blue-400" />
+                  {t('productDetails.sidebar.contactUsTitle')}
+                </CardTitle>
+                <CardDescription className="text-blue-200">
+                  {t('productDetails.sidebar.contactUsDescription')}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="p-0">
+                <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                  {t('productDetails.sidebar.contactUsButton')}
+                </Button>
+              </CardContent>
+            </Card>
+            */}
+          </aside>
+        </div>
       </main>
     </div>
   );

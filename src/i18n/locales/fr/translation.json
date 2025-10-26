@@ -168,6 +168,9 @@
       "title": "Avantages Clés",
       "description": "Comment {productName} transforme votre entreprise"
     },
+    "sidebar": {
+      "downloadsTitle": "Téléchargements Utiles",
+      "downloadsDescription": "Accédez à la documentation, aux guides et à d'autres ressources."},
     "videoSection": {
       "title": "Découvrez {productName} en Action",
       "description": "Regardez notre présentation détaillée pour voir comment {productName} peut transformer votre flux de travail",

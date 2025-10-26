@@ -170,6 +170,9 @@
       "description": "Watch our detailed walkthrough to see how {productName} can transform your workflow",
       "iframeTitle": "{productName} Demo Video"
     },
+     "sidebar": {
+      "downloadsTitle": "Helpful Downloads",
+      "downloadsDescription": "Access documentation, guides, and other resources."},
     "products": {
       "1": {
         "name": "Aliance School Manager",

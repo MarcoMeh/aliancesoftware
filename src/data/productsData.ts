@@ -2,23 +2,9 @@
 
 import alianceSchoolImg from '@/assets/aliance-school-manager.png';
 import alianceLibraryImg from '@/assets/aliance-library-manager.png';
-import alianceSheetImg from '@/assets/aliance-sheet.png';
-import alianceShopImg from '@/assets/aliance-shop.png';
+// import alianceSheetImg from '@/assets/aliance-sheet.png'; // Assuming these are not used for now
+// import alianceShopImg from '@/assets/aliance-shop.png'; // Assuming these are not used for now
 
-// Import individual screenshot images
-import schoolScreenshot1 from '@/assets/school-1.jpg'; // Assuming these files exist in your assets folder
-import schoolScreenshot2 from '@/assets/school-2.jpg';
-import schoolScreenshot3 from '@/assets/school-3.jpg';
-import schoolScreenshot4 from '@/assets/school-4.jpg';
-
-// You might want to rename your image files to not have spaces (e.g., school_1.jpg or school-1.jpg)
-// and place them inside your `@/assets` folder.
-// For example:
-// src/assets/aliance-school-manager.png
-// src/assets/school-1.jpg
-// src/assets/school-2.jpg
-// src/assets/school-3.jpg
-// src/assets/school-4.jpg
 
 export interface Product {
   id: number;
@@ -36,6 +22,11 @@ export interface Product {
   pricing?: string;
   screenshots?: string[];
   downloadPath?: string;
+  // NEW: Add pdfDownloads array
+  pdfDownloads?: {
+    title: string;
+    path: string;
+  }[];
 }
 
 export const allProducts: Product[] = [
@@ -62,12 +53,20 @@ export const allProducts: Product[] = [
     status: 'Popular',
     image: alianceSchoolImg,
     screenshots: [
-      alianceSchoolImg,
-  
+      '/images/school-1.jpg',
+      '/images/school-2.jpg',
+      '/images/school-3.jpg',
+      '/images/school-4.jpg'
     ],
     videoId: 'playlist?list=PLWrTRSMeQtR3PuADMYKt1GT-GXjBbJYaS',
     pricing: '15000.00 DA',
     downloadPath: '/downloads/School Demo Setup.exe',
+    // NEW: Add example PDF downloads
+    pdfDownloads: [
+      { title: 'School Manager Quick Start Guide', path: '/downloads/School_Manager_Quick_Start.pdf' },
+      { title: 'Advanced Reporting Features', path: '/downloads/School_Manager_Reporting.pdf' },
+      { title: 'System Requirements', path: '/downloads/School_Manager_Requirements.pdf' },
+    ],
   },
   {
     id: 2, // New Product ID
@@ -92,13 +91,15 @@ export const allProducts: Product[] = [
     status: 'New', // Example status
     image: alianceLibraryImg, // Use the new image
     screenshots: [
-      // Add paths to actual screenshots if you have them, e.g.,
-      // '/assets/library-screenshot-1.jpg',
-      // '/assets/library-screenshot-2.jpg'
-      alianceLibraryImg // Placeholder for now
+      alianceLibraryImg // Placeholder for now, replace with actual screenshots if available
     ],
     videoId: undefined, // Or a YouTube ID if you have a demo video
     pricing: '12000.00 DA', // Example pricing
     downloadPath: '/downloads/Library Demo Setup.exe',
+    // NEW: Add example PDF downloads
+    pdfDownloads: [
+      { title: 'Library Manager User Manual', path: '/downloads/Library_Manager_Manual.pdf' },
+      { title: 'Librarian Best Practices', path: '/downloads/Librarian_Best_Practices.pdf' },
+    ],
   }
 ];
