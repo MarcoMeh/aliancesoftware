@@ -1,39 +1,39 @@
 {
   "hero": {
-    "tagline": "Construire le logiciel de demain, aujourd'hui",
-    "mainHeading": "Logiciels Innovants",
-    "mainHeadingSpan": "Solutions & Services",
-    "subheading": "Transformez vos idées en produits logiciels puissants. Nous développons des applications de pointe, créons des sites web époustouflants et fournissons des solutions numériques complètes qui mènent au succès.",
+    "tagline": "Nous créons les logiciels de demain, aujourd'hui",
+    "mainHeading": "Logiciels innovants",
+    "mainHeadingSpan": "Solutions et Services",
+    "subheading": "Transformez vos idées en puissants produits logiciels. Nous développons des applications de pointe, concevons des sites web époustouflants et fournissons des solutions numériques complètes qui favorisent le succès.",
     "exploreProducts": "Explorer les produits",
     "requestService": "Demander un service",
     "stats": {
       "productsLaunched": "Produits Lancés",
       "happyClients": "Clients Satisfaits",
-      "yearsExperience": "Années d'expérience",
-      "successRate": "Taux de succès"
+      "yearsExperience": "Années d'Expérience",
+      "successRate": "Taux de Réussite"
     }
   },
   "common": {
-    "darkMode": "Mode Sombre",
-    "lightMode": "Mode Clair",
+    "darkMode": "Mode sombre",
+    "lightMode": "Mode clair",
     "error": "Erreur",
-    "errorMessage": "Une erreur est survenue : ",
+    "errorMessage": "Une erreur s'est produite : ",
     "submitting": "Envoi en cours..."
   },
   "navigation": {
     "home": "Accueil",
     "products": "Produits",
     "services": "Services",
-    "about": "À Propos",
+    "about": "À propos",
     "contact": "Contact",
     "contactUsNow": "Contactez-nous maintenant",
-    "innovationExcellence": "Innovation & Excellence"
+    "innovationExcellence": "Innovation et Excellence"
   },
   "productsSection": {
-    "featuredProducts": "Produits Phares",
+    "featuredProducts": "Produits Vedettes",
     "headingPart1": "Logiciels Puissants",
     "headingPart2": "Conçus pour le Succès",
-    "subheading": "Découvrez notre collection de solutions logicielles professionnelles conçues pour augmenter la productivité, améliorer la sécurité et rationaliser votre flux de travail.",
+    "subheading": "Découvrez notre suite de solutions logicielles conçues par des experts pour stimuler la productivité, améliorer la sécurité et rationaliser vos flux de travail.",
     "searchPlaceholder": "Rechercher des produits...",
     "filterButton": "Filtrer",
     "status": {
@@ -45,17 +45,17 @@
     "learnMore": "En savoir plus",
     "demo": "Démo",
     "viewAllProducts": "Voir tous les produits",
-    "users": "Utilisateurs"
+    "users": "utilisateurs"
   },
   "servicesSection": {
     "ourServices": "Nos Services",
-    "headingPart1": "Suite de Solutions",
-    "headingPart2": "Numériques Complètes",
-    "subheading": "Du concept au déploiement, nous fournissons des services numériques de bout en bout qui transforment vos idées commerciales en produits numériques et campagnes marketing réussis.",
+    "headingPart1": "Suite Complète de Solutions",
+    "headingPart2": "Numériques",
+    "subheading": "Du concept au déploiement, nous fournissons des services numériques complets qui transforment vos idées commerciales en produits numériques réussis et en campagnes marketing.",
     "serviceItems": {
       "softwareDev": {
-        "title": "Développement Logiciel",
-        "description": "Applications personnalisées, plateformes web et solutions mobiles construites avec des technologies de pointe.",
+        "title": "Développement de logiciels",
+        "description": "Applications personnalisées, plateformes web et solutions mobiles construites avec les dernières technologies.",
         "features": {
           "webApps": "Applications Web",
           "mobileApps": "Applications Mobiles",
@@ -64,43 +64,43 @@
         }
       },
       "websiteCreation": {
-        "title": "Création de Sites Web",
-        "description": "Sites web professionnels qui favorisent l'engagement et offrent des expériences utilisateur exceptionnelles.",
+        "title": "Création de sites web",
+        "description": "Des sites web professionnels qui stimulent l'engagement et offrent des expériences utilisateur exceptionnelles.",
         "features": {
-          "responsiveDesign": "Design Responsive",
+          "responsiveDesign": "Design Responsif",
           "eCommerce": "E-commerce",
           "cmsIntegration": "Intégration CMS",
           "seoOptimization": "Optimisation SEO"
         }
       },
       "brandingPackages": {
-        "title": "Forfaits de Branding Complet",
-        "description": "Solutions complètes d'identité de marque incluant la conception de logo et les actifs pour les médias sociaux.",
+        "title": "Packages de Branding Complets",
+        "description": "Des solutions d'identité de marque complètes incluant la conception de logo et les actifs de médias sociaux.",
         "features": {
           "logoDesign": "Conception de Logo",
           "brandGuidelines": "Directives de Marque",
-          "socialMediaPosts": "Publications sur les Médias Sociaux",
-          "marketingMaterials": "Matériels Marketing"
+          "socialMediaPosts": "Publications sur les Réseaux Sociaux",
+          "marketingMaterials": "Matériaux Marketing"
         }
       },
       "videoProduction": {
-        "title": "Production Vidéo",
+        "title": "Production vidéo",
         "description": "Montage vidéo professionnel et création vidéo assistée par IA pour tous vos besoins de contenu.",
         "features": {
           "videoEditing": "Montage Vidéo",
           "aiVideoGeneration": "Génération Vidéo IA",
-          "motionGraphics": "Graphiques Animés",
-          "postProduction": "Post-Production"
+          "motionGraphics": "Graphiques Animés (Motion Graphics)",
+          "postProduction": "Post-production"
         }
       },
       "digitalMarketing": {
-        "title": "Marketing Digital",
-        "description": "Stratégies de marketing numérique complètes pour développer votre présence en ligne et votre portée.",
+        "title": "Marketing numérique",
+        "description": "Stratégies de marketing numérique complètes pour développer votre présence et votre portée en ligne.",
         "features": {
-          "socialMediaAds": "Publicités sur les Médias Sociaux",
+          "socialMediaAds": "Publicités sur les Réseaux Sociaux",
           "contentCreation": "Création de Contenu",
           "influencerCampaigns": "Campagnes d'Influenceurs",
-          "analyticsReporting": "Analyse & Rapports"
+          "analyticsReporting": "Analyses et Rapports"
         }
       }
     },
@@ -109,49 +109,49 @@
       "tagline": "Prêt à démarrer votre projet ?",
       "headingPart1": "Construisons quelque chose",
       "headingPart2": "d'incroyable ensemble",
-      "description": "Contactez notre équipe d'experts pour discuter de vos besoins de projet et recevoir une proposition de solution personnalisée.",
+      "description": "Contactez notre équipe d'experts pour discuter des exigences de votre projet et recevoir une proposition de solution personnalisée.",
       "requestQuote": "Demander un devis",
-      "viewPortfolio": "Voir le Portfolio"
+      "viewPortfolio": "Voir le portfolio"
     }
   },
   "productDetails": {
     "notFound": {
-      "title": "Produit Introuvable",
+      "title": "Produit introuvable",
       "backButton": "Retour aux produits"
     },
     "backToProducts": "Retour aux produits",
     "startFreeTrialButton": "Démarrer l'essai gratuit",
-    "watchDemoVideo": "Voir la vidéo de démonstration",
+    "watchDemoVideo": "Regarder la vidéo de démonstration",
     "downloadForm": {
-      "title": "Obtenez votre essai gratuit d'Aliance School Manager",
-      "description": "Veuillez fournir vos coordonnées pour démarrer le téléchargement de votre essai gratuit.",
+      "title": "Obtenez votre essai gratuit de Aliance School Manager",
+      "description": "Veuillez fournir vos coordonnées pour commencer le téléchargement de votre essai gratuit.",
       "note": "Après 3 jours, contactez l'agence pour obtenir votre clé",
       "submitButton": "Télécharger l'essai gratuit",
-      "successTitle": "Demande Soumise !",
-      "successDescription": "Votre téléchargement va commencer sous peu.",
+      "successTitle": "Demande soumise !",
+      "successDescription": "Le téléchargement commencera sous peu.",
       "submitError": "Échec de l'envoi du formulaire : {statusText}"
     },
     "contactForm": {
-      "title": "Contacter notre équipe commerciale",
-      "description": "Vous avez d'autres questions ou besoin d'une démonstration personnalisée ? Remplissez le formulaire ci-dessous.",
-      "submitButton": "Envoyer la demande",
-      "successTitle": "Demande de Contact Envoyée !",
-      "successDescription": "Nous vous contacterons dans les 24 heures concernant {productName}.",
+      "title": "Contactez notre équipe commerciale",
+      "description": "Vous avez d'autres questions ou avez besoin d'une démonstration personnalisée ? Remplissez le formulaire ci-dessous.",
+      "submitButton": "Soumettre la demande",
+      "successTitle": "Demande de contact soumise !",
+      "successDescription": "Nous vous contacterons dans les 24 heures concernant les logiciels Aliance.",
       "submitError": "Échec de l'envoi du formulaire de contact : {statusText}"
     },
     "formLabels": {
-      "yourName": "Votre Nom",
-      "yourEmail": "Votre Email",
-      "phoneNumber": "Numéro de Téléphone",
-      "companyOptional": "Entreprise (Optionnel)",
-      "socialMediaLinkOptional": "Lien Réseaux Sociaux (Optionnel)",
-      "messageOptional": "Message (Optionnel)"
+      "yourName": "Votre nom",
+      "yourEmail": "Votre e-mail",
+      "phoneNumber": "Numéro de téléphone",
+      "companyOptional": "Entreprise (facultatif)",
+      "socialMediaLinkOptional": "Lien de média social (facultatif)",
+      "messageOptional": "Message (facultatif)"
     },
     "formPlaceholders": {
       "fullName": "Jean Dupont",
       "yourEmail": "jean.dupont@example.com",
-      "phoneNumber": "(01) 23 45 67 89",
-      "company": "Votre Entreprise",
+      "phoneNumber": "(123) 456-7890",
+      "company": "SASMP Company",
       "socialMediaLink": "Lien Instagram ou Facebook",
       "message": "Comment pouvons-nous vous aider ?"
     },
@@ -162,35 +162,36 @@
     },
     "features": {
       "title": "Fonctionnalités Clés",
-      "description": "Tout ce dont vous avez besoin pour réussir avec {productName}"
+      "description": "Tout ce dont vous avez besoin pour réussir avec {{productName}}"
     },
     "benefits": {
       "title": "Avantages Clés",
-      "description": "Comment {productName} transforme votre entreprise"
+      "description": "Comment {{productName}} transforme votre entreprise"
     },
     "sidebar": {
       "downloadsTitle": "Téléchargements Utiles",
-      "downloadsDescription": "Accédez à la documentation, aux guides et à d'autres ressources."},
+      "downloadsDescription": "Accédez à la documentation, aux guides et autres ressources."
+    },
     "videoSection": {
-      "title": "Découvrez {productName} en Action",
-      "description": "Regardez notre présentation détaillée pour voir comment {productName} peut transformer votre flux de travail",
-      "iframeTitle": "Vidéo de démonstration de {productName}"
+      "title": "Voir {{productName}} en action",
+      "description": "Regardez notre démo détaillée pour voir comment {{productName}} peut transformer votre flux de travail",
+      "iframeTitle": "Vidéo de démonstration {{productName}}"
     },
     "products": {
       "1": {
         "name": "Aliance School Manager",
-        "description": "Système complet de gestion scolaire pour suivre efficacement les étudiants, les employés, les finances et les cours.",
-        "fullDescription": "Aliance School Manager est un système complet qui aide les écoles à gérer efficacement les étudiants, les employés, les classes, les finances et les horaires grâce à une interface conviviale et des analyses détaillées.",
+        "description": "Un système complet de gestion scolaire pour suivre efficacement les étudiants, le personnel, les finances et les cours.",
+        "fullDescription": "Aliance School Manager est un système complet qui aide les écoles à gérer efficacement les étudiants, le personnel, les classes, les finances et les horaires grâce à une interface conviviale et des analyses détaillées.",
         "category": "Éducation",
         "features": [
-          "Support multilingue",
-          "Gestion des tâches basée sur les rôles",
-          "Suivi des finances et des paiements",
+          "Support Multilingue",
+          "Gestion des rôles",
+          "Suivi financier et des paiements",
           "Planification des cours et des classes"
         ],
         "benefits": [
-          "Rationaliser l'administration scolaire",
-          "Améliorer la communication enseignant-élève",
+          "Rationalise l'administration scolaire",
+          "Améliore la communication entre enseignants et élèves",
           "Gestion précise des finances et des paiements",
           "Prise de décision basée sur les données"
         ]
@@ -198,19 +199,19 @@
       "2": {
         "name": "Aliance Library Manager",
         "description": "Un système intuitif pour gérer efficacement les ressources de la bibliothèque, les usagers et la circulation des livres.",
-        "fullDescription": "Aliance Library Manager offre une solution robuste aux bibliothèques pour automatiser le catalogage, suivre les prêts et retours, gérer les comptes des usagers et générer des rapports complets, améliorant ainsi l'ensemble des opérations de la bibliothèque.",
+        "fullDescription": "Aliance Library Manager offre une solution robuste pour les bibliothèques afin d'automatiser le catalogage, de suivre les emprunts et les retours, de gérer les comptes des usagers et de générer des rapports complets, améliorant ainsi les opérations globales de la bibliothèque.",
         "category": "Gestion de Bibliothèque",
         "features": [
           "Catalogage et indexation automatisés",
           "Gestion des usagers avec suivi des adhésions",
-          "Système de prêt et de retour de livres",
+          "Système d'emprunt et de retour de livres",
           "Notifications de retard et gestion des amendes"
         ],
         "benefits": [
-          "Simplifier les tâches d'administration de la bibliothèque",
-          "Améliorer l'accès aux ressources de la bibliothèque",
-          "Réduire les erreurs manuelles et gagner du temps",
-          "Meilleur contrôle des stocks et utilisation des ressources"
+          "Rationalise les tâches de gestion de bibliothèque",
+          "Améliore l'accès aux ressources de la bibliothèque",
+          "Réduit les erreurs manuelles et gagne du temps",
+          "Optimise le contrôle des stocks et l'utilisation des ressources"
         ]
       }
     }
@@ -218,57 +219,57 @@
   "contactSection": {
     "getInTouch": "Contactez-nous",
     "headingPart1": "Prêt à démarrer",
-    "headingPart2": "Votre Projet ?",
-    "subheading": "Nous serions ravis d'en savoir plus sur votre projet et de discuter de la manière dont nous pouvons vous aider à concrétiser votre vision. Contactez-nous par l'une des méthodes ci-dessous.",
+    "headingPart2": "votre projet ?",
+    "subheading": "Nous serions ravis d'entendre parler de votre projet et de discuter de la manière dont nous pouvons vous aider à concrétiser votre vision. Contactez-nous par l'une des méthodes ci-dessous.",
     "sendMessage": {
       "title": "Envoyez-nous un message",
-      "description": "Remplissez le formulaire ci-dessous et nous vous répondrons dans les 24 heures.",
+      "description": "Remplissez le formulaire ci-dessous et nous vous contacterons dans les 24 heures.",
       "firstName": "Prénom",
-      "lastName": "Nom",
-      "email": "Email",
-      "companyOptional": "Entreprise (Optionnel)",
-      "projectType": "Type de Projet",
+      "lastName": "Nom de famille",
+      "email": "E-mail",
+      "companyOptional": "Entreprise (facultatif)",
+      "projectType": "Type de projet",
       "message": "Message",
       "sendButton": "Envoyer le message",
       "projectTypeOptions": {
-        "softwareDevelopment": "Développement Logiciel",
-        "websiteCreation": "Création de Site Web",
-        "brandingPackage": "Forfait Branding",
-        "videoProduction": "Production Vidéo",
-        "digitalMarketing": "Marketing Digital",
+        "softwareDevelopment": "Développement de logiciels",
+        "websiteCreation": "Création de sites web",
+        "brandingPackage": "Package de branding",
+        "videoProduction": "Production vidéo",
+        "digitalMarketing": "Marketing numérique",
         "other": "Autre"
       }
     },
     "contactInfo": {
       "emailUs": {
-        "title": "Envoyez-nous un Email",
-        "description": "Envoyez-nous un email à tout moment"
+        "title": "Envoyez-nous un e-mail",
+        "description": "Envoyez-nous un e-mail à tout moment"
       },
       "callUs": {
         "title": "Appelez-nous",
-        "description": "tous les jours de 8h à 18h"
+        "description": "Tous les jours de 8h à 18h"
       },
       "visitUs": {
-        "title": "Rendez-nous visite",
-        "description": "Venez visiter nos bureaux"
+        "title": "Visitez-nous",
+        "description": "Venez visiter notre bureau"
       }
     },
     "followUs": {
       "title": "Suivez-nous",
-      "description": "Restez informé de nos derniers projets et aperçus"
+      "description": "Restez informé de nos derniers projets et de nos idées"
     },
     "newsletter": {
       "title": "Newsletter",
-      "description": "Abonnez-vous pour recevoir les mises à jour sur les nouveaux produits et services",
-      "placeholder": "Entrez votre email",
+      "description": "Abonnez-vous pour des mises à jour sur les nouveaux produits et services",
+      "placeholder": "Entrez votre e-mail",
       "subscribeButton": "S'abonner",
-      "privacyPolicy": "Nous respectons votre vie privée. Désabonnez-vous à tout moment."
+      "privacyPolicy": "Nous respectons votre vie privée. Vous pouvez vous désabonner à tout moment."
     }
   },
   "aboutPage": {
     "header": {
-      "title": "À Propos d'Aliance Software",
-      "description": "Nous sommes une équipe de passionnés innovateurs dédiés à la création de solutions logicielles qui autonomisent les entreprises et transforment les expériences numériques."
+      "title": "À propos d'Aliance Software",
+      "description": "Nous sommes une équipe passionnée d'innovateurs qui s'engage à créer des solutions logicielles qui autonomisent les entreprises et transforment les expériences numériques."
     },
     "mission": {
       "title": "Notre Mission",
@@ -276,11 +277,11 @@
     },
     "vision": {
       "title": "Notre Vision",
-      "description": "Être le principal fournisseur de solutions logicielles de pointe qui façonnent l'avenir de l'innovation numérique."
+      "description": "Devenir le principal fournisseur de solutions logicielles de pointe qui façonnent l'avenir de l'innovation numérique."
     },
     "values": {
       "title": "Nos Valeurs",
-      "description": "L'innovation, l'excellence, l'intégrité et le succès client sont au cœur de tout ce que nous faisons."
+      "description": "L'innovation, l'excellence, l'intégrité et la réussite de nos clients sont au cœur de tout ce que nous faisons."
     },
     "journey": {
       "title": "Notre Parcours",
@@ -297,7 +298,7 @@
       },
       "2025_team": {
         "title": "Expansion de l'équipe",
-        "description": "Croissance de l'équipe à plus de 6 professionnels talentueux"
+        "description": "L'équipe s'est agrandie pour inclure plus de 6 professionnels talentueux"
       }
     },
     "team": {
@@ -306,30 +307,30 @@
     },
     "teamMembers": {
       "ali_ceo": {
-        "name": "Ali Mehemmai",
+        "name": "Ali Mehmae",
         "role": "PDG & Fondateur",
         "expertise": "Leadership Stratégique"
       },
       "fatima_cto": {
         "name": "Fatima",
-        "role": "CTO",
-        "expertise": "Innovation Technique"
+        "role": "Directrice Technique",
+        "expertise": "Innovation Technologique"
       },
       "fatima_design": {
         "name": "Fatima",
-        "role": "Chef de Design",
+        "role": "Responsable du Design",
         "expertise": "Expérience Utilisateur"
       },
       "ali_developer": {
-        "name": "Ali Mehemmai",
+        "name": "Ali Mehmae",
         "role": "Développeur Principal",
         "expertise": "Développement Full-Stack"
       }
     },
     "cta": {
       "title": "Vous voulez rejoindre notre équipe ?",
-      "description": "Nous recherchons toujours des personnes talentueuses pour rejoindre notre équipe grandissante. Consultez nos offres d'emploi actuelles.",
-      "button": "Voir les Carrières"
+      "description": "Nous sommes toujours à la recherche de personnes talentueuses pour rejoindre notre équipe grandissante. Consultez nos postes ouverts.",
+      "button": "Voir les Postes"
     }
   }
 }

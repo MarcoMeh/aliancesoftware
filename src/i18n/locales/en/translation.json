@@ -1,9 +1,9 @@
 {
   "hero": {
-    "tagline": "Building Tomorrow's Software Today",
+    "tagline": "We craft tomorrow's software today",
     "mainHeading": "Innovative Software",
     "mainHeadingSpan": "Solutions & Services",
-    "subheading": "Transform your ideas into powerful software products. We develop cutting-edge applications, create stunning websites, and provide comprehensive digital solutions that drive success.",
+    "subheading": "Transform your ideas into powerful software products. We develop cutting-edge applications, design stunning websites, and provide comprehensive digital solutions that drive success.",
     "exploreProducts": "Explore Products",
     "requestService": "Request Service",
     "stats": {
@@ -15,7 +15,10 @@
   },
   "common": {
     "darkMode": "Dark Mode",
-    "lightMode": "Light Mode"
+    "lightMode": "Light Mode",
+    "error": "Error",
+    "errorMessage": "An error occurred: ",
+    "submitting": "Submitting..."
   },
   "navigation": {
     "home": "Home",
@@ -30,7 +33,7 @@
     "featuredProducts": "Featured Products",
     "headingPart1": "Powerful Software",
     "headingPart2": "Built for Success",
-    "subheading": "Discover our collection of professionally crafted software solutions designed to boost productivity, enhance security, and streamline your workflow.",
+    "subheading": "Discover our suite of expertly crafted software solutions designed to boost productivity, enhance security, and streamline your workflows.",
     "searchPlaceholder": "Search products...",
     "filterButton": "Filter",
     "status": {
@@ -42,17 +45,17 @@
     "learnMore": "Learn More",
     "demo": "Demo",
     "viewAllProducts": "View All Products",
-    "users": "Users"
+    "users": "users"
   },
   "servicesSection": {
     "ourServices": "Our Services",
-    "headingPart1": "Complete Digital",
-    "headingPart2": "Solutions Suite",
+    "headingPart1": "Comprehensive Suite of",
+    "headingPart2": "Digital Solutions",
     "subheading": "From concept to deployment, we provide end-to-end digital services that transform your business ideas into successful digital products and marketing campaigns.",
     "serviceItems": {
       "softwareDev": {
         "title": "Software Development",
-        "description": "Custom applications, web platforms, and mobile solutions built with cutting-edge technologies.",
+        "description": "Custom applications, web platforms, and mobile solutions built with the latest technologies.",
         "features": {
           "webApps": "Web Applications",
           "mobileApps": "Mobile Apps",
@@ -65,7 +68,7 @@
         "description": "Professional websites that drive engagement and deliver exceptional user experiences.",
         "features": {
           "responsiveDesign": "Responsive Design",
-          "eCommerce": "E-commerce",
+          "eCommerce": "E-Commerce",
           "cmsIntegration": "CMS Integration",
           "seoOptimization": "SEO Optimization"
         }
@@ -103,10 +106,10 @@
     },
     "learnMore": "Learn More",
     "bottomCta": {
-      "tagline": "Ready to Start Your Project?",
-      "headingPart1": "Let's Build Something",
-      "headingPart2": "Amazing Together",
-      "description": "Get in touch with our expert team to discuss your project requirements and receive a customized solution proposal.",
+      "tagline": "Ready to start your project?",
+      "headingPart1": "Let's build something",
+      "headingPart2": "amazing together",
+      "description": "Connect with our expert team to discuss your project requirements and receive a personalized solution proposal.",
       "requestQuote": "Request Quote",
       "viewPortfolio": "View Portfolio"
     }
@@ -120,21 +123,21 @@
     "startFreeTrialButton": "Start Free Trial",
     "watchDemoVideo": "Watch Demo Video",
     "downloadForm": {
-      "title": "Get Your Free Trial of Aliance School Manager",
-      "description": "Please provide your contact information to start your free trial download.",
-      "note": "After 3 days contact the agency to get Your Key",
+      "title": "Get your Free Trial of Aliance School Manager",
+      "description": "Please provide your contact information to begin your free trial download.",
+      "note": "After 3 days, contact the agency to get your key",
       "submitButton": "Download Free Trial",
       "successTitle": "Request Submitted!",
-      "successDescription": "Your download will begin shortly.",
-      "submitError": "Form submission failed: {statusText}"
+      "successDescription": "The download will start shortly.",
+      "submitError": "Failed to submit form: {statusText}"
     },
     "contactForm": {
-      "title": "Contact Our Sales Team",
+      "title": "Connect with Our Sales Team",
       "description": "Have more questions or need a personalized demo? Fill out the form below.",
       "submitButton": "Submit Request",
-      "successTitle": "Contact Request Sent!",
-      "successDescription": "We'll contact you within 24 hours about {productName}.",
-      "submitError": "Contact form submission failed: {statusText}"
+      "successTitle": "Contact Request Submitted!",
+      "successDescription": "We will contact you within 24 hours regarding Aliance software.",
+      "submitError": "Failed to submit contact form: {statusText}"
     },
     "formLabels": {
       "yourName": "Your Name",
@@ -148,7 +151,7 @@
       "fullName": "John Doe",
       "yourEmail": "john.doe@example.com",
       "phoneNumber": "(123) 456-7890",
-      "company": "Acme Corp",
+      "company": "SASMP Company",
       "socialMediaLink": "Instagram or Facebook link",
       "message": "How can we help you?"
     },
@@ -159,48 +162,67 @@
     },
     "features": {
       "title": "Key Features",
-      "description": "Everything you need to succeed with {productName}"
+      "description": "Everything you need to succeed with {{productName}}"
     },
     "benefits": {
       "title": "Key Benefits",
-      "description": "How {productName} transforms your business"
+      "description": "How {{productName}} transforms your business"
+    },
+    "sidebar": {
+      "downloadsTitle": "Useful Downloads",
+      "downloadsDescription": "Access documentation, guides, and other resources."
     },
     "videoSection": {
-      "title": "See {productName} in Action",
-      "description": "Watch our detailed walkthrough to see how {productName} can transform your workflow",
-      "iframeTitle": "{productName} Demo Video"
+      "title": "Watch {{productName}} in Action",
+      "description": "See our detailed walkthrough to discover how {{productName}} can transform your workflow",
+      "iframeTitle": "{{productName}} Demo Video"
     },
-     "sidebar": {
-      "downloadsTitle": "Helpful Downloads",
-      "downloadsDescription": "Access documentation, guides, and other resources."},
     "products": {
       "1": {
         "name": "Aliance School Manager",
-        "description": "Comprehensive school management system for tracking students, employees, finance, and courses efficiently.",
-        "fullDescription": "Aliance School Manager is a comprehensive system that helps schools efficiently manage students, employees, classes, finances, and schedules with a user-friendly interface and detailed analytics.",
+        "description": "A comprehensive school management system to efficiently track students, staff, finances, and courses.",
+        "fullDescription": "Aliance School Manager is a comprehensive system that helps schools efficiently manage students, staff, classes, finances, and schedules with a user-friendly interface and detailed analytics.",
         "category": "Education",
         "features": [
-          "Multilingual support",
-          "Role-based task management",
-          "Finance & payment tracking",
-          "Course & class scheduling"
+          "Multi-Language Support",
+          "Role-based Task Management",
+          "Finance & Payment Tracking",
+          "Course & Class Scheduling"
         ],
         "benefits": [
-          "Streamline school administration",
-          "Improve teacher-student communication",
-          "Accurate finance and payment management",
+          "Streamlines school administration",
+          "Improves teacher-student communication",
+          "Accurate financial and payment management",
           "Data-driven decision making"
+        ]
+      },
+      "2": {
+        "name": "Aliance Library Manager",
+        "description": "An intuitive system to efficiently manage library resources, patrons, and book circulation.",
+        "fullDescription": "Aliance Library Manager provides a robust solution for libraries to automate cataloging, track borrowings and returns, manage patron accounts, and generate comprehensive reports, enhancing overall library operations.",
+        "category": "Library Management",
+        "features": [
+          "Automated Cataloging & Indexing",
+          "Patron Management with Membership Tracking",
+          "Book Borrowing & Return System",
+          "Overdue Notifications & Fine Management"
+        ],
+        "benefits": [
+          "Streamlines library management tasks",
+          "Improves access to library resources",
+          "Reduces manual errors and saves time",
+          "Enhanced inventory control and resource utilization"
         ]
       }
     }
   },
   "contactSection": {
-    "getInTouch": "Get In Touch",
-    "headingPart1": "Ready to Start",
-    "headingPart2": "Your Project?",
+    "getInTouch": "Get in Touch",
+    "headingPart1": "Ready to start",
+    "headingPart2": "your project?",
     "subheading": "We'd love to hear about your project and discuss how we can help bring your vision to life. Reach out to us using any of the methods below.",
     "sendMessage": {
-      "title": "Send us a message",
+      "title": "Send Us a Message",
       "description": "Fill out the form below and we'll get back to you within 24 hours.",
       "firstName": "First Name",
       "lastName": "Last Name",
@@ -216,13 +238,6 @@
         "videoProduction": "Video Production",
         "digitalMarketing": "Digital Marketing",
         "other": "Other"
-      },
-      "placeholders": {
-        "firstName": "John",
-        "lastName": "Doe",
-        "email": "john@example.com",
-        "company": "Your Company",
-        "message": "Tell us about your project requirements..."
       }
     },
     "contactInfo": {
@@ -232,33 +247,33 @@
       },
       "callUs": {
         "title": "Call Us",
-        "description": "all days from 8am to 6pm"
+        "description": "All days from 8 AM to 6 PM"
       },
       "visitUs": {
         "title": "Visit Us",
-        "description": "Come visit our office"
+        "description": "Come and visit our office"
       }
     },
     "followUs": {
       "title": "Follow Us",
-      "description": "Stay updated with our latest projects and insights"
+      "description": "Stay up-to-date with our latest projects and insights"
     },
     "newsletter": {
       "title": "Newsletter",
-      "description": "Subscribe to get updates on new products and services",
+      "description": "Subscribe for updates on new products and services",
       "placeholder": "Enter your email",
       "subscribeButton": "Subscribe",
-      "privacyPolicy": "We respect your privacy. Unsubscribe at any time."
+      "privacyPolicy": "We respect your privacy. You can unsubscribe at any time."
     }
   },
   "aboutPage": {
     "header": {
       "title": "About Aliance Software",
-      "description": "We're a passionate team of innovators dedicated to creating software solutions that empower businesses and transform digital experiences."
+      "description": "We are a passionate team of innovators committed to creating software solutions that empower businesses and transform digital experiences."
     },
     "mission": {
       "title": "Our Mission",
-      "description": "To deliver innovative software solutions that drive digital transformation and empower businesses to achieve their goals."
+      "description": "To deliver innovative software solutions that drive digital transformation and enable businesses to achieve their goals."
     },
     "vision": {
       "title": "Our Vision",
@@ -266,7 +281,7 @@
     },
     "values": {
       "title": "Our Values",
-      "description": "Innovation, excellence, integrity, and customer success are at the core of everything we do."
+      "description": "Innovation, excellence, integrity, and client success are at the core of everything we do."
     },
     "journey": {
       "title": "Our Journey",
@@ -275,15 +290,15 @@
     "milestones": {
       "2024": {
         "title": "Company Founded",
-        "description": "Started with a vision to create innovative software solutions"
+        "description": "Began with a vision to create innovative software solutions"
       },
       "2025_product": {
-        "title": "First Major Product Launch",
-        "description": "Released Aliance School Manager System"
+        "title": "Launched First Major Product",
+        "description": "Introduced the Aliance School Manager system"
       },
       "2025_team": {
         "title": "Team Expansion",
-        "description": "Grew to 6+ talented professionals"
+        "description": "Team grew to over 6 talented professionals"
       }
     },
     "team": {
@@ -292,7 +307,7 @@
     },
     "teamMembers": {
       "ali_ceo": {
-        "name": "Ali Mehemmai",
+        "name": "Ali Mehmae",
         "role": "CEO & Founder",
         "expertise": "Strategic Leadership"
       },
@@ -307,15 +322,15 @@
         "expertise": "User Experience"
       },
       "ali_developer": {
-        "name": "Ali Mehemmai",
+        "name": "Ali Mehmae",
         "role": "Lead Developer",
         "expertise": "Full-Stack Development"
       }
     },
     "cta": {
       "title": "Want to Join Our Team?",
-      "description": "We're always looking for talented individuals to join our growing team. Check out our current openings.",
-      "button": "View Careers"
+      "description": "We are always looking for talented individuals to join our growing team. Check out our open positions.",
+      "button": "View Openings"
     }
   }
 }

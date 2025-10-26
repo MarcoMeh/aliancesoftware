@@ -162,19 +162,19 @@
     },
     "features": {
       "title": "الميزات الرئيسية",
-      "description": "كل ما تحتاجه للنجاح مع Aliance software"
+      "description": "كل ما تحتاجه للنجاح مع {{productName}}"
     },
     "benefits": {
       "title": "الفوائد الرئيسية",
-      "description": "كيف يغير Aliance software عملك"
+      "description": "كيف يغير {{productName}} عملك"
     },
     "sidebar": {
       "downloadsTitle": "تنزيلات مفيدة",
       "downloadsDescription": "الوصول إلى الوثائق والأدلة والموارد الأخرى."},
     "videoSection": {
-  "title": "شاهد Aliance software قيد العمل",
-  "description": "شاهد دليلنا التفصيلي لترى كيف يمكن لـ Aliance software أن يحول سير عملك",
-  "iframeTitle": "فيديو توضيحي لـ Aliance software"},
+  "title": "شاهد {{productName}} قيد العمل",
+  "description": "شاهد دليلنا التفصيلي لترى كيف يمكن لـ {{productName}} أن يحول سير عملك",
+  "iframeTitle": "فيديو توضيحي لـ {{productName}}"},
     "products": {
       "1": {
         "name": "Aliance School Manager",
