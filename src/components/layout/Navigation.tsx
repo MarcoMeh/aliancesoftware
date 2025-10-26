@@ -26,7 +26,7 @@ const Navigation = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A1128]/90 backdrop-blur-xl border-b border-[#1e3a8a]/50 shadow-lg md:shadow-xl transition-all duration-300"> {/* Stronger blur and shadow, dark background */}
-      <div className="container mx-auto px-6 py-4 md:py-5 flex items-center justify-between"> {/* Increased padding */}
+      <div className="container mx-auto px-6 py-2 md:py-2 flex items-center justify-between"> {/* Increased padding */}
         {/* Logo */}
         <Link to="/" className={`flex items-center space-x-3 rtl:space-x-reverse hover:opacity-90 transition-opacity ${isRtl ? 'flex-row-reverse space-x-reverse' : ''}`}> {/* Added rtl:space-x-reverse */}
           {/* Logo as a stylistic element inspired by the provided logo */}
@@ -41,7 +41,6 @@ const Navigation = () => {
             <p className="text-xs text-blue-200/80 hidden sm:block">{t('navigation.innovationExcellence')}</p> {/* Hidden on smallest screens */}
           </div>
         </Link>
-
         {/* Desktop Navigation */}
         <div className={`hidden md:flex items-center ${isRtl ? 'space-x-reverse' : ''} gap-x-8`}> {/* Consistent larger gap */}
           {navItems.map((item) => (

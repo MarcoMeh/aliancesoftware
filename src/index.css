@@ -168,6 +168,9 @@ html:not([dir="rtl"]) body {
     left: 100%;
   }
 
+  /* The hero-background-blobs and .blob classes are not directly used in your JSX hero section.
+     If you intend to use them, ensure your JSX structure aligns.
+     Your JSX creates individual divs with direct styling and Tailwind classes. */
   .hero-background-blobs {
     position: absolute;
     top: 0;
@@ -223,24 +226,25 @@ html:not([dir="rtl"]) body {
     background: linear-gradient(135deg, hsl(210 85% 50%), hsl(200 90% 65%));
     opacity: 0.32;
   }
-  /* Add to your global.css or equivalent */
 
+  /* Keyframes that match your tailwind.config.ts - ensure these are present */
   @keyframes glow {
     0% { opacity: 0.5; transform: scale(1); }
     50% { opacity: 1; transform: scale(1.2); }
     100% { opacity: 0.5; transform: scale(1); }
   }
 
-  @keyframes fadeIn {
+  @keyframes fadeIn { /* Renamed to match tailwind.config.ts */
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .animate-fade-in {
-    animation: fadeIn 1s ease-out forwards;
+  @keyframes fade-down-in {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  @keyframes blob {
+  @keyframes blob-move { /* Renamed to match tailwind.config.ts */
     0% {
       transform: translate(0px, 0px) scale(1);
     }
@@ -255,6 +259,9 @@ html:not([dir="rtl"]) body {
     }
   }
 
+  /* These classes are now handled by Tailwind's transitionDelay utilities
+     so they are commented out or can be removed if not needed as direct CSS classes */
+  /*
   .animation-delay-2000 {
     animation-delay: 2s;
   }
@@ -262,6 +269,7 @@ html:not([dir="rtl"]) body {
   .animation-delay-4000 {
     animation-delay: 4s;
   }
+  */
 
   /* For gradient text on headings */
   .gradient-text {
@@ -270,38 +278,18 @@ html:not([dir="rtl"]) body {
     color: transparent;
     background-image: linear-gradient(to right, #60a5fa, #93c5fd);
   }
-    /* Define the blob-move keyframes */
-  @keyframes blob-move {
-    0% {
-      transform: translate(0, 0) scale(1);
-    }
-    25% {
-      transform: translate(20px, -30px) scale(1.05);
-    }
-    50% {
-      transform: translate(-15px, 20px) scale(0.95);
-    }
-    75% {
-      transform: translate(25px, 10px) scale(1.1);
-    }
-    100% {
-      transform: translate(0, 0) scale(1);
-    }
-  }
 
   html[dir="rtl"] .hero-button-icon-right {
     transform: scaleX(-1);
   }
+  /*
   .animate-fade-in {
-  animation: fadeIn 0.3s ease-out forwards;
+    animation: fadeIn 0.3s ease-out forwards;
   }
-  @keyframes fade-down-in {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fade-down-in {
-  animation: fade-down-in 0.4s ease-out forwards;
-}
-
+  */
+  /*
+  .animate-fade-down-in {
+    animation: fade-down-in 0.4s ease-out forwards;
+  }
+  */
 }

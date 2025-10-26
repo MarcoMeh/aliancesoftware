@@ -1,8 +1,9 @@
+// tailwind.config.ts
 import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}", "./index.html"], // Added index.html for Vite
   prefix: "",
   theme: {
     container: {
@@ -61,7 +62,7 @@ export default {
       },
       boxShadow: {
         'glow': 'var(--shadow-glow)',
-        'card': '0 8px 32px hsl(220 18% 4% / 0.15)', // Adjusted for lighter shadow
+        'card': '0 8px 32px hsl(220 18% 4% / 0.15)',
         'button': 'var(--shadow-button)',
       },
       borderRadius: {
@@ -78,9 +79,13 @@ export default {
           from: { height: "var(--radix-accordion-content-height)", opacity: "1" },
           to: { height: "0", opacity: "0" }
         },
-        "fade-in": {
+        "fade-in": { // Renamed from fade-in for clarity against default fade-in
           "0%": { opacity: "0", transform: "translateY(20px)" },
           "100%": { opacity: "1", transform: "translateY(0)" }
+        },
+        "fade-down-in": {
+          from: { opacity: "0", transform: "translateY(-20px)" },
+          to: { opacity: "1", transform: "translateY(0)" }
         },
         "scale-in": {
           "0%": { transform: "scale(0.95)", opacity: "0" },
@@ -90,29 +95,37 @@ export default {
           "0%": { transform: "translateY(100%)", opacity: "0" },
           "100%": { transform: "translateY(0)", opacity: "1" }
         },
-        "glow": {
-          "0%, 100%": { boxShadow: "0 0 20px hsl(var(--primary) / 0.3)" },
-          "50%": { boxShadow: "0 0 40px hsl(var(--primary) / 0.6)" }
+        "glow": { // This glow is for the small dots
+          "0%": { opacity: "0.5", transform: "scale(1)" },
+          "50%": { opacity: "1", transform: "scale(1.2)" },
+          "100%": { opacity: "0.5", transform: "scale(1)" }
         },
-        "blob-move": {
+        "blob-move": { // This is for the large blob shapes
           "0%": { transform: "translate(0px, 0px) scale(1)" },
-          "33%": { transform: "translate(20px, -40px) scale(1.1)" },
-          "66%": { transform: "translate(-30px, 30px) scale(0.9)" },
+          "33%": { transform: "translate(30px, -50px) scale(1.1)" }, // Slightly tweaked for more movement
+          "66%": { transform: "translate(-20px, 20px) scale(0.9)" }, // Slightly tweaked
           "100%": { transform: "translate(0px, 0px) scale(1)" }
         }
       },
       animation: {
         "accordion-down": "accordion-down 0.3s ease-out",
         "accordion-up": "accordion-up 0.3s ease-out",
-        "fade-in": "fade-in 0.6s ease-out",
+        // Adjusted durations/easings to potentially look better
+        "fade-in": "fade-in 1s ease-out forwards", // Matches old hero.tagline duration
+        "fade-down-in": "fade-down-in 0.4s ease-out forwards", // Your existing fade-down-in
         "scale-in": "scale-in 0.4s ease-out",
         "slide-up": "slide-up 0.5s ease-out",
-        "glow": "glow 2s ease-in-out infinite",
-        "blob-move": "blob-move 8s ease-in-out infinite alternate",
+        "glow-dots": "glow 2s infinite alternate", // Specific utility for glowing dots, uses 'glow' keyframe
+        "blob-animate": "blob-move 8s ease-in-out infinite alternate", // Specific utility for large blobs
       },
       transitionProperty: {
         'smooth': 'var(--transition-smooth)',
         'bounce': 'var(--transition-bounce)',
+      },
+      transitionDelay: { // Tailwind utilities for animation-delay
+        '2000': '2s',
+        '4000': '4s',
+        // You can add more delays if needed, e.g., '3000': '3s', '6000': '6s'
       }
     },
   },
