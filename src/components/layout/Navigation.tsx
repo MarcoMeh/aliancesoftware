@@ -30,32 +30,12 @@ const Navigation = () => {
         {/* Logo */}
         <Link to="/" className={`flex items-center space-x-3 rtl:space-x-reverse hover:opacity-90 transition-opacity ${isRtl ? 'flex-row-reverse space-x-reverse' : ''}`}> {/* Added rtl:space-x-reverse */}
           {/* Logo as a stylistic element inspired by the provided logo */}
-          <div className="w-10 h-10 bg-gradient-to-br from-[#3b82f6] to-[#60a5fa] flex items-center justify-center rounded-lg shadow-md transition-transform duration-200 hover:scale-105">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 2L2 12L12 22L22 12L12 2Z"
-                fill="url(#gradient-logo)"
-              />
-              <path
-                d="M12 6L6 12L12 18L18 12L12 6Z"
-                fill="white"
-                fillOpacity="0.8"
-              />
-              <path d="M12 9L9 12L12 15L15 12L12 9Z" fill="white" fillOpacity="0.6" />
-              <defs>
-                <linearGradient id="gradient-logo" x1="12" y1="2" x2="12" y2="22" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#60a5fa"/>
-                  <stop offset="1" stopColor="#3b82f6"/>
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
+          {/* Logo */}
+          <img
+            src="/images/logo_aliance.png" // <--- IMPORTANT: Replace with the actual path to your logo
+            alt="Aliance Software Logo"
+            className="w-10 h-10 object-contain transition-transform duration-200 hover:scale-105" // Adjust size as needed
+          />
           <div>
             <h1 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd] leading-tight drop-shadow-sm">Aliance Software</h1> {/* Larger, tighter leading */}
             <p className="text-xs text-blue-200/80 hidden sm:block">{t('navigation.innovationExcellence')}</p> {/* Hidden on smallest screens */}

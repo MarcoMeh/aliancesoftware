@@ -55,12 +55,11 @@ const HeroSection = () => {
             {t('hero.tagline', 'Building Tomorrow\'s Software Today')}
           </div>
 
-          {/* Main Heading - Larger and more striking */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 leading-tight tracking-tighter">
+           <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 leading-tight tracking-tighter">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd] drop-shadow-lg">
               {t('hero.mainHeading', 'Innovative Software')}
             </span>
-            <br className="block sm:hidden" />
+            <br /> {/* This ensures a line break */}
             <span className="text-white/95">{t('hero.mainHeadingSpan', 'Solutions & Services')}</span>
           </h1>
 

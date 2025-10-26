@@ -82,7 +82,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section className="py-24 relative bg-[#0A1128] text-white">
+    <section className="py-24 relative bg-[#0A1128] text-white"> {/* Added text-white here */}
       {/* Abstract Background Elements: Inspired by code, circuits, and digital marketing */}
       <div className="absolute inset-0 z-0 opacity-10">
         <div className="absolute top-1/4 left-0 w-64 h-64 bg-[#1e3a8a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
@@ -117,7 +117,7 @@ const ServicesSection = () => {
           </div>
           
           <h2 className="text-4xl md:text-6xl font-extrabold mb-7 leading-tight">
-            <span className="text-white/95">{t('servicesSection.headingPart1')}</span> {/* Translated */}
+            <span className="text-white">{t('servicesSection.headingPart1')}</span> {/* Changed to text-white */}
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd] drop-shadow-lg">{t('servicesSection.headingPart2')}</span> {/* Translated */}
           </h2>
@@ -144,17 +144,19 @@ const ServicesSection = () => {
                   <service.icon className="w-8 h-8 text-white" />
                 </div>
                 
-                <CardTitle className="text-2xl font-bold group-hover:text-[#60a5fa] transition-colors duration-300 leading-snug">
+                {/* Ensure title text is white */}
+                <CardTitle className="text-2xl font-bold text-white group-hover:text-[#60a5fa] transition-colors duration-300 leading-snug">
                   {t(service.titleKey)} {/* Translated */}
                 </CardTitle>
                 
+                {/* Ensure description text is blue-200 (light blue) */}
                 <CardDescription className="text-blue-200 leading-relaxed mt-2">
                   {t(service.descriptionKey)} {/* Translated */}
                 </CardDescription>
               </CardHeader>
               
               <CardContent className="relative p-6 pt-0 space-y-4">
-                {/* Features List */}
+                {/* Features List - ensure text is blue-300 */}
                 <div className="space-y-2">
                   {service.featuresKeys.map((featureKey, i) => (
                     <div key={i} className="flex items-center gap-2 text-sm text-blue-300">
@@ -187,7 +189,7 @@ const ServicesSection = () => {
             </div>
             
             <h3 className="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
-              <span className="text-white/95">{t('servicesSection.bottomCta.headingPart1')}{" "}</span> {/* Translated */}
+              <span className="text-white">{t('servicesSection.bottomCta.headingPart1')}{" "}</span> {/* Changed to text-white */}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd] drop-shadow-lg">{t('servicesSection.bottomCta.headingPart2')}</span> {/* Translated */}
             </h3>
             
