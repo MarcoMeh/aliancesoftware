@@ -123,7 +123,7 @@
     "startFreeTrialButton": "Start Free Trial",
     "watchDemoVideo": "Watch Demo Video",
     "downloadForm": {
-      "title": "Get your Free Trial of Aliance School Manager",
+      "title": "Get your Free Trial of {{productName}}",
       "description": "Please provide your contact information to begin your free trial download.",
       "note": "After 3 days, contact the agency to get your key",
       "submitButton": "Download Free Trial",

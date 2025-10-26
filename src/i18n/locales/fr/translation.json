@@ -123,7 +123,7 @@
     "startFreeTrialButton": "Démarrer l'essai gratuit",
     "watchDemoVideo": "Regarder la vidéo de démonstration",
     "downloadForm": {
-      "title": "Obtenez votre essai gratuit de Aliance School Manager",
+      "title": "Obtenez votre essai gratuit de {{productName}}",
       "description": "Veuillez fournir vos coordonnées pour commencer le téléchargement de votre essai gratuit.",
       "note": "Après 3 jours, contactez l'agence pour obtenir votre clé",
       "submitButton": "Télécharger l'essai gratuit",
