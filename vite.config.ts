@@ -13,5 +13,9 @@ export default defineConfig({
   build: {
     minify: 'esbuild',
     sourcemap: false
-  }
+  },
+  // Add this 'server' block
+  server: {
+    host: true, // This tells Vite to expose the server to the network
+  },
 });

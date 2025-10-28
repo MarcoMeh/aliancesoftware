@@ -59,9 +59,10 @@ export const allProducts: Product[] = [
     pricing: '15000.00 DA',
     downloadPath: '/downloads/School Demo Setup.exe',
     pdfDownloads: [
-      { title: 'School Manager Quick Start Guide', path: '/downloads/School_Manager_Quick_Start.pdf' },
-      { title: 'Advanced Reporting Features', path: '/downloads/School_Manager_Reporting.pdf' },
-      { title: 'System Requirements', path: '/downloads/School_Manager_Requirements.pdf' },
+      { title: '5 طرق لإعادة إطلاق مدرستك بنجاح (دليل عملي للمدارس الطموحة للعودة بقوة)', path: '/downloads/5طرق_إلعادة_إطالق_مدرستك_بنجاح.pdf' },
+      { title: '5طرق عملية لجلب طلاب جدد وجذب تسجيلات جديدة (دليل عملي من خبراء التسيير المدرسي)', path: '/downloads/5_طرق_عملية_لجلب_طلاب_جدد_وجذب_تسجيلات_جديدة.pdf' },
+      { title: '5 خطوات واقعية ومجربة لتقليل الضغط وجعل إدارة مدرستك أكثر ذكاء وسلاسة.', path: '/downloads/5_خطوات_واقعية_ومجربة_لتقليل_الضغط.pdf' },
+      { title: '3 خطوات لانطلاقة مدرسية ناجحة (دليل عملي للتخطيط , التنظيم , والإنطلاق بثقة', path: '/downloads/3خطوات_لانطلاقة_صحيحة.pdf' },
     ],
   },
   {
