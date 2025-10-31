@@ -226,26 +226,6 @@ const About = () => {
                 </Card>
               ))}
             </div>
-
-            {/* CTA */}
-            <div className="text-center animate-fade-in-up">
-              <h3 className="text-3xl md:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]">
-                {t('aboutPage.cta.title', 'Join Our Vision')}
-              </h3>
-              <p className="text-lg text-blue-200 mb-8 max-w-2xl mx-auto leading-relaxed">
-                {t('aboutPage.cta.description', 'Interested in partnering with us or joining our team? We\'d love to hear from you.')}
-              </p>
-              <Button
-                variant="outline"
-                size="lg"
-                className={`group px-8 py-3 text-lg font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300
-                            border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white
-                            ${isRtl ? 'flex-row-reverse' : ''}`}
-              >
-                {t('aboutPage.cta.button', 'Explore Opportunities')}
-                <ArrowRight className={`w-5 h-5 group-hover:translate-x-1 transition-transform ${isRtl ? 'mr-3 rotate-180' : 'ml-3'}`} />
-              </Button>
-            </div>
           </div>
         </section>
       </main>

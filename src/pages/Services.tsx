@@ -30,7 +30,7 @@ const Services = () => {
         'servicesSection.serviceItems.softwareDev.features.apiDev',
         'servicesSection.serviceItems.softwareDev.features.cloudSolutions'
       ],
-      price: 'Starting at $5,000',
+      price: '  ',
       color: 'from-[#3b82f6] to-[#60a5fa]' // Blue-Cyan gradient
     },
     {
@@ -43,7 +43,7 @@ const Services = () => {
         'servicesSection.serviceItems.websiteCreation.features.cmsIntegration',
         'servicesSection.serviceItems.websiteCreation.features.seoOptimization'
       ],
-      price: 'Starting at $1,500',
+      price: '  ',
       color: 'from-[#22c55e] to-[#4ade80]' // Green-Emerald gradient
     },
     {
@@ -56,7 +56,7 @@ const Services = () => {
         'servicesSection.serviceItems.brandingPackages.features.socialMediaPosts',
         'servicesSection.serviceItems.brandingPackages.features.marketingMaterials'
       ],
-      price: 'Starting at $2,000',
+      price: '  ',
       color: 'from-[#a855f7] to-[#e879f9]' // Purple-Pink gradient
     },
     {
@@ -69,7 +69,7 @@ const Services = () => {
         'servicesSection.serviceItems.videoProduction.features.motionGraphics',
         'servicesSection.serviceItems.videoProduction.features.postProduction'
       ],
-      price: 'Starting at $800',
+      price: '  ',
       color: 'from-[#f97316] to-[#f43f5e]' // Orange-Red gradient
     },
     {
@@ -82,7 +82,7 @@ const Services = () => {
         'servicesSection.serviceItems.digitalMarketing.features.influencerCampaigns',
         'servicesSection.serviceItems.digitalMarketing.features.analyticsReporting'
       ],
-      price: 'Starting at $1,200',
+      price: '  ',
       color: 'from-[#6366f1] to-[#a855f7]' // Indigo-Purple gradient
     },
   ];
@@ -235,18 +235,6 @@ const Services = () => {
                   >
                     <Zap className="w-5 h-5 mr-2" />
                     {t('servicesSection.bottomCta.requestQuote')}
-                    <ArrowRight className={`w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform`} />
-                  </Button>
-
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className={`group px-8 py-4 text-lg font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300
-                                border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white`}
-                    onClick={() => window.location.href = '/products'}
-                  >
-                    <Shield className="w-5 h-5 mr-2" />
-                    {t('servicesSection.bottomCta.viewPortfolio')}
                     <ArrowRight className={`w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform`} />
                   </Button>
                 </div>

@@ -112,8 +112,6 @@ const ContactSection = () => {
     { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61579161136036' },
     { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/aliance_software/' },
     { icon: Youtube, label: 'Youtube', href: 'https://www.youtube.com/@AlianceSoftware' },
-    { icon: Linkedin, label: 'LinkedIn', href: '#' },
-    { icon: Twitter, label: 'Twitter', href: '#' },
   ];
 
   const projectTypeOptions = [
@@ -319,29 +317,7 @@ const ContactSection = () => {
               </CardContent>
             </Card>
 
-            {/* Newsletter Signup */}
-            <Card className="bg-gradient-to-br from-[#1e3a8a]/20 to-[#3b82f6]/20 border border-[#3b82f6]/40 backdrop-blur-sm rounded-xl shadow-lg">
-              <CardHeader className="p-6 pb-0">
-                <CardTitle className="text-xl font-bold text-white/95">{t('contactSection.newsletter.title')}</CardTitle>
-                <CardDescription className="text-blue-200 mt-2">
-                  {t('contactSection.newsletter.description')}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-6 space-y-4">
-                <div className="flex gap-2">
-                  <Input 
-                    placeholder={t('contactSection.newsletter.placeholder')}
-                    className="bg-[#121A3D] border-[#1e3a8a] text-white placeholder:text-blue-400 flex-1"
-                  />
-                  <Button variant="default" className="bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] text-white hover:from-[#60a5fa] hover:to-[#3b82f6]">
-                    {t('contactSection.newsletter.subscribeButton')}
-                  </Button>
-                </div>
-                <p className="text-xs text-blue-300">
-                  {t('contactSection.newsletter.privacyPolicy')}
-                </p>
-              </CardContent>
-            </Card>
+    
           </div>
         </div>
       </div>

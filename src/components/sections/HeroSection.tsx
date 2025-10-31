@@ -108,15 +108,15 @@ const HeroSection = () => {
           {/* Optional: Add Stats below CTA for more immediate impact */}
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-blue-100 font-medium max-w-4xl mx-auto">
             <div className="flex flex-col items-center">
-              <span className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]">150+</span>
-              <span className="text-sm md:text-base text-blue-300 mt-1">{t('hero.stats.productsLaunched', 'Products Launched')}</span>
+              <span className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]">15+</span>
+              <span className="text-sm md:text-base text-blue-300 mt-1">{t('hero.stats.productsLaunched', 'On Going Products')}</span>
             </div>
             <div className="flex flex-col items-center">
-              <span className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]">99%</span>
+              <span className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]">94%</span>
               <span className="text-sm md:text-base text-blue-300 mt-1">{t('hero.stats.happyClients', 'Happy Clients')}</span>
             </div>
             <div className="flex flex-col items-center">
-              <span className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]">10+</span>
+              <span className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]">7+</span>
               <span className="text-sm md:text-base text-blue-300 mt-1">{t('hero.stats.yearsExperience', 'Years Experience')}</span>
             </div>
             <div className="flex flex-col items-center">
