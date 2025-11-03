@@ -1,0 +1,118 @@
+// src/data/websiteData.ts // Changed to .ts for TypeScript if that's what you're using
+const WebData = [
+  {
+    id: 'e-commerce-store', // Unique ID for the URL
+    name: 'E-commerce Store',
+    description: 'A robust online shopping platform with secure payment integration and a user-friendly interface. Features include product listings, shopping cart, checkout process, user authentication, and admin panel for managing products and orders.',
+    longDescription: 'Our E-commerce Store solution provides a comprehensive platform for businesses looking to sell products online. Built with a focus on scalability and user experience, it includes features like advanced product search, secure payment gateways (Stripe, PayPal), customer reviews, wishlists, and a powerful content management system for easy updates. The design is fully responsive, ensuring a seamless experience across all devices.',
+    imageUrl: '/images/website/web_eco_screen_0.jpg', 
+    images: [
+      '/images/website/web_eco_screen_1.jpg',
+      '/images/website/web_eco_screen_2.jpg',
+      '/images/website/web_eco_screen_3.jpg',
+    ],
+    features: [
+      'Secure Payment Gateway',
+      'Product Management',
+      'User Authentication',
+      'Shopping Cart & Checkout',
+      'Admin Dashboard',
+      'Responsive Design',
+      'Customer Reviews',
+      'Order Tracking'
+    ],
+    price: 14000.00, // Example price
+  },
+  {
+    id: 'School Website',
+    name: 'School Website',
+    description: 'An intuitive dashboard for managing subscriptions, analytics, and user data for a SaaS product.',
+    longDescription: 'The SaaS Dashboard offers a centralized hub for monitoring and managing your software-as-a-service application. It includes real-time analytics, user management, subscription tracking, and custom reporting tools. Designed for clarity and efficiency, it empowers businesses to make data-driven decisions and streamline operations. Integrates with various APIs for enhanced functionality.',
+    imageUrl: 'public/images/website/web_sco_screen_0.jpg',
+    images: [ // <--- ADD THIS ARRAY
+      'public/images/website/web_sco_screen_1.jpg',
+      'public/images/website/web_sco_screen_2.jpg',
+      'public/images/website/web_sco_screen_4.jpg',
+      'public/images/website/web_sco_screen_5.jpg',
+      'public/images/website/web_sco_screen_3.jpg'
+    ],
+    features: [
+      'Real-time Analytics',
+      'User Management',
+      'Subscription Tracking',
+      'Custom Reporting',
+      'API Integrations',
+      'Secure Data Handling'
+    ],
+    price: 20000.00,
+    technologies: ['Vue.js', 'Firebase', 'Chart.js'],
+  },
+  {
+    id: 'portfolio-website',
+    name: 'Portfolio Website',
+    description: 'A modern and responsive portfolio showcasing creative work and contact information.',
+    longDescription: 'Craft a stunning online presence with our modern portfolio website solution. Perfect for artists, designers, developers, and freelancers to showcase their work, share their story, and connect with potential clients. Features include customizable galleries, a dedicated "About Me" section, contact forms, and social media integration. Optimized for speed and search engines.',
+    imageUrl: 'https://via.placeholder.com/800x600/a855f7/FFFFFF?text=Portfolio+Website',
+    images: [ // <--- ADD THIS ARRAY
+      'https://via.placeholder.com/1200x800/a855f7/FFFFFF?text=Portfolio+Website+Screenshot+1',
+      'https://via.placeholder.com/1200x800/a855f7/FFFFFF?text=Portfolio+Website+Screenshot+2',
+      'https://via.placeholder.com/1200x800/a855f7/FFFFFF?text=Portfolio+Website+Screenshot+3',
+    ],
+    features: [
+      'Customizable Galleries',
+      'About Me Section',
+      'Contact Form',
+      'Social Media Integration',
+      'SEO Optimized',
+      'Fast Loading Speed'
+    ],
+    price: 800,
+    technologies: ['Next.js', 'Tailwind CSS', 'Sanity.io'],
+  },
+  {
+    id: 'blog-platform',
+    name: 'Blog Platform',
+    description: 'A content-rich blog platform with author management, commenting, and SEO features.',
+    longDescription: 'Launch your own professional blog with our comprehensive blog platform. It supports multiple authors, category management, comment sections, and powerful SEO tools to help your content reach a wider audience. The intuitive editor makes content creation a breeze, and its responsive design ensures readability on any device. Includes RSS feed generation and social sharing features.',
+    imageUrl: 'https://via.placeholder.com/800x600/f97316/FFFFFF?text=Blog+Platform',
+    images: [ // <--- ADD THIS ARRAY
+      'https://via.placeholder.com/1200x800/f97316/FFFFFF?text=Blog+Platform+Screenshot+1',
+      'https://via.placeholder.com/1200x800/f97316/FFFFFF?text=Blog+Platform+Screenshot+2',
+      'https://via.placeholder.com/1200x800/f97316/FFFFFF?text=Blog+Platform+Screenshot+3',
+    ],
+    features: [
+      'Multi-Author Support',
+      'Category Management',
+      'Commenting System',
+      'SEO Tools',
+      'Rich Text Editor',
+      'Social Sharing'
+    ],
+    price: 1200,
+    technologies: ['Gatsby', 'GraphQL', 'Strapi'],
+  },
+  {
+    id: 'booking-system',
+    name: 'Booking System',
+    description: 'An efficient system for scheduling appointments, managing availability, and sending reminders.',
+    longDescription: 'Streamline your appointment scheduling with our robust booking system. Ideal for service-based businesses, clinics, salons, and consultants. Features include real-time availability display, automated email/SMS reminders, flexible service configuration, and a client management portal. Customizable to fit your specific booking workflow and integrates with calendar applications.',
+    imageUrl: 'https://via.placeholder.com/800x600/6366f1/FFFFFF?text=Booking+System',
+    images: [ // <--- ADD THIS ARRAY
+      'https://via.placeholder.com/1200x800/6366f1/FFFFFF?text=Booking+System+Screenshot+1',
+      'https://via.placeholder.com/1200x800/6366f1/FFFFFF?text=Booking+System+Screenshot+2',
+      'https://via.placeholder.com/1200x800/6366f1/FFFFFF?text=Booking+System+Screenshot+3',
+    ],
+    features: [
+      'Real-time Availability',
+      'Automated Reminders',
+      'Service Configuration',
+      'Client Management',
+      'Calendar Integration',
+      'Customizable Booking Flow'
+    ],
+    price: 1800,
+    technologies: ['Angular', 'Spring Boot', 'PostgreSQL'],
+  },
+];
+
+export default WebData;

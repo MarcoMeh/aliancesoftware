@@ -11,9 +11,9 @@ import {
   Sparkles,
   Target,
   Zap,
-  Shield
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const Services = () => {
   const { t, i18n } = useTranslation();
@@ -31,7 +31,8 @@ const Services = () => {
         'servicesSection.serviceItems.softwareDev.features.cloudSolutions'
       ],
       price: '  ',
-      color: 'from-[#3b82f6] to-[#60a5fa]' // Blue-Cyan gradient
+      color: 'from-[#3b82f6] to-[#60a5fa]', // Blue-Cyan gradient
+      link: '/web-development' // Specific link for Software Development
     },
     {
       icon: Globe,
@@ -44,7 +45,8 @@ const Services = () => {
         'servicesSection.serviceItems.websiteCreation.features.seoOptimization'
       ],
       price: '  ',
-      color: 'from-[#22c55e] to-[#4ade80]' // Green-Emerald gradient
+      color: 'from-[#22c55e] to-[#4ade80]', // Green-Emerald gradient
+      link: '/services/website-creation' // Example link for other services
     },
     {
       icon: Palette,
@@ -57,7 +59,8 @@ const Services = () => {
         'servicesSection.serviceItems.brandingPackages.features.marketingMaterials'
       ],
       price: '  ',
-      color: 'from-[#a855f7] to-[#e879f9]' // Purple-Pink gradient
+      color: 'from-[#a855f7] to-[#e879f9]', // Purple-Pink gradient
+      link: '/services/branding-packages' // Example link
     },
     {
       icon: Video,
@@ -70,7 +73,8 @@ const Services = () => {
         'servicesSection.serviceItems.videoProduction.features.postProduction'
       ],
       price: '  ',
-      color: 'from-[#f97316] to-[#f43f5e]' // Orange-Red gradient
+      color: 'from-[#f97316] to-[#f43f5e]', // Orange-Red gradient
+      link: '/services/video-production' // Example link
     },
     {
       icon: Megaphone,
@@ -83,21 +87,21 @@ const Services = () => {
         'servicesSection.serviceItems.digitalMarketing.features.analyticsReporting'
       ],
       price: '  ',
-      color: 'from-[#6366f1] to-[#a855f7]' // Indigo-Purple gradient
+      color: 'from-[#6366f1] to-[#a855f7]', // Indigo-Purple gradient
+      link: '/services/digital-marketing' // Example link
     },
   ];
 
   return (
     <div
       className="min-h-screen relative
-                 bg-gradient-to-br from-[#0A1128] via-[#0C1530] to-[#121A3D] text-white"
+      bg-gradient-to-br from-[#0A1128] via-[#0C1530] to-[#121A3D] text-white"
     >
       {/* Abstract Background Elements */}
       <div className="absolute inset-0 z-0 opacity-10">
         <div className="absolute top-1/4 left-0 w-64 h-64 bg-[#1e3a8a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
         <div className="absolute bottom-1/3 right-0 w-64 h-64 bg-[#3b82f6] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#0a0a0a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000" />
-
         {/* Subtle grid and lines */}
         <div className="absolute inset-0 opacity-5 pointer-events-none">
           {Array.from({ length: 50 }).map((_, i) => (
@@ -192,15 +196,16 @@ const Services = () => {
                         <p className="text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd] mb-4">
                           {service.price}
                         </p>
-                        <Button
-                          variant="outline"
-                          className={`w-full group mt-6 px-6 py-3 text-lg border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white transition-all duration-300
-                                      ${isRtl ? 'flex-row-reverse' : ''}`}
-                          onClick={() => window.location.href = '/services'} // Or a specific service detail page
-                        >
-                          {t('servicesSection.learnMore')}
-                          <ArrowRight className={`w-4 h-4 group-hover:translate-x-1 transition-transform ${isRtl ? 'mr-2 rotate-180' : 'ml-2'}`} />
-                        </Button>
+                        <Link to={service.link}> {/* Use Link for navigation */}
+                          <Button
+                            variant="outline"
+                            className={`w-full group mt-6 px-6 py-3 text-lg border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white transition-all duration-300
+                                        ${isRtl ? 'flex-row-reverse' : ''}`}
+                          >
+                            {t('servicesSection.learnMore')}
+                            <ArrowRight className={`w-4 h-4 group-hover:translate-x-1 transition-transform ${isRtl ? 'mr-2 rotate-180' : 'ml-2'}`} />
+                          </Button>
+                        </Link>
                       </div>
                     </CardContent>
                   </Card>

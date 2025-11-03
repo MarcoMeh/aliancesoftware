@@ -40,3 +40,49 @@
 .read-the-docs {
   color: #888;
 }
+/* Swiper Pagination (dots) for horizontal sliders */
+.swiper-pagination-horizontal {
+    bottom: 10px !important; /* Adjust vertical position */
+    left: 0;
+    width: 100%;
+}
+
+.swiper-pagination-bullet {
+    background: rgba(156, 163, 175, 0.5); /* gray-400 with opacity */
+    opacity: 1; /* Override default opacity */
+    width: 10px;
+    height: 10px;
+    margin: 0 4px !important; /* Horizontal spacing */
+    transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+    background: #3b82f6; /* blue-500 */
+    width: 12px;
+    height: 12px;
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.6); /* Glow effect */
+}
+
+
+/* General Custom Swiper Navigation Buttons if needed */
+/* If you want more global styling for your custom arrows, you can target them here */
+/* For example:
+.swiper-button-prev-custom,
+.swiper-button-next-custom {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+*/
+
+/* Keyframe animations for background blobs */
+@keyframes glow {
+  0% { opacity: 0.1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 0.1; }
+}
+
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}

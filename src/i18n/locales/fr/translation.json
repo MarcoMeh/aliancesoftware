@@ -1,4 +1,22 @@
 {
+   "webDevelopmentPage": {
+    "tagline": "Construisez votre avenir numérique",
+    "headingPart1": "Concevoir des expériences web",
+    "headingPart2": "exceptionnelles",
+    "subheading": "Des plateformes e-commerce dynamiques aux tableaux de bord SaaS intuitifs, nous construisons des applications web robustes, évolutives et centrées sur l'utilisateur, adaptées à vos besoins commerciaux.",
+    "projectsSection": {
+      "titlePart1": "Nos derniers",
+      "titlePart2": "projets web"
+    },
+    "viewProject": "Voir le projet",
+    "cta": {
+      "tagline": "Prêt pour un nouveau projet ?",
+      "headingPart1": "Construisons quelque chose de",
+      "headingPart2": "génial ensemble",
+      "description": "Vous avez une idée révolutionnaire ? Besoin d'une présence web puissante ? Contactez-nous et transformons votre vision en une réalité numérique époustouflante.",
+      "startProject": "Démarrer un projet"
+    }
+  },
   "hero": {
     "tagline": "Nous créons les logiciels de demain, aujourd'hui",
     "mainHeading": "Logiciels innovants",

@@ -265,6 +265,7 @@
       "subscribeButton": "Subscribe",
       "privacyPolicy": "We respect your privacy. You can unsubscribe at any time."
     }
+    
   },
   "aboutPage": {
     "header": {
@@ -331,6 +332,61 @@
       "title": "Want to Join Our Team?",
       "description": "We are always looking for talented individuals to join our growing team. Check out our open positions.",
       "button": "View Openings"
+    }
+  },
+  "websiteDetail": {
+    "backToProjects": "Back to Web Development",
+    "price": "Price:",
+    "buyNow": "Buy Now",
+    "featuresTitle": "Key Features",
+    "technologiesTitle": "Technologies Used",
+    "viewDemo": "View Demo"
+  },
+  "checkoutPage": {
+    "backToDetail": "Back to Website Details",
+    "heading": "Place Your Order",
+    "subheading": "Please provide your contact information to proceed with the purchase of the \"{{websiteName}}\" website.",
+    "orderSummary": "Order Summary",
+    "total": "Total",
+    "invalidWebsite": "Invalid website for checkout.", 
+    "form": {
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Enter your full name",
+      "email": "Email Address",
+      "emailPlaceholder": "Enter your email address",
+      "phoneNumber": "Phone Number",
+      "phoneNumberPlaceholder": "Enter your phone number",
+      "notes": "Additional Notes (Optional)",
+      "notesPlaceholder": "Any specific requests or questions?",
+      "submitOrder": "Submit Order",
+      "submitting": "Submitting..."
+    },
+    "successTitle": "Order Received!",
+    "successMessage": "Thank you, {{fullName}}! Your request for the \"{{websiteName}}\" website has been successfully submitted. We will contact you within 24-48 hours to discuss the next steps.",
+    "goToHome": "Go to Home",
+    "toast": { 
+      "successTitle": "Order Placed Successfully!",
+      "successDescription": "Thank you, {{fullName}}. We have received your request for the \"{{websiteName}}\" website. We will contact you shortly.",
+      "failureTitle": "Submission Failed",
+      "failureDescription": "There was an error processing your request. Please try again."
+    }
+  },
+  "webDevelopmentPage": {
+    "tagline": "Build Your Digital Future",
+    "headingPart1": "Crafting Exceptional",
+    "headingPart2": "Web Experiences",
+    "subheading": "From dynamic e-commerce platforms to intuitive SaaS dashboards, we build robust, scalable, and user-centric web applications tailored to your business needs.",
+    "projectsSection": {
+      "titlePart1": "Our Latest",
+      "titlePart2": "Web Projects"
+    },
+    "viewProject": "View Project",
+    "cta": {
+      "tagline": "Ready for a new project?",
+      "headingPart1": "Let's Build Something",
+      "headingPart2": "Amazing Together",
+      "description": "Have a groundbreaking idea? Need a powerful web presence? Get in touch and let's transform your vision into a stunning digital reality.",
+      "startProject": "Start a Project"
     }
   }
 }
