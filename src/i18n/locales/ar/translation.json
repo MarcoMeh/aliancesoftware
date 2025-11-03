@@ -188,11 +188,13 @@
     },
     "sidebar": {
       "downloadsTitle": "تنزيلات مفيدة",
-      "downloadsDescription": "الوصول إلى الوثائق والأدلة والموارد الأخرى."},
+      "downloadsDescription": "الوصول إلى الوثائق والأدلة والموارد الأخرى."
+    },
     "videoSection": {
-  "title": "شاهد {{productName}} قيد العمل",
-  "description": "شاهد دليلنا التفصيلي لترى كيف يمكن لـ {{productName}} أن يحول سير عملك",
-  "iframeTitle": "فيديو توضيحي لـ {{productName}}"},
+      "title": "شاهد {{productName}} قيد العمل",
+      "description": "شاهد دليلنا التفصيلي لترى كيف يمكن لـ {{productName}} أن يحول سير عملك",
+      "iframeTitle": "فيديو توضيحي لـ {{productName}}"
+    },
     "products": {
       "1": {
         "name": "Aliance School Manager",
@@ -347,6 +349,43 @@
       "title": "هل تريد الانضمام إلى فريقنا؟",
       "description": "نحن نبحث دائمًا عن أفراد موهوبين للانضمام إلى فريقنا المتنامي. تحقق من الشواغر الحالية.",
       "button": "عرض الوظائف"
+    }
+  },
+  "websiteDetail": {
+    "backToProjects": "العودة إلى تطوير الويب",
+    "price": "السعر:",
+    "buyNow": "اشترِ الآن",
+    "featuresTitle": "الميزات الرئيسية",
+    "technologiesTitle": "التقنيات المستخدمة",
+    "viewDemo": "مشاهدة العرض التوضيحي"
+  },
+  "checkoutPage": {
+    "backToDetail": "العودة إلى تفاصيل الموقع",
+    "heading": "اطلب الآن",
+    "subheading": "يرجى تقديم معلومات الاتصال الخاصة بك للمتابعة بشراء موقع \"{{websiteName}}\".",
+    "orderSummary": "ملخص الطلب",
+    "total": "الإجمالي",
+    "invalidWebsite": "موقع غير صالح للدفع.",
+    "form": {
+      "fullName": "الاسم الكامل",
+      "fullNamePlaceholder": "أدخل اسمك الكامل",
+      "email": "عنوان البريد الإلكتروني",
+      "emailPlaceholder": "أدخل عنوان بريدك الإلكتروني",
+      "phoneNumber": "رقم الهاتف",
+      "phoneNumberPlaceholder": "أدخل رقم هاتفك",
+      "notes": "ملاحظات إضافية (اختياري)",
+      "notesPlaceholder": "أي طلبات أو أسئلة محددة؟",
+      "submitOrder": "إرسال الطلب",
+      "submitting": "جاري الإرسال..."
+    },
+    "successTitle": "تم استلام الطلب!",
+    "successMessage": "شكرًا لك، {{fullName}}! لقد تم إرسال طلبك لموقع \"{{websiteName}}\" بنجاح. سنتواصل معك خلال 24-48 ساعة لمناقشة الخطوات التالية.",
+    "goToHome": "الذهاب إلى الرئيسية",
+    "toast": {
+      "successTitle": "تم تقديم الطلب بنجاح!",
+      "successDescription": "شكرًا لك، {{fullName}}. لقد استلمنا طلبك لموقع \"{{websiteName}}\". سنتواصل معك قريبًا.",
+      "failureTitle": "فشل الإرسال",
+      "failureDescription": "حدث خطأ أثناء معالجة طلبك. يرجى المحاولة مرة أخرى."
     }
   }
 }

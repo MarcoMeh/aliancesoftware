@@ -3,6 +3,23 @@
 import alianceSchoolImg from '@/assets/aliance-school-manager.png';
 import alianceLibraryImg from '@/assets/aliance-library-manager.png';
 
+// --- Import PDF Thumbnail Images (EXAMPLE - You need to create these files) ---
+// If your images are in 'public/images/', you can reference them directly by path.
+// If they are in 'src/assets/', you'll need to import each one like this:
+// import pdfThumb1 from '@/assets/pdf-thumbs/5-ways-to-restart-school.png';
+// import pdfThumb2 from '@/assets/pdf-thumbs/5-ways-to-get-new-students.png';
+// ... and so on for each PDF.
+// For demonstration, I'm using direct public paths assuming they exist or a generic placeholder.
+
+// Generic placeholder if specific thumbnails aren't available for every PDF
+const genericPdfThumbnail = '/images/pdf-placeholder.png'; // Make sure this image exists!
+const schoolRestartGuideThumb = '/images/pdf-thumbs/5_step_to_lunch.png'; // Example specific thumbnail
+const newStudentsGuideThumb = '/images/pdf-thumbs/5_step_to_get_clients.png';
+const reduceStressGuideThumb = '/images/pdf-thumbs/5_step_pressur.png';
+const successfulLaunchGuideThumb = '/images/pdf-thumbs/3_step_start_img.png';
+const libraryManualThumb = '/images/pdf-thumbs/library-manual-cover.png';
+const librarianPracticesThumb = '/images/pdf-thumbs/librarian-best-practices.png';
+
 export interface Product {
   id: number;
   name: string;
@@ -22,6 +39,7 @@ export interface Product {
   pdfDownloads?: {
     title: string;
     path: string;
+    image?: string; // <--- ADDED THIS NEW PROPERTY for PDF thumbnail
   }[];
 }
 
@@ -49,20 +67,35 @@ export const allProducts: Product[] = [
     status: 'Popular',
     image: alianceSchoolImg,
     screenshots: [
-      '/images/school-1.jpg',
-      '/images/school-2.jpg',
-      '/images/school-3.jpg',
-      '/images/school-4.jpg'
+      '/images/screen_shoot/school_1.jpg',
+      '/images/screen_shoot/school_2.jpg',
+      '/images/screen_shoot/school_3.jpg',
+      '/images/screen_shoot/school_4.jpg'
     ],
-    // **IMPORTANT CHANGE HERE:** Use a specific YouTube video ID, not a playlist URL
     videoId: 'fXPxrmUckyU', // **Replace with the actual YouTube video ID for Aliance School Manager**
     pricing: '15000.00 DA',
     downloadPath: '/downloads/School Demo Setup.exe',
     pdfDownloads: [
-      { title: '5 طرق لإعادة إطلاق مدرستك بنجاح (دليل عملي للمدارس الطموحة للعودة بقوة)', path: '/downloads/5طرق_إلعادة_إطالق_مدرستك_بنجاح.pdf' },
-      { title: '5طرق عملية لجلب طلاب جدد وجذب تسجيلات جديدة (دليل عملي من خبراء التسيير المدرسي)', path: '/downloads/5_طرق_عملية_لجلب_طلاب_جدد_وجذب_تسجيلات_جديدة.pdf' },
-      { title: '5 خطوات واقعية ومجربة لتقليل الضغط وجعل إدارة مدرستك أكثر ذكاء وسلاسة.', path: '/downloads/5_خطوات_واقعية_ومجربة_لتقليل_الضغط.pdf' },
-      { title: '3 خطوات لانطلاقة مدرسية ناجحة (دليل عملي للتخطيط , التنظيم , والإنطلاق بثقة', path: '/downloads/3خطوات_لانطلاقة_صحيحة.pdf' },
+      {
+        title: '5 طرق لإعادة إطلاق مدرستك بنجاح (دليل عملي للمدارس الطموحة للعودة بقوة)',
+        path: '/downloads/5طرق_إلعادة_إطالق_مدرستك_بنجاح.pdf',
+        image: schoolRestartGuideThumb // Specific image for this PDF
+      },
+      {
+        title: '5طرق عملية لجلب طلاب جدد وجذب تسجيلات جديدة (دليل عملي من خبراء التسيير المدرسي)',
+        path: '/downloads/5_طرق_عملية_لجلب_طلاب_جدد_وجذب_تسجيلات_جديدة.pdf',
+        image: newStudentsGuideThumb // Specific image for this PDF
+      },
+      {
+        title: '5 خطوات واقعية ومجربة لتقليل الضغط وجعل إدارة مدرستك أكثر ذكاء وسلاسة.',
+        path: '/downloads/5_خطوات_واقعية_ومجربة_لتقليل_الضغط.pdf',
+        image: reduceStressGuideThumb // Specific image for this PDF
+      },
+      {
+        title: '3 خطوات لانطلاقة مدرسية ناجحة (دليل عملي للتخطيط , التنظيم , والإنطلاق بثقة',
+        path: '/downloads/3خطوات_لانطلاقة_صحيحة.pdf',
+        image: successfulLaunchGuideThumb // Specific image for this PDF
+      },
     ],
   },
   {
@@ -94,8 +127,16 @@ export const allProducts: Product[] = [
     pricing: '12000.00 DA',
     downloadPath: '/downloads/Library Demo Setup.exe',
     pdfDownloads: [
-      { title: 'Library Manager User Manual', path: '/downloads/Library_Manager_Manual.pdf' },
-      { title: 'Librarian Best Practices', path: '/downloads/Librarian_Best_Practices.pdf' },
+      {
+        title: 'Library Manager User Manual',
+        path: '/downloads/Library_Manager_Manual.pdf',
+        image: libraryManualThumb // Specific image for this PDF
+      },
+      {
+        title: 'Librarian Best Practices',
+        path: '/downloads/Librarian_Best_Practices.pdf',
+        image: librarianPracticesThumb // Specific image for this PDF
+      },
     ],
   }
 ];

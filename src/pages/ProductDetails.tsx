@@ -10,7 +10,7 @@ import { useForm } from 'react-hook-form'; // Correct
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useToast } from '@/hooks/use-toast';
-import { ArrowLeft, Play, Star, Users, CheckCircle, Download, ChevronLeft, ChevronRight, FileText } from 'lucide-react'; // Added FileText icon
+import { ArrowLeft, Play, Star, Users, CheckCircle, Download, ChevronLeft, ChevronRight, FileText } from 'lucide-react';
 import { allProducts } from '@/data/productsData';
 import { useTranslation } from 'react-i18next';
 
@@ -191,6 +191,15 @@ const ProductDetails = () => {
     );
   };
 
+  const handlePdfDownload = (pdfPath: string, pdfTitle: string) => {
+    const link = document.createElement('a');
+    link.href = pdfPath;
+    link.download = pdfTitle.replace(/[^a-z0-9]/gi, '_') + '.pdf'; // Sanitize filename
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div
       className="min-h-screen relative
@@ -236,10 +245,10 @@ const ProductDetails = () => {
           </Link>
         </div>
 
-        {/* Main content grid for details and sidebar */}
-        <div className="container mx-auto px-6 grid lg:grid-cols-4 gap-12 pb-16">
-          {/* Main Product Details (3/4 width on large screens) */}
-          <div className="lg:col-span-3 space-y-12">
+        {/* Main content grid for details - removed lg:grid-cols-4 and lg:col-span-3 */}
+        <div className="container mx-auto px-6 pb-16"> {/* Removed grid and col-span classes */}
+          {/* Main Product Details (now full width on large screens) */}
+          <div className="space-y-12"> {/* Removed lg:col-span-3 */}
             <section>
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
@@ -478,6 +487,42 @@ const ProductDetails = () => {
             </div>
           </section>
 
+            {/* Moved Product Downloads section here, above Features/Benefits and Video */}
+            {product.pdfDownloads && product.pdfDownloads.length > 0 && (
+              <Card className="bg-white/5 backdrop-blur-sm border-blue-400/20 p-6">
+                <CardHeader className="p-0 mb-4">
+                  <CardTitle className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd] flex items-center gap-2">
+                    <FileText className="w-6 h-6 text-blue-400" />
+                    {t('productDetails.sidebar.downloadsTitle')} {/* Renamed from 'Product Downloads' to be generic for translation */}
+                  </CardTitle>
+                  <CardDescription className="text-blue-200">
+                    {t('productDetails.sidebar.downloadsDescription')}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                    {product.pdfDownloads.map((pdf, index) => (
+                      <div key={index} className="flex flex-col items-center group cursor-pointer" onClick={() => handlePdfDownload(pdf.path, pdf.title)}>
+                        <div className="relative w-24 h-32 rounded-lg overflow-hidden border border-blue-400/30 shadow-md group-hover:shadow-xl transition-all duration-300">
+                          <img
+                            src={pdf.image || '/images/pdf-placeholder.png'} // Use pdf.image if available, otherwise a generic placeholder
+                            alt={pdf.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                          <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <Download className="w-8 h-8 text-white" />
+                          </div>
+                        </div>
+                        <span className="mt-2 text-lg font-semibold text-blue-100 text-center group-hover:text-blue-50 transition-colors duration-200 line-clamp-2 max-w-[120px]">
+                          {pdf.title}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
             <section>
               <div className="grid lg:grid-cols-2 gap-12">
                 <Card className="bg-white/5 backdrop-blur-sm border-blue-400/20">
@@ -556,62 +601,6 @@ const ProductDetails = () => {
               </section>
             )}
           </div>
-
-          {/* Sidebar (1/4 width on large screens) */}
-          <aside className="lg:col-span-1 space-y-8 pt-8 lg:pt-0">
-            {product.pdfDownloads && product.pdfDownloads.length > 0 && (
-              <Card className="bg-white/5 backdrop-blur-sm border-blue-400/20 p-6">
-                <CardHeader className="p-0 mb-4">
-                  <CardTitle className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd] flex items-center gap-2">
-                    <FileText className="w-6 h-6 text-blue-400" />
-                    {t('productDetails.sidebar.downloadsTitle')}
-                  </CardTitle>
-                  <CardDescription className="text-blue-200">
-                    {t('productDetails.sidebar.downloadsDescription')}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="p-0">
-                  <ul className="space-y-3">
-                    {product.pdfDownloads.map((pdf, index) => (
-                      <li key={index}>
-                        <a
-                          href={pdf.path}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-blue-300 hover:text-blue-100 transition-colors duration-200 group"
-                        >
-                          <Download className={`w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform ${isRtl ? 'rotate-180' : ''}`} />
-                          <span>{pdf.title}</span>
-                          <span className="text-xs text-blue-400 opacity-70 ml-auto">PDF</span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* You can add more sidebar cards here if needed, e.g., related products, contact info */}
-            {/* Example of another card if you want to reuse the contact form or show other links */}
-            {/*
-            <Card className="bg-white/5 backdrop-blur-sm border-blue-400/20 p-6">
-              <CardHeader className="p-0 mb-4">
-                <CardTitle className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd] flex items-center gap-2">
-                  <MessageSquare className="w-6 h-6 text-blue-400" />
-                  {t('productDetails.sidebar.contactUsTitle')}
-                </CardTitle>
-                <CardDescription className="text-blue-200">
-                  {t('productDetails.sidebar.contactUsDescription')}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-0">
-                <Button className="w-full bg-blue-600 hover:bg-blue-700">
-                  {t('productDetails.sidebar.contactUsButton')}
-                </Button>
-              </CardContent>
-            </Card>
-            */}
-          </aside>
         </div>
       </main>
     </div>

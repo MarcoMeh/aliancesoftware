@@ -1,5 +1,5 @@
 {
-   "webDevelopmentPage": {
+  "webDevelopmentPage": {
     "tagline": "Construisez votre avenir numérique",
     "headingPart1": "Concevoir des expériences web",
     "headingPart2": "exceptionnelles",
@@ -349,6 +349,43 @@
       "title": "Vous voulez rejoindre notre équipe ?",
       "description": "Nous sommes toujours à la recherche de personnes talentueuses pour rejoindre notre équipe grandissante. Consultez nos postes ouverts.",
       "button": "Voir les Postes"
+    }
+  },
+  "websiteDetail": {
+    "backToProjects": "Retour au Développement Web",
+    "price": "Prix :",
+    "buyNow": "Acheter maintenant",
+    "featuresTitle": "Fonctionnalités Clés",
+    "technologiesTitle": "Technologies Utilisées",
+    "viewDemo": "Voir la Démo"
+  },
+  "checkoutPage": {
+    "backToDetail": "Retour aux Détails du Site Web",
+    "heading": "Passez Votre Commande",
+    "subheading": "Veuillez fournir vos coordonnées pour procéder à l'achat du site web \"{{websiteName}}\".",
+    "orderSummary": "Récapitulatif de la Commande",
+    "total": "Total",
+    "invalidWebsite": "Site web invalide pour la commande.",
+    "form": {
+      "fullName": "Nom Complet",
+      "fullNamePlaceholder": "Entrez votre nom complet",
+      "email": "Adresse E-mail",
+      "emailPlaceholder": "Entrez votre adresse e-mail",
+      "phoneNumber": "Numéro de Téléphone",
+      "phoneNumberPlaceholder": "Entrez votre numéro de téléphone",
+      "notes": "Notes Additionnelles (Facultatif)",
+      "notesPlaceholder": "Des requêtes ou questions spécifiques ?",
+      "submitOrder": "Soumettre la Commande",
+      "submitting": "Envoi en cours..."
+    },
+    "successTitle": "Commande Reçue !",
+    "successMessage": "Merci, {{fullName}} ! Votre demande pour le site web \"{{websiteName}}\" a été soumise avec succès. Nous vous contacterons dans les 24-48 heures pour discuter des prochaines étapes.",
+    "goToHome": "Aller à l'Accueil",
+    "toast": {
+      "successTitle": "Commande Passée avec Succès !",
+      "successDescription": "Merci, {{fullName}}. Nous avons reçu votre demande pour le site web \"{{websiteName}}\". Nous vous contacterons sous peu.",
+      "failureTitle": "Échec de la Soumission",
+      "failureDescription": "Une erreur est survenue lors du traitement de votre demande. Veuillez réessayer."
     }
   }
 }
