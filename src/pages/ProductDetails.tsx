@@ -289,7 +289,8 @@ const ProductDetails = () => {
                           {t('productDetails.startFreeTrialButton')}
                         </Button>
                       </DialogTrigger>
-                      <DialogContent className="sm:max-w-[425px] bg-[#0A1128] text-white border-blue-400/30">
+                      {/* MODIFICATION START: Add max-h-screen and overflow-y-auto to DialogContent */}
+                      <DialogContent className="sm:max-w-[425px] bg-[#0A1128] text-white border-blue-400/30 max-h-[90vh] overflow-y-auto">
                         <DialogHeader>
                           <DialogTitle className="text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#93c5fd]">
                             {t('productDetails.downloadForm.title', { productName: product.name })}
@@ -390,6 +391,7 @@ const ProductDetails = () => {
                                 </FormItem>
                             )}
                           />
+                          {/* MODIFICATION END */}
                           <Button
                             type="submit"
                             className={`w-full group px-8 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300
