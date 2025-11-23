@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { ArrowRight, Download, ExternalLink, Star, Users } from 'lucide-react';
 import { allProducts } from '@/data/productsData';
 import { useTranslation } from 'react-i18next'; // Import useTranslation
+import { Link } from 'react-router-dom';
 
 const ProductsSection = () => {
   const { t } = useTranslation();
@@ -33,28 +34,12 @@ const ProductsSection = () => {
 
   return (
     <section className="py-24 relative overflow-hidden bg-[#0A1128] text-white"> {/* Added overflow-hidden for subtle effects */}
-      {/* Abstract background elements - code, circuits, marketing shapes */}
-      <div className="absolute inset-0 z-0 opacity-10">
-        <div className="absolute top-1/4 left-0 w-80 h-80 bg-[#1e3a8a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
-        <div className="absolute bottom-1/3 right-0 w-80 h-80 bg-[#3b82f6] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#0a0a0a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000" />
-        
-        {/* Subtle grid and lines for programming feel */}
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          {Array.from({ length: 50 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute bg-blue-500 rounded-full"
-              style={{
-                width: `${Math.random() * 3 + 1}px`,
-                height: `${Math.random() * 3 + 1}px`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animation: `glow ${Math.random() * 10 + 5}s infinite alternate`,
-              }}
-            />
-          ))}
-          <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+      {/* Decorative blobs (CSS-driven) to reduce DOM noise and improve performance */}
+      <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+        <div className="hero-background-blobs">
+          <div className="blob" />
+          <div className="blob" />
+          <div className="blob" />
         </div>
       </div>
 
@@ -86,11 +71,9 @@ const ProductsSection = () => {
               style={{ animationDelay: `${index * 0.15}s` }} // Slightly slower animation cascade
             >
               <CardHeader className="p-0 relative rounded-t-xl overflow-hidden">
-                {/* Product Image */}
-                <div
-                  className="w-full h-52 bg-gradient-to-br from-[#1e3a8a]/30 to-[#3b82f6]/30 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" // Image scale on hover
-                  style={{ backgroundImage: `url(${product.image})` }}
-                >
+                {/* Product Image (use img with lazy loading for better performance) */}
+                <div className="w-full h-52 relative overflow-hidden rounded-t-xl">
+                  <img src={product.image} alt={product.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
                   {/* Image Overlay */}
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-black/15 transition-colors duration-300 flex items-end p-4">
                     {/* Status Badge - positioned within the image for a cleaner look */}
@@ -137,27 +120,29 @@ const ProductsSection = () => {
 
                 {/* Actions */}
                 <div className="flex flex-col sm:flex-row gap-3 pt-6"> {/* Buttons stack on small screens, row on larger */}
-                  <Button
-                    variant="default"
-                    size="lg" // Larger buttons
-                    className="flex-1 group transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]
-                               bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] text-white hover:from-[#60a5fa] hover:to-[#3b82f6]"
-                    onClick={() => window.location.href = `/product/${product.id}`}
-                  >
-                    <Download className="w-4 h-4 mr-2" />
-                    {t('productsSection.learnMore')}
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="lg" // Larger buttons
-                    className="flex-1 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]
-                               border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white"
-                    onClick={() => window.location.href = `/product/${product.id}`}
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    {t('productsSection.demo')}
-                  </Button>
+                  <Link to={`/product/${product.id}`} className="flex-1 block">
+                    <Button
+                      variant="default"
+                      size="lg"
+                      className="w-full group transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]
+                                 bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] text-white hover:from-[#60a5fa] hover:to-[#3b82f6]"
+                    >
+                      <Download className="w-4 h-4 mr-2" />
+                      {t('productsSection.learnMore')}
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                  <Link to={`/product/${product.id}`} className="flex-1 block">
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="w-full transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]
+                                 border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white"
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      {t('productsSection.demo')}
+                    </Button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>

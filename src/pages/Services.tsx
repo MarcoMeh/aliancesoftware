@@ -32,7 +32,7 @@ const Services = () => {
       ],
       price: '  ',
       color: 'from-[#3b82f6] to-[#60a5fa]', // Blue-Cyan gradient
-      link: '/web-development' // Specific link for Software Development
+      link: '/services/software-development' // Link to the new Software Development page
     },
     {
       icon: Globe,
@@ -46,7 +46,7 @@ const Services = () => {
       ],
       price: '  ',
       color: 'from-[#22c55e] to-[#4ade80]', // Green-Emerald gradient
-      link: '/services/website-creation' // Example link for other services
+      link: '/web-development?service=websiteCreation' // Link to web development filtered by websiteCreation
     },
     {
       icon: Palette,
@@ -99,12 +99,12 @@ const Services = () => {
     >
       {/* Abstract Background Elements */}
       <div className="absolute inset-0 z-0 opacity-10">
-        <div className="absolute top-1/4 left-0 w-64 h-64 bg-[#1e3a8a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
-        <div className="absolute bottom-1/3 right-0 w-64 h-64 bg-[#3b82f6] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#0a0a0a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000" />
-        {/* Subtle grid and lines */}
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          {Array.from({ length: 50 }).map((_, i) => (
+        <div className="absolute top-1/4 left-0 w-40 h-40 sm:w-64 sm:h-64 bg-[#1e3a8a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
+        <div className="absolute bottom-1/3 right-0 w-40 h-40 sm:w-64 sm:h-64 bg-[#3b82f6] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 sm:w-80 h-56 sm:h-80 bg-[#0a0a0a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000" />
+        {/* Subtle grid and lines (hidden on small screens to reduce paint) */}
+        <div className="absolute inset-0 opacity-5 pointer-events-none hidden sm:block">
+          {Array.from({ length: 30 }).map((_, i) => (
             <div
               key={i}
               className="absolute bg-blue-500 rounded-full"

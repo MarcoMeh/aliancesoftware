@@ -25,7 +25,11 @@ const Navigation = () => {
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A1128]/90 backdrop-blur-xl border-b border-[#1e3a8a]/50 shadow-lg md:shadow-xl transition-all duration-300"> {/* Stronger blur and shadow, dark background */}
+    <nav
+      className="fixed top-0 left-0 right-0 z-50 bg-[#0A1128]/90 backdrop-blur-xl border-b border-[#1e3a8a]/50 shadow-lg md:shadow-xl transition-all duration-300"
+      role="navigation"
+      aria-label={t('navigation.mainNav', 'Main navigation')}
+    > {/* Stronger blur and shadow, dark background */}
       <div className="container mx-auto px-6 py-2 md:py-2 flex items-center justify-between"> {/* Increased padding */}
         {/* Logo */}
         <Link to="/" className={`flex items-center space-x-3 rtl:space-x-reverse hover:opacity-90 transition-opacity ${isRtl ? 'flex-row-reverse space-x-reverse' : ''}`}> {/* Added rtl:space-x-reverse */}
@@ -47,6 +51,7 @@ const Navigation = () => {
             <Link
               key={item.href}
               to={item.href}
+              aria-current={isActive(item.href) ? 'page' : undefined}
               className={`relative text-base font-medium transition-all duration-300 ease-in-out py-2 px-3 rounded-lg
                 ${isActive(item.href) ? 'text-[#60a5fa] bg-[#3b82f6]/20 font-semibold' : 'text-blue-200/70 hover:text-[#60a5fa] hover:bg-[#1e3a8a]/30'}
               `}
@@ -85,6 +90,9 @@ const Navigation = () => {
             size="icon"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="text-blue-200/80 hover:bg-[#1e3a8a]/30"
+            aria-label={isMenuOpen ? t('navigation.closeMenu', 'Close menu') : t('navigation.openMenu', 'Open menu')}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-nav"
           >
             {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </Button>
@@ -93,7 +101,7 @@ const Navigation = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden mt-2 pb-6 border-t border-[#1e3a8a]/50 bg-[#0A1128] animate-fade-down-in"> {/* Added animate-fade-down-in (you might need to define this in your CSS) */}
+        <div id="mobile-nav" className="md:hidden mt-2 pb-6 border-t border-[#1e3a8a]/50 bg-[#0A1128] animate-fade-down-in"> {/* Added animate-fade-down-in (you might need to define this in your CSS) */}
           <div className="flex flex-col space-y-2 px-6 pt-4"> {/* Adjusted spacing and padding */}
             {navItems.map((item) => (
               <Link

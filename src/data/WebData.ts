@@ -22,6 +22,7 @@ const WebData = [
       'Order Tracking'
     ],
     price: 14000.00, // Example price
+    category: 'websiteCreation',
   },
   {
     id: 'School Website',
@@ -45,6 +46,7 @@ const WebData = [
       'Secure Data Handling'
     ],
     price: 20000.00,
+    category: 'websiteCreation',
     technologies: ['Vue.js', 'Firebase', 'Chart.js'],
   },
   {
@@ -67,6 +69,7 @@ const WebData = [
       'Fast Loading Speed'
     ],
     price: 800,
+    category: 'websiteCreation',
     technologies: ['Next.js', 'Tailwind CSS', 'Sanity.io'],
   },
   {
@@ -89,6 +92,7 @@ const WebData = [
       'Social Sharing'
     ],
     price: 1200,
+    category: 'websiteCreation',
     technologies: ['Gatsby', 'GraphQL', 'Strapi'],
   },
   {
@@ -111,6 +115,7 @@ const WebData = [
       'Customizable Booking Flow'
     ],
     price: 1800,
+    category: 'softwareDev',
     technologies: ['Angular', 'Spring Boot', 'PostgreSQL'],
   },
 ];

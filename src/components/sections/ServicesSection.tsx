@@ -13,6 +13,7 @@ import {
   Shield
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next'; // Import useTranslation
+import { Link } from 'react-router-dom';
 
 const ServicesSection = () => {
   const { t } = useTranslation(); // Initialize the translation hook
@@ -83,28 +84,12 @@ const ServicesSection = () => {
 
   return (
     <section className="py-24 relative bg-[#0A1128] text-white"> {/* Added text-white here */}
-      {/* Abstract Background Elements: Inspired by code, circuits, and digital marketing */}
-      <div className="absolute inset-0 z-0 opacity-10">
-        <div className="absolute top-1/4 left-0 w-64 h-64 bg-[#1e3a8a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
-        <div className="absolute bottom-1/3 right-0 w-64 h-64 bg-[#3b82f6] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#0a0a0a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000" />
-        
-        {/* Subtle grid and lines */}
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          {Array.from({ length: 50 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute bg-blue-500 rounded-full"
-              style={{
-                width: `${Math.random() * 3 + 1}px`,
-                height: `${Math.random() * 3 + 1}px`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animation: `glow ${Math.random() * 10 + 5}s infinite alternate`,
-              }}
-            />
-          ))}
-          <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+      {/* Decorative blobs (CSS-driven) to reduce DOM noise and improve performance */}
+      <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+        <div className="hero-background-blobs">
+          <div className="blob" />
+          <div className="blob" />
+          <div className="blob" />
         </div>
       </div>
       
@@ -167,14 +152,16 @@ const ServicesSection = () => {
                 </div>
 
                 {/* CTA Button */}
-                <Button 
-                  variant="outline" 
-                  className="w-full group mt-6 px-6 py-3 text-lg border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white transition-all duration-300" 
-                  onClick={() => window.location.href = '/services'}
-                >
-                  {t('servicesSection.learnMore')} {/* Translated */}
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <Link to="/services" className="block">
+                  <Button 
+                    variant="outline" 
+                    className="w-full group mt-6 px-6 py-3 text-lg border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white transition-all duration-300" 
+                    aria-label={t('servicesSection.learnMore')}
+                  >
+                    {t('servicesSection.learnMore')} {/* Translated */}
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           ))}
@@ -198,29 +185,33 @@ const ServicesSection = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                variant="default" 
-                size="lg" 
-                className="group px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300
-                            bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] text-white hover:from-[#60a5fa] hover:to-[#3b82f6]" 
-                onClick={() => window.location.href = '/contact'}
-              >
-                <Zap className="w-5 h-5 mr-2" />
-                {t('servicesSection.bottomCta.requestQuote')} {/* Translated */}
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link to="/contact" className="block">
+                <Button 
+                  variant="default" 
+                  size="lg" 
+                  className="group px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300
+                              bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] text-white hover:from-[#60a5fa] hover:to-[#3b82f6]" 
+                  aria-label={t('servicesSection.bottomCta.requestQuote')}
+                >
+                  <Zap className="w-5 h-5 mr-2" />
+                  {t('servicesSection.bottomCta.requestQuote')} {/* Translated */}
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
               
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="group px-8 py-4 text-lg font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300
-                            border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white" 
-                onClick={() => window.location.href = '/products'}
-              >
-                <Shield className="w-5 h-5 mr-2" />
-                {t('servicesSection.bottomCta.viewPortfolio')} {/* Translated */}
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link to="/products" className="block">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="group px-8 py-4 text-lg font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300
+                              border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white" 
+                  aria-label={t('servicesSection.bottomCta.viewPortfolio')}
+                >
+                  <Shield className="w-5 h-5 mr-2" />
+                  {t('servicesSection.bottomCta.viewPortfolio')} {/* Translated */}
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

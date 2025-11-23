@@ -206,28 +206,12 @@ const ProductDetails = () => {
                  bg-gradient-to-br from-[#0A1128] via-[#0C1530] to-[#121A3D] text-white"
       dir={isRtl ? 'rtl' : 'ltr'}
     >
-      {/* Abstract Background Elements - Lighter opacity */}
-      <div className="absolute inset-0 z-0 opacity-8">
-        <div className="absolute top-1/4 left-0 w-64 h-64 bg-[#1e3a8a] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob" />
-        <div className="absolute bottom-1/3 right-0 w-64 h-64 bg-[#3b82f6] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#0a0a0a] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000" />
-
-        {/* Subtle grid and lines */}
-        <div className="absolute inset-0 opacity-3 pointer-events-none">
-          {Array.from({ length: 50 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute bg-blue-500 rounded-full"
-              style={{
-                width: `${Math.random() * 3 + 1}px`,
-                height: `${Math.random() * 3 + 1}px`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animation: `glow ${Math.random() * 10 + 5}s infinite alternate`,
-              }}
-            />
-          ))}
-          <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+      {/* Decorative blobs (CSS-driven) to reduce DOM noise and improve performance */}
+      <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+        <div className="hero-background-blobs">
+          <div className="blob" />
+          <div className="blob" />
+          <div className="blob" />
         </div>
       </div>
 
@@ -411,10 +395,15 @@ const ProductDetails = () => {
               <div className="relative">
                 {product.screenshots && product.screenshots.length > 0 ? (
                   <>
-                    <div
-                      className="w-full h-80 bg-white/5 backdrop-blur-sm border-blue-400/20 rounded-xl bg-cover bg-center transition-all duration-300 ease-in-out shadow-lg"
-                      style={{ backgroundImage: `url(${product.screenshots[currentScreenshotIndex]})` }}
-                    />
+                    <div className="w-full h-80 bg-white/5 backdrop-blur-sm border-blue-400/20 rounded-xl overflow-hidden transition-all duration-300 ease-in-out shadow-lg">
+                      <img
+                        src={product.screenshots[currentScreenshotIndex]}
+                        alt={`${product.name} screenshot ${currentScreenshotIndex + 1}`}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-80 object-cover rounded-xl"
+                      />
+                    </div>
                     {product.screenshots.length > 1 && (
                       <>
                         <Button
@@ -464,27 +453,25 @@ const ProductDetails = () => {
                       </div>
                     )}
                   </>
-                ) : (
-                  <div
-                    className="w-full h-80 bg-white/5 backdrop-blur-sm border-blue-400/20 rounded-xl bg-cover bg-center shadow-lg"
-                    style={{ backgroundImage: `url(${product.image})` }}
-                  >
-                    {product.videoId && (
-                      <div className="absolute inset-0 bg-black/40 rounded-xl flex items-center justify-center">
-                        <Button
-                          variant="default"
-                          size="lg"
-                          className={`group gap-2 bg-white/10 hover:bg-white/20 text-white border border-blue-400/30 backdrop-blur-sm shadow-lg
-                                      ${isRtl ? 'flex-row-reverse' : ''}`}
-                          onClick={() => window.open(`https://www.youtube.com/watch?v=${product.videoId}`, '_blank')}
-                        >
-                          <Play className={`w-5 h-5 group-hover:scale-110 transition-transform ${isRtl ? 'ml-2' : 'mr-2'}`} />
-                          {t('productDetails.watchDemoVideo')}
-                        </Button>
-                      </div>
-                    )}
-                  </div>
-                )}
+                  ) : (
+                    <div className="w-full h-80 bg-white/5 backdrop-blur-sm border-blue-400/20 rounded-xl overflow-hidden shadow-lg">
+                      <img src={product.image} alt={product.name} loading="lazy" decoding="async" className="w-full h-80 object-cover rounded-xl" />
+                      {product.videoId && (
+                        <div className="absolute inset-0 bg-black/40 rounded-xl flex items-center justify-center">
+                          <Button
+                            variant="default"
+                            size="lg"
+                            className={`group gap-2 bg-white/10 hover:bg-white/20 text-white border border-blue-400/30 backdrop-blur-sm shadow-lg
+                                        ${isRtl ? 'flex-row-reverse' : ''}`}
+                            onClick={() => window.open(`https://www.youtube.com/watch?v=${product.videoId}`, '_blank')}
+                          >
+                            <Play className={`w-5 h-5 group-hover:scale-110 transition-transform ${isRtl ? 'ml-2' : 'mr-2'}`} />
+                            {t('productDetails.watchDemoVideo')}
+                          </Button>
+                        </div>
+                      )}
+                    </div>
+                  )}
               </div>
             </div>
           </section>
@@ -509,6 +496,8 @@ const ProductDetails = () => {
                           <img
                             src={pdf.image || '/images/pdf-placeholder.png'} // Use pdf.image if available, otherwise a generic placeholder
                             alt={pdf.title}
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                           />
                           <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

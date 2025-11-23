@@ -42,6 +42,19 @@ const CheckoutPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Honeypot spam check: ignore submissions where the hidden 'website' field is filled
+    try {
+      const formEl = e.target as HTMLFormElement;
+      const hp = formEl.elements.namedItem('website') as HTMLInputElement | null;
+      if (hp && hp.value) {
+        // Detected as bot/spam — silently ignore
+        setIsSubmitting(false);
+        return;
+      }
+    } catch (err) {
+      // ignore any access errors and continue
+    }
+
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
       console.log('Client Order Submitted:', {
@@ -89,26 +102,12 @@ const CheckoutPage = () => {
       className="min-h-screen relative
       bg-gradient-to-br from-[#0A1128] via-[#0C1530] to-[#121A3D] text-white"
     >
-      {/* Abstract Background Elements */}
-      <div className="absolute inset-0 z-0 opacity-10">
-        <div className="absolute top-1/4 left-0 w-64 h-64 bg-[#1e3a8a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
-        <div className="absolute bottom-1/3 right-0 w-64 h-64 bg-[#3b82f6] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#0a0a0a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000" />
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          {Array.from({ length: 50 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute bg-blue-500 rounded-full"
-              style={{
-                width: `${Math.random() * 3 + 1}px`,
-                height: `${Math.random() * 3 + 1}px`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animation: `glow ${Math.random() * 10 + 5}s infinite alternate`,
-              }}
-            />
-          ))}
-          <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+      {/* Decorative blobs (CSS-driven) to reduce DOM noise and improve performance */}
+      <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+        <div className="hero-background-blobs">
+          <div className="blob" />
+          <div className="blob" />
+          <div className="blob" />
         </div>
       </div>
 
@@ -137,10 +136,16 @@ const CheckoutPage = () => {
               <h3 className="text-2xl font-bold mb-3 text-white">
                 {t('checkoutPage.orderSummary')}
               </h3>
-              <div className="flex justify-between items-center text-lg mb-2">
-                <span>{website.name}</span>
-                <span className="font-semibold">${website.price}</span>
-              </div>
+                <div className="flex items-center gap-4 text-lg mb-2">
+                  {website.imageUrl && (
+                    <img src={website.imageUrl} alt={website.name} loading="lazy" decoding="async" className="w-24 h-14 object-cover rounded-md" />
+                  )}
+                  <div className="flex-1">
+                    <div className="font-medium">{website.name}</div>
+                    <div className="text-sm text-blue-200">{website.description}</div>
+                  </div>
+                  <div className="font-semibold">${website.price}</div>
+                </div>
               <div className="flex justify-between items-center text-xl font-bold border-t border-blue-400 pt-3 mt-3">
                 <span>{t('checkoutPage.total')}</span>
                 <span className="text-white">${website.price}</span>
@@ -164,7 +169,9 @@ const CheckoutPage = () => {
                 </Button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6" role="form" aria-label={t('checkoutPage.form.ariaLabel') || t('checkoutPage.heading')}>
+                {/* Honeypot field to reduce spam - hidden from users but visible to bots */}
+                <input type="text" name="website" autoComplete="off" tabIndex={-1} aria-hidden="true" style={{ display: 'none' }} />
                 <div>
                   <Label htmlFor="fullName" className="text-lg text-blue-100 mb-2 block">
                     {t('checkoutPage.form.fullName')}
@@ -178,6 +185,7 @@ const CheckoutPage = () => {
                     required
                     className="w-full bg-[#1e3a8a]/40 border border-[#3b82f6]/40 text-white placeholder-blue-300 focus:ring-2 focus:ring-[#60a5fa] focus:border-transparent"
                     placeholder={t('checkoutPage.form.fullNamePlaceholder')}
+                    aria-required="true"
                   />
                 </div>
                 <div>
@@ -193,6 +201,7 @@ const CheckoutPage = () => {
                     required
                     className="w-full bg-[#1e3a8a]/40 border border-[#3b82f6]/40 text-white placeholder-blue-300 focus:ring-2 focus:ring-[#60a5fa] focus:border-transparent"
                     placeholder={t('checkoutPage.form.emailPlaceholder')}
+                    aria-required="true"
                   />
                 </div>
                 <div>
@@ -208,6 +217,7 @@ const CheckoutPage = () => {
                     required
                     className="w-full bg-[#1e3a8a]/40 border border-[#3b82f6]/40 text-white placeholder-blue-300 focus:ring-2 focus:ring-[#60a5fa] focus:border-transparent"
                     placeholder={t('checkoutPage.form.phoneNumberPlaceholder')}
+                    aria-required="true"
                   />
                 </div>
                 <div>

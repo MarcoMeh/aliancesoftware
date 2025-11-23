@@ -26,29 +26,12 @@ const About = () => {
       className="min-h-screen relative
                  bg-gradient-to-br from-[#0A1128] via-[#0C1530] to-[#121A3D] text-white"
     >
-      {/* Abstract Background Elements - Lighter opacity */}
-      <div className="absolute inset-0 z-0 opacity-8">
-        <div className="absolute top-1/4 left-0 w-64 h-64 bg-[#1e3a8a] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob" />
-        <div className="absolute bottom-1/3 right-0 w-64 h-64 bg-[#3b82f6] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#0a0a0a] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000" />
-
-        {/* Subtle grid and lines */}
-        <div className="absolute inset-0 opacity-3 pointer-events-none">
-          {Array.from({ length: 50 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute bg-blue-500 rounded-full"
-              style={{
-                width: `${Math.random() * 3 + 1}px`,
-                height: `${Math.random() * 3 + 1}px`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animation: `glow ${Math.random() * 10 + 5}s infinite alternate`,
-              }}
-            />
-          ))}
-          <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
-        </div>
+      {/* Abstract Background Elements - decorative CSS blobs (reduced DOM) */}
+      <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute -left-24 top-1/4 w-40 h-40 sm:w-72 sm:h-72 bg-gradient-to-r from-[#1e3a8a] to-[#3b82f6] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob" />
+        <div className="absolute -right-24 bottom-1/3 w-40 h-40 sm:w-72 sm:h-72 bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] rounded-full mix-blend-multiply filter blur-3xl opacity-18 animate-blob animation-delay-2000" />
+        <div className="absolute left-1/2 top-1/2 w-56 sm:w-80 h-56 sm:h-80 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] rounded-full mix-blend-multiply filter blur-3xl opacity-12 animate-blob animation-delay-4000" />
+        <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       </div>
 
       <Navigation />
@@ -210,7 +193,15 @@ const About = () => {
                   <CardHeader>
                     <div className="w-20 h-20 bg-gradient-to-r from-[#3b82f6]/50 to-[#60a5fa]/50 rounded-full mx-auto mb-4 overflow-hidden shadow-lg">
                       {member.image ? (
-                        <img src={member.image} alt={t(member.nameKey)} className="w-full h-full object-cover" />
+                        <img
+                          src={member.image}
+                          alt={t(member.nameKey)}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                          decoding="async"
+                          width={80}
+                          height={80}
+                        />
                       ) : (
                         <Users className="w-10 h-10 text-white mx-auto my-5" />
                       )}

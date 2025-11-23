@@ -40,28 +40,12 @@ const Products = () => {
       className="min-h-screen relative
                  bg-gradient-to-br from-[#0A1128] via-[#0C1530] to-[#121A3D] text-white"
     >
-      {/* Abstract Background Elements - Lighter opacity */}
-      <div className="absolute inset-0 z-0 opacity-8"> {/* Adjusted opacity to 8% */}
-        <div className="absolute top-1/4 left-0 w-64 h-64 bg-[#1e3a8a] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob" /> {/* Lighter opacity */}
-        <div className="absolute bottom-1/3 right-0 w-64 h-64 bg-[#3b82f6] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000" /> {/* Lighter opacity */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#0a0a0a] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000" /> {/* Lighter opacity */}
-
-        {/* Subtle grid and lines */}
-        <div className="absolute inset-0 opacity-3 pointer-events-none"> {/* Lighter opacity */}
-          {Array.from({ length: 50 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute bg-blue-500 rounded-full"
-              style={{
-                width: `${Math.random() * 3 + 1}px`,
-                height: `${Math.random() * 3 + 1}px`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animation: `glow ${Math.random() * 10 + 5}s infinite alternate`,
-              }}
-            />
-          ))}
-          <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+      {/* Decorative blobs (CSS-driven) to reduce DOM noise and improve performance */}
+      <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+        <div className="hero-background-blobs">
+          <div className="blob" />
+          <div className="blob" />
+          <div className="blob" />
         </div>
       </div>
 
@@ -114,7 +98,7 @@ const Products = () => {
           <div className="container mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {allProducts.map((product, index) => (
-                <Link key={product.id} to={`/product/${product.id}`} className="block">
+                <Link key={product.id} to={`/product/${product.id}`} className="block" aria-label={`View ${product.name}`}>
                   <Card
                     className="group bg-white/5 backdrop-blur-sm border-blue-400/20 hover:border-blue-400/50 card-hover h-full
                                transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
@@ -127,15 +111,15 @@ const Products = () => {
                       </div>
 
                       {/* Product Image */}
-                      <div
-                        className="w-full h-48 bg-gradient-to-br from-[#1e3a8a]/30 to-[#3b82f6]/30 rounded-lg mb-4 bg-cover bg-center overflow-hidden"
-                      >
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </div>
+                              <div className="w-full h-48 rounded-lg mb-4 overflow-hidden">
+                                <img
+                                  src={product.image}
+                                  alt={product.name}
+                                  loading="lazy"
+                                  decoding="async"
+                                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
+                              </div>
 
                       <CardTitle className="text-xl font-semibold group-hover:text-[#60a5fa] transition-colors">
                         {translateProductField(product.id, 'name', product.name)}

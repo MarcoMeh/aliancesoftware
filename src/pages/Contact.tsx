@@ -20,6 +20,7 @@ const formSchema = z.object({
   company: z.string().optional(),
   subject: z.string().min(1, { message: 'Subject is required.' }),
   message: z.string().min(1, { message: 'Message is required.' }),
+  website: z.string().optional(), // honeypot field (bots may fill this)
 });
 
 const Contact = () => {
@@ -36,10 +37,16 @@ const Contact = () => {
       company: '',
       subject: '',
       message: '',
+      website: '',
     },
   });
 
   const onContactFormSubmit = async (values: z.infer<typeof formSchema>) => {
+    // Simple honeypot check: if 'website' has a value, treat as spam and silently ignore
+    if (values.website && values.website.trim() !== '') {
+      setIsSubmitting(false);
+      return;
+    }
     setIsSubmitting(true);
     try {
       const FORMSPREE_CONTACT_ENDPOINT = "https://formspree.io/f/xkgqbzgy"; // Replace with your Formspree endpoint
@@ -74,29 +81,12 @@ const Contact = () => {
       className="min-h-screen relative
                  bg-gradient-to-br from-[#0A1128] via-[#0C1530] to-[#121A3D] text-white"
     >
-      {/* Abstract Background Elements - Lighter opacity */}
-      <div className="absolute inset-0 z-0 opacity-8">
-        <div className="absolute top-1/4 left-0 w-64 h-64 bg-[#1e3a8a] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob" />
-        <div className="absolute bottom-1/3 right-0 w-64 h-64 bg-[#3b82f6] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#0a0a0a] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000" />
-
-        {/* Subtle grid and lines */}
-        <div className="absolute inset-0 opacity-3 pointer-events-none">
-          {Array.from({ length: 50 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute bg-blue-500 rounded-full"
-              style={{
-                width: `${Math.random() * 3 + 1}px`,
-                height: `${Math.random() * 3 + 1}px`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animation: `glow ${Math.random() * 10 + 5}s infinite alternate`,
-              }}
-            />
-          ))}
-          <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
-        </div>
+      {/* Abstract Background Elements - decorative CSS blobs (reduced DOM) */}
+      <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute -left-24 top-1/4 w-40 h-40 sm:w-72 sm:h-72 bg-gradient-to-r from-[#1e3a8a] to-[#3b82f6] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob" />
+        <div className="absolute -right-24 bottom-1/3 w-40 h-40 sm:w-72 sm:h-72 bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] rounded-full mix-blend-multiply filter blur-3xl opacity-18 animate-blob animation-delay-2000" />
+        <div className="absolute left-1/2 top-1/2 w-56 sm:w-80 h-56 sm:h-80 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] rounded-full mix-blend-multiply filter blur-3xl opacity-12 animate-blob animation-delay-4000" />
+        <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       </div>
 
       <Navigation />
@@ -136,7 +126,16 @@ const Contact = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  <form onSubmit={form.handleSubmit(onContactFormSubmit)} className="space-y-6">
+                  <form onSubmit={form.handleSubmit(onContactFormSubmit)} className="space-y-6" noValidate>
+                    {/* Honeypot field for bots (screen-reader hidden) */}
+                    <input
+                      type="text"
+                      aria-hidden="true"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      className="sr-only"
+                      {...form.register('website')}
+                    />
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="firstName" className="text-blue-300">{t('contactSection.form.firstName', 'First Name')}</Label>
@@ -144,10 +143,12 @@ const Contact = () => {
                           id="firstName"
                           placeholder={t('contactSection.form.firstNamePlaceholder', 'John')}
                           className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors"
+                          aria-invalid={!!form.formState.errors.firstName}
+                          aria-describedby={form.formState.errors.firstName ? 'firstName-error' : undefined}
                           {...form.register('firstName')}
                         />
                         {form.formState.errors.firstName && (
-                          <p className="text-red-400 text-sm">{form.formState.errors.firstName.message}</p>
+                          <p id="firstName-error" className="text-red-400 text-sm">{form.formState.errors.firstName.message}</p>
                         )}
                       </div>
                       <div className="space-y-2">
@@ -156,10 +157,12 @@ const Contact = () => {
                           id="lastName"
                           placeholder={t('contactSection.form.lastNamePlaceholder', 'Doe')}
                           className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors"
+                          aria-invalid={!!form.formState.errors.lastName}
+                          aria-describedby={form.formState.errors.lastName ? 'lastName-error' : undefined}
                           {...form.register('lastName')}
                         />
                         {form.formState.errors.lastName && (
-                          <p className="text-red-400 text-sm">{form.formState.errors.lastName.message}</p>
+                          <p id="lastName-error" className="text-red-400 text-sm">{form.formState.errors.lastName.message}</p>
                         )}
                       </div>
                     </div>
@@ -171,10 +174,12 @@ const Contact = () => {
                         type="email"
                         placeholder={t('contactSection.form.emailPlaceholder', 'john@example.com')}
                         className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors"
+                        aria-invalid={!!form.formState.errors.email}
+                        aria-describedby={form.formState.errors.email ? 'email-error' : undefined}
                         {...form.register('email')}
                       />
                       {form.formState.errors.email && (
-                        <p className="text-red-400 text-sm">{form.formState.errors.email.message}</p>
+                        <p id="email-error" className="text-red-400 text-sm">{form.formState.errors.email.message}</p>
                       )}
                     </div>
 
@@ -184,8 +189,13 @@ const Contact = () => {
                         id="company"
                         placeholder={t('contactSection.form.companyPlaceholder', 'Your Company')}
                         className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors"
+                        aria-invalid={!!form.formState.errors.company}
+                        aria-describedby={form.formState.errors.company ? 'company-error' : undefined}
                         {...form.register('company')}
                       />
+                      {form.formState.errors.company && (
+                        <p id="company-error" className="text-red-400 text-sm">{form.formState.errors.company.message}</p>
+                      )}
                     </div>
 
                     <div className="space-y-2">
@@ -194,10 +204,12 @@ const Contact = () => {
                         id="subject"
                         placeholder={t('contactSection.form.subjectPlaceholder', 'How can we help you?')}
                         className="bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors"
+                        aria-invalid={!!form.formState.errors.subject}
+                        aria-describedby={form.formState.errors.subject ? 'subject-error' : undefined}
                         {...form.register('subject')}
                       />
                       {form.formState.errors.subject && (
-                        <p className="text-red-400 text-sm">{form.formState.errors.subject.message}</p>
+                        <p id="subject-error" className="text-red-400 text-sm">{form.formState.errors.subject.message}</p>
                       )}
                     </div>
 
@@ -207,10 +219,12 @@ const Contact = () => {
                         id="message"
                         placeholder={t('contactSection.form.messagePlaceholder', 'Tell us about your project...')}
                         className="min-h-32 bg-white/10 border-blue-400/30 text-white placeholder-blue-300 hover:border-blue-400 focus:border-blue-500 transition-colors"
+                        aria-invalid={!!form.formState.errors.message}
+                        aria-describedby={form.formState.errors.message ? 'message-error' : undefined}
                         {...form.register('message')}
                       />
                       {form.formState.errors.message && (
-                        <p className="text-red-400 text-sm">{form.formState.errors.message.message}</p>
+                        <p id="message-error" className="text-red-400 text-sm">{form.formState.errors.message.message}</p>
                       )}
                     </div>
 

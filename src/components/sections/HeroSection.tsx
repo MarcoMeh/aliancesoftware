@@ -1,45 +1,73 @@
 // src/components/sections/HeroSection.tsx
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Rocket, Code, Laptop } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from 'react';
 
 const HeroSection = () => {
   const { t, i18n } = useTranslation();
   const isRtl = i18n.language === 'ar';
 
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const handler = () => setPrefersReducedMotion(mq.matches);
+    handler();
+    mq.addEventListener ? mq.addEventListener('change', handler) : mq.addListener(handler);
+    return () => {
+      mq.removeEventListener ? mq.removeEventListener('change', handler) : mq.removeListener(handler);
+    };
+  }, []);
+
+  useEffect(() => {
+    const el = document.getElementById('hero-3d') as any | null;
+    if (!el) return;
+    if (prefersReducedMotion) {
+      el.removeAttribute('auto-rotate');
+    } else {
+      el.setAttribute('auto-rotate', '');
+    }
+  }, [prefersReducedMotion]);
+
+  // Lazy-load the model when hero is visible (improves initial page performance)
+  useEffect(() => {
+    const el = document.getElementById('hero-3d') as any | null;
+    if (!el) return;
+
+    // If src already present, nothing to do
+    if (el.getAttribute('src')) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const modelSrc = el.getAttribute('data-src');
+          if (modelSrc) el.setAttribute('src', modelSrc);
+          observer.disconnect();
+        }
+      });
+    }, { root: null, threshold: 0.2 });
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section
-      className="relative min-h-screen flex items-center justify-center py-20 px-4 md:px-8 overflow-hidden text-white"
-      style={{
-        backgroundImage: `url('/images/hero-background4.jpg')`, // <--- Add your image path here
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
-    >
-      {/* Abstract Background Elements: Inspired by code, circuits, and digital marketing */}
-      <div className="absolute inset-0 z-0 opacity-10">
-        {/* Large Blobs - Using animate-blob-animate and Tailwind's delay utilities */}
-        <div className="absolute top-1/4 left-0 w-64 h-64 bg-[#1e3a8a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-animate" />
-        <div className="absolute bottom-1/3 right-0 w-64 h-64 bg-[#3b82f6] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-animate delay-2000" /> {/* Using Tailwind's delay-2000 */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#0a0a0a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-animate delay-4000" /> {/* Using Tailwind's delay-4000 */}
-        
-        {/* Subtle grid and lines - Using animate-glow and randomized duration from style */}
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          {Array.from({ length: 50 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute bg-blue-500 rounded-full"
-              style={{
-                width: `${Math.random() * 3 + 1}px`,
-                height: `${Math.random() * 3 + 1}px`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animation: `glow ${Math.random() * 10 + 5}s infinite alternate`, // Keeps randomized duration
-              }}
-            />
-          ))}
-          <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+    <section className="relative min-h-screen flex items-center justify-center py-20 px-4 md:px-8 overflow-hidden text-white">
+      {/* Decorative background images: use <picture> with WebP + JPG fallback for broader support */}
+      <picture className="absolute inset-0 -z-20 w-full h-full block" aria-hidden="true">
+        <source srcSet="/images/hero-background4.webp" type="image/webp" />
+        <img src="/images/hero-background4.jpg" alt="" className="w-full h-full object-cover" loading="eager" />
+      </picture>
+
+      {/* Background: use CSS-defined blobs for visual depth (lighter DOM) */}
+      <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+        <div className="hero-background-blobs">
+          <div className="blob" />
+          <div className="blob" />
+          <div className="blob" />
+          <div className="blob" />
         </div>
       </div>
 
@@ -76,33 +104,50 @@ const HeroSection = () => {
 
           {/* CTA Buttons - More prominent and interactive */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Button
-              variant="default"
-              size="lg"
-              className={`group px-8 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300
-                          bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] text-white hover:from-[#60a5fa] hover:to-[#3b82f6]
-                          ${isRtl ? 'flex-row-reverse' : ''}`}
-              onClick={() => (window.location.href = '/products')}
-              aria-label={t('hero.exploreProducts', 'Explore Products')}
-            >
-              <Code className={`w-5 h-5 group-hover:scale-110 transition-transform ${isRtl ? 'ml-3' : 'mr-3'}`} />
-              {t('hero.exploreProducts', 'Explore Products')}
-              <ArrowRight className={`w-5 h-5 group-hover:translate-x-1 transition-transform ${isRtl ? 'mr-3 rotate-180' : 'ml-3'}`} />
-            </Button>
+            <Link to="/products" aria-label={t('hero.exploreProducts', 'Explore Products')} className={`w-full sm:w-auto ${isRtl ? 'flex-row-reverse' : ''}`}>
+              <Button
+                variant="default"
+                size="lg"
+                className={`group px-8 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300
+                            bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] text-white hover:from-[#60a5fa] hover:to-[#3b82f6]
+                            ${isRtl ? 'flex-row-reverse' : ''}`}
+              >
+                <Code className={`w-5 h-5 group-hover:scale-110 transition-transform ${isRtl ? 'ml-3' : 'mr-3'}`} />
+                {t('hero.exploreProducts', 'Explore Products')}
+                <ArrowRight className={`w-5 h-5 group-hover:translate-x-1 transition-transform ${isRtl ? 'mr-3 rotate-180' : 'ml-3'}`} />
+              </Button>
+            </Link>
 
-            <Button
-              variant="outline"
-              size="lg"
-              className={`group px-8 py-3 text-lg font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300
-                          border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white
-                          ${isRtl ? 'flex-row-reverse' : ''}`}
-              onClick={() => (window.location.href = '/services')}
-              aria-label={t('hero.requestService', 'Request Service')}
-            >
-              <Laptop className={`w-5 h-5 group-hover:-translate-y-1 transition-transform ${isRtl ? 'ml-3' : 'mr-3'}`} />
-              {t('hero.requestService', 'Request Service')}
-              <ArrowRight className={`w-5 h-5 group-hover:translate-x-1 transition-transform ${isRtl ? 'mr-3 rotate-180' : 'ml-3'}`} />
-            </Button>
+            <Link to="/services" aria-label={t('hero.requestService', 'Request Service')} className={`w-full sm:w-auto ${isRtl ? 'flex-row-reverse' : ''}`}>
+              <Button
+                variant="outline"
+                size="lg"
+                className={`group px-8 py-3 text-lg font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300
+                            border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white
+                            ${isRtl ? 'flex-row-reverse' : ''}`}
+              >
+                <Laptop className={`w-5 h-5 group-hover:-translate-y-1 transition-transform ${isRtl ? 'ml-3' : 'mr-3'}`} />
+                {t('hero.requestService', 'Request Service')}
+                <ArrowRight className={`w-5 h-5 group-hover:translate-x-1 transition-transform ${isRtl ? 'mr-3 rotate-180' : 'ml-3'}`} />
+              </Button>
+            </Link>
+          </div>
+
+          {/* 3D model viewer (large screens only) */}
+          <div className="hidden lg:block absolute right-8 top-12 z-10">
+            {/* Prefer reduced motion check to avoid auto-rotate when user prefers reduced motion */}
+            {/* model-viewer will be lazy-initialized when the hero is visible */}
+            {/* @ts-ignore - custom element */}
+            <model-viewer
+              id="hero-3d"
+              data-src="https://modelviewer.dev/shared-assets/models/DamagedHelmet.glb"
+              poster="/images/hero-background4.jpg"
+              alt="Interactive 3D model"
+              ar
+              camera-controls
+              exposure="1"
+              style={{ width: '420px', height: '320px', borderRadius: '12px', background: 'transparent' }}
+            />
           </div>
 
           {/* Optional: Add Stats below CTA for more immediate impact */}

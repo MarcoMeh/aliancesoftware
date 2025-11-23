@@ -21,6 +21,7 @@ import { useToast } from '@/components/ui/use-toast'; // Assuming you have shadc
 import { z } from "zod"; // Assuming you use zod for form validation
 import { useForm } from "react-hook-form"; // Assuming react-hook-form
 import { zodResolver } from "@hookform/resolvers/zod"; // Assuming zod resolver for react-hook-form
+import { Link } from 'react-router-dom';
 
 // Define your form schema (adjust as needed for your specific fields)
 const formSchema = z.object({
@@ -52,6 +53,13 @@ const ContactSection = () => {
 
   const onContactFormSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsSubmitting(true);
+    // Simple honeypot spam check: a hidden field named "website" should be empty
+    const honeypot = (document.querySelector('input[name="website"]') as HTMLInputElement)?.value;
+    if (honeypot) {
+      // Detected as spam — silently ignore and return
+      setIsSubmitting(false);
+      return;
+    }
     try {
       // Replace with your actual Formspree endpoint for contact form
       const FORMSPREE_ENDPOINT = "https://formspree.io/f/xkgqbzgy"; // Make sure this is a *different* endpoint for contact form
@@ -127,13 +135,13 @@ const ContactSection = () => {
     <section className="py-24 relative bg-[#0A1128] text-white">
       {/* Abstract Background Elements: Inspired by code, circuits, and digital marketing */}
       <div className="absolute inset-0 z-0 opacity-10">
-        <div className="absolute top-1/4 left-0 w-64 h-64 bg-[#1e3a8a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
-        <div className="absolute bottom-1/3 right-0 w-64 h-64 bg-[#3b82f6] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#0a0a0a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000" />
+        <div className="absolute top-1/4 left-0 w-40 h-40 sm:w-64 sm:h-64 bg-[#1e3a8a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
+        <div className="absolute bottom-1/3 right-0 w-40 h-40 sm:w-64 sm:h-64 bg-[#3b82f6] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000" />
+        <div className="absolute top-1/2 left-1/2 w-56 sm:w-80 h-56 sm:h-80 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000" />
         
-        {/* Subtle grid and lines */}
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          {Array.from({ length: 50 }).map((_, i) => (
+        {/* Subtle grid and lines (hidden on small screens) */}
+        <div className="absolute inset-0 opacity-5 pointer-events-none hidden sm:block">
+          {Array.from({ length: 30 }).map((_, i) => (
             <div
               key={i}
               className="absolute bg-blue-500 rounded-full"
@@ -179,69 +187,85 @@ const ContactSection = () => {
               </CardDescription>
             </CardHeader>
             <CardContent className="p-6 pt-0 space-y-6">
-              <form onSubmit={form.handleSubmit(onContactFormSubmit)} className="space-y-6">
+              <form onSubmit={form.handleSubmit(onContactFormSubmit)} className="space-y-6" role="form" aria-label={t('contactSection.sendMessage.title')}>
+                {/* Honeypot field for spam bots (hidden from users) */}
+                <input type="text" name="website" autoComplete="off" tabIndex={-1} aria-hidden="true" style={{display: 'none'}} />
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-blue-100">{t('contactSection.sendMessage.firstName')}</label>
+                    <label htmlFor="firstName" className="text-sm font-medium text-blue-100">{t('contactSection.sendMessage.firstName')}</label>
                     <Input 
+                      id="firstName"
                       {...form.register("firstName")}
                       placeholder={t('contactSection.sendMessage.placeholders.firstName')} 
                       className="bg-[#121A3D] border-[#1e3a8a] text-white placeholder:text-blue-400" 
+                      aria-invalid={form.formState.errors.firstName ? true : false}
                     />
-                    {form.formState.errors.firstName && <p className="text-red-400 text-sm mt-1">{form.formState.errors.firstName.message}</p>}
+                    {form.formState.errors.firstName && <p id="firstName-error" className="text-red-400 text-sm mt-1">{form.formState.errors.firstName.message}</p>}
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-blue-100">{t('contactSection.sendMessage.lastName')}</label>
+                    <label htmlFor="lastName" className="text-sm font-medium text-blue-100">{t('contactSection.sendMessage.lastName')}</label>
                     <Input 
+                      id="lastName"
                       {...form.register("lastName")}
                       placeholder={t('contactSection.sendMessage.placeholders.lastName')} 
                       className="bg-[#121A3D] border-[#1e3a8a] text-white placeholder:text-blue-400" 
+                      aria-invalid={form.formState.errors.lastName ? true : false}
                     />
-                    {form.formState.errors.lastName && <p className="text-red-400 text-sm mt-1">{form.formState.errors.lastName.message}</p>}
+                    {form.formState.errors.lastName && <p id="lastName-error" className="text-red-400 text-sm mt-1">{form.formState.errors.lastName.message}</p>}
                   </div>
                 </div>
                 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-blue-100">{t('contactSection.sendMessage.email')}</label>
+                  <label htmlFor="email" className="text-sm font-medium text-blue-100">{t('contactSection.sendMessage.email')}</label>
                   <Input 
+                    id="email"
                     {...form.register("email")}
                     placeholder={t('contactSection.sendMessage.placeholders.email')} 
                     type="email" 
                     className="bg-[#121A3D] border-[#1e3a8a] text-white placeholder:text-blue-400" 
+                    aria-invalid={form.formState.errors.email ? true : false}
                   />
-                  {form.formState.errors.email && <p className="text-red-400 text-sm mt-1">{form.formState.errors.email.message}</p>}
+                  {form.formState.errors.email && <p id="email-error" className="text-red-400 text-sm mt-1">{form.formState.errors.email.message}</p>}
                 </div>
                 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-blue-100">{t('contactSection.sendMessage.companyOptional')}</label>
+                  <label htmlFor="company" className="text-sm font-medium text-blue-100">{t('contactSection.sendMessage.companyOptional')}</label>
                   <Input 
+                    id="company"
                     {...form.register("company")}
                     placeholder={t('contactSection.sendMessage.placeholders.company')} 
                     className="bg-[#121A3D] border-[#1e3a8a] text-white placeholder:text-blue-400" 
+                    aria-invalid={form.formState.errors.company ? true : false}
                   />
                 </div>
                 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-blue-100">{t('contactSection.sendMessage.projectType')}</label>
+                  <label htmlFor="projectType" className="text-sm font-medium text-blue-100">{t('contactSection.sendMessage.projectType')}</label>
                   <select 
+                    id="projectType"
                     {...form.register("projectType")}
                     className="w-full px-3 py-2 bg-[#121A3D] border border-[#1e3a8a] rounded-lg text-white"
+                    aria-invalid={form.formState.errors.projectType ? true : false}
+                    aria-describedby={form.formState.errors.projectType ? 'projectType-error' : undefined}
                   >
                     {projectTypeOptions.map((option, index) => (
                       <option key={index} value={option} className="bg-[#121A3D] text-white">{option}</option>
                     ))}
                   </select>
-                  {form.formState.errors.projectType && <p className="text-red-400 text-sm mt-1">{form.formState.errors.projectType.message}</p>}
+                  {form.formState.errors.projectType && <p id="projectType-error" className="text-red-400 text-sm mt-1">{form.formState.errors.projectType.message}</p>}
                 </div>
                 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-blue-100">{t('contactSection.sendMessage.message')}</label>
+                  <label htmlFor="message" className="text-sm font-medium text-blue-100">{t('contactSection.sendMessage.message')}</label>
                   <Textarea 
+                    id="message"
                     {...form.register("message")}
                     placeholder={t('contactSection.sendMessage.placeholders.message')}
                     className="bg-[#121A3D] border-[#1e3a8a] text-white placeholder:text-blue-400 min-h-[120px]"
+                    aria-invalid={form.formState.errors.message ? true : false}
+                    aria-describedby={form.formState.errors.message ? 'message-error' : undefined}
                   />
-                  {form.formState.errors.message && <p className="text-red-400 text-sm mt-1">{form.formState.errors.message.message}</p>}
+                  {form.formState.errors.message && <p id="message-error" className="text-red-400 text-sm mt-1">{form.formState.errors.message.message}</p>}
                 </div>
                 
                 <Button 

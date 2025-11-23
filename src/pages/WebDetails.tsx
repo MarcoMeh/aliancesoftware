@@ -1,5 +1,5 @@
 // src/pages/WebDetails.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 // Corrected import path for websiteData
@@ -27,6 +27,9 @@ const WebDetails = () => { // Make sure this component name matches your file na
     );
   }
 
+  // hold current main image for the gallery
+  const [mainImg, setMainImg] = useState(website.imageUrl);
+
   // Function to handle "Buy Now" click
   const handleBuyNow = () => {
     // Navigate to a dedicated checkout/contact form page, passing the website ID
@@ -40,11 +43,11 @@ const WebDetails = () => { // Make sure this component name matches your file na
     >
       {/* Abstract Background Elements */}
       <div className="absolute inset-0 z-0 opacity-10">
-        <div className="absolute top-1/4 left-0 w-64 h-64 bg-[#1e3a8a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
-        <div className="absolute bottom-1/3 right-0 w-64 h-64 bg-[#3b82f6] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#0a0a0a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000" />
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          {Array.from({ length: 50 }).map((_, i) => (
+        <div className="absolute top-1/4 left-0 w-40 h-40 sm:w-64 sm:h-64 bg-[#1e3a8a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
+        <div className="absolute bottom-1/3 right-0 w-40 h-40 sm:w-64 sm:h-64 bg-[#3b82f6] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 sm:w-80 h-56 sm:h-80 bg-[#0a0a0a] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000" />
+        <div className="absolute inset-0 opacity-5 pointer-events-none hidden sm:block">
+          {Array.from({ length: 30 }).map((_, i) => (
             <div
               key={i}
               className="absolute bg-blue-500 rounded-full"
@@ -77,11 +80,31 @@ const WebDetails = () => { // Make sure this component name matches your file na
           <div className="bg-[#0C1530]/70 backdrop-blur-md border border-[#1e3a8a]/50 rounded-2xl p-8 md:p-12 shadow-xl animate-fade-in-up">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
               <div className="md:sticky md:top-28">
-                <img
-                  src={website.imageUrl}
-                  alt={website.name}
-                  className="w-full h-auto object-cover rounded-xl shadow-lg mb-6 transform hover:scale-[1.02] transition-transform duration-300"
-                />
+                <div className="rounded-lg overflow-hidden bg-[#07102a]">
+                  <img
+                    src={mainImg}
+                    alt={website.name}
+                    className="w-full h-56 sm:h-64 md:h-80 lg:h-96 object-cover rounded-xl shadow-lg mb-4 transform hover:scale-[1.01] transition-transform duration-300"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+
+                {/* Thumbnail gallery (mobile scrollable, desktop full rail) */}
+                {website.images && website.images.length > 0 && (
+                  <div className="mt-3 flex gap-3 overflow-x-auto">
+                    {website.images.map((img, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setMainImg(img)}
+                        className="flex-shrink-0 w-20 h-14 sm:w-24 sm:h-16 rounded-md overflow-hidden bg-[#061027] border border-transparent hover:border-[#3b82f6]/60"
+                        aria-label={`Show screenshot ${idx + 1}`}
+                      >
+                        <img src={img} alt={`${website.name} screenshot ${idx + 1}`} className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                      </button>
+                    ))}
+                  </div>
+                )}
                 <div className="flex items-center justify-between bg-[#1e3a8a]/30 rounded-full px-6 py-3 mt-6 text-xl font-bold text-blue-200 border border-[#3b82f6]/40">
                   <span className="flex items-center gap-2">
                     <DollarSign className="w-5 h-5 text-[#fcd34d]" />

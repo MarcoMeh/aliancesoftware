@@ -16,6 +16,10 @@ import Services from "./pages/Services";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import WebDevelopment from "./pages/WebDevelopment";
+import SoftwareDevelopment from "./pages/SoftwareDevelopment";
+import BrandingPackages from "./pages/BrandingPackages";
+import VideoProduction from "./pages/VideoProduction";
+import DigitalMarketing from "./pages/DigitalMarketing";
 import WebsiteDetails from './pages/WebDetails';
 import CheckoutPage from './pages/CheckoutPage';
 import NotFound from "./pages/NotFound";
@@ -54,6 +58,10 @@ const App = () => {
             <Route path="/products" element={<Products />} />
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/software-development" element={<SoftwareDevelopment/>} />
+            <Route path="/services/branding-packages" element={<BrandingPackages/>} />
+            <Route path="/services/video-production" element={<VideoProduction/>} />
+            <Route path="/services/digital-marketing" element={<DigitalMarketing/>} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
