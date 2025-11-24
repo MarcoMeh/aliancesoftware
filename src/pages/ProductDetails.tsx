@@ -39,6 +39,8 @@ const ProductDetails = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
   const [currentScreenshotIndex, setCurrentScreenshotIndex] = useState(0);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [downloadProgress, setDownloadProgress] = useState<number | null>(null);
   const { t, i18n } = useTranslation();
   const isRtl = i18n.language === 'ar';
 
@@ -90,6 +92,78 @@ const ProductDetails = () => {
     }
   };
 
+  // Direct download helper: streams file, shows progress, falls back to opening the link.
+  const handleDirectDownload = async (url: string, suggestedName?: string) => {
+    setIsDownloading(true);
+    setDownloadProgress(0);
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`Download failed: ${res.status} ${res.statusText}`);
+
+      const contentLength = res.headers.get('Content-Length') || res.headers.get('content-length');
+      const total = contentLength ? parseInt(contentLength, 10) : null;
+
+      if (!res.body || !window.ReadableStream) {
+        // No streaming support — fallback to blob approach
+        const blob = await res.blob();
+        const filename = suggestedName || url.split('/').pop() || 'download.bin';
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(link.href);
+        toast({ title: t('productDetails.downloadCompleteTitle', 'Download complete'), description: filename });
+        setDownloadProgress(100);
+        return;
+      }
+
+      // Stream the response to show progress
+      const reader = res.body.getReader();
+      const chunks: Uint8Array[] = [];
+      let received = 0;
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        if (value) {
+          chunks.push(value);
+          received += value.length;
+          if (total) setDownloadProgress(Math.round((received / total) * 100));
+          else setDownloadProgress(null); // unknown total
+        }
+      }
+
+      // TypeScript's lib.dom types can be strict about BlobPart (SharedArrayBuffer vs ArrayBuffer).
+      // Cast to BlobPart[] to satisfy the compiler — the runtime accepts Uint8Array chunks.
+      const blob = new Blob(chunks as unknown as BlobPart[], { type: res.headers.get('Content-Type') || 'application/octet-stream' });
+      const filename = suggestedName || url.split('/').pop() || 'download.bin';
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(link.href);
+
+      toast({ title: t('productDetails.downloadCompleteTitle', 'Download complete'), description: filename });
+      setDownloadProgress(100);
+    } catch (error) {
+      console.error('Download error', error);
+      toast({ title: t('common.error'), description: String(error), variant: 'destructive' });
+      // Fallback: try to open the url in new tab/window
+      try {
+        window.open(url, '_blank', 'noopener');
+      } catch (e) {
+        // ignore
+      }
+    } finally {
+      setIsDownloading(false);
+      // reset progress after a short delay so users can see 100%
+      setTimeout(() => setDownloadProgress(null), 1500);
+    }
+  };
+
   const onDownloadFormSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsSubmitting(true);
     try {
@@ -113,20 +187,15 @@ const ProductDetails = () => {
         description: t('productDetails.downloadForm.successDescription'),
       });
 
-      // Only attempt to download if product.downloadPath exists
       if (product.downloadPath) {
-        const link = document.createElement('a');
-        link.href = product.downloadPath;
-        link.download = product.downloadPath.split('/').pop() || 'download.file';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        // Attempt the streamed download flow for smoother UX
+        await handleDirectDownload(product.downloadPath, product.name + (product.downloadFileName ? ` - ${product.downloadFileName}` : ''));
       } else {
         console.warn("No downloadPath specified for this product.");
         toast({
           title: t('common.warning'),
           description: t('productDetails.downloadForm.noDownloadAvailable'),
-          variant: "default", // or "warning" if you have one
+          variant: "default",
         });
       }
 
@@ -274,6 +343,18 @@ const ProductDetails = () => {
                           {t('productDetails.startFreeTrialButton')}
                         </Button>
                       </DialogTrigger>
+                      {/* Direct download button (streaming) - complementary to the form modal */}
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        className={`px-6 py-3 text-lg font-semibold rounded-full border-blue-400 text-blue-200 hover:bg-[#1e3a8a]/30 ${isRtl ? 'flex-row-reverse' : ''}`}
+                        onClick={() => product.downloadPath && handleDirectDownload(product.downloadPath, product.name)}
+                        disabled={!product.downloadPath || isDownloading}
+                        aria-disabled={!product.downloadPath || isDownloading}
+                      >
+                        <Download className={`w-5 h-5 ${isRtl ? 'ml-3' : 'mr-3'}`} />
+                        {isDownloading ? `${t('productDetails.downloading') || 'Downloading...'}` : t('productDetails.downloadNow', 'Download')}
+                      </Button>
                       {/* MODIFICATION START: Add max-h-screen and overflow-y-auto to DialogContent */}
                       <DialogContent className="sm:max-w-[425px] bg-[#0A1128] text-white border-blue-400/30 max-h-[90vh] overflow-y-auto">
                         <DialogHeader>
@@ -388,8 +469,24 @@ const ProductDetails = () => {
                           </Button>
                         </form>
                       </Form>
-                    </DialogContent>
-                  </Dialog>
+                      </DialogContent>
+                    </Dialog>
+                  {/* Download progress bar (visible while downloading) */}
+                  {isDownloading && (
+                    <div className="w-full mt-3">
+                      <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+                        <div
+                          className="h-2 bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] transition-all"
+                          style={{ width: downloadProgress ? `${downloadProgress}%` : '50%' }}
+                          role="progressbar"
+                          aria-valuemin={0}
+                          aria-valuemax={100}
+                          aria-valuenow={downloadProgress ?? undefined}
+                        />
+                      </div>
+                      <div className="text-xs text-blue-200 mt-2">{downloadProgress ? `${downloadProgress}%` : t('productDetails.downloadingInProgress', 'Downloading...')}</div>
+                    </div>
+                  )}
                 </div>
               </div>
 

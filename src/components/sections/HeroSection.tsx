@@ -60,19 +60,8 @@ const HeroSection = () => {
       aria-labelledby="hero-title"
     >
       {/* Decorative background images: use <picture> with WebP + JPG fallback for broader support */}
-      <picture className="absolute inset-0 -z-20 w-full h-full block" aria-hidden="true">
-        <source srcSet="/images/hero-background4.webp" type="image/webp" />
-        <img
-          src="/images/hero-background4.jpg"
-          alt=""
-          className="w-full h-full object-cover"
-          loading="eager"
-          decoding="async"
-        />
-      </picture>
-
       {/* Background: use CSS-defined blobs for visual depth (lighter DOM) */}
-      <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+      <div className="absolute inset-0 z-10 pointer-events-none" aria-hidden="true">
         <div className="hero-background-blobs">
           <div className="blob" />
           <div className="blob" />
@@ -83,7 +72,7 @@ const HeroSection = () => {
 
       {/* Content Wrapper */}
       <div
-        className={`relative z-10 w-full max-w-6xl mx-auto
+        className={`relative z-20 w-full max-w-6xl mx-auto
                     flex flex-col items-center justify-center text-center
                     ${isRtl ? 'rtl' : 'ltr'}`}
         dir={isRtl ? 'rtl' : 'ltr'}
@@ -143,14 +132,14 @@ const HeroSection = () => {
           </div>
 
           {/* 3D model viewer (large screens only) */}
-          <div className="hidden lg:block absolute right-8 top-12 z-10" aria-hidden={prefersReducedMotion ? 'true' : 'false'}>
+          <div className="hidden lg:block absolute right-8 top-12 z-10 pointer-events-none" aria-hidden={prefersReducedMotion ? 'true' : 'false'}>
             {/* Prefer reduced motion check to avoid auto-rotate when user prefers reduced motion */}
             {/* model-viewer will be lazy-initialized when the hero is visible */}
             {/* @ts-ignore - custom element */}
             <model-viewer
               id="hero-3d"
               data-src="https://modelviewer.dev/shared-assets/models/DamagedHelmet.glb"
-              poster="/images/hero-background4.jpg"
+              /* poster removed to avoid duplicating the hero background image */
               alt={t('hero.modelAlt', '3D product preview')}
               ar
               camera-controls

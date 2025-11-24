@@ -13,6 +13,8 @@ export default function OptimizedImage({ src, alt, className, lqip, ...rest }: P
   return (
     <picture className="block">
       <source srcSet={webp} type="image/webp" />
+      {/* provide original as a source fallback for browsers that may not load the .webp variant */}
+      <source srcSet={src} />
       <img
         src={src}
         alt={alt}

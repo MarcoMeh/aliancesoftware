@@ -2,22 +2,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { 
-    <section className="py-24 relative bg-[#0A1128] text-white overflow-hidden" role="region" aria-labelledby="contact-title">
-  Phone, 
-  MapPin, 
-  Send, 
-  MessageCircle,
-  Globe,
-  Twitter, 
-  Linkedin, 
-  Facebook,
-  Instagram,
-  Youtube
-} from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle, Send, Facebook, Instagram, Youtube } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
-import { useToast } from '@/components/ui/use-toast'; // Assuming you have shadcn/ui toast
+import { useToast } from '@/hooks/use-toast';
 import { z } from "zod"; // Assuming you use zod for form validation
 import { useForm } from "react-hook-form"; // Assuming react-hook-form
 import { zodResolver } from "@hookform/resolvers/zod"; // Assuming zod resolver for react-hook-form

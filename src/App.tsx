@@ -1,5 +1,5 @@
 // src/App.tsx
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -8,21 +8,21 @@ import { Routes, Route } from "react-router-dom"; // IMPORT BrowserRouter
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './components/LanguageSwitcher';
 
-// Page Components
-import Index from "./pages/Index";
-import Products from "./pages/Products";
-import ProductDetails from "./pages/ProductDetails";
-import Services from "./pages/Services";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import WebDevelopment from "./pages/WebDevelopment";
-import SoftwareDevelopment from "./pages/SoftwareDevelopment";
-import BrandingPackages from "./pages/BrandingPackages";
-import VideoProduction from "./pages/VideoProduction";
-import DigitalMarketing from "./pages/DigitalMarketing";
-import WebsiteDetails from './pages/WebDetails';
-import CheckoutPage from './pages/CheckoutPage';
-import NotFound from "./pages/NotFound";
+// Lazy load page components to reduce initial bundle size
+const Index = lazy(() => import('./pages/Index'));
+const Products = lazy(() => import('./pages/Products'));
+const ProductDetails = lazy(() => import('./pages/ProductDetails'));
+const Services = lazy(() => import('./pages/Services'));
+const About = lazy(() => import('./pages/About'));
+const Contact = lazy(() => import('./pages/Contact'));
+const WebDevelopment = lazy(() => import('./pages/WebDevelopment'));
+const SoftwareDevelopment = lazy(() => import('./pages/SoftwareDevelopment'));
+const BrandingPackages = lazy(() => import('./pages/BrandingPackages'));
+const VideoProduction = lazy(() => import('./pages/VideoProduction'));
+const DigitalMarketing = lazy(() => import('./pages/DigitalMarketing'));
+const WebsiteDetails = lazy(() => import('./pages/WebDetails'));
+const CheckoutPage = lazy(() => import('./pages/CheckoutPage'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 const queryClient = new QueryClient();
 
@@ -46,13 +46,8 @@ const App = () => {
           If it's meant to be a fixed element directly in App.tsx, uncomment and adjust styling.
         */}
         {/* LanguageSwitcher (currently commented out) */}
-        {/*
-        <div className="fixed top-4 right-4 z-50">
-          <LanguageSwitcher />
-        </div>
-        */}
 
-        {/* BrowserRouter is ESSENTIAL for react-router-dom to work */}
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/products" element={<Products />} />
@@ -69,6 +64,7 @@ const App = () => {
             <Route path="/website/:id" element={<WebsiteDetails />} />
             <Route path="/checkout/:id" element={<CheckoutPage />} />
           </Routes>
+        </Suspense>
       </TooltipProvider>
     </QueryClientProvider>
   );

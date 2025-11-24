@@ -36,6 +36,7 @@ export interface Product {
   pricing?: string;
   screenshots?: string[];
   downloadPath?: string;
+  downloadFileName?: string;
   pdfDownloads?: {
     title: string;
     path: string;
