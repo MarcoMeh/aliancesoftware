@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import websiteData from '@/data/WebData';
 import Navigation from '@/components/layout/Navigation';
 import { Button } from '@/components/ui/button';
+import OptimizedImage from '@/components/ui/OptimizedImage';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -138,7 +139,7 @@ const CheckoutPage = () => {
               </h3>
                 <div className="flex items-center gap-4 text-lg mb-2">
                   {website.imageUrl && (
-                    <img src={website.imageUrl} alt={website.name} loading="lazy" decoding="async" className="w-24 h-14 object-cover rounded-md" />
+                    <OptimizedImage src={website.imageUrl} alt={website.name} className="w-24 h-14 object-cover rounded-md" />
                   )}
                   <div className="flex-1">
                     <div className="font-medium">{website.name}</div>

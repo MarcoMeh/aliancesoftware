@@ -8,6 +8,7 @@ import Navigation from '@/components/layout/Navigation';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, CheckCircle2, DollarSign } from 'lucide-react';
 import { Sparkles, ArrowRight } from 'lucide-react';
+import OptimizedImage from '@/components/ui/OptimizedImage';
 
 const WebDetails = () => { // Make sure this component name matches your file name and App.tsx import
   const { id } = useParams();
@@ -81,26 +82,24 @@ const WebDetails = () => { // Make sure this component name matches your file na
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
               <div className="md:sticky md:top-28">
                 <div className="rounded-lg overflow-hidden bg-[#07102a]">
-                  <img
+                  <OptimizedImage
                     src={mainImg}
                     alt={website.name}
                     className="w-full h-56 sm:h-64 md:h-80 lg:h-96 object-cover rounded-xl shadow-lg mb-4 transform hover:scale-[1.01] transition-transform duration-300"
-                    loading="lazy"
-                    decoding="async"
                   />
                 </div>
 
                 {/* Thumbnail gallery (mobile scrollable, desktop full rail) */}
                 {website.images && website.images.length > 0 && (
                   <div className="mt-3 flex gap-3 overflow-x-auto">
-                    {website.images.map((img, idx) => (
+                        {website.images.map((img, idx) => (
                       <button
                         key={idx}
                         onClick={() => setMainImg(img)}
                         className="flex-shrink-0 w-20 h-14 sm:w-24 sm:h-16 rounded-md overflow-hidden bg-[#061027] border border-transparent hover:border-[#3b82f6]/60"
                         aria-label={`Show screenshot ${idx + 1}`}
                       >
-                        <img src={img} alt={`${website.name} screenshot ${idx + 1}`} className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                        <OptimizedImage src={img} alt={`${website.name} screenshot ${idx + 1}`} className="w-full h-full object-cover" />
                       </button>
                     ))}
                   </div>

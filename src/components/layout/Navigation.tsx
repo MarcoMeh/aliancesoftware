@@ -29,6 +29,7 @@ const Navigation = () => {
       className="fixed top-0 left-0 right-0 z-50 bg-[#0A1128]/90 backdrop-blur-xl border-b border-[#1e3a8a]/50 shadow-lg md:shadow-xl transition-all duration-300"
       role="navigation"
       aria-label={t('navigation.mainNav', 'Main navigation')}
+      tabIndex={0}
     > {/* Stronger blur and shadow, dark background */}
       <div className="container mx-auto px-6 py-2 md:py-2 flex items-center justify-between"> {/* Increased padding */}
         {/* Logo */}

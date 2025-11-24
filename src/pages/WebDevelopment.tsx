@@ -10,6 +10,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
+import OptimizedImage from '@/components/ui/OptimizedImage';
 
 // Import your new website data
 // IMPORTANT: Ensure your websiteData has an 'images' array for each project
@@ -150,19 +151,17 @@ const WebDevelopment = () => {
                       >
                         {project.images && project.images.map((image, imgIndex) => (
                           <SwiperSlide key={imgIndex}>
-                            <img
+                            <OptimizedImage
                               src={image}
                               alt={`${project.name} - Screenshot ${imgIndex + 1}`}
                               className="w-full h-full object-cover"
-                              loading="lazy"
-                              decoding="async"
                             />
                           </SwiperSlide>
                         ))}
                         {/* If no images array, fall back to main imageUrl */}
                         {!project.images && project.imageUrl && (
                           <SwiperSlide>
-                            <img src={project.imageUrl} alt={project.name} className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                            <OptimizedImage src={project.imageUrl} alt={project.name} className="w-full h-full object-cover" />
                           </SwiperSlide>
                         )}
                       </Swiper>

@@ -4,6 +4,7 @@ import { ArrowRight, Download, ExternalLink, Star, Users } from 'lucide-react';
 import { allProducts } from '@/data/productsData';
 import { useTranslation } from 'react-i18next'; // Import useTranslation
 import { Link } from 'react-router-dom';
+import OptimizedImage from '@/components/ui/OptimizedImage';
 
 const ProductsSection = () => {
   const { t } = useTranslation();
@@ -73,7 +74,7 @@ const ProductsSection = () => {
               <CardHeader className="p-0 relative rounded-t-xl overflow-hidden">
                 {/* Product Image (use img with lazy loading for better performance) */}
                 <div className="w-full h-52 relative overflow-hidden rounded-t-xl">
-                  <img src={product.image} alt={product.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                  <OptimizedImage src={product.image} alt={product.name} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
                   {/* Image Overlay */}
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-black/15 transition-colors duration-300 flex items-end p-4">
                     {/* Status Badge - positioned within the image for a cleaner look */}

@@ -123,15 +123,16 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-black text-white" dir={isRtl ? 'rtl' : 'ltr'}>
-      <Navigation /> {/* Make sure Navigation uses `useTranslation` for its links/text */}
-      <main role="main">
+      {/* Skip to main content link for accessibility */}
+      <a href="#main-content" className="sr-only focus:not-sr-only absolute top-2 left-2 z-50 bg-blue-900 text-white px-4 py-2 rounded shadow-lg">Skip to main content</a>
+      <Navigation />
+      <main id="main-content" tabIndex={-1} role="main">
         <ParallaxScene>
-          <HeroSection /> {/* Hero is now layered above the 3D scene */}
+          <HeroSection />
         </ParallaxScene>
-
-        <ProductsSection /> {/* You will need to update this similarly */}
-        <ServicesSection /> {/* You will need to update this similarly */}
-        <ContactSection /> {/* You will need to update this similarly */}
+        <ProductsSection />
+        <ServicesSection />
+        <ContactSection />
       </main>
     </div>
   );

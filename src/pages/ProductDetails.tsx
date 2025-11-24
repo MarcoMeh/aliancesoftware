@@ -22,6 +22,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import OptimizedImage from '@/components/ui/OptimizedImage';
 
 const formSchema = z.object({
   name: z.string().trim().min(2, "Name is required").max(100),
@@ -396,11 +397,9 @@ const ProductDetails = () => {
                 {product.screenshots && product.screenshots.length > 0 ? (
                   <>
                     <div className="w-full h-80 bg-white/5 backdrop-blur-sm border-blue-400/20 rounded-xl overflow-hidden transition-all duration-300 ease-in-out shadow-lg">
-                      <img
+                      <OptimizedImage
                         src={product.screenshots[currentScreenshotIndex]}
                         alt={`${product.name} screenshot ${currentScreenshotIndex + 1}`}
-                        loading="lazy"
-                        decoding="async"
                         className="w-full h-80 object-cover rounded-xl"
                       />
                     </div>
@@ -455,7 +454,7 @@ const ProductDetails = () => {
                   </>
                   ) : (
                     <div className="w-full h-80 bg-white/5 backdrop-blur-sm border-blue-400/20 rounded-xl overflow-hidden shadow-lg">
-                      <img src={product.image} alt={product.name} loading="lazy" decoding="async" className="w-full h-80 object-cover rounded-xl" />
+                      <OptimizedImage src={product.image} alt={product.name} className="w-full h-80 object-cover rounded-xl" />
                       {product.videoId && (
                         <div className="absolute inset-0 bg-black/40 rounded-xl flex items-center justify-center">
                           <Button
@@ -493,11 +492,9 @@ const ProductDetails = () => {
                     {product.pdfDownloads.map((pdf, index) => (
                       <div key={index} className="flex flex-col items-center group cursor-pointer" onClick={() => handlePdfDownload(pdf.path, pdf.title)}>
                         <div className="relative w-24 h-32 rounded-lg overflow-hidden border border-blue-400/30 shadow-md group-hover:shadow-xl transition-all duration-300">
-                          <img
-                            src={pdf.image || '/images/pdf-placeholder.png'} // Use pdf.image if available, otherwise a generic placeholder
+                          <OptimizedImage
+                            src={pdf.image || '/images/pdf-placeholder.png'}
                             alt={pdf.title}
-                            loading="lazy"
-                            decoding="async"
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                           />
                           <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

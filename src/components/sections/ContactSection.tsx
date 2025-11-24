@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { 
-  Mail, 
+    <section className="py-24 relative bg-[#0A1128] text-white overflow-hidden" role="region" aria-labelledby="contact-title">
   Phone, 
   MapPin, 
   Send, 
